@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/tony2times2times/emily-program-foundation/issues"
   },
-  "homepage": "https://github.com/tony2times2times/emily-program-foundation#readme"
+  "homepage": "https://github.com/tony2times2times/emily-program-foundation#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "express-session": "^1.15.0",
+    "mongoose": "^4.8.1",
+    "passport": "^0.3.2"
+  }
 }
