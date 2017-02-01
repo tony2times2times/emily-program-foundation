@@ -3,13 +3,10 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
-var router = require('./routes/index.js');
+var router = require('./server/routes/index.js');
 var mongoURI = "mongodb://localhost:27017/EPF";
-var MongoDB = mongoose.connect(mongoURI).connection;
 var session = require('express-session');
-var configs = require('./config/auth');
-var passport = require('./config/passport');
-
+var MongoDB = mongoose.connect(mongoURI).connection;
 
 
 
@@ -29,10 +26,8 @@ MongoDB.once('open', function () {
 
 //listen on port 2305
 app.listen((process.env.PORT || '3000'), function(){
-  console.log("Go ahead I'm listening.");
+  console.log("listening on port 3000");
 });
 
 
 app.use('/', router);
-
-app.use('/private', isLoggedIn, private);

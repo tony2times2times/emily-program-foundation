@@ -10,3 +10,5 @@ router.get('/', function(req, res) {
     console.log('Base URL reached. Returning index.html');
     res.sendFile(path.resolve('public/views/index.html'));
 });
+
+module.exports = router;

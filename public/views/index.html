@@ -4,12 +4,20 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../vendors/bootstrap.min.css">
     <link rel="stylesheet" href="../vendors/sweetalert-master/dist/sweetalert.css">
-    <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="../vendors/angular.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../vendors/sweetalert-master/dist/sweetalert.min.js"></script>
+    <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="../vendors/sweetalert-master/dist/sweetalert.min.js" charset="utf-8"></script>
+    <script src="../scripts/client.js" charset="utf-8"></script>
+    <script src="../scripts/services/factory.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/allVolunteersController.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/applicantsController.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/emailDraftsController.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/logInController.js" charset="utf-8"></script>
+      <script src="../scripts/controllers/navController.js" charset="utf-8"></script>
     <title></title>
   </head>
   <body>
-
+    <nav ng-controller='navController'></nav>
+    <main ng-view></main>
   </body>
 </html>
