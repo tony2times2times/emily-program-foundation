@@ -1,0 +1,21 @@
+{
+  "name": "emily-program-foundation",
+  "version": "1.0.0",
+  "description": "Emily Program Foundation group project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tony2times2times/emily-program-foundation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tony2times2times/emily-program-foundation/issues"
+  },
+  "homepage": "https://github.com/tony2times2times/emily-program-foundation#readme"
+}
