@@ -3,7 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
-var router = require('./server/routes/index.js');
+var auth = require('./server/routes/auth.js');
+var form = require('./server/routes/form.js');
 var mongoURI = "mongodb://localhost:27017/EPF";
 var session = require('express-session');
 var MongoDB = mongoose.connect(mongoURI).connection;
@@ -30,4 +31,5 @@ app.listen((process.env.PORT || '3000'), function(){
 });
 
 
-app.use('/', router);
+app.use('/', auth);
+app.use('/form', form);
