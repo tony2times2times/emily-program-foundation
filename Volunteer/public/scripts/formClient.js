@@ -29,7 +29,7 @@ myForm.config(['$routeProvider', function($routeProvider){
     controller: 'ReqsController'
   })
   .otherwise({
-    redirectTo: 'form'
+    redirectTo: 'volReqs'
   });
 }]); //end routeProvider
 
