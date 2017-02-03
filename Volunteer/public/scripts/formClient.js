@@ -37,6 +37,10 @@ myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
   console.log('ng sourced');
 }]); //end FormController
 
+myForm.controller('ReqsController',['$scope', '$http', function($scope, $http){
+  
+}]);//end ReqsController
+
 myForm.controller('VolInfoController', ['$scope', '$http', function($scope, $http){
 
 }]);//endVolInfoController
