@@ -8,7 +8,7 @@ var path = require('path');
 // base url returns index.html from public foulder
 router.get('/', function(req, res) {
     console.log('Base URL reached. Returning index.html');
-    res.sendFile(path.resolve('public/views/index.html'));
+    res.sendFile(path.resolve('Admin/public/views/index.html'));
 });
 
 module.exports = router;

@@ -12,7 +12,8 @@ var MongoDB = mongoose.connect(mongoURI).connection;
 
 
 //app.use('/public', express.static('public'));  // serve files from public
-app.use(express.static('public'));
+app.use(express.static('Volunteer/public'));
+app.use(express.static('Admin/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
