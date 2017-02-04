@@ -33,12 +33,16 @@ myForm.config(['$routeProvider', function($routeProvider){
   });
 }]); //end routeProvider
 
+myForm.controller('EssayController', ['$scope', '$http', function($scope, $http){
+
+}]); //end EssayController
+
 myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
   console.log('ng sourced');
 }]); //end FormController
 
 myForm.controller('ReqsController',['$scope', '$http', function($scope, $http){
-  
+
 }]);//end ReqsController
 
 myForm.controller('VolInfoController', ['$scope', '$http', function($scope, $http){
