@@ -17,7 +17,7 @@ myForm.config(['$routeProvider', function($routeProvider){
     controller: 'SkillsController'
   })
   .when('/references', {
-    templateUrl: '../views/partialsreferences.html',
+    templateUrl: '../views/partials/references.html',
     controller: 'ReferencesController'
   })
   .when('/waiver', {
@@ -41,7 +41,7 @@ myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
   console.log('ng sourced');
 }]); //end FormController
 
-myForm.controller('SkillsController', ['$scope', '$http', function($scope, $http){
+myForm.controller('ReferencesController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
@@ -49,6 +49,14 @@ myForm.controller('ReqsController',['$scope', '$http', function($scope, $http){
 
 }]);//end ReqsController
 
+myForm.controller('SkillsController', ['$scope', '$http', function($scope, $http){
+
+}]);
+
 myForm.controller('VolInfoController', ['$scope', '$http', function($scope, $http){
 
 }]);//endVolInfoController
+
+myForm.controller('WaiverController', ['$scope', '$http', function($scope, $http){
+
+}]);
