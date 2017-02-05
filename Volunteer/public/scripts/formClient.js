@@ -41,6 +41,10 @@ myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
   console.log('ng sourced');
 }]); //end FormController
 
+myForm.controller('SkillsController', ['$scope', '$http', function($scope, $http){
+
+}]);
+
 myForm.controller('ReqsController',['$scope', '$http', function($scope, $http){
 
 }]);//end ReqsController
