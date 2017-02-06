@@ -1,4 +1,4 @@
-emilyApp.factory('volunteers', function(){
+emilyApp.factory('VolunteerFactory', function(){
   var volunteers = {};
 
   return volunteers;

@@ -1,4 +1,4 @@
-emilyApp.controller('emailDraftsController', ["$scope", "$http", "volunteers",
-function($scope, $http, volunteers) {
+emilyApp.controller('EmailDraftsController', ["$scope", "$http", "VolunteerFactory",
+function($scope, $http, VolunteerFactory) {
   console.log("emailDraftsController loaded.");
 }]);
