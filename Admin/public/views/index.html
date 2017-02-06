@@ -17,8 +17,15 @@
       <script src="../scripts/controllers/navController.js" charset="utf-8"></script>
     <title></title>
   </head>
-  <body>
-    <nav ng-controller='NavController'></nav>
+  <body ng-app="emilyApp">
+    <nav ng-controller='NavController'>
+        <ul class="nav nav-pills">
+          <li><a href="#!/allVolunteers">All Volunteers</a></li>
+          <li><a href="#!/applicants">Current Applicants</a></li>
+          <li><a href="#!/emailDrafts">E-Mail Templates</a></li>
+          <li ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></li>
+        </ul>
+    </nav>
     <main ng-view></main>
   </body>
 </html>

@@ -5,8 +5,9 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('./server/auth/passport');
 var configs = require('./server/config/auth');
-var auth = require('./server/routes/auth.js');
+var admin = require('./server/routes/private/admin.js');
 var form = require('./server/routes/form.js');
+var auth = require('./server/routes/auth.js');
 var isLoggedIn = require('./server/utils/auth');
 var mongoURI = "mongodb://localhost:27017/EPF";
 var session = require('express-session');
@@ -48,34 +49,12 @@ app.use(passport.initialize()); // kickstart passport
  */
 app.use(passport.session());
 
-//listen on port 2305
-app.listen((process.env.PORT || '3000'), function(){
-  console.log("listening on port 3000");
-});
-
-
+/** ---------- ROUTES ---------- **/
 app.use('/', auth);
 app.use('/form', form);
+app.use('/admin', isLoggedIn, admin);
 
-
-
-
-
-/** ---------- ROUTES ---------- **/
-
-
-// var index = require('./routes/index');
-// var auth = require('./routes/auth');
-
-// var private = require('./routes/private/index');
-
-
-
-/** ---------- ROUTES ---------- **/
-app.use('/auth', auth);
-app.use('/private', isLoggedIn, private);
-app.use('/', index);
-/** ---------- SERVER START ---------- **/
-app.listen(3000, function () {
-  console.log('Now running on port ', 3000);
+//listen on port 3000
+app.listen((process.env.PORT || '3000'), function(){
+  console.log("listening on port 3000");
 });
