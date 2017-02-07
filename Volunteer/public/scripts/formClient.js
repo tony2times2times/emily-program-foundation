@@ -77,15 +77,31 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   };
 }]);
 
-myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window){
+myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
   //next button function
   $scope.infoPrev = function(){
     window.location = 'form#!/volReqs';
   };
   //previous button function
   $scope.infoNext = function(){
+    sendDataToFactory();
     window.location = 'form#!/essayQues';
   };
+
+  $scope.getFromFactory = function(){
+    console.log('here?');
+    $scope.firstName = formFactory.firstname;
+
+  };//end getFromFactory()
+
+  var sendDataToFactory = function(){
+    console.log('sending to factory', $scope.firstName);
+     formFactory.firstname = $scope.firstName;
+
+  };//end sendDataToFactory()
+
+  $scope.getFromFactory();
+  console.log('firstname: ', formFactory.firstname);
 }]);//endVolInfoController
 
 
