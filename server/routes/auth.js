@@ -23,7 +23,7 @@ var passport = require('../auth/passport');
  */
 router.get('/google', passport.authenticate('google',
   {
-    scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar'],
+    scope: ['openid', 'email', 'https://www.googleapis.com/auth/userinfo.profile'],
     prompt: 'select_account',
   })
 );
@@ -38,7 +38,7 @@ router.get('/google', passport.authenticate('google',
  */
 router.get('/google/callback', passport.authenticate('google',
   {
-    successRedirect: '/private', // take them to their private data
+    successRedirect: '/private', // take them to the admin site
     failureRedirect: '/', // take them back home to try again
   })
 );

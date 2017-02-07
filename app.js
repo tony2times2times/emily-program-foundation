@@ -5,9 +5,10 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('./server/auth/passport');
 var configs = require('../secretSquirrel/secret');
-var admin = require('./server/routes/private/admin.js');
+var private = require('./server/routes/private/index');
 var form = require('./server/routes/form.js');
 var auth = require('./server/routes/auth.js');
+var index = require('./server/routes/index.js');
 var isLoggedIn = require('./server/utils/auth');
 var mongoURI = "mongodb://localhost:27017/EPF";
 var session = require('express-session');
@@ -50,9 +51,10 @@ app.use(passport.initialize()); // kickstart passport
 app.use(passport.session());
 
 /** ---------- ROUTES ---------- **/
-app.use('/', auth);
+app.use('/', index);
+app.use('/auth', auth);
 app.use('/form', form);
-app.use('/admin', isLoggedIn, admin);
+app.use('/private', isLoggedIn, private);
 
 //listen on port 3000
 app.listen((process.env.PORT || '3000'), function(){
