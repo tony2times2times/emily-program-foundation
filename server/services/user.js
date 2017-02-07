@@ -20,6 +20,17 @@ var UserService = {
     });
   },
 
+  findUserByGoogleId: function (id, callback) {
+    User.findOne({ googleId: id }, function (err, user) {
+
+      if (err) {
+        return callback(err, null);
+      }
+
+      return callback(null, user);
+    });
+  },
+
   findUserByGoogleEmail: function (email, callback) {
     User.findOne({ googleEmail: email }, function (err, user) {
 
@@ -29,6 +40,10 @@ var UserService = {
 
       return callback(null, user);
     });
+  },
+
+  updateNewAdmin: function (id, token, name, email, callback) {
+
   },
 
   createGoogleUser: function (id, token, name, email, callback) {
