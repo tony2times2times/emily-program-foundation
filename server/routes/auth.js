@@ -7,6 +7,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('../auth/passport');
+var path = require('path');
 /**
  * GET /auth/google
  *
@@ -38,8 +39,8 @@ router.get('/google', passport.authenticate('google',
  */
 router.get('/google/callback', passport.authenticate('google',
   {
-    successRedirect: '/private', // take them to the admin site
-    failureRedirect: '/', // take them back home to try again
+    successRedirect: '/private/admin', // take them to the admin site
+    failureRedirect: '/auth', // take them back home to try again
   })
 );
 /**
@@ -50,12 +51,7 @@ router.get('/google/callback', passport.authenticate('google',
  * @return JSON object with status (true or false) and, if true, user's name
  */
 router.get('/', function (req, res) {
-  if (req.isAuthenticated()) {
-    res.json({ status: true, name: req.user.googleName });
-  } else {
-    res.json({ status: false });
-  }
-
+res.sendFile(path.join(__dirname, '../../Admin/public/views/login.html'));
 });
 /**
  * GET /auth/logout

@@ -5,16 +5,22 @@
  */
 var express = require('express');
 var router  = express.Router();
-var admin = require('./admin');
-
-/** ---------- SUBROUTES ---------- **/
-router.use('/admin', admin);
 
 /**
  * GET private/index
  */
-router.get('/', function (req, res) {
-  res.redirect('/'); // they made it!
+router.get('/admin', function (req, res) {
+  res.sendFile(path.join(__dirname, '../../Admin/public/views/index.html'));
 });
 
 module.exports = router;
+
+
+// router.get('/', function (req, res) {
+//   if (req.isAuthenticated()) {
+//     res.json({ status: true, name: req.user.googleName });
+//   } else {
+//     res.json({ status: false });
+//   }
+//
+// });

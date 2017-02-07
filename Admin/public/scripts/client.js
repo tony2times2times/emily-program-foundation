@@ -5,10 +5,6 @@ var emilyApp = angular.module('emilyApp', ["ngRoute"]);
 //handle angular routing within the application
 emilyApp.config(["$routeProvider", function($routeProvider) {
   $routeProvider
-  .when("/login", {
-    templateUrl: '../views/partials/login.html',
-    controller: 'LoginController'
-  })
   .when("/allVolunteers", {
     templateUrl: '../views/partials/allVolunteers.html',
     controller: 'AllVolunteersController'
@@ -22,6 +18,6 @@ emilyApp.config(["$routeProvider", function($routeProvider) {
     controller: 'EmailDraftsController'
   })
   .otherwise({
-    redirectTo: "/login"
+    redirectTo: "/allVolunteers"
   });
 }]);

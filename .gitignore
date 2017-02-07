@@ -21,6 +21,7 @@
 *.tar
 *.zip
 node_modules/
+secretSquirrel/
 
 # Logs and databases #
 ######################
