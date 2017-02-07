@@ -1,6 +1,6 @@
 console.log("JS");
 
-var emilyApp = angular.module('emilyApp', ["ngRoute"]);
+var emilyApp = angular.module('emilyApp', ["ngRoute", "ngDragDrop"]);
 
 //handle angular routing within the application
 emilyApp.config(["$routeProvider", function($routeProvider) {

@@ -1,6 +1,7 @@
-emilyApp.controller('ApplicantsController', ["$scope", "$http", "VolunteerFactory",
-function($scope, $http, VolunteerFactory) {
+emilyApp.controller('ApplicantsController', ["$scope", "$http","$timeout", "VolunteerFactory",
+function($scope, $http, $timeout, VolunteerFactory) {
   console.log("ApplicantsController loaded.");
+  var init=0;
   $scope.bucketList= ['APPLIED','PENDING','SCHEDULED','APPROVED','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
   $scope.applied = [
