@@ -45,8 +45,10 @@ myForm.controller('ReferencesController', ['$scope', '$http', function($scope, $
 
 }]);
 
-myForm.controller('ReqsController',['$scope', '$http', function($scope, $http){
-
+myForm.controller('ReqsController',['$scope', '$http','$location', '$window', function($scope, $http, $location, $window){
+    $scope.beginApp = function(){
+    $window.location ='form#!/volInfo';
+  };
 }]);//end ReqsController
 
 myForm.controller('SkillsController', ['$scope', '$http', function($scope, $http){
@@ -56,6 +58,7 @@ myForm.controller('SkillsController', ['$scope', '$http', function($scope, $http
 myForm.controller('VolInfoController', ['$scope', '$http', function($scope, $http){
 
 }]);//endVolInfoController
+
 
 myForm.controller('WaiverController', ['$scope', '$http', function($scope, $http){
 
