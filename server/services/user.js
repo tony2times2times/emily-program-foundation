@@ -43,7 +43,11 @@ var UserService = {
   },
 
   updateNewAdmin: function (id, token, name, email, callback) {
-
+    User.update({ googleEmail: email }, {$set:
+      { googleId: id,
+        googleToken: token,
+        googleName: name  }
+    });
   },
 
   createGoogleUser: function (id, token, name, email, callback) {
