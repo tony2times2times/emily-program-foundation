@@ -4,6 +4,8 @@
  *
  * @module utils/auth
  */
+
+// var UserService = require('../services/user');
 module.exports = function (req, res, next) {
 
   // if user is authenticated in the session, complete the request

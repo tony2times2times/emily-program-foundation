@@ -44,26 +44,32 @@ passport.use('google', new GoogleStrategy({
 }, function (token, refreshToken, profile, done) {
   // Google has responded
 
-  // does this user exist in our database already?
-  UserService.findUserByGoogleId(profile.id, function (err, user) {
+  // Does this user's e-mail exist in our database already?
+  UserService.findUserByGoogleEmail(profile.email, function (err, user) {
       if (err) {
         return done(err);
       }
 
-      if (user) { // user does exist!
+      if ((user) && (profile.id)) { // User exists, and already has a stored profile.
         return done(null, user);
       }
 
-      // user does not exist in our database, let's create one!
-      UserService.createGoogleUser(profile.id, token, profile.displayName,
-        profile.emails[0].value, /* we take first email address */
-        function (err, user) {
-          if (err) {
-            return done(err);
-          }
+      /* Otherwise, user has an e-mail, but no other data.
+      This would be true if the admin panel was used to
+      add a new admin. This adds the other data.
+      */
 
-          return done(null, user);
-        });
+
+
+      // UserService.createGoogleUser(profile.id, token, profile.displayName,
+      //   profile.emails[0].value, /* we take first email address */
+      //   function (err, user) {
+      //     if (err) {
+      //       return done(err);
+      //     }
+      //
+      //     return done(null, user);
+      //   });
     });
 
 }));

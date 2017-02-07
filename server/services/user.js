@@ -4,7 +4,7 @@
  * @module services/user
  *
  * @function findUserById finds a User by their unique Mongo id
- * @function findUserByGoogleId finds a User by their Google id
+ * @function findUserByGoogleEmail finds a User by their Google email
  * @function create a User that will be authenticated by Google
  */
 var User = require('../models/user');
@@ -20,8 +20,8 @@ var UserService = {
     });
   },
 
-  findUserByGoogleId: function (id, callback) {
-    User.findOne({ googleId: id }, function (err, user) {
+  findUserByGoogleEmail: function (email, callback) {
+    User.findOne({ googleEmail: email }, function (err, user) {
 
       if (err) {
         return callback(err, null);
