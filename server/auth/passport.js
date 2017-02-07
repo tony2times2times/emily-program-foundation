@@ -50,7 +50,7 @@ passport.use('google', new GoogleStrategy({
       return done(err);
     }
 
-    if ((user) && (profile.id)) { // User exists, and already has a stored profile.
+    if ((user) && (user.googleId)) { // User exists, and already has a stored profile.
       return done(null, user);
     }
 
@@ -60,12 +60,11 @@ passport.use('google', new GoogleStrategy({
     */
 
     UserService.updateNewAdmin(profile.id, token, profile.displayName,
-      profile.email, /* we take first email address */
-      function (err, user) {
+      profile.email,
+      function (err) {
         if (err) {
           return done(err);
         }
-
         return done(null, user);
       });
   });

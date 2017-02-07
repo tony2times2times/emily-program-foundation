@@ -46,7 +46,13 @@ var UserService = {
     User.update({ googleEmail: email }, {$set:
       { googleId: id,
         googleToken: token,
-        googleName: name  }
+        googleName: name  }}, function (err) {
+
+          if (err) {
+            return callback(err);
+          }
+
+          return callback(null);
     });
   },
 
