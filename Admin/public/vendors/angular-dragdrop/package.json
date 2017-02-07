@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-dragdrop",
+        "scope": null,
+        "escapedName": "angular-dragdrop",
+        "name": "angular-dragdrop",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/TonyPeraza/Documents/dragon"
+    ]
+  ],
+  "_from": "angular-dragdrop@latest",
+  "_id": "angular-dragdrop@1.0.13",
+  "_inCache": true,
+  "_location": "/angular-dragdrop",
+  "_nodeVersion": "4.1.2",
+  "_npmUser": {
+    "name": "codef0rmer",
+    "email": "amit.2006.it@gmail.com"
+  },
+  "_npmVersion": "3.5.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-dragdrop",
+    "scope": null,
+    "escapedName": "angular-dragdrop",
+    "name": "angular-dragdrop",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-dragdrop/-/angular-dragdrop-1.0.13.tgz",
+  "_shasum": "e0e240c73cd93ca17ad7cd8f6e701480319d01dc",
+  "_shrinkwrap": null,
+  "_spec": "angular-dragdrop",
+  "_where": "/Users/TonyPeraza/Documents/dragon",
+  "author": {
+    "name": "https://github.com/codef0rmer/angular-dragdrop/contributors"
+  },
+  "bugs": {
+    "url": "https://github.com/codef0rmer/angular-dragdrop/issues"
+  },
+  "dependencies": {},
+  "description": "This directive allows you to use jQuery UI's draggable and droppable plugins with AngularJS.",
+  "devDependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "e0e240c73cd93ca17ad7cd8f6e701480319d01dc",
+    "tarball": "https://registry.npmjs.org/angular-dragdrop/-/angular-dragdrop-1.0.13.tgz"
+  },
+  "gitHead": "f932277c06719b2c27c264ef5626816eba44617c",
+  "homepage": "http://codef0rmer.github.io/angular-dragdrop",
+  "license": "MIT",
+  "main": "src/angular-dragdrop.js",
+  "maintainers": [
+    {
+      "name": "codef0rmer",
+      "email": "amit.2006.it@gmail.com"
+    }
+  ],
+  "name": "angular-dragdrop",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codef0rmer/angular-dragdrop.git"
+  },
+  "scripts": {
+    "test": "npm run test-unit",
+    "test-unit": "karma start karma.conf.js"
+  },
+  "version": "1.0.13"
+}

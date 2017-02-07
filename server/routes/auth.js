@@ -39,7 +39,7 @@ router.get('/google', passport.authenticate('google',
  */
 router.get('/google/callback', passport.authenticate('google',
   {
-    successRedirect: '/private/admin',
+    successRedirect: '/private',
     failureRedirect: '/auth',
   })
 );

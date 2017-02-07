@@ -5,11 +5,11 @@
  */
 var express = require('express');
 var router  = express.Router();
+var path = require('path');
 
-/**
- * GET private/index
- */
-router.get('/admin', function (req, res) {
+//send authenticated users to index.html
+router.get('/', function (req, res) {
+  console.log('user logged in redirecting to index.html');
   res.sendFile(path.join(__dirname, '../../Admin/public/views/index.html'));
 });
 

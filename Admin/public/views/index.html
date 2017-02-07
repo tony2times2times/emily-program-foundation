@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="../vendors/sweetalert-master/dist/sweetalert.css">
-    <script src="../vendors/angular.js" charset="utf-8"></script>
-    <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
-    <script src="../vendors/sweetalert-master/dist/sweetalert.min.js" charset="utf-8"></script>
-    <script src="../scripts/client.js" charset="utf-8"></script>
-    <script src="../scripts/services/volunteerFactory.js" charset="utf-8"></script>
-    <script src="../scripts/services/authFactory.js" charset="utf-8"></script>
-    <script src="../scripts/controllers/allVolunteersController.js" charset="utf-8"></script>
-    <script src="../scripts/controllers/applicantsController.js" charset="utf-8"></script>
-    <script src="../scripts/controllers/emailDraftsController.js" charset="utf-8"></script>
-    <script src="../scripts/controllers/loginController.js" charset="utf-8"></script>
-    <script src="../scripts/controllers/navController.js" charset="utf-8"></script>
-    <title></title>
-  </head>
-  <body ng-app="emilyApp">
-    <nav ng-controller='NavController'>
-        <ul class="nav nav-pills">
-          <li><a href="#!/allVolunteers">All Volunteers</a></li>
-          <li><a href="#!/applicants">Current Applicants</a></li>
-          <li><a href="#!/emailDrafts">E-Mail Templates</a></li>
-          <li ng-show="displayLogout">Hi {{username}}! | <a href="#" ng-click="logout()">Logout</a></li>
-        </ul>
-    </nav>
-    <main ng-view></main>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <!-- DELETE THIS TWITTER STYLE SHEET BEFORE DEPLOYING -->
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- DELETE THIS TWITTER STYLE SHEET BEFORE DEPLOYING -->
+  <link rel="stylesheet" href="../vendors/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendors/sweetalert-master/dist/sweetalert.css">
+  <script src="../vendors/angular.js" charset="utf-8"></script>
+  <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
+  <script src="../vendors/sweetalert-master/dist/sweetalert.min.js" charset="utf-8"></script>
+  <script src="../scripts/client.js" charset="utf-8"></script>
+  <script src="../scripts/services/volunteerFactory.js" charset="utf-8"></script>
+  <script src="../scripts/services/authFactory.js" charset="utf-8"></script>
+  <script src="../scripts/controllers/allVolunteersController.js" charset="utf-8"></script>
+  <script src="../scripts/controllers/applicantsController.js" charset="utf-8"></script>
+  <script src="../scripts/controllers/emailDraftsController.js" charset="utf-8"></script>
+  <script src="../scripts/controllers/loginController.js" charset="utf-8"></script>
+  <script src="../scripts/controllers/navController.js" charset="utf-8"></script>
+  <script src="../vendors/angular-dragdrop/src/angular-dragdrop.min.js"></script>
+  <title></title>
+</head>
+<body ng-app="emilyApp">
+  <nav ng-controller='NavController'>
+    <ul class="nav nav-pills">
+      <li><a href="#!/allVolunteers">All Volunteers</a></li>
+      <li><a href="#!/applicants">Current Applicants</a></li>
+      <li><a href="#!/emailDrafts">E-Mail Templates</a></li>
+      <li ng-show="displayLogout">Hi {{username}}! | <a href="#" ng-click="logout()">Logout</a></li>
+    </ul>
+  </nav>
+  <main ng-view></main>
+</body>
 </html>
