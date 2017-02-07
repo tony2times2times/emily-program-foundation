@@ -39,8 +39,8 @@ router.get('/google', passport.authenticate('google',
  */
 router.get('/google/callback', passport.authenticate('google',
   {
-    successRedirect: '/private/admin', // take them to the admin site
-    failureRedirect: '/auth', // take them back home to try again
+    successRedirect: '/private/admin',
+    failureRedirect: '/auth',
   })
 );
 /**
@@ -62,7 +62,7 @@ res.sendFile(path.join(__dirname, '../../Admin/public/views/login.html'));
  */
 router.get('/logout', function (req, res) {
   req.logout();
-  res.sendStatus(200); // they made it!
+  res.sendStatus(200);
 });
 
 module.exports = router;
