@@ -17,6 +17,10 @@ emilyApp.config(["$routeProvider", function($routeProvider) {
     templateUrl: '../views/partials/emailDrafts.html',
     controller: 'EmailDraftsController'
   })
+  .when("/adminView", {
+    templateUrl: '../views/partials/adminView.html',
+    controller: 'AdminViewController'
+  })
   .otherwise({
     redirectTo: "/allVolunteers"
   });
