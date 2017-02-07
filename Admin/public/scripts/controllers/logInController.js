@@ -1,4 +1,4 @@
-emilyApp.controller('logInController', ["$scope", "$http", "volunteers",
-function($scope, $http, volunteers) {
-  console.log("logInController loaded.");
+emilyApp.controller('LoginController', ["AuthFactory", "$scope",
+function (AuthFactory, $scope) {
+  $scope.loggedIn = AuthFactory.checkLoggedIn(); // NOTE: only updated on page load
 }]);

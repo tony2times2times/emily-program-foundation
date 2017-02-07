@@ -1,4 +1,4 @@
-emilyApp.controller('allVolunteersController', ["$scope", "$http", "volunteers",
-function($scope, $http, volunteers) {
-  console.log("allVolunteersController loaded.");
+emilyApp.controller('AllVolunteersController', ["$scope", "$http", "VolunteerFactory",
+function($scope, $http, VolunteerFactory) {
+  console.log("AllVolunteersController loaded.");
 }]);
