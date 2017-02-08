@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var applicantSchema = new Schema({
 
     additionalInfo: String,
-    appStatus: String,
+    appStatus: {type: String, default: 'applied'},
     contactInfo {
       address: {
         street: String,
@@ -16,24 +16,23 @@ var applicantSchema = new Schema({
       email: String,
       phoneNum: Number,
     },
-    dateBegan: Date,
     dateOfBirth: Date,
-    emailedWhat: [ {type : mongoose.Schema.ObjectId, ref : 'emailTemplates'} ],
+    emailedWhat: [ String ],  ///NEED A DEFAULT!! MAYBE??
     emergencyContact: {
       name: String,
       phone: Number
     },
     employment: String,
-    essayOne: { essayQuestion: {type : mongoose.Schema.ObjectId, ref : 'essayQuestions'},
+    essayOne: { essayQuestion: String},
                 response: String
               },
-    essayTwo: { essayQuestion: {type : mongoose.Schema.ObjectId, ref : 'essayQuestions'},
+    essayTwo: { essayQuestion: String,
                 response: String
               },
-    essayThree:{ essayQuestion: {type : mongoose.Schema.ObjectId, ref : 'essayQuestions'},
+    essayThree:{ essayQuestion: String,
                  response: String
                },
-    interests: [ {type : mongoose.Schema.ObjectId, ref : 'Interests'} ],
+    interests: [ String ],
     name{
       first_name: {type: String, lowercase: true},
       last_name: {type: String, lowercase: true}
@@ -50,7 +49,7 @@ var applicantSchema = new Schema({
       email: String,
       phone: Number
     },
-    skills: [ {type : mongoose.Schema.ObjectId, ref : 'Skills'} ]
+    skills: [ String ]
 
 });
 module.exports = mongoose.model('Applicants', applicantSchema);

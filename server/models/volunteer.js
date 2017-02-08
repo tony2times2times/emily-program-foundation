@@ -21,13 +21,13 @@ var volunteerSchema = new Schema({
     phone: Number
   },
   employment: String,
-  interests: [ {type : mongoose.Schema.ObjectId, ref : 'Interests'} ],
+  interests: [ String ],
   name{
     first_name: {type: String, lowercase: true},
     last_name: {type: String, lowercase: true}
   },
   notes: { type: String, default: '' },
-  skills: [ {type : mongoose.Schema.ObjectId, ref : 'Skills'} ]
+  skills: [ String ]
 
 });
 module.exports = mongoose.model('Volunteers', volunteerSchema);

@@ -8,6 +8,7 @@ var configs = require('../secretSquirrel/secret');
 var private = require('./server/routes/private/index');
 var form = require('./server/routes/form.js');
 var auth = require('./server/routes/auth.js');
+var applicantRouter = require('./server/routes/applicant.js')
 var isLoggedIn = require('./server/utils/auth');
 var mongoURI = "mongodb://localhost:27017/EPF";
 var session = require('express-session');
@@ -53,6 +54,7 @@ app.use(passport.session());
 app.use('/auth', auth);
 app.use('/', form);
 app.use('/private', isLoggedIn, private);
+app.use('/applicant', applicantRouter)
 
 //listen on port 3000
 app.listen((process.env.PORT || '3000'), function(){
