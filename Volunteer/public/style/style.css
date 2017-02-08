@@ -1,0 +1,22 @@
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container{
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#beginApp{
+  text-align: center;
+  margin-top: 10px;
+  display:block;
+  float: center;
+  background-color: #a8e5d9;
+  border: none;
+  cursor:pointer;
+  padding: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
