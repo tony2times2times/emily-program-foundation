@@ -1,17 +1,17 @@
 
     <h1>Volunteer Application</h1>
       <label for="firstName">First Name:</label>
-      <input type="text" ng-model="firstName" id= "firstName" placeholder="First Name">
+      <input type="text" ng-model="ff.firstName" id= "firstName" placeholder="First Name">
       <label for="lastName">Last Name:</label>
-      <input type="text" ng-model="lastName" id="lastName" placeholder="Last Name">
+      <input type="text" ng-model="ff.lastName" id="lastName" placeholder="Last Name">
       <label for="dob">Date of Birth:</label>
-      <input type="text" ng-model="dob" id= "dob" placeholder="Date of Birth">
+      <input type="text" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year">
       <label for="address">Street Address:</label>
-      <input type="text" ng-model="address" id= "address" placeholder ="Street Address">
+      <input type="text" ng-model="ff.street" id= "address" placeholder ="Street Address">
       <label for="city">City:</label>
-      <input type="text" ng-model="city" id="city"  placeholder ="City">
+      <input type="text" ng-model="ff.city" id="city"  placeholder ="City">
       <label for="state">State:</label>
-      <select id ="state" name="state">
+      <select id ="state" ng-model="ff.state" name="state">
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -65,13 +65,13 @@
         <option value="WY">Wyoming</option>
     </select>
       <label for="zip">Zip Code:</label>
-      <input type="number" ng-model="zip" id="zip" placeholder="Zip Code">
+      <input type="number" ng-model="ff.zip" id="zip" placeholder="Zip Code">
       <label for="email">Email:</label>
-      <input type="text" ng-model="email" id="email" placeholder="Email Address">
+      <input type="text" ng-model="ff.email" id="email" placeholder="Email Address">
       <label for="phone">Phone Number:</label>
-      <input type="text" ng-model="phone" placeholder="Phone Number">
+      <input type="text" ng-model="ff.phoneNum" placeholder="Phone Number">
       <label for="employment">Place of Employment:</label>
-      <input type="text" ng-model="employment" id="employment" placeholder="Place of Employment"><br>
+      <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment"><br>
     </br>
       <button type="button" class="btn btn-success" ng-click="infoPrev()">Previous</button>
       <button class='btn btn-success' ng-click="infoNext()">Next</button>

@@ -33,7 +33,7 @@ myForm.config(['$routeProvider', function($routeProvider){
   });
 }]); //end routeProvider
 
-myForm.controller('EssayController', ['$scope', '$http', '$window', '$location', function($scope, $http, $location, $window){
+myForm.controller('EssayController', ['$scope', '$http', '$window', '$location', 'formFactory', function($scope, $http, $location, $window, formFactory){
   //previous button
   $scope.essayPrev = function(){
     window.location ='form#!/volInfo';
@@ -42,13 +42,14 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
   $scope.essayNext = function(){
     window.location = 'form#!/interestSkills';
   };
+  $scope.ff = formFactory;
 }]); //end EssayController
 
 myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
   console.log('ng sourced');
 }]); //end FormController
 
-myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window){
+myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
   //previous button
   $scope.refPrev = function(){
     window.location ='form#!/interestSkills';
@@ -57,6 +58,8 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
   $scope.refNext = function(){
     window.location ='form#!/waiver';
   };
+
+  $scope.ff = formFactory;
 }]);
 
 myForm.controller('ReqsController',['$scope', '$http','$location', '$window', function($scope, $http, $location, $window){
@@ -75,6 +78,10 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   $scope.skillsNext = function(){
     window.location ='form#!/references';
   };
+
+  var skills = [];
+
+  var interests = [];
 }]);
 
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
@@ -84,24 +91,17 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
   };
   //previous button function
   $scope.infoNext = function(){
-    sendDataToFactory();
+    // sendDataToFactory();
     window.location = 'form#!/essayQues';
   };
-
-  $scope.getFromFactory = function(){
-    console.log('here?');
-    $scope.firstName = formFactory.firstname;
-
-  };//end getFromFactory()
-
-  var sendDataToFactory = function(){
-    console.log('sending to factory', $scope.firstName);
-     formFactory.firstname = $scope.firstName;
-
-  };//end sendDataToFactory()
-
-  $scope.getFromFactory();
-  console.log('firstname: ', formFactory.firstname);
+    $scope.ff = formFactory;
+    // $scope.lastName = formFactory.lastName;
+  // var sendDataToFactory = function(){
+  //   console.log('sending to factory', $scope.firstName);
+  //    formFactory.firstname = $scope.firstName;
+  //    formFactory.lastName = $scope.lastName;
+  //
+  // };//end sendDataToFactory()
 }]);//endVolInfoController
 
 

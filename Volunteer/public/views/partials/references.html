@@ -1,15 +1,15 @@
 <h1>Volunteer Application</h1>
 <label for="supporting">Supporting Material: Include links to any materials that might support your application.</label>
-<textarea id="supporting" cols="70" rows="7"></textarea><br>
+<textarea ng-model="ff.additionalInfo" id="supporting" cols="70" rows="7"></textarea><br>
 </br>
 <label for="references">References (please include two references that are non-family members).</label>
 <p>Reference #1</p>
 <label for="refName">Name:</label>
-<input type="text" id="refName" placeholder="Name">
+<input ng-model="ff.refOneName" type="text" id="refName" placeholder="Name">
 <label for="refPhone">Phone Number:</label>
-<input type="text" id="refPhone" placeholder="Phone Number">
+<input ng-model="ff.refOnePhone" type="text" id="refPhone" placeholder="Phone Number">
 <label for="refEmail">Email:</label>
-<input type="text" id="refEmail" placeholder="Email">
+<input ng-model="ff.refOneEmail" type="text" id="refEmail" placeholder="Email">
 <label for="refAddress">Street Address:</label>
 <input type="text" id="refAddress"placeholder="Street Address">
 <label for="refCity">City:</label>
@@ -73,11 +73,11 @@
 </br>
 <p>Reference #2</p>
 <label for="refName2">Name:</label>
-<input type="text" id="refName2" placeholder="Name">
+<input ng-model="ff.refTwoName" type="text" id="refName2" placeholder="Name">
 <label for="refPhone2">Phone Number:</label>
-<input type="text" id="refPhone2" placeholder="Phone Number">
+<input ng-model="ff.refTwoPhone" type="text" id="refPhone2" placeholder="Phone Number">
 <label for="refEmail2">Email:</label>
-<input type="text" id="refEmail2" placeholder="Email">
+<input ng-model = "ff.refTwoEmail" type="text" id="refEmail2" placeholder="Email">
 <label for="refAddress2">Street Address:</label>
 <input type="text" id="refAddress2" placeholder="Street Address">
 <label for="refCity2">City:</label>
@@ -141,9 +141,9 @@
 </br>
 <p><strong>Emergency Contact (person to notify in case of an emergency)</strong></p>
 <label for="emerName">Name:</label>
-<input type="text" id="emerName" placeholder="Name">
+<input ng-model="ff.emergencyName" type="text" id="emerName" placeholder="Name">
 <label for="emerPhone">Phone Number:</label>
-<input type="text" id="emerPhone" placeholder="Phone Number"><br>
+<input ng-model="ff.emergencyPhone" type="text" id="emerPhone" placeholder="Phone Number"><br>
 </br>
 <button type="button" class="btn btn-success" ng-click="refPrev()">Previous</button>
 <button type="button" class="btn btn-success" ng-click="refNext()">Next</button>
