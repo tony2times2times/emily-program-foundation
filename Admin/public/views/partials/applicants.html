@@ -1,16 +1,11 @@
-<h2>Applicant Processing</h2>
+<br>
+<br>
 <div class=container-fluid>
-        <div class='contentWrapper ng-cloak'>
-          <div class='content'>
-            <div class="row-fluid">
-              <ul class="thumbnails">
-                <li
-                class="span3"
-                style='margin-left:10px;'>
+          <div class='container-fluid'>
+            <div class="row">
                   <div
-
                   ng-repeat='hat in hatchery'
-                  class="thumbnail"
+                  class="col-sm-2 bucket"
                   data-drop="true"
                   ng-model='hat'
                   jqyoui-droppable="{onDrop : incubator($index), multiple:true}">
@@ -27,10 +22,5 @@
                       >{{cat.name}}</div>
                     </div>
                   </div>
-
-              </ul>
-            </div>
           </div>
-        </div>
-
       </div>

@@ -1,0 +1,6 @@
+.bucket{
+  margin: 5px;
+  height: 400px;
+  outline: 2px solid #ccc;
+  outline-offset: -1px;
+}
