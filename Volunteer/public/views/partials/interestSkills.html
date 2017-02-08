@@ -1,19 +1,10 @@
 <h1>Volunteer Application</h1>
 <div id="skillsSection">
   <label for="skills">I have the following skills (check all that apply):</label>
-  <input type="checkbox">Project Management</input>
-  <input type="checkbox">Social Media Use</input>
-  <input type="checkbox">Language Skills</input>
-  <input type="checkbox">Lobbying</input>
-  <input type="checkbox">Artwork/Photography</input>
-  <input type="checkbox">Public Speaking</input>
-  <input type="checkbox">Crafts/Scrapbooking</input>
-  <input type="checkbox">Video Taping/Editing</input>
-  <input type="checkbox">Event Planning</input>
-  <input type="checkbox">Layout/Graphic Design</input>
-  <input type="checkbox">Writing</input>
-  <input type="checkbox">Marketing</input>
-  <input type="checkbox">Fundraising</input>
+  <div ng-repeat="item in skills" >
+    <label>{{ item.skill }}</label>
+    <input ng-model="skillsIn[item.skill]" type="checkbox">
+  </div>
 </div>
 <br></br>
 <p><strong>The Emily Program Foundation depends on committed volunteers for our work. Please indicate which

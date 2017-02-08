@@ -69,19 +69,21 @@ myForm.controller('ReqsController',['$scope', '$http','$location', '$window', fu
   };
 }]);//end ReqsController
 
-myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window){
+myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  $scope.skillsIn = formFactory.skillsIn;
+  $scope.skills = [ { skill: 'Project_Management'} , { skill: 'Social_Media_Use'} , { skill: 'Language_Skills'} , { skill: 'Lobbying'} , { skill: 'Artwork/Photography'} , { skill:'Public_Speaking'} , { skill: 'Crafts/Scrapbooking'} , { skill: 'Video_Taping/Editing'} , { skill: 'Event_Planning'} , { skill: 'Layout/Graphic_Design'} , { skill: 'Writing'} , { skill: 'Marketing'} , { skill: 'Fundraising'} ];
+  $scope.interests = [];
   //previous button
   $scope.skillsPrev = function(){
     window.location ='form#!/essayQues';
   };
   //next button
   $scope.skillsNext = function(){
+    console.log('skillsIn', $scope.skillsIn);
     window.location ='form#!/references';
   };
 
-  var skills = [];
 
-  var interests = [];
 }]);
 
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){

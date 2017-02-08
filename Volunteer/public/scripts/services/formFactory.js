@@ -28,5 +28,6 @@ myForm.factory('formFactory', function(){
   myFactory.emergencyName = '';
   myFactory.emergencyPhone = '';
 
+  myFactory.skillsIn = {};
   return myFactory;
 });
