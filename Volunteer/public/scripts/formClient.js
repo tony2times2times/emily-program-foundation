@@ -36,11 +36,11 @@ myForm.config(['$routeProvider', function($routeProvider){
 myForm.controller('EssayController', ['$scope', '$http', '$window', '$location', 'formFactory', function($scope, $http, $location, $window, formFactory){
   //previous button
   $scope.essayPrev = function(){
-    window.location ='form#!/volInfo';
+    window.location ='#!/volInfo';
   };
   //next button
   $scope.essayNext = function(){
-    window.location = 'form#!/interestSkills';
+    window.location = '#!/interestSkills';
   };
   $scope.ff = formFactory;
 }]); //end EssayController
@@ -52,11 +52,11 @@ myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
 myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
   //previous button
   $scope.refPrev = function(){
-    window.location ='form#!/interestSkills';
+    window.location ='#!/interestSkills';
   };
   //next button
   $scope.refNext = function(){
-    window.location ='form#!/waiver';
+    window.location ='#!/waiver';
   };
 
   $scope.ff = formFactory;
@@ -65,7 +65,7 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
 myForm.controller('ReqsController',['$scope', '$http','$location', '$window', function($scope, $http, $location, $window){
     //begin application button
     $scope.beginApp = function(){
-    window.location ='form#!/volInfo';
+    window.location ='#!/volInfo';
   };
 }]);//end ReqsController
 
@@ -75,12 +75,12 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   $scope.interests = [];
   //previous button
   $scope.skillsPrev = function(){
-    window.location ='form#!/essayQues';
+    window.location ='#!/essayQues';
   };
   //next button
   $scope.skillsNext = function(){
     console.log('skillsIn', $scope.skillsIn);
-    window.location ='form#!/references';
+    window.location ='#!/references';
   };
 
 
@@ -89,12 +89,12 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
   //next button function
   $scope.infoPrev = function(){
-    window.location = 'form#!/volReqs';
+    window.location = '#!/volReqs';
   };
   //previous button function
   $scope.infoNext = function(){
     // sendDataToFactory();
-    window.location = 'form#!/essayQues';
+    window.location = '#!/essayQues';
   };
     $scope.ff = formFactory;
     // $scope.lastName = formFactory.lastName;
@@ -110,6 +110,6 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
 myForm.controller('WaiverController', ['$scope', '$http', function($scope, $http){
   //previous button
   $scope.wavPrev = function(){
-    window.location ='form#!/references';
+    window.location ='#!/references';
   };
 }]);
