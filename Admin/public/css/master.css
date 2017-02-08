@@ -1,6 +1,22 @@
+/*GLOBAL*/
+body>.person{
+  width: auto;
+}
+
+/*ADMIN VIEW*/
+
+/*ALL VOLUNTEERS*/
+
+/*APPLICANTS*/
 .bucket{
   margin: 5px;
   height: 400px;
   outline: 2px solid #ccc;
   outline-offset: -1px;
 }
+
+.person {
+  width: 100%;
+}
+
+/*EMAIL DRAFTS*/
