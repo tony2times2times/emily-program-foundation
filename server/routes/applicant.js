@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
   var newPerson = new Applicant({
 
     additionalInfo: data.additionalInfo,
-    contactInfo {
+    contactInfo: {
       address: {
         street: data.street,
         city: data.city,
@@ -83,7 +83,7 @@ router.get('/', function(req, res) {
 }); // end get /
 
 // updates the applicant sendStatus
-  
+
 // updates the entire applicant entry
 
 // delete to delete the whole applicant from DB
