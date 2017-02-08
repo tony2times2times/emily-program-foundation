@@ -13,6 +13,10 @@ router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../../../Admin/public/views/index.html'));
 });
 
+router.get('/alladmins', function(req,res) {
+  
+});
+
 module.exports = router;
 
 

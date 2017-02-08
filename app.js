@@ -62,26 +62,5 @@ app.listen((process.env.PORT || '3000'), function(){
 // Temporary code to make all Prime group members admins.
 // Remove in production code.
 
-var User = require('./server/models/user');
-var config = require('../secretSquirrel/secret');
-var UserService = require('./server/services/user');
-var userCreateCallback = function(err, user) {
-};
-
-User.find({}, function(err, users){
-  if (err) {
-    console.log('Error.');
-  } else {
-    for (var i = 0; i < config.admins.length; i++) {
-      var userFound = false;
-      for (var j = 0; j < users.length; j++) {
-        if (config.admins[i] == users[j].googleEmail) {
-          userFound = true;
-        }
-      }
-      if (!(userFound)) {
-        UserService.createGoogleUser('', '', '', config.admins[i], userCreateCallback);
-      }
-    }
-  }
-});
+var init = require('./server/utils/init');
+init();
