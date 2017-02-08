@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
   var newPerson = new Applicant({
 
     additionalInfo: data.additionalInfo,
-    contactInfo {
+    contactInfo: {
       address: {
         street: data.street,
         city: data.city,
@@ -28,17 +28,17 @@ router.post('/', function(req, res) {
       phone: data.emergancyPhone
     },
     employment: data.employment,
-    essayOne: { data.essayOne.question},
-                data.essayOne.response}
+    essayOne: { question: data.essayOne.question,
+                response: data.essayOne.response
               },
-    essayTwo: { data.essayTwo.question,
-                data.essayTwo.response
+    essayTwo: { question: data.essayTwo.question,
+                response: data.essayTwo.response
               },
-    essayThree:{ data.essayThree.question,
-                 data.essayThree.response
+    essayThree:{ question: data.essayThree.question,
+                 response: data.essayThree.response
                },
     interests: data.intersts, // should be an array
-    name{
+    name: {
       first_name: data.firstName,
       last_name: data.lastName
     },
@@ -83,7 +83,7 @@ router.get('/', function(req, res) {
 }); // end get /
 
 // updates the applicant sendStatus
-  
+
 // updates the entire applicant entry
 
 // delete to delete the whole applicant from DB

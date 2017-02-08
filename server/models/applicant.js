@@ -6,7 +6,7 @@ var applicantSchema = new Schema({
 
     additionalInfo: String,
     appStatus: {type: String, default: 'applied'},
-    contactInfo {
+    contactInfo: {
       address: {
         street: String,
         city: String,
@@ -23,7 +23,7 @@ var applicantSchema = new Schema({
       phone: Number
     },
     employment: String,
-    essayOne: { essayQuestion: String},
+    essayOne: { essayQuestion: String,
                 response: String
               },
     essayTwo: { essayQuestion: String,
@@ -33,7 +33,7 @@ var applicantSchema = new Schema({
                  response: String
                },
     interests: [ String ],
-    name{
+    name: {
       first_name: {type: String, lowercase: true},
       last_name: {type: String, lowercase: true}
     },
