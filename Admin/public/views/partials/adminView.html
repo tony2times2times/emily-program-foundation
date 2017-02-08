@@ -8,5 +8,20 @@
         <th>Remove this admin</th>
       </tr>
     </thead>
+    <tbody>
+      <tr ng-repeat="admin in adminArray">
+        <td>{{admin.googleEmail}}</td>
+        <td><span ng-show="admin.googleName">{{admin.googleName}}</span><span ng-hide="admin.googleName" class="italic">Not yet logged in.</span></td>
+        <td><button ng-click="removeAdmin($index)" type="button" class="btn btn-sm btn-danger">Remove this admin</button>
+      </tr>
+    </tbody>
   </table>
+  <form ng-submit="">
+    <div class="input-group">
+      <label for="newAdmin">Add a new admin:</label>
+      <span class="input-group-addon" id="newAdmin">Email address:</span>
+      <input type="email" class="form-control" ng-model="inputEmail">
+    </div>
+    <button type="submit" class="btn btn-primary">Add new admin</button>
+  </form>
 </div>

@@ -24,16 +24,18 @@
 </head>
 <body ng-app="emilyApp">
   <div class="container">
+    <div class="masthead">
     <h3 class="text-muted">FriendsOfEmily Volunteer Manager</h3>
-    <nav ng-controller='NavController'>
-      <ul class="nav nav-justified">
-        <li><a href="#!/allVolunteers">All Volunteers</a></li>
-        <li><a href="#!/applicants">Current Applicants</a></li>
-        <li><a href="#!/emailDrafts">E-Mail Templates</a></li>
-        <li><a href="#!/adminView">Admin Settings</a></li>
-        <li><a href="#" ng-click="logout()">Logout</a></li>
-      </ul>
-    </nav>
+      <nav ng-controller='NavController'>
+        <ul class="nav nav-justified">
+          <li><a href="#!/allVolunteers">All Volunteers</a></li>
+          <li><a href="#!/applicants">Current Applicants</a></li>
+          <li><a href="#!/emailDrafts">Email Templates</a></li>
+          <li><a href="#!/adminView">Admin Settings</a></li>
+          <li><a href="#" ng-click="logout()">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
   <main ng-view></main>
 </body>
