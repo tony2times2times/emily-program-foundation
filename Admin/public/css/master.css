@@ -1,4 +1,5 @@
 
+/*GLOBAL*/
 body {
   padding-top: 20px;
 }
@@ -68,20 +69,17 @@ body {
   }
 }
 
-.bucket {
-
 /*GLOBAL*/
-body>.person{
-  width: auto;
-}
 
 /*ADMIN VIEW*/
 
 /*ALL VOLUNTEERS*/
 
 /*APPLICANTS*/
+body>.person{
+  width: auto;
+}
 .bucket{
-
   margin: 5px;
   height: 400px;
   outline: 2px solid #ccc;
