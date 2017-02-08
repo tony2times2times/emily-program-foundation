@@ -1,26 +1,88 @@
 <br>
 <br>
 <div class=container-fluid>
-          <div class='container-fluid'>
-            <div class="row">
-                  <div
-                  ng-repeat='hat in hatchery'
-                  class="col-sm-2 bucket"
-                  data-drop="true"
-                  ng-model='hat'
-                  jqyoui-droppable="{onDrop : incubator($index), multiple:true}">
-                  {{bucketList[$index]}}
-                    <div class="caption">
-                      <div
-                      class="btn btn-info btn-draggable"
-                      ng-repeat="cat in hat"
-                      ng-model='hat'
-                      data-drag="{{cat.drag}}"
-                      data-jqyoui-options="{revert: 'invalid'}"
-                      jqyoui-draggable="{index: {{$index}},animate:true}"
+  <div class='container-fluid'>
+    <div class="row buckets">
+      <div
+      ng-repeat='hat in hatchery'
+      class="col-sm-2 bucket"
+      data-drop="true"
+      ng-model='hat'
+      jqyoui-droppable="{onDrop : incubator($index), multiple:true}">
+      {{bucketList[$index]}}
+      <div class="caption">
+        <div
+        class="btn btn-info btn-draggable person"
+        ng-repeat="cat in hat"
+        ng-model='hat'
+        ng-click= 'setActive($parent.$index, $index)'
+        data-drag="true"
+        data-jqyoui-options="{revert: 'invalid'}"
+        jqyoui-draggable="{index: {{$index}},animate:true}"
 
-                      >{{cat.name}}</div>
-                    </div>
-                  </div>
-          </div>
+        >{{cat.name.last_name}}</div>
       </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div ng-if="person !== undefined "class="container-fluid">
+    <button ng-click="changeView('skills')">Skills</button>
+    <button ng-click="changeView('contact')">Contact</button>
+    <button ng-click="changeView('employment')">Employment</button>
+    <button ng-click="changeView('essays')">Essays</button>
+    <button ng-click="changeView('references')">References</button>
+
+    <h3>{{person.name.first_name}} {{person.name.last_name}}</h3>
+
+    <div ng-if="activeView === 'skills'">
+      <h4 ng-repeat='skill in skills'>{{skill}}</h4>
+    </div>
+
+    <div ng-if="activeView === 'contact'">
+      <p>
+        Email: {{person.email}}
+        <br>
+        Phone: {{person.phoneNum}}
+        <br>
+        <br>
+        {{person.address.street}}
+        <br>
+        {{person.address.city}}, {{person.addess.state}} {{person.address.zip}}
+      </p>
+    </div>
+      <div ng-if="activeView === 'employment'">
+        <p>
+        {{person.employment}}
+        something
+      </p>
+      </div>
+
+      <div ng-if="activeView === 'essays'">
+        <p>
+          {{person.essayOne}}
+          <br>
+          {{person.esssayTwo}}
+          <br>
+          {{person.essayThree}}
+        </p>
+      </div>
+
+      <div ng-if="activeView === 'references'">
+        {{person.referenceOne.name}}
+        <br>
+        {{person.referenceOne.email}}
+        <br>
+        {{person.referenceOne.phone}}
+        <br>
+        <br>
+        {{person.referenceTwo.name}}
+        <br>
+        {{person.referenceTwo.email}}
+        <br>
+        {{person.referenceTwo.phone}}
+
+      </div>
+    </div>
+  </div>
+</div>

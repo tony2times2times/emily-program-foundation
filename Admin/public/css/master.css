@@ -1,3 +1,4 @@
+
 body {
   padding-top: 20px;
 }
@@ -68,6 +69,19 @@ body {
 }
 
 .bucket {
+
+/*GLOBAL*/
+body>.person{
+  width: auto;
+}
+
+/*ADMIN VIEW*/
+
+/*ALL VOLUNTEERS*/
+
+/*APPLICANTS*/
+.bucket{
+
   margin: 5px;
   height: 400px;
   outline: 2px solid #ccc;
@@ -77,3 +91,8 @@ body {
 .italic {
   font-style: italic;
 }
+.person {
+  width: 100%;
+}
+
+/*EMAIL DRAFTS*/
