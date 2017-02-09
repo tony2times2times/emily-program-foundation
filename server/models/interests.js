@@ -9,4 +9,4 @@ var interestsSchema = new Schema({
   used: Boolean
 
 });
-module.exports = mongoose.model('Interests', interestSchema);
+module.exports = mongoose.model('Interests', interestsSchema);

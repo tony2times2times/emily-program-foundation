@@ -15,12 +15,13 @@ router.get('/', function (req, res) {
 
 // Admin tab:
 var User = require('../../models/user');
+var Skill = require('../../models/skills');
+var Interest = require('../../models/interests');
+var EssayQ = require('../../models/essayQuestions');
 var UserService = require('../../services/user');
 
 router.get('/alladmins', function(req, res) {
-  console.log('Route allAdmins hit.');
   User.find({}, function(err, users){
-    console.log('Found: ', users);
     if (err) {
       res.sendStatus(500);
     } else {
@@ -48,6 +49,31 @@ router.post('/addadmin/:email', function(req, res){
     }
   });
 });
+
+router.get('/allskills', function(req, res) {
+  console.log('Route allSkills hit.');
+  Skill.find({}, function(err, skills){
+    console.log('Found: ', skills);
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.send(skills);
+    }
+  });
+});
+
+router.get('/allinterests', function(req, res) {
+  console.log('Route allInterests hit.');
+  Interest.find({}, function(err, interests){
+    console.log('Found: ', interests);
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.send(interests);
+    }
+  });
+});
+
 
 module.exports = router;
 
