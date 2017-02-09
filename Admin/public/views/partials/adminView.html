@@ -1,5 +1,6 @@
-<h3>Admin Settings</h3>
 <div class="container">
+  <h3>Admin Tools</h3>
+  <h4>Current Administrators:</h4>
   <table class="table">
     <thead>
       <tr>
@@ -16,12 +17,56 @@
       </tr>
     </tbody>
   </table>
-  <form ng-submit="">
-    <div class="input-group">
-      <label for="newAdmin">Add a new admin:</label>
-      <span class="input-group-addon" id="newAdmin">Email address:</span>
-      <input type="email" class="form-control" ng-model="inputEmail">
-    </div>
+  <form ng-submit="addAdmin()">
+    <label for="newAdmin">Add a new admin:</label>
+    <span class="input-group-addon" id="newAdmin">Email address:</span>
+    <input type="email" class="form-control" ng-model="inputEmail">
     <button type="submit" class="btn btn-primary">Add new admin</button>
+  </form>
+  <h3>Volunteer Application Settings:</h3>
+  <h4>Skills:</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Skill name</th>
+        <th>Requested in application?</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <form ng-submit="addSkill()">
+    <label for="newSkill">Add a new skill:</label>
+    <span class="input-group-addon" id="newSkill">Skill name:</span>
+    <input type="text" class="form-control" ng-model="inputSkill">
+    <button type="submit" class="btn btn-primary">Add new skill</button>
+  </form>
+  <h4>Interests:</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Interest name</th>
+        <th>Requested in application?</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <form ng-submit="addInterest()">
+    <label for="newInterest">Add a new interest:</label>
+    <span class="input-group-addon" id="newInterest">Interest name:</span>
+    <input type="text" class="form-control" ng-model="inputInterest">
+    <button type="submit" class="btn btn-primary">Add new interest</button>
+  </form>
+  <h4>Essay Questions:</h4>
+  <table class="table">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <form ng-submit="addSkill()">
+    <label for="newSkill">Add a new essay question:</label>
+    <button type="submit" class="btn btn-primary">Add new essay question</button>
   </form>
 </div>

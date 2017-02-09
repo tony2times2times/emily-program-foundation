@@ -11,12 +11,12 @@ function($scope, $http, VolunteerFactory) {
     console.log($scope.adminArray);
   };
 
-  var removeAdmin = function(index) {
+  $scope.removeAdmin = function(index) {
     var removalHTTP = '/private/deleteadmin/' +  $scope.adminArray[index].googleEmail;
     $http.delete(removalHTTP).then(getAdmins);
   };
 
-  var addAdmin = function() {
+  $scope.addAdmin = function() {
     var addHTTP = '/private/addadmin/' + $scope.inputEmail;
     $http.post(addHTTP).then(getAdmins);
   };
