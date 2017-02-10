@@ -13,7 +13,13 @@ var applicantRouter = require('./server/routes/applicant.js');
 var emailTemplateRouter = require('./server/routes/emailTemplate.js');
 
 var isLoggedIn = require('./server/utils/auth');
-var mongoURI = "mongodb://localhost:27017/EPF";
+//USE THIS DATA FOR ROBO MONGO CONNECTION TO SHARED DB **NOT PRODUCTION**
+//USERNAME:EPFG
+//PASSWORD:96Y3ohjxVDdCse0b16kB
+//address:ds159507.mlab.com
+//PORT: 59507
+//DATABSE NAME: heroku_6d86ggqz
+var mongoURI = "mongodb://EPFG:96Y3ohjxVDdCse0b16kB@ds159507.mlab.com:59507/heroku_6d86ggqz";
 var session = require('express-session');
 var MongoDB = mongoose.connect(mongoURI).connection;
 
