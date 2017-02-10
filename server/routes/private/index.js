@@ -62,6 +62,16 @@ router.get('/allskills', function(req, res) {
   });
 });
 
+router.post('/addskill/:skill', function(req, res){
+  Skill.insert({skill: decodeURIComponent(req.params.skill), used: true}, function(err, user){
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
 router.get('/allinterests', function(req, res) {
   console.log('Route allInterests hit.');
   Interest.find({}, function(err, interests){
@@ -74,6 +84,37 @@ router.get('/allinterests', function(req, res) {
   });
 });
 
+router.post('/addinterest/:interest', function(req, res){
+  Interest.insert({interest: decodeURIComponent(req.params.interest), used: true}, function(err, user){
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.get('/allessayqs', function(req, res) {
+  console.log('Route allEssayQs hit.');
+  EssayQ.find({}, function(err, essayq){
+    console.log('Found: ', essayq);
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.send(essayq);
+    }
+  });
+});
+
+router.post('/addessayq/:essayq', function(req, res){
+  EssayQ.insert({question: decodeURIComponent(req.params.essayq), used: true}, function(err, user){
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
 
 module.exports = router;
 

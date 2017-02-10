@@ -1,72 +1,88 @@
-<div class="container">
-  <h3>Admin Tools</h3>
+<div class="container admin-section">
+  <h3 class="h3-admin-invert">Administrator Tools</h3>
   <h4>Current Administrators:</h4>
-  <table class="table">
+  <table class="table table-condensed">
     <thead>
       <tr>
         <th>E-mail address</th>
         <th>Name</th>
-        <th>Remove this admin</th>
+        <th class="td-centered">Remove this admin</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="admin in adminArray">
         <td>{{admin.googleEmail}}</td>
         <td><span ng-show="admin.googleName">{{admin.googleName}}</span><span ng-hide="admin.googleName" class="italic">Not yet logged in.</span></td>
-        <td><button ng-click="removeAdmin($index)" type="button" class="btn btn-sm btn-danger">Remove this admin</button>
+        <td class="td-centered"><button ng-click="removeAdmin($index)" type="button" class="btn btn-sm btn-danger" aria-label="Remove Admin">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button></td>
       </tr>
     </tbody>
   </table>
-  <form ng-submit="addAdmin()">
-    <label for="newAdmin">Add a new admin:</label>
-    <span class="input-group-addon" id="newAdmin">Email address:</span>
-    <input type="email" class="form-control" ng-model="inputEmail">
-    <button type="submit" class="btn btn-primary">Add new admin</button>
-  </form>
-  <h3>Volunteer Application Settings:</h3>
-  <h4>Skills:</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Skill name</th>
-        <th>Requested in application?</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <form ng-submit="addSkill()">
-    <label for="newSkill">Add a new skill:</label>
-    <span class="input-group-addon" id="newSkill">Skill name:</span>
-    <input type="text" class="form-control" ng-model="inputSkill">
-    <button type="submit" class="btn btn-primary">Add new skill</button>
-  </form>
-  <h4>Interests:</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Interest name</th>
-        <th>Requested in application?</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <form ng-submit="addInterest()">
-    <label for="newInterest">Add a new interest:</label>
-    <span class="input-group-addon" id="newInterest">Interest name:</span>
-    <input type="text" class="form-control" ng-model="inputInterest">
-    <button type="submit" class="btn btn-primary">Add new interest</button>
-  </form>
-  <h4>Essay Questions:</h4>
-  <table class="table">
-    <thead>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <form ng-submit="addSkill()">
-    <label for="newSkill">Add a new essay question:</label>
-    <button type="submit" class="btn btn-primary">Add new essay question</button>
-  </form>
+  <h4>Add a new administrator:</h4>
+  <div class="input-group" style="margin-right: 20%;">
+    <span class="input-group-addon">Email address:</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="button" ng-click="addAdmin()">Add new admin</button>
+    </span>
+  </div>
+
+  <h3 class="h3-admin-invert">Volunteer Application Settings</h3>
+  <div class="container">
+    <div class="col-xs-6">
+    <h4>Skills:</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Skill name</th>
+            <th>Shown in application?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="skill in skillArray">
+            <td>{{skill.skill}}</td>
+            <td>
+              <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <form ng-submit="addSkill()">
+      <label for="newSkill">Add a new skill:</label>
+      <span class="input-group-addon" id="newSkill">Skill name:</span>
+      <input type="text" class="form-control" ng-model="inputSkill">
+      <button type="submit" class="btn btn-primary">Add new skill</button>
+    </form>
+    <h4>Interests:</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Interest name</th>
+          <th>Requested in application?</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <form ng-submit="addInterest()">
+      <label for="newInterest">Add a new interest:</label>
+      <span class="input-group-addon" id="newInterest">Interest name:</span>
+      <input type="text" class="form-control" ng-model="inputInterest">
+      <button type="submit" class="btn btn-primary">Add new interest</button>
+    </form>
+    <h4>Essay Questions:</h4>
+    <table class="table">
+      <thead>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <form ng-submit="addSkill()">
+      <label for="newSkill">Add a new essay question:</label>
+      <button type="submit" class="btn btn-primary">Add new essay question</button>
+    </form>
+  </div>
 </div>

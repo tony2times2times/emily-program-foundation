@@ -72,6 +72,28 @@ body {
 /*GLOBAL*/
 
 /*ADMIN VIEW*/
+.admin-section {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.td-centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.h3-admin-invert {
+  font-weight: bold;
+  color: white;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #dd561e;
+}
 
 /*ALL VOLUNTEERS*/
 

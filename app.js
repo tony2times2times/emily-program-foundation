@@ -75,5 +75,5 @@ app.listen((process.env.PORT || '3000'), function(){
 // Temporary code to make all Prime group members admins.
 // Remove in production code, maybe.
 
-var init = require('./server/utils/init');
-init();
+// var init = require('./server/utils/init');
+// init();
