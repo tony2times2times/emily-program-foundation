@@ -11,7 +11,6 @@ var form = require('./server/routes/form.js');
 var auth = require('./server/routes/auth.js');
 var applicantRouter = require('./server/routes/applicant.js');
 var emailTemplateRouter = require('./server/routes/emailTemplate.js');
-
 var isLoggedIn = require('./server/utils/auth');
 //USE THIS DATA FOR ROBO MONGO CONNECTION TO SHARED DB **NOT PRODUCTION**
 //USERNAME:EPFG

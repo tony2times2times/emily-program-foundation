@@ -1,15 +1,17 @@
 <br>
 <br>
+<button type="button" ng-click='email'>EMAIL SELECTED</button>
+<button type="button" ng-click="activate">ACTIVATE SELECTED</button>
 <div class=container-fluid>
   <div class='container-fluid'>
     <div class="row buckets">
       <div
       ng-repeat='hat in hatchery'
-      class="col-sm-2 bucket"
+      class="col-sm-3 bucket"
       data-drop="true"
       ng-model='hat'
       jqyoui-droppable="{onDrop : incubator($index), multiple:true}">
-      {{bucketList[$index]}}
+      <button type="button" ng-click= "checkAll(hat)">CHECK ALL {{hatList[$index]}}</button>
       <div class="caption">
         <div
         class="btn btn-info btn-draggable person"
@@ -19,70 +21,72 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         jqyoui-draggable="{index: {{$index}},animate:true}"
-
-        >{{cat.name.last_name}}</div>
+        >
+        <input type="checkbox" ng-model="cat.checked">
+        {{cat.name.last_name}}
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <div ng-if="person !== undefined "class="container-fluid">
-    <button ng-click="changeView('skills')">Skills</button>
-    <button ng-click="changeView('contact')">Contact</button>
-    <button ng-click="changeView('employment')">Employment</button>
-    <button ng-click="changeView('essays')">Essays</button>
-    <button ng-click="changeView('references')">References</button>
+</div>
+<br>
+<br>
+<div ng-if="person !== undefined "class="container-fluid">
+  <button ng-click="changeView('skills')">Skills</button>
+  <button ng-click="changeView('contact')">Contact</button>
+  <button ng-click="changeView('employment')">Employment</button>
+  <button ng-click="changeView('essays')">Essays</button>
+  <button ng-click="changeView('references')">References</button>
 
-    <h3>{{person.name.first_name}} {{person.name.last_name}}</h3>
+  <h3>{{person.name.first_name}} {{person.name.last_name}} {{person.checked}}</h3>
 
-    <div ng-if="activeView === 'skills'">
-      <h4 ng-repeat='skill in skills'>{{skill}}</h4>
-    </div>
-
-    <div ng-if="activeView === 'contact'">
-      <p>
-        Email: {{person.email}}
-        <br>
-        Phone: {{person.phoneNum}}
-        <br>
-        <br>
-        {{person.address.street}}
-        <br>
-        {{person.address.city}}, {{person.addess.state}} {{person.address.zip}}
-      </p>
-    </div>
-      <div ng-if="activeView === 'employment'">
-        <p>
-        {{person.employment}}
-        something
-      </p>
-      </div>
-
-      <div ng-if="activeView === 'essays'">
-        <p>
-          {{person.essayOne}}
-          <br>
-          {{person.esssayTwo}}
-          <br>
-          {{person.essayThree}}
-        </p>
-      </div>
-
-      <div ng-if="activeView === 'references'">
-        {{person.referenceOne.name}}
-        <br>
-        {{person.referenceOne.email}}
-        <br>
-        {{person.referenceOne.phone}}
-        <br>
-        <br>
-        {{person.referenceTwo.name}}
-        <br>
-        {{person.referenceTwo.email}}
-        <br>
-        {{person.referenceTwo.phone}}
-
-      </div>
-    </div>
+  <div ng-if="activeView === 'skills'">
+    <h4 ng-repeat='skill in skills'>{{skill}}</h4>
   </div>
+
+  <div ng-if="activeView === 'contact'">
+    <p>
+      Email: {{person.email}}
+      <br>
+      Phone: {{person.phoneNum}}
+      <br>
+      <br>
+      {{person.address.street}}
+      <br>
+      {{person.address.city}}, {{person.addess.state}} {{person.address.zip}}
+    </p>
+  </div>
+  <div ng-if="activeView === 'employment'">
+    <p>
+      {{person.employment}}
+      something
+    </p>
+  </div>
+
+  <div ng-if="activeView === 'essays'">
+    <p>
+      {{person.essayOne}}
+      <br>
+      {{person.esssayTwo}}
+      <br>
+      {{person.essayThree}}
+    </p>
+  </div>
+
+  <div ng-if="activeView === 'references'">
+    {{person.referenceOne.name}}
+    <br>
+    {{person.referenceOne.email}}
+    <br>
+    {{person.referenceOne.phone}}
+    <br>
+    <br>
+    {{person.referenceTwo.name}}
+    <br>
+    {{person.referenceTwo.email}}
+    <br>
+    {{person.referenceTwo.phone}}
+
+  </div>
+</div>
+</div>
 </div>
