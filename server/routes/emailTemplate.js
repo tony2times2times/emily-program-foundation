@@ -14,16 +14,16 @@ router.post('/', function(req, res) {
       subject: data.subject
   }); // end newEmail
 
-  EmailTemplate.save(function(err) {
+  newEmail.save(function(err) {
       if(err){
         console.log(err);
         res.sendStatus(500);
       }else {
-        console.log('new emailTemplate added')
+        console.log('new emailTemplate added');
         res.sendStatus(201);
       } // end if else
   }); // end save
-}); //end post /
+}); //end post
 
 
 // gets ALL emailTemplates from DB
@@ -56,6 +56,6 @@ router.delete('/:id', function(req, res) {
         res.sendStatus(200);
       }// end if/else
     });// end save
-})// end delete
+});// end delete
 
 module.exports = router;

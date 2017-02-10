@@ -1,6 +1,7 @@
 <h2>E-Mail Templates</h2>
 <button type="button" name="button">Add New Template</button><br>
 <h2>Email Template</h2>
-<input type="text" name="name" placeholder="name"><br>
-<input type="text" name="subjectLine" placeholder="subject line"><br>
-<textarea rows="20" cols="75" name="body" placeholder="body"></textarea>
+<p>Name: <input type="text" ng-model="name" placeholder="name"></p>
+<p>Subject: <input type="text" ng-model="subject" placeholder="subject line"></p>
+<p>Body: <textarea rows="20" cols="75" ng-model="body" placeholder="body"></textarea></p>
+<button type="button" ng-click="saveEmailTemplate();" name="button">save</button>
