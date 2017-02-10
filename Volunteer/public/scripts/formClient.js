@@ -70,16 +70,20 @@ myForm.controller('ReqsController',['$scope', '$http','$location', '$window', fu
 }]);//end ReqsController
 
 myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  //dynamically generated skills list and sending to factory
   $scope.skillsIn = formFactory.skillsIn;
   $scope.skills = [ { skill: 'Project_Management'} , { skill: 'Social_Media_Use'} , { skill: 'Language_Skills'} , { skill: 'Lobbying'} , { skill: 'Artwork/Photography'} , { skill:'Public_Speaking'} , { skill: 'Crafts/Scrapbooking'} , { skill: 'Video_Taping/Editing'} , { skill: 'Event_Planning'} , { skill: 'Layout/Graphic_Design'} , { skill: 'Writing'} , { skill: 'Marketing'} , { skill: 'Fundraising'} ];
-  $scope.interests = [];
+  //dynamically generated interest list and sending to factory
+  $scope.interestsIn = formFactory.interestsIn;
+  $scope.interests = [{interest: 'Blog_Writing_(one_submission_per_month_minimum)'},{interest:'Special_Events_(volunteering_for_at_least_one_special_event_per_year)'},{interest:'Advocacy_Alerts_and_Lobby_Day'}, {interest:'Office_Work'}];
   //previous button
   $scope.skillsPrev = function(){
     window.location ='#!/essayQues';
   };
   //next button
   $scope.skillsNext = function(){
-    console.log('skillsIn', $scope.skillsIn);
+  console.log('InterestsIn', $scope.interestsIn);
+
     window.location ='#!/references';
   };
 
@@ -97,13 +101,6 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
     window.location = '#!/essayQues';
   };
     $scope.ff = formFactory;
-    // $scope.lastName = formFactory.lastName;
-  // var sendDataToFactory = function(){
-  //   console.log('sending to factory', $scope.firstName);
-  //    formFactory.firstname = $scope.firstName;
-  //    formFactory.lastName = $scope.lastName;
-  //
-  // };//end sendDataToFactory()
 }]);//endVolInfoController
 
 

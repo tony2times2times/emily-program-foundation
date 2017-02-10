@@ -7,6 +7,17 @@
   </div>
 </div>
 <br></br>
+<div id="interestsSection">
+  <label for="interests">The Emily Program Foundation depends on committed volunteers for our work. Please indicate which
+  opportunities you are able to commit to while volunteering with us (check all that apply).</label>
+  <div ng-repeat="item in interests">
+    <label>{{item.interest}}</label>
+    <input ng-model="interestsIn[item.interest]" type="checkbox">
+  </div>
+</div>
+
+
+
 <p><strong>The Emily Program Foundation depends on committed volunteers for our work. Please indicate which
 opportunities you are able to commit to while volunteering with us (check all that apply).</strong></p>
 <input type="checkbox">Blog Writing (one submission per month minimum)</input><br>
