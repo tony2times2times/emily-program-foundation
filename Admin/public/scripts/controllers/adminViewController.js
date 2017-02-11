@@ -35,6 +35,12 @@ function($scope, $http, VolunteerFactory) {
     $http.post(addHTTP).then(getSkills);
   };
 
+  $scope.switchSkill = function(index) {
+    var switchHTTP = '/private/switchskill/' + encodeURIComponent($scope.skillArray[index].skill) + '/' + $scope.skillArray[index].used;
+    console.log("Attempting switchSkill. HTTP PUT call: ", switchHTTP);
+    $http.put(switchHTTP).then(getSkills);
+  };
+
   var getInterests = function() {
     $http.get('/private/allinterests')
       .then(function(response){
@@ -49,13 +55,19 @@ function($scope, $http, VolunteerFactory) {
     $http.post(addHTTP).then(getInterests);
   };
 
+  $scope.switchInterest = function(index) {
+    var switchHTTP = '/private/switchinterest/' + encodeURIComponent($scope.interestArray[index].interest) + '/' + $scope.interestArray[index].used;
+    console.log("Attempting switchInterest. HTTP PUT call: ", switchHTTP);
+    $http.put(switchHTTP).then(getSkills);
+  };
+
   var getEssayQs = function() {
     $http.get('/private/allessayqs')
       .then(function(response){
         console.log('Response: ', response);
         $scope.essayqArray = response.data;
       });
-    console.log($scope.interestArray);
+    console.log($scope.essayqArray);
   };
 
   $scope.addEssayQs = function() {
