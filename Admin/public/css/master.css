@@ -78,6 +78,17 @@ body {
   margin-right: auto;
 }
 
+.admin-subsection {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-input {
+  margin-left: 5%;
+  margin-right: 15%;
+}
+
 .td-centered {
   margin-left: auto;
   margin-right: auto;

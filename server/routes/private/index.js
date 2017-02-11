@@ -30,8 +30,8 @@ router.get('/alladmins', function(req, res) {
   });
 });
 
-router.delete('/deleteadmin/:email', function(req, res){
-  User.remove({googleEmail: req.params.email}, function(err){
+router.delete('/deleteadmin/:id', function(req, res){
+  User.remove({_id: req.params.id}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -75,9 +75,9 @@ router.post('/addskill/:skill', function(req, res){
   });
 });
 
-router.put('/switchskill/:skillname/:used', function(req, res){
+router.put('/switchskill/:id/:used', function(req, res){
   console.log("Skill switch, req.params: ", req.params);
-  Skill.update({skill: decodeURIComponent(req.params.skillname)}, {used: req.params.used}, function(err){
+  Skill.update({_id: req.params.id}, {used: req.params.used}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -111,8 +111,8 @@ router.post('/addinterest/:interest', function(req, res){
   });
 });
 
-router.put('/switchinterest/:interestname/:used', function(req, res){
-  Interest.update({interest: decodeURIComponent(req.params.interestname)}, {used: req.params.used}, function(err){
+router.put('/switchinterest/:id/:used', function(req, res){
+  Interest.update({_id: req.params.id}, {used: req.params.used}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -136,9 +136,9 @@ router.get('/allessayqs', function(req, res) {
 
 router.post('/addessayq/:essayq', function(req, res){
   var essayq = new EssayQ();
-  essayq.question = decodeURIComponent(req.params.interest);
-  interest.used = true;
-  interest.save(function(err){
+  essayq.question = decodeURIComponent(req.params.essayq);
+  essayq.used = true;
+  essayq.save(function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -147,8 +147,8 @@ router.post('/addessayq/:essayq', function(req, res){
   });
 });
 
-router.post('/addessayq/:essayq', function(req, res){
-  EssayQ.insert({question: decodeURIComponent(req.params.essayq), used: true}, function(err, user){
+router.put('/switchessayq/:id/:used', function(req, res){
+  EssayQ.update({_id: req.params.id}, {used: req.params.used}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {

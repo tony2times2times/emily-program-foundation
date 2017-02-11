@@ -1,35 +1,39 @@
 <div class="container admin-section">
   <h3 class="h3-admin-invert">Administrator Tools</h3>
-  <h4>Current Administrators:</h4>
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Email address</th>
-        <th>Name</th>
-        <th class="td-centered">Remove this admin</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="admin in adminArray">
-        <td style="vertical-align: middle;">{{admin.googleEmail}}</td>
-        <td style="vertical-align: middle;"><span ng-show="admin.googleName">{{admin.googleName}}</span><span ng-hide="admin.googleName" class="italic">Not yet logged in.</span></td>
-        <td class="td-centered"><button ng-click="removeAdmin($index)" type="button" class="btn btn-sm btn-danger" aria-label="Remove Admin">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4>Add a new administrator:</h4>
-  <div class="input-group" style="margin-right: 20%;">
-    <span class="input-group-addon">Email address:</span>
-    <input type="text" class="form-control" ng-model="inputEmail">
-    <span class="input-group-btn">
-      <button class="btn btn-primary" type="button" ng-click="addAdmin()">Add new admin</button>
-    </span>
+  <div class="container admin-subsection">
+    <h4>Current Administrators:</h4>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Email address</th>
+          <th>Name</th>
+          <th class="td-centered">Remove this admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="admin in adminArray">
+          <td style="vertical-align: middle;">{{admin.googleEmail}}</td>
+          <td style="vertical-align: middle;"><span ng-show="admin.googleName">{{admin.googleName}}</span><span ng-hide="admin.googleName" class="italic">Not yet logged in.</span></td>
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="removeAdmin(admin._id)" type="button" class="btn btn-sm btn-danger" aria-label="Remove Admin">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="input-group admin-input">
+    <h4>Add a new administrator:</h4>
+    </div>
+    <div class="input-group admin-input">
+      <span class="input-group-addon">Email address:</span>
+      <input type="text" class="form-control" ng-model="inputEmail">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="addAdmin()">Add new admin</button>
+      </span>
+    </div>
   </div>
 
   <h3 class="h3-admin-invert">Volunteer Application Settings</h3>
-  <div class="container" style="width: 100%;">
+  <div class="container admin-subsection">
     <div class="col-xs-6">
       <h4>Skills:</h4>
       <table class="table table-condensed">
@@ -42,8 +46,8 @@
         <tbody>
           <tr ng-repeat="skill in skillArray">
             <td style="vertical-align: middle;">{{skill.skill}}</td>
-            <td class="td-centered">
-              <toggle style="quick" type="checkbox" ng-model="skill.used" ng-change="switchSkill($index)" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
+            <td style="vertical-align: middle;" class="td-centered">
+              <toggle style="quick" type="checkbox" ng-model="skill.used" ng-change="switchSkill(skill._id, skill.used)" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
             </td>
           </tr>
         </tbody>
@@ -68,8 +72,8 @@
         <tbody>
           <tr ng-repeat="interest in interestArray">
             <td style="vertical-align: middle;">{{interest.interest}}</td>
-            <td class="td-centered">
-              <toggle style="quick" type="checkbox" ng-model="interest.used" ng-change="switchInterest($index)" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
+            <td style="vertical-align: middle;" class="td-centered">
+              <toggle style="quick" type="checkbox" ng-model="interest.used" ng-change="switchInterest(interest._id, interest.used)" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
             </td>
           </tr>
         </tbody>
@@ -82,5 +86,32 @@
         </span>
       </div>
     </div>
+  </div>
+  <div class="container admin-subsection">
+    <h4 style="margin-top: 50px;">Essay Questions:</h4>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th class="td-centered">Shown in<br/>application?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="essayq in essayqArray">
+          <td>{{essayq.question}}</td>
+          <td style="vertical-align: middle;" class="td-centered">
+            <toggle style="quick" type="checkbox" ng-model="essayq.used" ng-change="switchEssayQ(essayq._id, essayq.used)" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Add a new essay question:</h4>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="inputEssayQ">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="addEssayQ()">Add new essay question</button>
+      </span>
+    </div>
+    <hr>
   </div>
 </div>

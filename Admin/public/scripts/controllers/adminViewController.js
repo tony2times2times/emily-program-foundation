@@ -11,8 +11,8 @@ function($scope, $http, VolunteerFactory) {
     console.log($scope.adminArray);
   };
 
-  $scope.removeAdmin = function(index) {
-    var removalHTTP = '/private/deleteadmin/' +  $scope.adminArray[index].googleEmail;
+  $scope.removeAdmin = function(id) {
+    var removalHTTP = '/private/deleteadmin/' + id;
     $http.delete(removalHTTP).then(getAdmins);
   };
 
@@ -35,8 +35,8 @@ function($scope, $http, VolunteerFactory) {
     $http.post(addHTTP).then(getSkills);
   };
 
-  $scope.switchSkill = function(index) {
-    var switchHTTP = '/private/switchskill/' + encodeURIComponent($scope.skillArray[index].skill) + '/' + $scope.skillArray[index].used;
+  $scope.switchSkill = function(id, used) {
+    var switchHTTP = '/private/switchskill/' + id + '/' + used;
     console.log("Attempting switchSkill. HTTP PUT call: ", switchHTTP);
     $http.put(switchHTTP).then(getSkills);
   };
@@ -55,10 +55,10 @@ function($scope, $http, VolunteerFactory) {
     $http.post(addHTTP).then(getInterests);
   };
 
-  $scope.switchInterest = function(index) {
-    var switchHTTP = '/private/switchinterest/' + encodeURIComponent($scope.interestArray[index].interest) + '/' + $scope.interestArray[index].used;
+  $scope.switchInterest = function(id, used) {
+    var switchHTTP = '/private/switchinterest/' + id + '/' + used;
     console.log("Attempting switchInterest. HTTP PUT call: ", switchHTTP);
-    $http.put(switchHTTP).then(getSkills);
+    $http.put(switchHTTP).then(getInterests);
   };
 
   var getEssayQs = function() {
@@ -70,9 +70,15 @@ function($scope, $http, VolunteerFactory) {
     console.log($scope.essayqArray);
   };
 
-  $scope.addEssayQs = function() {
+  $scope.addEssayQ = function() {
     var addHTTP = '/private/addessayq/' + encodeURIComponent($scope.inputEssayQ);
     $http.post(addHTTP).then(getEssayQs);
+  };
+
+  $scope.switchEssayQ = function(id, used) {
+    var switchHTTP = '/private/switchessayq/' + id + '/' + used;
+    console.log("Attempting switchEssayQ. HTTP PUT call: ", switchHTTP);
+    $http.put(switchHTTP).then(getEssayQs);
   };
 
   getEssayQs();
