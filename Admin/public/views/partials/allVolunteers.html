@@ -1,1 +1,41 @@
-<h2>All Volunteers Page</h2>
+<br><br>
+
+<select >
+  <option value="Names">Search by Names</option>
+  <option value="Skills">Search by Skills</option>
+  <option value="Interest">Search by Interests</option>
+  <option value="ContactInfo">Search by Contact Info</option>
+</select>
+<input type="text" placeholder="Search...">
+<button type="button" name="button">Search</button>
+
+<br><br>
+<button type="button" name="button">Email Selected</button>
+<button type="button" name="button">Add/Upload Volunteer</button>
+
+<br><br>
+<label for="checkbox">expand all?</label>
+<input type="checkbox" value="">
+
+<br><br>
+<table>
+  <thead>
+    <td>Name</td>
+    <td>Interest</td>
+    <td>Phone #</td>
+    <td>Email</td>
+  </thead>
+  <div ng-repeat="person in volunteers" class="allVolunteer_tableEntry">
+    <tr>
+      <td>{{person.first_name}} {{person.last_name}}</td>
+      <td ng-repeat="interest in person.interest">{{interest}}</td>
+      <td>{{person.phone}}</td>
+      <td>{{person.email}}</td>
+    </tr>
+    <tr>
+      <p>test</p>
+      <p>another</p>
+    </tr>
+  </div>
+
+</table>
