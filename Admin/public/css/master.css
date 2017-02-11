@@ -95,6 +95,11 @@ body {
   background-color: #dd561e;
 }
 
+.quick .toggle-group {
+   transition: none;
+   -webkit-transition: none;
+}
+
 /*ALL VOLUNTEERS*/
 
 /*APPLICANTS*/
