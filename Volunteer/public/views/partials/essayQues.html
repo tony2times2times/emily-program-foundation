@@ -1,3 +1,5 @@
+<div class="container">
+<div class="background">
 <h1>Volunteer Application</h1>
   <label ng-model="ff.essayOneQues" for="essayOne">How did you hear about The Emily Program Foundation:</label>
     <textarea id="essayOne" ng-model="ff.essayOneResponse" cols="70" rows="7"></textarea>
@@ -7,5 +9,7 @@
   <label ng-model="ff.essayThreeQues" for="essayThree">What do you hope to get out of volunteering for The Emily Program Foundation?</label>
     <textarea ng-model="ff.essayThreeResponse" id="essayThree" rows="7" cols="70"></textarea><br>
   </br>
-  <button type="button" class="btn btn-success" ng-click="essayPrev()">Previous</button>
-  <button type="button" class="btn btn-success" ng-click="essayNext()">Next</button>
+  <button type="button" class="prevButt"ng-click="essayPrev()">Previous</button>
+  <button type="button" class="nextButt" ng-click="essayNext()">Next</button>
+</div>
+</div>

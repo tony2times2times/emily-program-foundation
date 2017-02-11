@@ -1,22 +1,83 @@
-h1 {
+body {
+  background-image: url("TEPF-Logo-Transparent.png");
+  background-repeat:no-repeat;
+  background-position: left top;
+  background-size: 350px;
   font-family: sans-serif;
+}
+
+h1 {
   text-align: center;
 }
 
 .container{
+    background-image: url("FoundationCircles_Setof3.jpg");
+    background-repeat: repeat;
+    background-size: 20%;
+}
+
+.background{
+  background-color: white;
   text-align: center;
+  text-align: left;
   font-family: sans-serif;
+  margin: 150px 75px 20px 75px;
+  padding:25px;
+  border-radius: 10px;
+}
+
+.prevButt {
+  text-align: center;
+  display: inline;
+  background-color: #a8e5d9;
+  border: none;
+  cursor:pointer;
+  padding: 15px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nextButt {
+  text-align: center;
+  display: inline;
+  background-color: #dd561e;
+  border: none;
+  cursor:pointer;
+  padding: 15px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.submitButt{
+  text-align: center;
+  display: inline;
+  background-color: #dd561e;
+  border: none;
+  cursor:pointer;
+  padding: 15px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
 }
 
 #beginApp{
   text-align: center;
-  margin-top: 10px;
-  display:block;
-  float: center;
+  display: block;
   background-color: #a8e5d9;
   border: none;
   cursor:pointer;
-  padding: 10px;
+  padding: 20px;
   border-radius: 3px;
   font-weight: bold;
+  font-size: 18px;
+  margin: auto 325px;
+}
+
+#beginApp:hover{
+  background-color:  #dd561e;
+  color: white;
 }
