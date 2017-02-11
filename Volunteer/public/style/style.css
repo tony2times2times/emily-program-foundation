@@ -53,14 +53,14 @@ h1 {
 
 .submitButt{
   text-align: center;
-  display: inline;
+  display: block;
   background-color: #dd561e;
   border: none;
   cursor:pointer;
   padding: 15px;
   border-radius: 3px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
   color: white;
 }
 
