@@ -14,6 +14,7 @@ function($scope, $http, VolunteerFactory) {
     data: emailTemplateInputs
   }).then(function (response){
     console.log('Post response', response);
+    $scope.getEmailTemplate();
   }); // end $http post call
   }; // end saveEmailTemplate function
 
