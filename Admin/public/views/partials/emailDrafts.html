@@ -1,6 +1,59 @@
+<div class="container admin-section">
+  <h3 class="h3-admin-invert">Email Templates</h3>
+  <div class="container admin-subsection">
+    <h4>Currently available templates:</h4>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Template Name</th>
+          <th class="td-centered">View/Edit</th>
+          <th class="td-centered">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+
+<!-- Email template table
+
+        <tr ng-repeat="template in templateArray">
+          <td style="vertical-align: middle;">{{admin.googleEmail}}</td>
+          <td style="vertical-align: middle;"><span ng-show="admin.googleName">{{admin.googleName}}</span><span ng-hide="admin.googleName" class="italic">Not yet logged in.</span></td>
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="removeAdmin(admin._id)" type="button" class="btn btn-sm btn-danger" aria-label="Remove Admin">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button></td>
+        </tr>
+
+-->
+
+      </tbody>
+    </table>
+    <div class="input-group admin-input">
+    <h4>Add a new e-mail template:</h4>
+    </div>
+    <div class="input-group admin-input">
+      <span class="input-group-addon">Template name:</span>
+      <input type="text" class="form-control" ng-model="inputTemplate">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="addTemplate()">Create and edit template</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Joey's code, to integrate
+
 <h2>E-Mail Templates</h2>
 <button type="button" name="button">Add New Template</button><br>
 <h2>Email Template</h2>
 <input type="text" name="name" placeholder="name"><br>
 <input type="text" name="subjectLine" placeholder="subject line"><br>
 <textarea rows="20" cols="75" name="body" placeholder="body"></textarea>
+
+-->

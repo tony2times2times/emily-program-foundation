@@ -9,6 +9,7 @@ var configs = require('../secretSquirrel/secret');
 var private = require('./server/routes/private/index');
 var form = require('./server/routes/form.js');
 var auth = require('./server/routes/auth.js');
+var adminview = require('./server/routes/private/adminview');
 var applicantRouter = require('./server/routes/applicant.js');
 var emailTemplateRouter = require('./server/routes/emailTemplate.js');
 var isLoggedIn = require('./server/utils/auth');
@@ -62,6 +63,7 @@ app.use(passport.session());
 app.use('/auth', auth);
 app.use('/', form);
 app.use('/private', isLoggedIn, private);
+app.use('/private/adminview', isLoggedIn, adminview);
 app.use('/applicant', applicantRouter);
 app.use('/emailTemplate', emailTemplateRouter);
 
