@@ -95,23 +95,22 @@ h1 {
   position: absolute;
   z-index: 99;
   background-color: white;
-  margin: auto 300px;
   box-shadow: 10px 10px 5px #8c8c8c;
   border-radius: 5px;
   border: 2px solid #999999;
   padding: 15px;
+  top: 75px;
+  left: 30%;
+  right: 30%;
 }
 
 #exit{
-  background-color: red;
-  color: white;
+  background-color: none;
+  color: rgb(77, 78, 80);
   text-decoration: none;
   border: none;
   padding: 10px;
-  border-radius: 50%;
   font-weight: bold;
-  margin: auto 300px;
   font-size: 14px;
   cursor: pointer;
-
 }
