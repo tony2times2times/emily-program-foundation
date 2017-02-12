@@ -11,7 +11,7 @@ var form = require('./server/routes/form.js');
 var auth = require('./server/routes/auth.js');
 var adminview = require('./server/routes/private/adminview');
 var applicantRouter = require('./server/routes/applicant.js');
-var emailTemplateRouter = require('./server/routes/emailTemplate.js');
+var emailTemplateRouter = require('./server/routes/private/emailTemplate.js');
 var isLoggedIn = require('./server/utils/auth');
 //USE THIS DATA FOR ROBO MONGO CONNECTION TO SHARED DB **NOT PRODUCTION**
 //USERNAME:EPFG
@@ -65,7 +65,7 @@ app.use('/', form);
 app.use('/private', isLoggedIn, private);
 app.use('/private/adminview', isLoggedIn, adminview);
 app.use('/applicant', applicantRouter);
-app.use('/emailTemplate', emailTemplateRouter);
+app.use('/private/emailTemplate', isLoggedIn, emailTemplateRouter);
 
 
 //listen on port 3000

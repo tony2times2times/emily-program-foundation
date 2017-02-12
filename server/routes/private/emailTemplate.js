@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require( 'mongoose' );
-var EmailTemplate = require( '../models/emailTemplate' );
+var EmailTemplate = require( '../../models/emailTemplate' );
 
 // post to create a new emailTemplate
 router.post('/', function(req, res) {
@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
         console.log(err);
         res.sendStatus(500);
       }else {
-        console.log('new emailTemplate added')
+        console.log('new emailTemplate added');
         res.sendStatus(201);
       } // end if else
   }); // end save
@@ -68,6 +68,6 @@ router.delete('/:id', function(req, res) {
         res.sendStatus(200);
       }// end if/else
     });// end save
-})// end delete
+});// end delete
 
 module.exports = router;

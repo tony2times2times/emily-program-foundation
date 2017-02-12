@@ -13,9 +13,9 @@ emilyApp.config(["$routeProvider", function($routeProvider) {
     templateUrl: '../views/partials/applicants.html',
     controller: 'ApplicantsController'
   })
-  .when("/emailDrafts", {
-    templateUrl: '../views/partials/emailDrafts.html',
-    controller: 'EmailDraftsController'
+  .when("/emailTemplates", {
+    templateUrl: '../views/partials/emailTemplates.html',
+    controller: 'EmailTemplateController'
   })
   .when("/adminView", {
     templateUrl: '../views/partials/adminView.html',
