@@ -1,3 +1,5 @@
+<div class="container">
+<div class="background">
 <h1>Volunteer Application</h1>
 <label for="supporting">Supporting Material: Include links to any materials that might support your application.</label>
 <textarea ng-model="ff.additionalInfo" id="supporting" cols="70" rows="7"></textarea><br>
@@ -21,11 +23,13 @@
 <input ng-model = "ff.refTwoEmail" type="text" id="refEmail2" placeholder="Email">
 <br>
 </br>
-<p><strong>Emergency Contact (person to notify in case of an emergency)</strong></p>
+<label>Emergency Contact (person to notify in case of an emergency)</label>
 <label for="emerName">Name:</label>
 <input ng-model="ff.emergencyName" type="text" id="emerName" placeholder="Name">
 <label for="emerPhone">Phone Number:</label>
 <input ng-model="ff.emergencyPhone" type="text" id="emerPhone" placeholder="Phone Number"><br>
 </br>
-<button type="button" class="btn btn-success" ng-click="refPrev()">Previous</button>
-<button type="button" class="btn btn-success" ng-click="refNext()">Next</button>
+<button type="button" class="prevButt" ng-click="refPrev()">Previous</button>
+<button type="button" class="nextButt"ng-click="refNext()">Next</button>
+</div>
+</div>
