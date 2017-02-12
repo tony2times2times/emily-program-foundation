@@ -1,0 +1,12 @@
+<h2>E-Mail Templates</h2>
+<div ng-init="getEmailTemplate();">
+<div class="repeatBox" ng-repeat="email in displayEmail">
+<b>Body:</b>{{email.body}} <b>Name:</b>{{email.name}} <b>Subject:</b>{{email.subject}}
+<button ng-click="deleteEmail($index);" type="button" name="button">delete</button>
+</div>
+</div>
+<h2>Email Template</h2>
+<p>Name: <input type="text" ng-model="name" placeholder="name"></p>
+<p>Subject: <input type="text" ng-model="subject" placeholder="subject line"></p>
+<p>Body: <textarea rows="20" cols="75" ng-model="body" placeholder="body"></textarea></p>
+<button type="button" ng-click="saveEmailTemplate();" name="button">save</button>

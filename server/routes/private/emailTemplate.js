@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
       subject: data.subject
   }); // end newEmail
 
-  EmailTemplate.save(function(err) {
+  newEmail.save(function(err) {
       if(err){
         console.log(err);
         res.sendStatus(500);
@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
         res.sendStatus(201);
       } // end if else
   }); // end save
-}); //end post /
+}); //end post
 
 
 // gets ALL emailTemplates from DB
@@ -61,12 +61,12 @@ router.put('/:id', function(req, res) {
     if (err) return handleError(err);
 
     console.log("RESULT: ", result);
-    res.send('result')
+    res.send('result');
     });
 }); //end put
 
 
-// delete to delete the individual emailTemplate from DB
+// delete the individual emailTemplate from DB
 router.delete('/:id', function(req, res) {
   console.log('hit the emailTemplate delete, req.params.id-> ', req.params.id);
 
@@ -78,7 +78,7 @@ router.delete('/:id', function(req, res) {
         console.log('emailTemplate deleted');
         res.sendStatus(200);
       }// end if/else
-    });// end save
+    });// end findByIdAndRemove
 });// end delete
 
 module.exports = router;
