@@ -41,18 +41,29 @@ router.get('/', function(req, res) {
   });// end find
 }); // end get /
 
-// updates the entire emailTemplate entry
-//example bellow
+// updates the entire email template entry
+router.put('/:id', function(req, res) {
+  console.log('hit the email template put, req.body-> ', req.body);
+  var data = req.body;
 
-// Tank.findById(id, function (err, tank) {
-//   if (err) return handleError(err);
-//
-//   tank.size = 'large';
-//   tank.save(function (err, updatedTank) {
-//     if (err) return handleError(err);
-//     res.send(updatedTank);
-//   });
-// });
+  var updatedEmail = {
+
+    body: data.body,
+    name: data.name,
+    subject: data.subject
+  }; // end updatedEmail
+
+/// I really don't know if this will work
+// here's one source http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
+// a second source http://stackoverflow.com/questions/27108177/mongoose-findbyidandupdate-doest-not-work-with-req-body
+/// TODO: return when data is in the system and HTTP call is set up
+  EmailTemplate.findByIdAndUpdate(req.params.id, {$set: updatedEmail} , function(err, result){
+    if (err) return handleError(err);
+
+    console.log("RESULT: ", result);
+    res.send('result')
+    });
+}); //end put
 
 
 // delete to delete the individual emailTemplate from DB
