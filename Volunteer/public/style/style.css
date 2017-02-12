@@ -64,6 +64,11 @@ h1 {
   color: white;
 }
 
+.return{
+  float:right;
+
+}
+
 #beginApp{
   text-align: center;
   display: block;
@@ -80,4 +85,8 @@ h1 {
 #beginApp:hover{
   background-color:  #dd561e;
   color: white;
+}
+
+#opLinks{
+  margin-bottom: 15px;
 }
