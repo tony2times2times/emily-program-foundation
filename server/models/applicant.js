@@ -38,7 +38,7 @@ var applicantSchema = new Schema({
       last_name: {type: String, lowercase: true}
     },
     notes: { type: String, default: '' },
-    NumMissedOrientaion: { type: Number, default: 0 },
+    numMissedOrientaion: { type: Number, default: 0 },
     referenceOne: {
       name: String,
       email: String,

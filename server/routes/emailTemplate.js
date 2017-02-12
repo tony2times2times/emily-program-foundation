@@ -42,6 +42,18 @@ router.get('/', function(req, res) {
 }); // end get /
 
 // updates the entire emailTemplate entry
+//example bellow
+
+// Tank.findById(id, function (err, tank) {
+//   if (err) return handleError(err);
+//
+//   tank.size = 'large';
+//   tank.save(function (err, updatedTank) {
+//     if (err) return handleError(err);
+//     res.send(updatedTank);
+//   });
+// });
+
 
 // delete to delete the individual emailTemplate from DB
 router.delete('/:id', function(req, res) {
