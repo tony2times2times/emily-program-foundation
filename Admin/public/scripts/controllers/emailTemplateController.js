@@ -9,4 +9,18 @@ function($scope, $http, VolunteerFactory) {
         $scope.emailTemplateArray = response.data;
       });
   };
+
+  $scope.modifyTemplate = function(id){
+    getEmailTemplates();
+  };
+
+  $scope.removeTemplate = function(id){
+    getEmailTemplates();
+  };
+
+  $scope.createTemplate = function(){
+    getEmailTemplates();
+  };
+
+  getEmailTemplates();
 }]);

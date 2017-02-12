@@ -11,29 +11,20 @@
         </tr>
       </thead>
       <tbody>
-
-<!-- Email template table
-
-        <tr ng-repeat="template in templateArray">
-          <td style="vertical-align: middle;">{{admin.googleEmail}}</td>
-          <td style="vertical-align: middle;"><span ng-show="admin.googleName">{{admin.googleName}}</span><span ng-hide="admin.googleName" class="italic">Not yet logged in.</span></td>
-          <td style="vertical-align: middle;" class="td-centered"><button ng-click="removeAdmin(admin._id)" type="button" class="btn btn-sm btn-danger" aria-label="Remove Admin">
+        <tr ng-repeat="template in emailTemplateArray">
+          <td style="vertical-align: middle;">{{template.name}}</td>
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="modifyTemplate(template._id)" type="button" class="btn btn-sm btn-success">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button></td>
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="removeTemplate(template._id)" type="button" class="btn btn-sm btn-danger">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button></td>
         </tr>
-
--->
-
       </tbody>
     </table>
     <div class="input-group admin-input">
-    <h4>Add a new e-mail template:</h4>
-    </div>
-    <div class="input-group admin-input">
-      <span class="input-group-addon">Template name:</span>
-      <input type="text" class="form-control" ng-model="inputTemplate">
       <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" ng-click="addTemplate()">Create and edit template</button>
+        <button class="btn btn-primary" type="button" ng-click="createTemplate()">Create a new e-mail template</button>
       </span>
     </div>
   </div>
