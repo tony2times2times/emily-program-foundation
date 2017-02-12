@@ -121,3 +121,15 @@ myForm.controller('WaiverController', ['$scope', '$http', function($scope, $http
     window.location ='#!/references';
   };
 }]);
+
+myForm.filter('removeUnderscores', function(){
+   return function(input){
+     if (!input)return;
+    for (var i = 0; i < input.length; i++) {
+        if (input[i] == '_') {
+          input = input.substr(0,i) + ' ' + input.substr(i+1);
+        }// end if
+      } // end for
+    return input;
+    };
+  });

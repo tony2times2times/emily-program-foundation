@@ -4,7 +4,7 @@
 <div id="skillsSection">
   <label for="skills">I have the following skills (check all that apply):</label>
   <div ng-repeat="item in skills" >
-    <label>{{ item.skill }}</label>
+    <label>{{ item.skill | removeUnderscores }}</label>
     <input ng-model="skillsIn[item.skill]" type="checkbox">
   </div>
 </div>
@@ -13,7 +13,7 @@
   <label for="interests">The Emily Program Foundation depends on committed volunteers for our work. Please indicate which
   opportunities you are able to commit to while volunteering with us (check all that apply).</label>
   <div ng-repeat="item in interests">
-    <label>{{item.interest}}</label>
+    <label>{{item.interest | removeUnderscores}}</label>
     <input ng-model="interestsIn[item.interest]" type="checkbox">
   </div>
 </div>
