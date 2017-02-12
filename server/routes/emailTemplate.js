@@ -43,7 +43,7 @@ router.get('/', function(req, res) {
 
 // updates the entire emailTemplate entry
 
-// delete to delete the individual emailTemplate from DB
+// delete the individual emailTemplate from DB
 router.delete('/:id', function(req, res) {
   console.log('hit the emailTemplate delete, req.params.id-> ', req.params.id);
 
@@ -55,7 +55,8 @@ router.delete('/:id', function(req, res) {
         console.log('emailTemplate deleted');
         res.sendStatus(200);
       }// end if/else
-    });// end save
+    });// end findByIdAndRemove
+
 });// end delete
 
 module.exports = router;

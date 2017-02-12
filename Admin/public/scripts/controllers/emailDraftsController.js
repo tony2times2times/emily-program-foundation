@@ -16,4 +16,25 @@ function($scope, $http, VolunteerFactory) {
     console.log('Post response', response);
   }); // end $http post call
   }; // end saveEmailTemplate function
+
+$scope.getEmailTemplate = function(){
+  $http({
+    method: 'GET',
+    url: '/emailTemplate',
+  }).then(function(response){
+    console.log('response from mongo', response.data);
+    $scope.displayEmail = response.data;
+  });
+}; // end getEmailTemplate function
+
+$scope.deleteEmail = function(index){
+$http({
+  method: 'DELETE',
+  url: '/emailTemplate/' + $scope.displayEmail[index]._id,
+}).then(function(response){
+  console.log('delete response', response);
+  $scope.getEmailTemplate();
+});
+}; // end deleteEmail
+
 }]); // end EmailDraftsController
