@@ -1,10 +1,11 @@
 <div class="container">
 <div class="background">
     <h1>Volunteer Application</h1>
+    <form name="vInfo">
       <label for="firstName">First Name:</label>
-      <input type="text" ng-model="ff.firstName" id= "firstName" placeholder="First Name">
+      <input type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name">
       <label for="lastName">Last Name:</label>
-      <input type="text" ng-model="ff.lastName" id="lastName" placeholder="Last Name">
+      <input type="text" ng-model="ff.lastName" id="lastName" placeholder="Last Name" required>
       <label for="dob">Date of Birth:</label>
       <input type="text" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year">
       <label for="address">Street Address:</label>
@@ -72,7 +73,9 @@
       <label for="phone">Phone Number:</label>
       <input type="text" ng-model="ff.phoneNum" placeholder="Phone Number">
       <label for="employment">Place of Employment:</label>
-      <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment"><br>
+      <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment">
+    </form>
+      <br>
     </br>
       <button type="button" class="prevButt" ng-click="infoPrev()">Previous</button>
       <button class="nextButt" ng-click="infoNext()">Next</button>
