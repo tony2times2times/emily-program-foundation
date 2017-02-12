@@ -11,8 +11,8 @@ function($scope, $http, VolunteerFactory) {
     console.log($scope.adminArray);
   };
 
-  $scope.removeAdmin = function(index) {
-    var removalHTTP = '/private/deleteadmin/' +  $scope.adminArray[index].googleEmail;
+  $scope.removeAdmin = function(id) {
+    var removalHTTP = '/private/deleteadmin/' + id;
     $http.delete(removalHTTP).then(getAdmins);
   };
 
@@ -35,6 +35,12 @@ function($scope, $http, VolunteerFactory) {
     $http.post(addHTTP).then(getSkills);
   };
 
+  $scope.switchSkill = function(id, used) {
+    var switchHTTP = '/private/switchskill/' + id + '/' + used;
+    console.log("Attempting switchSkill. HTTP PUT call: ", switchHTTP);
+    $http.put(switchHTTP).then(getSkills);
+  };
+
   var getInterests = function() {
     $http.get('/private/allinterests')
       .then(function(response){
@@ -49,18 +55,30 @@ function($scope, $http, VolunteerFactory) {
     $http.post(addHTTP).then(getInterests);
   };
 
+  $scope.switchInterest = function(id, used) {
+    var switchHTTP = '/private/switchinterest/' + id + '/' + used;
+    console.log("Attempting switchInterest. HTTP PUT call: ", switchHTTP);
+    $http.put(switchHTTP).then(getInterests);
+  };
+
   var getEssayQs = function() {
     $http.get('/private/allessayqs')
       .then(function(response){
         console.log('Response: ', response);
         $scope.essayqArray = response.data;
       });
-    console.log($scope.interestArray);
+    console.log($scope.essayqArray);
   };
 
-  $scope.addEssayQs = function() {
+  $scope.addEssayQ = function() {
     var addHTTP = '/private/addessayq/' + encodeURIComponent($scope.inputEssayQ);
     $http.post(addHTTP).then(getEssayQs);
+  };
+
+  $scope.switchEssayQ = function(id, used) {
+    var switchHTTP = '/private/switchessayq/' + id + '/' + used;
+    console.log("Attempting switchEssayQ. HTTP PUT call: ", switchHTTP);
+    $http.put(switchHTTP).then(getEssayQs);
   };
 
   getEssayQs();

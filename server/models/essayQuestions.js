@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var essayQuestionsSchema = new Schema({
 
   question: String,
-  Used: Boolean
+  used: Boolean
 
 });
 module.exports = mongoose.model('EssayQuestions', essayQuestionsSchema);

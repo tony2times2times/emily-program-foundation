@@ -30,8 +30,8 @@ router.get('/alladmins', function(req, res) {
   });
 });
 
-router.delete('/deleteadmin/:email', function(req, res){
-  User.remove({googleEmail: req.params.email}, function(err){
+router.delete('/deleteadmin/:id', function(req, res){
+  User.remove({_id: req.params.id}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -63,7 +63,21 @@ router.get('/allskills', function(req, res) {
 });
 
 router.post('/addskill/:skill', function(req, res){
-  Skill.insert({skill: decodeURIComponent(req.params.skill), used: true}, function(err, user){
+  var skill = new Skill();
+  skill.skill = decodeURIComponent(req.params.skill);
+  skill.used = true;
+  skill.save(function(err){
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.put('/switchskill/:id/:used', function(req, res){
+  console.log("Skill switch, req.params: ", req.params);
+  Skill.update({_id: req.params.id}, {used: req.params.used}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -85,7 +99,10 @@ router.get('/allinterests', function(req, res) {
 });
 
 router.post('/addinterest/:interest', function(req, res){
-  Interest.insert({interest: decodeURIComponent(req.params.interest), used: true}, function(err, user){
+  var interest = new Interest();
+  interest.interest = decodeURIComponent(req.params.interest);
+  interest.used = true;
+  interest.save(function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -94,20 +111,44 @@ router.post('/addinterest/:interest', function(req, res){
   });
 });
 
-router.get('/allessayqs', function(req, res) {
-  console.log('Route allEssayQs hit.');
-  EssayQ.find({}, function(err, essayq){
-    console.log('Found: ', essayq);
+router.put('/switchinterest/:id/:used', function(req, res){
+  Interest.update({_id: req.params.id}, {used: req.params.used}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
-      res.send(essayq);
+      res.sendStatus(200);
+    }
+  });
+});
+
+
+router.get('/allessayqs', function(req, res) {
+  console.log('Route allEssayQs hit.');
+  EssayQ.find({}, function(err, essayqs){
+    console.log('Found: ', essayqs);
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.send(essayqs);
     }
   });
 });
 
 router.post('/addessayq/:essayq', function(req, res){
-  EssayQ.insert({question: decodeURIComponent(req.params.essayq), used: true}, function(err, user){
+  var essayq = new EssayQ();
+  essayq.question = decodeURIComponent(req.params.essayq);
+  essayq.used = true;
+  essayq.save(function(err){
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+router.put('/switchessayq/:id/:used', function(req, res){
+  EssayQ.update({_id: req.params.id}, {used: req.params.used}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
