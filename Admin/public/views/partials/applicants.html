@@ -30,7 +30,7 @@
 </div>
 <br>
 <br>
-<div ng-if="person !== undefined "class="container-fluid">
+<div ng-if="person.name.first_name !== undefined "class="container-fluid">
   <button ng-click="changeView('info')">Info</button>
   <button ng-click="changeView('essays')">Essays</button>
   <button ng-click="changeView('references')">References</button>
@@ -40,17 +40,18 @@
   <div ng-if="activeView === 'info'">
     <h4 ng-repeat='skill in skills'>{{skill}}</h4>
     <p>
-      Email: {{person.email}}
+      Email: {{person.contactInfo.email}}
       <br>
-      Phone: {{person.phoneNum}}
+      Phone: {{person.contactInfo.phoneNum}}
       <br>
+      Address:
       <br>
-      {{person.address.street}}
+      {{person.contactInfo.address.street}}
       <br>
-      {{person.address.city}}, {{person.addess.state}} {{person.address.zip}}
+      {{person.contactInfo.address.city}}, {{person.contactInfo.addess.state}} {{person.contactInfo.address.zip}}
     </p>
     <p>
-      {{person.employment}}
+      Employment: {{person.employment}}
     </p>
   </div>
 

@@ -3,6 +3,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
   console.log("ApplicantsController loaded.");
   var init=0;
   $scope.activeView = 'info';
+  $scope.person = {};
   $scope.hatList= ['APPLIED','PENDING','SCHEDULED','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
   $scope.applied = [];
@@ -21,8 +22,15 @@ function($scope, $http, $timeout, VolunteerFactory) {
       console.log(response);
       //for every volunteer in the response
       for (var i = 0; i < response.data.length; i++) {
-        
-        array[i]
+        if (response.data[i].appStatus === 'applied') {
+          $scope.applied.push(response.data[i]);
+        }else if (response.data[i].appStatus === 'pending') {
+          $scope.pending.push(response.data[i]);
+        }else if (response.data[i].appStatus === 'scheduled') {
+          $scope.scheduled.push(response.data[i]);
+        }else {
+          console.log('unrecognized status for: ' + response.data[i].appStatus);
+        }
       }
     }, function errorCallback(error) {
       console.log('error', error);
@@ -34,22 +42,34 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //This is used to prevent posting when webpage is initially loaded
     if (init < $scope.hatchery.length){
       init = init + 1;
+      return;
     }
-    //if item was moved into the applied array
-    else if (index === 0) {
-      console.log('Item moved into applied');
+    //if person was moved into the applied array change thier status
+    else {if (index === 0) {
+      $scope.person.appStatus = 'applied';
     }
-    //if item was moved into the pending array
+    //if person was moved into the pending array change thier status
     else if (index === 1) {
-      console.log('Item moved into pending');
+      $scope.person.appStatus = 'pending';
     }
-    //if item was moved into the scheduled array
+    //if person was moved into the scheduled array change thier status
     else if (index === 2) {
-      console.log('Item moved into scheduled');
+      $scope.person.appStatus = 'scheduled';
     }
     else {
-      console.log(indext + " is not a recognized index please check the incubator function");
-    }
+      console.log(index + " is not a recognized index please check the incubator function");
+    }}
+    console.log('ther active persons status is now: ' + $scope.person.appStatus);
+    var id = $scope.person._id;
+    $http({
+      method: 'PATCH',
+      url: '/applicant/status/' + id,
+      data: {status: $scope.person.appStatus}
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
   };
 
   //sets active Applicant
@@ -130,5 +150,5 @@ function($scope, $http, $timeout, VolunteerFactory) {
       console.log('error', error);
     });
   };
-
+$scope.loadApplicants();
 }]);

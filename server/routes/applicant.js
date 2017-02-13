@@ -86,7 +86,6 @@ router.get('/', function(req, res) {
 }); // end get /
 
 // updates the applicant status
-
 router.patch('/status/:id', function(req, res) {
   console.log('hit patch status, req.params.id-> ', req.params.id);
   var newStatus = req.body.status;
