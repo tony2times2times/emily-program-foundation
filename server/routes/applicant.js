@@ -37,6 +37,9 @@ router.post('/', function(req, res) {
     essayThree:{ question: data.essayThree.question,
                  response: data.essayThree.response
                },
+   essayFour:{ question: data.essayFour.question,
+                response: data.essayFour.response
+              },
     interests: data.intersts, // should be an array
     name: {
       first_name: data.firstName,
@@ -55,7 +58,7 @@ router.post('/', function(req, res) {
     skills: data.skills // should be an array
   }); // end newPerson
 
-  Applicant.save(function(err) {
+  newPerson.save(function(err) {
       if(err){
         console.log(err);
         res.sendStatus(500);
@@ -144,6 +147,9 @@ router.put('/:id', function(req, res) {
               },
     essayThree:{ question: data.essayThree.question,
                  response: data.essayThree.response
+               },
+    essayFour:{ question: data.essayFour.question,
+                response: data.essayFour.response
                },
     interests: data.intersts, // should be an array
     name: {
