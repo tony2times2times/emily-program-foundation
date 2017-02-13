@@ -17,7 +17,7 @@ myForm.factory('formFactory', function(){
   myFactory.phoneNum = '';
   myFactory.employment = '';
   myFactory.essayOneResponse= '';
-  myFactory.essayTwoResponses = '';
+  myFactory.essayTwoResponse = '';
   myFactory.essayThreeResponse = '';
   myFactory.essayFourResponse = '';
   myFactory.additionalInfo = '';
@@ -32,5 +32,16 @@ myForm.factory('formFactory', function(){
 
   myFactory.skillsIn = {};
   myFactory.interestsIn= {};
+
+  myFactory.onlyTrueToArray = function( object ){
+    var array = [];
+    for (var key in object) {
+      if (object.hasOwnProperty(key)) {
+        if (object[key]) array.push(key);
+      }
+    }
+    return array;
+  };
+
   return myFactory;
 });
