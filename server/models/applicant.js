@@ -32,6 +32,9 @@ var applicantSchema = new Schema({
     essayThree:{ essayQuestion: String,
                  response: String
                },
+    essayFour:{ essayQuestion: String,
+                response: String
+              },
     interests: [ String ],
     name: {
       first_name: {type: String, lowercase: true},

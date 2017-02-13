@@ -45,8 +45,24 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
   $scope.ff = formFactory;
 }]); //end EssayController
 
-myForm.controller('FormController', ['$scope', '$http', function($scope, $http){
+myForm.controller('FormController', ['$scope', '$http', 'formFactory', function($scope, $http, formFactory){
   console.log('ng sourced');
+
+  $scope.getFormFields = function(){
+    console.log("Getting feilds for form");
+
+    $http({
+      method: 'GET',
+      url: '/formFields'
+    }).then(function(response){
+      console.log('response', response);
+
+      formFactory.allSkills = response.data.skills;
+      formFactory.allIntersts = response.data.interests;
+      formFactory.allQuestions = response.data.essayQuestions;
+    });//end http
+  };// end getFormFields()
+
 }]); //end FormController
 
 myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
@@ -83,10 +99,10 @@ $scope.blogWriting = "We need volunteers to help us explore the messages we are 
 myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
   //dynamically generated skills list and sending to factory
   $scope.skillsIn = formFactory.skillsIn;
-  $scope.skills = [ { skill: 'Project_Management'} , { skill: 'Social_Media_Use'} , { skill: 'Language_Skills'} , { skill: 'Lobbying'} , { skill: 'Artwork/Photography'} , { skill:'Public_Speaking'} , { skill: 'Crafts/Scrapbooking'} , { skill: 'Video_Taping/Editing'} , { skill: 'Event_Planning'} , { skill: 'Layout/Graphic_Design'} , { skill: 'Writing'} , { skill: 'Marketing'} , { skill: 'Fundraising'} ];
+  $scope.skills = formFactory.allSkills;
   //dynamically generated interest list and sending to factory
   $scope.interestsIn = formFactory.interestsIn;
-  $scope.interests = [{interest: 'Blog_Writing_(one_submission_per_month_minimum)'},{interest:'Special_Events_(volunteering_for_at_least_one_special_event_per_year)'},{interest:'Advocacy_Alerts_and_Lobby_Day'}, {interest:'Office_Work'}];
+  $scope.interests = formFactory.allIntersts;
   //previous button
   $scope.skillsPrev = function(){
     window.location ='#!/essayQues';
@@ -120,4 +136,12 @@ myForm.controller('WaiverController', ['$scope', '$http', function($scope, $http
   $scope.wavPrev = function(){
     window.location ='#!/references';
   };
+  //submit button
+  $scope.submitApp = function(){
+    console.log('Submiting Form');
+
+    var sendData = {
+      
+    };// end sendData
+  };//end submitApp()
 }]);

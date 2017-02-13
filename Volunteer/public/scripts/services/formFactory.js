@@ -2,6 +2,10 @@ console.log('formFactory sourced');
 
 myForm.factory('formFactory', function(){
   var myFactory = {};
+  myFactory.allSkills = [];
+  myFactory.allIntersts = [];
+  myFactory.allQuestions = [];
+
   myFactory.firstName = '';
   myFactory.lastName = '';
   myFactory.dateOfBirth = '';
@@ -12,12 +16,10 @@ myForm.factory('formFactory', function(){
   myFactory.email = '';
   myFactory.phoneNum = '';
   myFactory.employment = '';
-  myFactory.essayOneQues = 'How did you hear about The Emily Program Foundation';
   myFactory.essayOneResponse= '';
-  myFactory.essayTwoQues = 'Why are you interested in volunteering? Describe any particular skills or experience you feel you would bring to The Emily Program Foundation';
   myFactory.essayTwoResponses = '';
-  myFactory.essayThreeQues = '';
   myFactory.essayThreeResponse = '';
+  myFactory.essayFourResponse = '';
   myFactory.additionalInfo = '';
   myFactory.refOneName = '';
   myFactory.refOnePhone = '';
