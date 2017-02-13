@@ -194,7 +194,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
     console.log('Data to Send = ', sendData);
     $http({
       method: 'POST',
-      url: '/applicant',
+      url: '/',
       data: sendData
     }).then(function(response){
       console.log(response);
