@@ -14,10 +14,12 @@ myForm.factory('formFactory', function(){
   myFactory.employment = '';
   myFactory.essayOneQues = 'How did you hear about The Emily Program Foundation';
   myFactory.essayOneResponse= '';
-  myFactory.essayTwoQues = 'Why are you interested in volunteering? Describe any particular skills or experience you feel you would bring to The Emily Program Foundation';
+  myFactory.essayTwoQues = 'Why are you interested in volunteering?';
   myFactory.essayTwoResponses = '';
-  myFactory.essayThreeQues = '';
+  myFactory.essayThreeQues = 'What do you hope to get out of volunteering for The Emily Program Foundation?';
   myFactory.essayThreeResponse = '';
+  myFactory.essayFourQues = 'Describe any particular skills or experience you feel you would bring to The Emily Program Foundation.';
+  myFactory.essayFourResponse = '';
   myFactory.additionalInfo = '';
   myFactory.refOneName = '';
   myFactory.refOnePhone = '';
