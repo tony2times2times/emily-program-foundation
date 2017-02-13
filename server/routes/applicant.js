@@ -63,7 +63,7 @@ router.post('/', function(req, res) {
         console.log(err);
         res.sendStatus(500);
       }else {
-        console.log('new applicant added')
+        console.log('new applicant added');
         res.sendStatus(201);
       } // end if else
   }); // end save
@@ -177,7 +177,7 @@ router.put('/:id', function(req, res) {
     if (err) return handleError(err);
 
     console.log("RESULT: ", result);
-    res.send('result')
+    res.send('result');
     });
 }); //end put
 
@@ -195,6 +195,6 @@ router.delete('/:id', function(req, res) {
         res.sendStatus(200);
       }// end if/else
     });// end save
-})// end delete
+});// end delete
 
 module.exports = router;

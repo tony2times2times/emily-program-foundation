@@ -31,19 +31,14 @@
 <br>
 <br>
 <div ng-if="person !== undefined "class="container-fluid">
-  <button ng-click="changeView('skills')">Skills</button>
-  <button ng-click="changeView('contact')">Contact</button>
-  <button ng-click="changeView('employment')">Employment</button>
+  <button ng-click="changeView('info')">Info</button>
   <button ng-click="changeView('essays')">Essays</button>
   <button ng-click="changeView('references')">References</button>
 
   <h3>{{person.name.first_name}} {{person.name.last_name}} {{person.checked}}</h3>
 
-  <div ng-if="activeView === 'skills'">
+  <div ng-if="activeView === 'info'">
     <h4 ng-repeat='skill in skills'>{{skill}}</h4>
-  </div>
-
-  <div ng-if="activeView === 'contact'">
     <p>
       Email: {{person.email}}
       <br>
@@ -54,11 +49,8 @@
       <br>
       {{person.address.city}}, {{person.addess.state}} {{person.address.zip}}
     </p>
-  </div>
-  <div ng-if="activeView === 'employment'">
     <p>
       {{person.employment}}
-      something
     </p>
   </div>
 
