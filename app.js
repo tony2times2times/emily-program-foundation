@@ -64,7 +64,7 @@ app.use('/auth', auth);
 app.use('/', form);
 app.use('/private', isLoggedIn, private);
 app.use('/private/adminview', isLoggedIn, adminview);
-app.use('/applicant', applicantRouter);
+app.use('/applicant', isLoggedIn, applicantRouter);
 app.use('/private/emailTemplate', isLoggedIn, emailTemplateRouter);
 
 
