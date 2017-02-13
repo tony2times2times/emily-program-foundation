@@ -75,7 +75,6 @@ function($scope, $http, $timeout, VolunteerFactory) {
   //sets active Applicant
   $scope.setActive = function(listIndex, personIndex){
     $scope.person = $scope.hatchery[listIndex][personIndex];
-    $scope.skills = $scope.person.skills;
     console.log('the active person is: ' + $scope.person.name.first_name, $scope.person.name.last_name);
   };
   $scope.changeView = function (attribute) {
@@ -150,5 +149,26 @@ function($scope, $http, $timeout, VolunteerFactory) {
       console.log('error', error);
     });
   };
-$scope.loadApplicants();
+
+  //makes active person data editable
+  $scope.edit = function(){
+    $scope.person.edit = true;
+  };
+
+  //makes active person data editable
+  $scope.editEnd = function(){
+    $scope.person.edit = false;
+  };
+
+  //undoes changes made while editing
+  $scope.cancelEdit = function(){
+    $scope.person.edit = false;
+  };
+
+  //removes skill from active user
+  $scope.removeSkill = function(index){
+    $scope.person.skills.splice(index,1);
+  };
+
+  $scope.loadApplicants();
 }]);

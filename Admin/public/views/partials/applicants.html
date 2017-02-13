@@ -1,3 +1,6 @@
+
+
+
 <br>
 <br>
 <button type="button" ng-click='email'>EMAIL SELECTED</button>
@@ -30,15 +33,24 @@
 </div>
 <br>
 <br>
-<div ng-if="person.name.first_name !== undefined "class="container-fluid">
+<div ng-if="person.name.first_name !== undefined && person.edit !== true" ng-dblclick='edit()' class="container-fluid">
   <button ng-click="changeView('info')">Info</button>
   <button ng-click="changeView('essays')">Essays</button>
   <button ng-click="changeView('references')">References</button>
 
-  <h3>{{person.name.first_name}} {{person.name.last_name}} {{person.checked}}</h3>
+  <h3>{{person.name.first_name}} {{person.name.last_name}}</h3>
 
   <div ng-if="activeView === 'info'">
-    <h4 ng-repeat='skill in skills'>{{skill}}</h4>
+    <h4>Skills
+      <div ng-repeat='skill in person.skills'>
+        {{skill}}
+      </div>
+    </h4>
+    <h4>Interests:
+      <div ng-repeat='interest in person.interests'>
+        {{interest}}
+      </div>
+    </h4>
     <p>
       Email: {{person.contactInfo.email}}
       <br>
@@ -57,11 +69,11 @@
 
   <div ng-if="activeView === 'essays'">
     <p>
-      {{person.essayOne}}
+      {{person.essayOne.response}}
       <br>
-      {{person.esssayTwo}}
+      {{person.esssayTwo.response}}
       <br>
-      {{person.essayThree}}
+      {{person.essayThree.response}}
     </p>
   </div>
 
@@ -81,5 +93,77 @@
 
   </div>
 </div>
+
+<div ng-if="person.name.first_name !== undefined && person.edit === true" class="container-fluid">
+  <button ng-click="changeView('info')">Info</button>
+  <button ng-click="changeView('essays')">Essays</button>
+  <button ng-click="changeView('references')">References</button>
+
+  <h3>
+    <input ng-model="person.name.first_name"/>
+    <input ng-model="person.name.last_name"/>
+  </h3>
+
+  <div ng-if="activeView === 'info'">
+    <h4>Skills:
+      <div ng-repeat='skill in person.skills'>
+        Remove
+        <button class='btn-danger' type="button" ng-click="removeSkill($index)">{{skill}}</button>
+      </div>
+    </h4>
+    <h4>Interests:
+      <div ng-repeat='interest in person.interests'>
+        Remove
+        <button class='btn-danger' type="button" ng-click="removeInterest($index)">{{interest}}</button>
+      </div>
+    </h4>
+    <p>
+      Email: <input ng-model='person.contactInfo.email'/>
+      <br>
+      Phone: <input ng-model='person.contactInfo.phoneNum'/>
+      <br>
+      Address:
+      <br>
+      <input ng-model='person.contactInfo.address.street'/>
+      <br>
+      <input ng-model='person.contactInfo.address.city'/>,
+      <input ng-model='person.contactInfo.addess.state'/>
+      <input ng-model='person.contactInfo.address.zip'/>
+    </p>
+    <p>
+      Employment: <input ng-model='person.employment'/>
+    </p>
+  </div>
+
+  <div ng-if="activeView === 'essays'">
+    <p>
+      <input ng-model='person.essayOne.response'/>
+      <br>
+      <input ng-model='person.esssayTwo.response'/>
+      <br>
+      <input ng-model='person.essayThree.response'/>
+    </p>
+  </div>
+
+  <div ng-if="activeView === 'references'">
+    <input ng-model='person.referenceOne.name'/>
+    <br>
+    <input ng-model='person.referenceOne.email'/>
+    <br>
+    <input ng-model='person.referenceOne.phone'/>
+    <br>
+    <br>
+    <input ng-model='person.referenceTwo.name'/>
+    <br>
+    <input ng-model='person.referenceTwo.email'/>
+    <br>
+    <input ng-model='person.referenceTwo.phone'/>
+
+  </div>
+  <button type="button" ng-click="cancelEdit()">Cancel</button>
+  <button type="button" ng-click="editEnd()">Save</button>
+</div>
+
+
 </div>
 </div>
