@@ -2,19 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" href="../style/bootstrap.css"> -->
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/bootstrap.css">
     <link rel="stylesheet" href="../vendors/sweetalert-master/dist/sweetalert.css">
     <script src="../vendors/angular.min.js" charset="utf-8"></script>
     <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="../vendors/sweetalert-master/dist/sweetalert.min.js" charset="utf-8"></script>
     <script src="../scripts/formClient.js" charset="utf-8"></script>
     <script src="../scripts/services/formFactory.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../style/style.css">
 
     <title>Volunteer Application</title>
   </head>
   <body ng-app="myForm">
-    <div ng-controller="FormController" >
+    <div ng-controller="FormController" ng-init="getFormFields()">
     <main ng-view></main>
   </div>
   </body>

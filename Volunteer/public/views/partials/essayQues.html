@@ -1,13 +1,16 @@
 <div class="container">
   <div class="background">
     <h1>Volunteer Application</h1>
-    <label ng-model="ff.essayOneQues" for="essayOne">How did you hear about The Emily Program Foundation:</label>
+    <label ng-model="ff.essayOneQues" for="essayOne">How did you hear about The Emily Program Foundation?</label>
       <textarea id="essayOne" ng-model="ff.essayOneResponse" cols="70" rows="7"></textarea>
-    <label for="essayTwo" ng-click="ff.essayTwoQues">Why are you interested in volunteering? Describe any particular skills or experience you feel you'd bring
-  to The Emily Program Foundation.</label>
+    <label for="essayTwo" ng-click="ff.essayTwoQues">Why are you interested in volunteering?</label>
       <textarea ng-model ="ff.essayTwoResponse" id="essayTwo" rows="7" cols="70"></textarea>
     <label ng-model="ff.essayThreeQues" for="essayThree">What do you hope to get out of volunteering for The Emily Program Foundation?</label>
-      <textarea ng-model="ff.essayThreeResponse" id="essayThree" rows="7" cols="70"></textarea><br>
+      <textarea ng-model="ff.essayThreeResponse" id="essayThree" rows="7" cols="70"></textarea>
+    <label ng-model="ff.essayFourQues" for="essayFour">Describe any particular skills or experience you feel you'd bring
+  to The Emily Program Foundation.</label>
+      <textarea ng-model="ff.essayFourResponse" rows="7" cols="70"></textarea>
+        <br>
         </br>
       <button type="button" class="prevButt"ng-click="essayPrev()">Previous</button>
     <button type="button" class="nextButt" ng-click="essayNext()">Next</button>

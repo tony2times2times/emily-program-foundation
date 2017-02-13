@@ -37,6 +37,9 @@ router.post('/', function(req, res) {
     essayThree:{ question: data.essayThree.question,
                  response: data.essayThree.response
                },
+   essayFour:{ question: data.essayFour.question,
+                response: data.essayFour.response
+              },
     interests: data.intersts, // should be an array
     name: {
       first_name: data.firstName,
@@ -55,12 +58,12 @@ router.post('/', function(req, res) {
     skills: data.skills // should be an array
   }); // end newPerson
 
-  Applicant.save(function(err) {
+  newPerson.save(function(err) {
       if(err){
         console.log(err);
         res.sendStatus(500);
       }else {
-        console.log('new applicant added')
+        console.log('new applicant added');
         res.sendStatus(201);
       } // end if else
   }); // end save
@@ -83,7 +86,6 @@ router.get('/', function(req, res) {
 }); // end get /
 
 // updates the applicant status
-
 router.patch('/status/:id', function(req, res) {
   console.log('hit patch status, req.params.id-> ', req.params.id);
   var newStatus = req.body.status;
@@ -145,6 +147,9 @@ router.put('/:id', function(req, res) {
     essayThree:{ question: data.essayThree.question,
                  response: data.essayThree.response
                },
+    essayFour:{ question: data.essayFour.question,
+                response: data.essayFour.response
+               },
     interests: data.intersts, // should be an array
     name: {
       first_name: data.firstName,
@@ -171,7 +176,7 @@ router.put('/:id', function(req, res) {
     if (err) return handleError(err);
 
     console.log("RESULT: ", result);
-    res.send('result')
+    res.send('result');
     });
 }); //end put
 
@@ -189,6 +194,6 @@ router.delete('/:id', function(req, res) {
         res.sendStatus(200);
       }// end if/else
     });// end save
-})// end delete
+});// end delete
 
 module.exports = router;

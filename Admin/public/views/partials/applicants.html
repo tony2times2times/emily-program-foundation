@@ -30,35 +30,28 @@
 </div>
 <br>
 <br>
-<div ng-if="person !== undefined "class="container-fluid">
-  <button ng-click="changeView('skills')">Skills</button>
-  <button ng-click="changeView('contact')">Contact</button>
-  <button ng-click="changeView('employment')">Employment</button>
+<div ng-if="person.name.first_name !== undefined "class="container-fluid">
+  <button ng-click="changeView('info')">Info</button>
   <button ng-click="changeView('essays')">Essays</button>
   <button ng-click="changeView('references')">References</button>
 
   <h3>{{person.name.first_name}} {{person.name.last_name}} {{person.checked}}</h3>
 
-  <div ng-if="activeView === 'skills'">
+  <div ng-if="activeView === 'info'">
     <h4 ng-repeat='skill in skills'>{{skill}}</h4>
-  </div>
-
-  <div ng-if="activeView === 'contact'">
     <p>
-      Email: {{person.email}}
+      Email: {{person.contactInfo.email}}
       <br>
-      Phone: {{person.phoneNum}}
+      Phone: {{person.contactInfo.phoneNum}}
       <br>
+      Address:
       <br>
-      {{person.address.street}}
+      {{person.contactInfo.address.street}}
       <br>
-      {{person.address.city}}, {{person.addess.state}} {{person.address.zip}}
+      {{person.contactInfo.address.city}}, {{person.contactInfo.addess.state}} {{person.contactInfo.address.zip}}
     </p>
-  </div>
-  <div ng-if="activeView === 'employment'">
     <p>
-      {{person.employment}}
-      something
+      Employment: {{person.employment}}
     </p>
   </div>
 

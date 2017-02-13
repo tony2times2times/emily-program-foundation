@@ -1,13 +1,15 @@
 body {
+  background-size: 350px;
+  font-family: sans-serif;
   background-image: url("TEPF-Logo-Transparent.png");
   background-repeat:no-repeat;
   background-position: left top;
-  background-size: 350px;
-  font-family: sans-serif;
 }
 
 h1 {
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .container{
@@ -21,7 +23,7 @@ h1 {
   text-align: center;
   text-align: left;
   font-family: sans-serif;
-  margin: 150px 75px 20px 75px;
+  margin: 150px 150px 20px 150px;
   padding:25px;
   border-radius: 10px;
 }
@@ -66,6 +68,7 @@ h1 {
 
 .return{
   float:right;
+  /*margin-left: 100px;*/
 
 }
 
@@ -89,4 +92,34 @@ h1 {
 
 #opLinks{
   margin-bottom: 15px;
+}
+
+#infoContent {
+  position: absolute;
+  z-index: 99;
+  background-color: white;
+  box-shadow: 10px 10px 5px #8c8c8c;
+  border-radius: 5px;
+  border: 2px solid #999999;
+  padding: 25px;
+  top: 200px;
+  left: 30%;
+  right: 30%;
+}
+
+#exit{
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  color: #999999;
+  text-decoration: none;
+  border: none;
+  border-radius: 7px;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  top: 200px;
+  left: 30%;
+  right: 30%;
 }

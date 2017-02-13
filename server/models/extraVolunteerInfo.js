@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var extraVolunteerInfoSchema = new Schema({
 
     additionalInfo: String,
-    emailedWhat: [ String ], //not sure if thiis should be kept 
+    emailedWhat: [ String ], //not sure if thiis should be kept
     emergencyContact: {
       name: String,
       phone: Number
@@ -18,6 +18,9 @@ var extraVolunteerInfoSchema = new Schema({
     essayThree:{ essayQuestion: String,
                  response: String
                },
+    essayFour:{ essayQuestion: String,
+                response: String
+              },
     referenceOne: {
       name: String,
       email: String,
