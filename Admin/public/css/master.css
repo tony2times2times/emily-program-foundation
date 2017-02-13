@@ -143,3 +143,7 @@ body>.person{
   border: 2px;
   display: inline-block;
 }
+
+loaders: [
+  {test: /\.css$/, loader: 'style!css!postcss'}
+]

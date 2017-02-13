@@ -1,6 +1,6 @@
 console.log("JS");
 
-var emilyApp = angular.module('emilyApp', ["ngRoute", "ngDragDrop", "ui.toggle"]);
+var emilyApp = angular.module('emilyApp', ["textAngular", "ngRoute", "ngDragDrop", "ui.toggle"]);
 
 //handle angular routing within the application
 emilyApp.config(["$routeProvider", function($routeProvider) {
@@ -14,8 +14,8 @@ emilyApp.config(["$routeProvider", function($routeProvider) {
     controller: 'ApplicantsController'
   })
   .when("/emailTemplates", {
-    templateUrl: '../views/partials/emailTemplates.html',
-    controller: 'EmailTemplateController'
+   templateUrl: '../views/partials/emailTemplates.html',
+   controller: 'EmailDraftsController'
   })
   .when("/adminView", {
     templateUrl: '../views/partials/adminView.html',
