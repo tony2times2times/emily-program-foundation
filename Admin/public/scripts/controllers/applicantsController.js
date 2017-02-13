@@ -163,6 +163,12 @@ function($scope, $http, $timeout, VolunteerFactory) {
   //undoes changes made while editing
   $scope.cancelEdit = function(){
     $scope.person.edit = false;
+    //resets all hatchery buckets
+    $scope.hatchery[0] = [];
+    // $scope.hatchery[1] = [];
+    // $scope.hatchery[2] = [];
+    // $scope.person = {};
+    //$scope.loadApplicants();
   };
 
   //removes skill from active user
