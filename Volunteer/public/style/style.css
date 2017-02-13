@@ -111,7 +111,7 @@ h1 {
   position: absolute;
   z-index: 100;
   background-color: white;
-  color: black;
+  color: #999999;
   text-decoration: none;
   border: none;
   border-radius: 7px;
