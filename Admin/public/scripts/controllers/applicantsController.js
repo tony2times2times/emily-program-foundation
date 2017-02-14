@@ -204,5 +204,10 @@ function($scope, $http, $timeout, VolunteerFactory) {
     $scope.person.skills.splice(index,1);
   };
 
+  $scope.removeInterest = function(index){
+    $scope.person.interests.splice(index,1);
+  };
+
+
   $scope.loadApplicants();
 }]);
