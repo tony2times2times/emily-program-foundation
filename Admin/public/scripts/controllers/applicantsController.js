@@ -60,10 +60,10 @@ function($scope, $http, $timeout, VolunteerFactory) {
       console.log(index + " is not a recognized index please check the incubator function");
     }}
     console.log('ther active persons status is now: ' + $scope.person.appStatus);
-    var id = $scope.person._id;
+    $scope.id = $scope.person._id;
     $http({
       method: 'PATCH',
-      url: '/applicant/status/' + id,
+      url: '/applicant/status/' + $scope.id,
       data: {status: $scope.person.appStatus}
     }).then(function successCallback(response) {
       console.log(response);
@@ -74,7 +74,10 @@ function($scope, $http, $timeout, VolunteerFactory) {
 
   //sets active Applicant
   $scope.setActive = function(listIndex, personIndex){
-    $scope.person = $scope.hatchery[listIndex][personIndex];
+    //create an acite person cloned from the selected person
+    $scope.person = angular.copy($scope.hatchery[listIndex][personIndex]);
+    //create a active person backup
+    $scope.savePerson = angular.copy($scope.hatchery[listIndex][personIndex]);
     console.log('the active person is: ' + $scope.person.name.first_name, $scope.person.name.last_name);
   };
   $scope.changeView = function (attribute) {
@@ -156,19 +159,42 @@ function($scope, $http, $timeout, VolunteerFactory) {
   };
 
   //makes active person data editable
-  $scope.editEnd = function(){
+  $scope.saveEdit = function(){
     $scope.person.edit = false;
+    //update the backup person
+    $scope.id = $scope.person._id;
+    $scope.savePerson = angular.copy($scope.person);
+    //search every bucket
+    bucket:
+    for (var i = 0; i < $scope.hatchery.length; i++) {
+      //search every person in those buckets
+      for (var j = 0; j < $scope.hatchery[i].length; i++) {
+        //when a matching id is found
+        if ($scope.hatchery[i][j]._id===$scope.id){
+          //update the person in that bucket
+          $scope.hatchery[i][j] = angular.copy($scope.person);
+          //exit the bucket for loop
+          break bucket;
+        }
+      }
+    }
+    //update server with changes
+    $http({
+      method: 'PUT',
+      url: '/applicant/' + $scope.id,
+      data: $scope.person
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
   };
 
-  //undoes changes made while editing
+  //reverts changes made while editing
   $scope.cancelEdit = function(){
     $scope.person.edit = false;
-    //resets all hatchery buckets
-    $scope.hatchery[0] = [];
-    // $scope.hatchery[1] = [];
-    // $scope.hatchery[2] = [];
-    // $scope.person = {};
-    //$scope.loadApplicants();
+    //reset active data from backup person
+    $scope.person = angular.copy($scope.savePerson) ;
   };
 
   //removes skill from active user
