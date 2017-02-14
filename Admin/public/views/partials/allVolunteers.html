@@ -1,3 +1,4 @@
+<div ng-init="getFormFields()"></div>
 <br><br>
 
 <select >
@@ -37,5 +38,100 @@
       <p>another</p>
     </tr>
   </div>
-
 </table>
+
+<div>
+  <h2>Add a New Volunteer</h2>
+
+  <h3>Name</h3>
+  <input type="text" value="" placeholder="First Name">
+  <input type="text" value="" placeholder="Last Name">
+
+  <h3>Address</h3>
+  <input type="text" value="" placeholder="Street">
+  <input type="text" value="" placeholder="City">
+  <select name="state" size="1">
+    <option value="AK">AK</option>
+    <option value="AL">AL</option>
+    <option value="AR">AR</option>
+    <option value="AZ">AZ</option>
+    <option value="CA">CA</option>
+    <option value="CO">CO</option>
+    <option value="CT">CT</option>
+    <option value="DC">DC</option>
+    <option value="DE">DE</option>
+    <option value="FL">FL</option>
+    <option value="GA">GA</option>
+    <option value="HI">HI</option>
+    <option value="IA">IA</option>
+    <option value="ID">ID</option>
+    <option value="IL">IL</option>
+    <option value="IN">IN</option>
+    <option value="KS">KS</option>
+    <option value="KY">KY</option>
+    <option value="LA">LA</option>
+    <option value="MA">MA</option>
+    <option value="MD">MD</option>
+    <option value="ME">ME</option>
+    <option value="MI">MI</option>
+    <option value="MN">MN</option>
+    <option value="MO">MO</option>
+    <option value="MS">MS</option>
+    <option value="MT">MT</option>
+    <option value="NC">NC</option>
+    <option value="ND">ND</option>
+    <option value="NE">NE</option>
+    <option value="NH">NH</option>
+    <option value="NJ">NJ</option>
+    <option value="NM">NM</option>
+    <option value="NV">NV</option>
+    <option value="NY">NY</option>
+    <option value="OH">OH</option>
+    <option value="OK">OK</option>
+    <option value="OR">OR</option>
+    <option value="PA">PA</option>
+    <option value="RI">RI</option>
+    <option value="SC">SC</option>
+    <option value="SD">SD</option>
+    <option value="TN">TN</option>
+    <option value="TX">TX</option>
+    <option value="UT">UT</option>
+    <option value="VA">VA</option>
+    <option value="VT">VT</option>
+    <option value="WA">WA</option>
+    <option value="WI">WI</option>
+    <option value="WV">WV</option>
+    <option value="WY">WY</option>
+  </select>
+  <input type="numbers" value="" placeholder="Zip">
+
+  <h3>Contact Info</h3>
+  <input type="text" value="" placeholder="Email">
+  <input type="numbers" value="" placeholder="Phone Number">
+
+  <h3>About</h3>
+  <input type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
+  <input type="numbers" value="" placeholder="Employment">
+
+  <h3>Volunteer Info</h3>
+  <input type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
+  <h4>Skills</h4>
+  <div ng-repeat="skill in allSkills">
+    <input ng-model="skillsIn[skill.skill]" type="checkbox">
+    <label>{{skill.skill}}</label>
+  </div>
+  <h4>Interests</h4>
+  <div ng-repeat="interest in allInterests">
+    <input ng-model="interestsIn[interest.interest]" type="checkbox">
+    <label>{{interest.interest}}</label>
+  </div>
+  <h4>Notes</h4>
+  <textarea rows="4" cols="60" placeholder="added info about the volunteer..."></textarea>
+
+  <h3>Emergency Contact</h3>
+  <input type="text" value="" placeholder="Name">
+  <input type="number" value="" placeholder="Phone Number">
+
+  <br><br><br>
+  <button type="button" name="button">Submit</button>
+</div>
