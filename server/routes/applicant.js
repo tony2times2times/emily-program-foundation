@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
       console.log(err);
       res.sendStatus(500);
     } else {
-      console.log(allApplicants); // !!erase later!!
       res.send( allApplicants );
     } //end if else
   });// end find
@@ -24,8 +23,12 @@ router.patch('/status/:id', function(req, res) {
   var newStatus = req.body.status;
 
   Applicant.update({ _id: req.params.id }, { $set: { appStatus: newStatus }}, function(err){
-    if (err) return handleError(err);
-    res.sendStatus( 204 );
+    if (err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus( 204 );
+    } // end if/else
   }); // end update
 }); // end patch status
 
@@ -36,13 +39,20 @@ router.patch('/missed/:id', function(req, res) {
   console.log('hit patch missed orientation');
 //bellow I used findByIdAndUpdate, I used this to try to keep some consistancy. It should work with findById too
   Applicant.findByIdAndUpdate(req.params.id, function (err, applicant) {
-    if (err) return handleError(err);
-
-    applicant.numMissedOrientaion++;
-    applicant.save(function (err, updatedApplicant) {
-      if (err) return handleError(err);
-      res.send(updatedApplicant);
-    }); // end save
+    if (err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      applicant.numMissedOrientaion++;
+      applicant.save(function (err, updatedApplicant) {
+        if (err){
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          res.send(updatedApplicant);
+        }// end nested if/else
+      }); // end save
+    }// end if/else
   }); // end findById
 });// end patch numMissedOrientaion
 
@@ -53,22 +63,62 @@ router.put('/:id', function(req, res) {
   var data = req.body;
 
   var updatedApplicant = {
+    // additionalInfo: 'na, nothing else,  I am a simple person',
+    // dateOfBirth: '1985-01-15T06:00:00.000Z',
+    // employment: 'Prime',
+    // __v: 0,
+    // skills:
+    //  [ 'Project Management',
+    //    'Layout/Graphic Design',
+    //    'Artwork/Photography',
+    //    'Public Speaking' ],
+    // referenceTwo:
+    //  { name: 'My Dad',
+    //    email: 'husbandofjamesmom@gmail.com',
+    //    phone: 9525559876 },
+    // referenceOne:
+    //  { name: 'My Mom',
+    //    email: 'jamesmom@yahoo.com',
+    //    phone: 9525551234 },
+    // numMissedOrientaion: 0,
+    // notes: '',
+    // name: { first_name: 'jimmy', last_name: 'ericson' },
+    // interests: [ 'Special Events - Volunteering for at least one special event per year' ],
+    // essayFour: { response: '' },
+    // essayThree: { response: 'Warm Feelings' },
+    // essayTwo: { response: 'I want to be a big help, AND improve my sweet computer skills' },
+    // essayOne: { response: 'I was told about because I was making this app.. and Joey told me about them too.' },
+    // emergencyContact: { name: 'Bro Bro', phone: 6125551234 },
+    // emailedWhat: [],
+    // contactInfo:
+    //  { email: 'jamesericson@gmail.com',
+    //    phoneNum: 9522886862,
+    //    address:
+    //     { street: '3438 1st Ave S',
+    //       city: 'Minneapolis',
+    //       state: 'MN',
+    //       zip: 55408
+    //     }
+    //   },
+    // appStatus: 'applied',
+    // edit: false }
+
 
     additionalInfo: data.additionalInfo,
     contactInfo: {
       address: {
-        street: data.street,
-        city: data.city,
-        state: data.state,
-        zip: data.zip
+        street: data.contactInfo.address.street,
+        city: data.contactInfo.address.city,
+        state: data.contactInfo.address.state,
+        zip: data.contactInfo.address.zip
       },
-      email: data.email,
-      phoneNum: data.phoneNum,
+      email: data.contactInfo.email,
+      phoneNum: data.contactInfo.phoneNum,
     },
     dateOfBirth: data.dateOfBirth,
     emergencyContact: {
-      name: data.emergancyName,
-      phone: data.emergancyPhone
+      name: data.emergencyContact.name,
+      phone: data.emergencyContact.phone
     },
     employment: data.employment,
     essayOne: { question: data.essayOne.question,
@@ -85,8 +135,8 @@ router.put('/:id', function(req, res) {
                },
     interests: data.intersts, // should be an array
     name: {
-      first_name: data.firstName,
-      last_name: data.lastName
+      first_name: data.name.first_name,
+      last_name: data.name.last_name
     },
     referenceOne: {
       name: data.referenceOne.name,
@@ -106,11 +156,14 @@ router.put('/:id', function(req, res) {
 // a second source http://stackoverflow.com/questions/27108177/mongoose-findbyidandupdate-doest-not-work-with-req-body
 /// TODO: return when data is in the system and HTTP call is set up
   Applicant.findByIdAndUpdate(req.params.id, {$set: updatedApplicant} , function(err, result){
-    if (err) return handleError(err);
-
-    console.log("RESULT: ", result);
-    res.send('result');
-    });
+    if (err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('applicant successfully updated');
+      res.send('result');
+    }
+  });
 }); //end put
 
 
