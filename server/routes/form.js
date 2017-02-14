@@ -7,6 +7,7 @@ var path = require('path');
 var Skills = require('../models/skills');
 var Interest = require('../models/interests');
 var EssayQ = require('../models/essayQuestions');
+var Applicant = require('../models/applicant');
 
 // base url returns index.html from public foulder
 router.get('/', function(req, res) {
@@ -43,5 +44,68 @@ router.get('/formFields', function(req, res){
   });// end skills find
 });// end get
 
+router.post('/', function(req, res) {
+  console.log('hit the applicant post (ouch!), req.body-> ', req.body);
+  var data = req.body;
+
+  var newPerson = new Applicant({
+
+    additionalInfo: data.additionalInfo,
+    contactInfo: {
+      address: {
+        street: data.street,
+        city: data.city,
+        state: data.state,
+        zip: data.zip
+      },
+      email: data.email,
+      phoneNum: data.phoneNum,
+    },
+    dateOfBirth: data.dateOfBirth,
+    emergencyContact: {
+      name: data.emergancyName,
+      phone: data.emergancyPhone
+    },
+    employment: data.employment,
+    essayOne: { question: data.essayOne.question,
+                response: data.essayOne.response
+              },
+    essayTwo: { question: data.essayTwo.question,
+                response: data.essayTwo.response
+              },
+    essayThree:{ question: data.essayThree.question,
+                 response: data.essayThree.response
+               },
+   essayFour:{ question: data.essayFour.question,
+                response: data.essayFour.response
+              },
+    interests: data.intersts, // should be an array
+    name: {
+      first_name: data.firstName,
+      last_name: data.lastName
+    },
+    referenceOne: {
+      name: data.referenceOne.name,
+      email: data.referenceOne.email,
+      phone: data.referenceOne.phone
+    },
+    referenceTwo: {
+      name: data.referenceTwo.name,
+      email: data.referenceTwo.email,
+      phone: data.referenceTwo.phone
+    },
+    skills: data.skills // should be an array
+  }); // end newPerson
+
+  newPerson.save(function(err) {
+      if(err){
+        console.log(err);
+        res.sendStatus(500);
+      }else {
+        console.log('new applicant added');
+        res.sendStatus(201);
+      } // end if else
+  }); // end save
+}); //end post /
 
 module.exports = router;

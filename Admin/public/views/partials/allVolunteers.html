@@ -1,4 +1,4 @@
-<div ng-init="getFormFields()"></div>
+<div ng-init="init()"></div>
 <br><br>
 
 <select >
@@ -12,7 +12,7 @@
 
 <br><br>
 <button type="button" name="button">Email Selected</button>
-<button type="button" name="button">Add/Upload Volunteer</button>
+<button ng-click="hideAddVolunteer = false;" type="button" name="button">Add/Upload Volunteer</button>
 
 <br><br>
 <label for="checkbox">expand all?</label>
@@ -26,31 +26,36 @@
     <td>Phone #</td>
     <td>Email</td>
   </thead>
-  <div ng-repeat="person in volunteers" class="allVolunteer_tableEntry">
-    <tr>
-      <td>{{person.first_name}} {{person.last_name}}</td>
-      <td ng-repeat="interest in person.interest">{{interest}}</td>
-      <td>{{person.phone}}</td>
-      <td>{{person.email}}</td>
+  <div  class="allVolunteer_tableEntry">
+    <!-- <p>{{person.name.first_name}} {{person.name.last_name}}</p> -->
+    <tr ng-repeat="person in volunteers" >
+      <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
+      <td>interests go here</td>
+      <!-- <td ng-repeat="interest in person.interests">{{ interest }}</td> -->
+      <td>{{ person.contactInfo.phoneNum }}</td>
+      <td>{{ person.contactInfo.email }}</td>
     </tr>
-    <tr>
+    <!-- <tr>
       <p>test</p>
       <p>another</p>
-    </tr>
+    </tr> -->
   </div>
 </table>
 
-<div>
+
+
+
+<div ng-hide="hideAddVolunteer">
   <h2>Add a New Volunteer</h2>
 
   <h3>Name</h3>
-  <input type="text" value="" placeholder="First Name">
-  <input type="text" value="" placeholder="Last Name">
+  <input ng-model="firstNameIn" type="text" value="" placeholder="First Name">
+  <input ng-model="lastNameIn" type="text" value="" placeholder="Last Name">
 
   <h3>Address</h3>
-  <input type="text" value="" placeholder="Street">
-  <input type="text" value="" placeholder="City">
-  <select name="state" size="1">
+  <input ng-model="streetIn" type="text" value="" placeholder="Street">
+  <input ng-model="cityIn" type="text" value="" placeholder="City">
+  <select ng-model="stateIn" name="state" size="1">
     <option value="AK">AK</option>
     <option value="AL">AL</option>
     <option value="AR">AR</option>
@@ -103,18 +108,18 @@
     <option value="WV">WV</option>
     <option value="WY">WY</option>
   </select>
-  <input type="numbers" value="" placeholder="Zip">
+  <input ng-model="zipIn" type="numbers" value="" placeholder="Zip">
 
   <h3>Contact Info</h3>
-  <input type="text" value="" placeholder="Email">
-  <input type="numbers" value="" placeholder="Phone Number">
+  <input ng-model="emailIn" type="text" value="" placeholder="Email">
+  <input ng-model="phoneNumIn" type="numbers" value="" placeholder="Phone Number">
 
   <h3>About</h3>
-  <input type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
-  <input type="numbers" value="" placeholder="Employment">
+  <input ng-model="dateOfBirthIn" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
+  <input ng-model="employmentIn" type="numbers" value="" placeholder="Employment">
 
   <h3>Volunteer Info</h3>
-  <input type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
+  <input ng-model="dateBeganIn" type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
   <h4>Skills</h4>
   <div ng-repeat="skill in allSkills">
     <input ng-model="skillsIn[skill.skill]" type="checkbox">
@@ -126,12 +131,12 @@
     <label>{{interest.interest}}</label>
   </div>
   <h4>Notes</h4>
-  <textarea rows="4" cols="60" placeholder="added info about the volunteer..."></textarea>
+  <textarea ng-model="notesIn" rows="4" cols="60" placeholder="added info about the volunteer..."></textarea>
 
   <h3>Emergency Contact</h3>
-  <input type="text" value="" placeholder="Name">
-  <input type="number" value="" placeholder="Phone Number">
+  <input ng-model="emergencyNameIn" type="text" value="" placeholder="Name">
+  <input ng-model="emergencyPhoneIn" type="number" value="" placeholder="Phone Number">
 
   <br><br><br>
-  <button type="button" name="button">Submit</button>
+  <button type="button" name="button" ng-click="submitNewVolunteer()">Submit</button>
 </div>

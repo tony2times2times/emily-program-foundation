@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 //Schema sources info from users Google profile
 var volunteerSchema = new Schema({
 
-  contactInfo {
+  contactInfo: {
     address: {
       street: String,
       city: String,
@@ -22,7 +22,7 @@ var volunteerSchema = new Schema({
   },
   employment: String,
   interests: [ String ],
-  name{
+  name: {
     first_name: {type: String, lowercase: true},
     last_name: {type: String, lowercase: true}
   },
