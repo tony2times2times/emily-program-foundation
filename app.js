@@ -67,7 +67,7 @@ app.use('/private', isLoggedIn, private);
 app.use('/private/adminview', isLoggedIn, adminview);
 app.use('/applicant', isLoggedIn, applicantRouter);
 app.use('/private/emailTemplate', isLoggedIn, emailTemplateRouter);
-app.use('/private/sendEmail', isLoggedIn, sendEmailRouter)
+app.use('/private/sendEmail', isLoggedIn, sendEmailRouter);
 
 
 //listen on port 3000
