@@ -63,46 +63,6 @@ router.put('/:id', function(req, res) {
   var data = req.body;
 
   var updatedApplicant = {
-    // additionalInfo: 'na, nothing else,  I am a simple person',
-    // dateOfBirth: '1985-01-15T06:00:00.000Z',
-    // employment: 'Prime',
-    // __v: 0,
-    // skills:
-    //  [ 'Project Management',
-    //    'Layout/Graphic Design',
-    //    'Artwork/Photography',
-    //    'Public Speaking' ],
-    // referenceTwo:
-    //  { name: 'My Dad',
-    //    email: 'husbandofjamesmom@gmail.com',
-    //    phone: 9525559876 },
-    // referenceOne:
-    //  { name: 'My Mom',
-    //    email: 'jamesmom@yahoo.com',
-    //    phone: 9525551234 },
-    // numMissedOrientaion: 0,
-    // notes: '',
-    // name: { first_name: 'jimmy', last_name: 'ericson' },
-    // interests: [ 'Special Events - Volunteering for at least one special event per year' ],
-    // essayFour: { response: '' },
-    // essayThree: { response: 'Warm Feelings' },
-    // essayTwo: { response: 'I want to be a big help, AND improve my sweet computer skills' },
-    // essayOne: { response: 'I was told about because I was making this app.. and Joey told me about them too.' },
-    // emergencyContact: { name: 'Bro Bro', phone: 6125551234 },
-    // emailedWhat: [],
-    // contactInfo:
-    //  { email: 'jamesericson@gmail.com',
-    //    phoneNum: 9522886862,
-    //    address:
-    //     { street: '3438 1st Ave S',
-    //       city: 'Minneapolis',
-    //       state: 'MN',
-    //       zip: 55408
-    //     }
-    //   },
-    // appStatus: 'applied',
-    // edit: false }
-
 
     additionalInfo: data.additionalInfo,
     contactInfo: {
