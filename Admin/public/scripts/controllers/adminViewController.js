@@ -5,10 +5,8 @@ function($scope, $http, VolunteerFactory) {
   var getAdmins = function() {
     $http.get('/private/adminview/alladmins')
       .then(function(response){
-        console.log('Response: ', response);
         $scope.adminArray = response.data;
       });
-    console.log($scope.adminArray);
   };
 
   $scope.removeAdmin = function(id) {
@@ -24,10 +22,8 @@ function($scope, $http, VolunteerFactory) {
   var getSkills = function() {
     $http.get('/private/adminview/allskills')
       .then(function(response){
-        console.log('Response: ', response);
         $scope.skillArray = response.data;
       });
-    console.log($scope.skillArray);
   };
 
   $scope.addSkill = function() {
@@ -37,17 +33,14 @@ function($scope, $http, VolunteerFactory) {
 
   $scope.switchSkill = function(id, used) {
     var switchHTTP = '/private/adminview/switchskill/' + id + '/' + used;
-    console.log("Attempting switchSkill. HTTP PUT call: ", switchHTTP);
     $http.put(switchHTTP).then(getSkills);
   };
 
   var getInterests = function() {
     $http.get('/private/adminview/allinterests')
       .then(function(response){
-        console.log('Response: ', response);
         $scope.interestArray = response.data;
       });
-    console.log($scope.interestArray);
   };
 
   $scope.addInterest = function() {
@@ -57,7 +50,6 @@ function($scope, $http, VolunteerFactory) {
 
   $scope.switchInterest = function(id, used) {
     var switchHTTP = '/private/adminview/switchinterest/' + id + '/' + used;
-    console.log("Attempting switchInterest. HTTP PUT call: ", switchHTTP);
     $http.put(switchHTTP).then(getInterests);
   };
 

@@ -6,19 +6,17 @@ var EmailTemplate = require( '../../models/emailTemplate' );
 // post to create a new emailTemplate
 router.post('/', function(req, res) {
   console.log('hit the emailTemplate post, req.body-> ', req.body);
-  var data = req.body;
-
   var newEmail = new EmailTemplate({
-      body: data.body,
-      name: data.name,
-      subject: data.subject
+      body: req.body.body,
+      name: req.body.name,
+      subject: req.body.subject
   }); // end newEmail
 
   newEmail.save(function(err) {
-      if(err){
+      if (err) {
         console.log(err);
         res.sendStatus(500);
-      }else {
+      } else {
         console.log('new emailTemplate added');
         res.sendStatus(201);
       } // end if else
@@ -44,38 +42,22 @@ router.get('/', function(req, res) {
 // updates the entire email template entry
 router.put('/:id', function(req, res) {
   console.log('hit the email template put, req.body-> ', req.body);
-  var data = req.body;
-
-  var updatedEmail = {
-
-    body: data.body,
-    name: data.name,
-    subject: data.subject
-  }; // end updatedEmail
-
-/// I really don't know if this will work
-// here's one source http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
-// a second source http://stackoverflow.com/questions/27108177/mongoose-findbyidandupdate-doest-not-work-with-req-body
-/// TODO: return when data is in the system and HTTP call is set up
-  EmailTemplate.findByIdAndUpdate(req.params.id, {$set: updatedEmail} , function(err, result){
-    if (err) return handleError(err);
-
-    console.log("RESULT: ", result);
-    res.send('result');
-    });
+  EmailTemplate.findByIdAndUpdate(req.params.id, {$set: {body: req.body.body, subject: req.body.subject}}, function(err){
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 }); //end put
-
 
 // delete the individual emailTemplate from DB
 router.delete('/:id', function(req, res) {
   console.log('hit the emailTemplate delete, req.params.id-> ', req.params.id);
-
     EmailTemplate.findByIdAndRemove(req.params.id, function (err) {
       if (err){
-        console.log(err);
         res.sendStatus(500);
       } else {
-        console.log('emailTemplate deleted');
         res.sendStatus(200);
       }// end if/else
     });// end findByIdAndRemove

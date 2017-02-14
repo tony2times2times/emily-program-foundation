@@ -13,10 +13,10 @@
       <tbody>
         <tr ng-repeat="template in emailTemplateArray">
           <td style="vertical-align: middle;">{{template.name}}</td>
-          <td style="vertical-align: middle;" class="td-centered"><button ng-click="modifyTemplate(template._id)" type="button" class="btn btn-sm btn-success">
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="modifyTemplateButton(template._id)" type="button" class="btn btn-sm btn-success">
           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
           </button></td>
-          <td style="vertical-align: middle;" class="td-centered"><button ng-click="removeTemplate(template._id)" type="button" class="btn btn-sm btn-danger">
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="removeTemplateButton(template._id)" type="button" class="btn btn-sm btn-danger">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button></td>
         </tr>
@@ -24,10 +24,30 @@
     </table>
     <hr>
     <div class="input-group-btn">
-        <button class="btn btn-primary" type="button" ng-click="createTemplate()">Create a new e-mail template</button>
+        <button class="btn btn-primary" type="button" ng-click="createNewTemplateButton()">Create a new e-mail template</button>
     </div>
-    <div class="input-group admin-input">
-      <text-angular ng-model="body"></text-angular>
+    <div class="input-group" ng-repeat="template in emailTemplateArray" ng-show="modifyTemplateID == template._id">
+      <h4>Edit template:</h4>
+      <h5>Name:</h5>{{template.name}}
+      <h5>To:</h5>--Recipient List--
+      <h5>From:</h5>Emily Program Foundation
+      <h5>Subject:</h5>
+      <input type="text" class="form-control" ng-model="template.subject">
+      <text-angular ng-model="template.body"></text-angular>
+      <button class="btn btn-success" type="button" ng-click="saveTemplate(template._id, template.subject, template.body)">Save this e-mail template</button>
+      <button class="btn btn-danger" type="button" ng-click="cancelTemplate()">Cancel</button>
+    </div>
+    <div class="input-group" ng-show="newTemplateEntry">
+      <h4>Create new template:</h4>
+      <h5>Name:</h5>
+      <input type="text" class="form-control" ng-model="newTemplateName">
+      <h5>To:</h5>--Recipient List--
+      <h5>From:</h5>Emily Program Foundation
+      <h5>Subject:</h5>
+      <input type="text" class="form-control" ng-model="newTemplateSubject">
+      <text-angular ng-model="newTemplateBody"></text-angular>
+      <button class="btn btn-success" type="button" ng-click="saveNewTemplate()">Save this e-mail template</button>
+      <button class="btn btn-danger" type="button" ng-click="cancelNewTemplate()">Cancel</button>
     </div>
   </div>
 </div>
