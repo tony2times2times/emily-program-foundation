@@ -161,11 +161,13 @@ function($scope, $http, $timeout, VolunteerFactory) {
   //makes active person data editable
   $scope.saveEdit = function(){
     $scope.person.edit = false;
-    //update the backup person
+    //save the id
     $scope.id = $scope.person._id;
+    //update the backup person
     $scope.savePerson = angular.copy($scope.person);
-    //search every bucket
+    //label the for loop so i can break it later
     bucket:
+    //search every bucket
     for (var i = 0; i < $scope.hatchery.length; i++) {
       //search every person in those buckets
       for (var j = 0; j < $scope.hatchery[i].length; i++) {
