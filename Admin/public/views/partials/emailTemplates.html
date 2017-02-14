@@ -49,6 +49,7 @@
       <text-angular ng-model="template.body"></text-angular>
       <button class="btn btn-success" type="button" ng-click="saveTemplate(template._id, template.subject, template.body)">Save this e-mail template</button>
       <button class="btn btn-danger" type="button" ng-click="cancelTemplate()">Cancel</button>
+      <hr>
     </div>
     <div class="container admin-subsection" ng-show="newTemplateEntry">
       <h4 class="template-edit">Create new template:</h4>
@@ -75,6 +76,7 @@
       <text-angular ng-model="newTemplateBody"></text-angular>
       <button class="btn btn-success" type="button" ng-click="saveNewTemplate()">Save this e-mail template</button>
       <button class="btn btn-danger" type="button" ng-click="cancelNewTemplate()">Cancel</button>
+      <hr>
     </div>
   </div>
 </div>
