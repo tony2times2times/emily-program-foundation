@@ -70,8 +70,30 @@ body {
 }
 
 /*AUTH*/
-.centerCSS {
-  text-align:center;
+img.centerCSS {
+  display: block;
+  margin: auto;
+  border: red;
+  zoom: 1.5;
+}
+
+.centerEmily {
+  background-position: center;
+  height: 200px;
+  background-image: url("TEP_FOUNDATION_BRAND_545x160.jpg");
+  background-repeat: no-repeat;
+}
+
+.container {
+  background-image: url("FoundationCircles_Setof3.jpg");
+  background-repeat: repeat;
+  background-size: 10%;
+}
+
+.loginText {
+  font-family: 'Roboto', serif;
+        font-size: 48px;
+        text-align: center;
 }
 
 /*ADMIN VIEW*/
