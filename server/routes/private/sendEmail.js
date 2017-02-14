@@ -13,29 +13,28 @@ var transport = nodemailer.createTransport({
   },
 });
 
-router.post('/:recipientType', function(req, res){
-  var recipientArray = req.body.recipientIDArray;
-  if (req.params.recipientType == 'applicants') {
-
-  } else if (req.params.recipientType == 'volunteers') {
-
-  }
-
-  EmailTemplate.find({_id: req.body.templateID}, function(err, template){
-    var errorCallback = function(error){
-      if (error) {
-        console.log(error);
-      }
-    };
+router.post('/', function(req, res){
+  /* Expects to be passed req.body.templateID, the
+  MongoDB _id of the email template, and
+  req.body.recipientArray, an array of objects
+  {email: <email address>, firstName: firstName}. */
+  var recipientArray = req.body.recipientArray;
+  EmailTemplate.findById(req.body.templateID, function(err, template){
     if (err) {
       res.sendStatus(500);
     } else {
+      var errorCallback = function(error){
+        if (error) {
+          console.log(error);
+        }
+      };
       for (var i = 0; i < recipientArray.length; i++) {
+        var emailBody = '<p>' + recipientArray[i].firstName + '</p>' + template.body;
         var mailOptions = {
           from: configs.gmail.username,
-          to: recipientArray[i],
+          to: recipientArray[i].email,
           subject: template.subject,
-          html: template.body
+          html: emailBody
         };
         transport.sendMail(mailOptions, errorCallback);
       }

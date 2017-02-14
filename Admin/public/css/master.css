@@ -111,6 +111,11 @@ body {
    -webkit-transition: none;
 }
 
+.template-edit {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /*ALL VOLUNTEERS*/
 
 /*APPLICANTS*/
