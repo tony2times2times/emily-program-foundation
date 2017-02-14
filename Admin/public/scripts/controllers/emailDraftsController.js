@@ -26,10 +26,10 @@ $scope.getEmailTemplate = function(){
   });
 }; // end getEmailTemplate function
 
-$scope.deleteEmail = function(index){
+$scope.deleteEmail = function(id){
 $http({
   method: 'DELETE',
-  url: '/private/emailTemplate' + $scope.displayEmail[index]._id,
+  url: '/private/emailTemplate/' + id,
 }).then(function(response){
   console.log('delete response', response);
   $scope.getEmailTemplate();
