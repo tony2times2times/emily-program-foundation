@@ -44,18 +44,11 @@ router.get('/formFields', function(req, res){
   });// end skills find
 });// end get
 
-<<<<<<< HEAD
 // post to create a new applicant
-=======
->>>>>>> newVolunInAllVolun
 router.post('/', function(req, res) {
   console.log('hit the applicant post (ouch!), req.body-> ', req.body);
   var data = req.body;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> newVolunInAllVolun
   var newPerson = new Applicant({
 
     additionalInfo: data.additionalInfo,
@@ -115,9 +108,6 @@ router.post('/', function(req, res) {
       } // end if else
   }); // end save
 }); //end post /
-<<<<<<< HEAD
 
-=======
->>>>>>> newVolunInAllVolun
 
 module.exports = router;
