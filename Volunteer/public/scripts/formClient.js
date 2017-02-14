@@ -123,6 +123,17 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
   //     return false;
   //   }
   // }
+
+    var form = document.getElementById('formID');
+      form.noValidate = true;
+      form.addEventListener('submit', function(event){
+        if(!event.target.checkValidity()){
+          event.preventDefault();
+          alert('Please fill out all fields!');
+          window.location ='#!/volInfo';
+        }
+      }, false);
+
   //next button function
   $scope.infoPrev = function(){
     window.location = '#!/volReqs';

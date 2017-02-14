@@ -1,19 +1,19 @@
 <div class="container">
 <div class="background">
     <h1>Volunteer Application</h1>
-    <form name="vInfo">
+    <form name="vInfo" id="formID">
       <label for="firstName">First Name:</label>
-      <input type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name">
+      <input type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name" required value ="">
       <label for="lastName">Last Name:</label>
-      <input type="text" ng-model="ff.lastName" id="lastName" placeholder="Last Name" required>
+      <input type="text" ng-model="ff.lastName" id="lastName" placeholder="Last Name" required value ="">
       <label for="dob">Date of Birth:</label>
-      <input type="text" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year">
+      <input type="text" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year" required value ="">
       <label for="address">Street Address:</label>
-      <input type="text" ng-model="ff.street" id= "address" placeholder ="Street Address">
+      <input type="text" ng-model="ff.street" id= "address" placeholder ="Street Address" required value ="">
       <label for="city">City:</label>
-      <input type="text" ng-model="ff.city" id="city"  placeholder ="City">
+      <input type="text" ng-model="ff.city" id="city"  placeholder ="City" required value ="">
       <label for="state">State:</label>
-      <select id ="state" ng-model="ff.state" name="state">
+      <select id ="state" ng-model="ff.state" name="state" required value ="">
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -67,17 +67,20 @@
         <option value="WY">Wyoming</option>
     </select>
       <label for="zip">Zip Code:</label>
-      <input type="number" ng-model="ff.zip" id="zip" placeholder="Zip Code">
+      <input type="number" ng-model="ff.zip" id="zip" placeholder="Zip Code" required value ="">
       <label for="email">Email:</label>
-      <input type="text" ng-model="ff.email" id="email" placeholder="Email Address">
+      <input type="text" ng-model="ff.email" id="email" placeholder="Email Address" required value ="">
       <label for="phone">Phone Number:</label>
-      <input type="text" ng-model="ff.phoneNum" placeholder="Phone Number">
+      <input type="text" ng-model="ff.phoneNum" placeholder="Phone Number" required value ="">
       <label for="employment">Place of Employment:</label>
-      <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment">
+      <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment" required value ="">
+
+      <button class="nextButt" type="submit" ng-click="infoNext()">Next</button>
+
     </form>
       <br>
     </br>
-      <button type="button" class="prevButt" ng-click="infoPrev()">Previous</button>
-      <button class="nextButt" ng-click="infoNext()">Next</button>
+      <button type="button" class="prevButt"   ng-click="infoPrev()">Previous</button>
+      <!-- <button class="nextButt" type="submit" ng-click="infoNext()">Next</button> -->
     </div>
   </div>
