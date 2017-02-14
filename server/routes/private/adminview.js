@@ -19,7 +19,7 @@ router.get('/alladmins', function(req, res) {
 });
 
 router.delete('/deleteadmin/:id', function(req, res){
-  User.removeOne({_id: req.params.id}, function(err){
+  User.findByIdAndRemove(req.params.id, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -65,7 +65,7 @@ router.post('/addskill/:skill', function(req, res){
 
 router.put('/switchskill/:id/:used', function(req, res){
   console.log("Skill switch, req.params: ", req.params);
-  Skill.updateOne({_id: req.params.id}, {$set: {used: req.params.used}}, function(err){
+  Skill.findByIdAndUpdate(req.params.id, {$set: {used: req.params.used}}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -100,7 +100,7 @@ router.post('/addinterest/:interest', function(req, res){
 });
 
 router.put('/switchinterest/:id/:used', function(req, res){
-  Interest.updateOne({_id: req.params.id}, {$set: {used: req.params.used}}, function(err){
+  Interest.findByIdAndUpdate(req.params.id, {$set: {used: req.params.used}}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
@@ -136,7 +136,7 @@ router.post('/addessayq/:essayq', function(req, res){
 });
 
 router.put('/switchessayq/:id/:used', function(req, res){
-  EssayQ.updateOne({_id: req.params.id}, {$set: {used: req.params.used}}, function(err){
+  EssayQ.findByIdAndUpdate(req.params.id, {$set: {used: req.params.used}}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
