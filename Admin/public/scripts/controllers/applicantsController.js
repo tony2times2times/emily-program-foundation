@@ -55,16 +55,30 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //if person was moved into the scheduled array change thier status
     else if (index === 2) {
       $scope.person.appStatus = 'scheduled';
+      $scope.addOrientation($scope.person);
     }
     else {
       console.log(index + " is not a recognized index please check the incubator function");
     }}
     console.log('ther active persons status is now: ' + $scope.person.appStatus);
-    $scope.id = $scope.person._id;
     $http({
       method: 'PATCH',
-      url: '/applicant/status/' + $scope.id,
+      url: '/applicant/status/' + $scope.person._id,
       data: {status: $scope.person.appStatus}
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
+  };
+
+  //DOES NOT EMAIL - keeps track of how many orientations a person has been scheduled for
+  $scope.addOrientation = function (applicant){
+    applicant.numMissedOrientaion++;
+    $http({
+      method: 'PATCH',
+      url: '/applicant/missed/' + applicant._id,
+      data: applicant
     }).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(error) {
