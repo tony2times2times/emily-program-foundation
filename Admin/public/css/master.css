@@ -69,7 +69,10 @@ body {
   }
 }
 
-/*GLOBAL*/
+/*AUTH*/
+.centerCSS {
+  text-align:center;
+}
 
 /*ADMIN VIEW*/
 .admin-section {
