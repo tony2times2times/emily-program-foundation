@@ -43,3 +43,5 @@ router.post('/:recipientType', function(req, res){
     } //end if else
   });// end find
 });
+
+module.exports = router;
