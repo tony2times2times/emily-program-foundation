@@ -167,13 +167,20 @@ tr {
 }
 
 .table_entries {
-  border-bottom: 2px solid #ddd;
+  border-top: 2px solid #ddd;
 }
 
 .table_entries:hover{
   background-color: #eee;
 }
 
+.allVolunteer_tableEntry_hide_extraInfo {
+  display: none;
+}
+
+.allVolunteer_tableEntry_selected {
+  background-color: #ccc;
+}
 
 loaders: [
   {test: /\.css$/, loader: 'style!css!postcss'}

@@ -21,25 +21,28 @@
 <br><br>
 <table>
   <thead>
+    <td><input type="checkbox"></td>
     <td>Name</td>
     <td>Interest</td>
     <td>Phone #</td>
     <td>Email</td>
   </thead>
-  <div  class="allVolunteer_tableEntry">
-    <!-- <p>{{person.name.first_name}} {{person.name.last_name}}</p> -->
-    <tr ng-repeat="person in volunteers" class="table_entries">
+  <div class="allVolunteer_tableEntry">
+    <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" ng-repeat-start="person in volunteers" class="table_entries">
+      <td><input type="checkbox"></td>
       <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
       <td>interests go here</td>
       <!-- <td ng-repeat="interest in person.interests">{{ interest }}</td> -->
       <td>{{ person.contactInfo.phoneNum }}</td>
       <td>{{ person.contactInfo.email }}</td>
     </tr>
-    <!-- <tr>
-      <p>test</p>
-      <p>another</p>
-    </tr> -->
-  </div>
+    <tr ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex}"  ng-repeat-end >
+      <td></td>
+      <td> <span ng-repeat="skill in person.skills"> {{skill}} </br> </span></td>
+      <td>{{person.contactInfo.address.street}} </br> {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</td>
+
+    </tr>
+  </div >
 </table>
 
 

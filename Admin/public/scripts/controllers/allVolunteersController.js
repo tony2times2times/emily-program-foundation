@@ -11,6 +11,11 @@ function($scope, $http, VolunteerFactory) {
     $scope.getAllVolunteers();
   };// end init()
 
+  $scope.clickedVolunteer = function(index){
+    console.log('expanding to show more info | index = ', index);
+    $scope.selectedindex = index;
+  };//end clickedVolunteer()
+
   $scope.getAllVolunteers = function(){
     console.log('Getting all of the volunteers');
 
