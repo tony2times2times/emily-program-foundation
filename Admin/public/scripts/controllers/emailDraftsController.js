@@ -23,18 +23,17 @@ function($scope, $http, VolunteerFactory, textAngularManager) {
     function(id){
     var deleteHTTP = '/private/emailTemplate/' + id;
     swal({
-  title: "Are you sure?",
-  text: "Your will not be able to recover this imaginary file!",
-  type: "warning",
-  showCancelButton: true,
-  confirmButtonClass: "btn-danger",
-  confirmButtonText: "Yes, delete it!",
-  closeOnConfirm: false
-},
-function(){
-  $http.delete(deleteHTTP).then(getEmailTemplates);
-  swal("Deleted!", "Your imaginary file has been deleted.", "success");
-});
+      title: "Are you sure?",
+      text: "Your will not be able to recover this imaginary file!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-danger",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    }).then(function(){
+      $http.delete(deleteHTTP).then(getEmailTemplates);
+      swal("Deleted!", "Your imaginary file has been deleted.", "success");
+    });
   };
 
   $scope.modifyTemplateButton = function(id){
