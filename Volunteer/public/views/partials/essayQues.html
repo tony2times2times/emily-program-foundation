@@ -1,18 +1,27 @@
+<img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo">
 <div class="container">
   <div class="background">
     <h1>Volunteer Application</h1>
+    <form name="essays" id="essayQuest">
     <label ng-model="ff.essayOneQues" for="essayOne">How did you hear about The Emily Program Foundation?</label>
-      <textarea id="essayOne" ng-model="ff.essayOneResponse" cols="70" rows="7"></textarea>
-    <label for="essayTwo" ng-click="ff.essayTwoQues">Why are you interested in volunteering?</label>
-      <textarea ng-model ="ff.essayTwoResponse" id="essayTwo" rows="7" cols="70"></textarea>
+      <textarea ng-class="{wrong: firstLook === false && essays.essayOne.$invalid}" name="essayOne" id="essayOne" ng-model="ff.essayOneResponse" cols="70" rows="7" required></textarea>
+    <label for="essayTwo" ng-model="ff.essayTwoQues">Why are you interested in volunteering?</label>
+      <textarea ng-class="{wrong: firstLook === false && essays.essayTwo.$invalid}" ng-model ="ff.essayTwoResponse" name="essayTwo" id="essayTwo" rows="7" cols="70" required></textarea>
     <label ng-model="ff.essayThreeQues" for="essayThree">What do you hope to get out of volunteering for The Emily Program Foundation?</label>
-      <textarea ng-model="ff.essayThreeResponse" id="essayThree" rows="7" cols="70"></textarea>
+      <textarea ng-class="{wrong: firstLook === false && essays.essayThree.$invalid}" ng-model="ff.essayThreeResponse" id="essayThree" name="essayThree" rows="7" cols="70" required></textarea>
     <label ng-model="ff.essayFourQues" for="essayFour">Describe any particular skills or experience you feel you'd bring
   to The Emily Program Foundation.</label>
-      <textarea ng-model="ff.essayFourResponse" rows="7" cols="70"></textarea>
+      <textarea ng-class="{wrong: firstLook === false && essays.essayFour.$invalid}" ng-model="ff.essayFourResponse" name="essayFour" rows="7" cols="70" required></textarea>
+      <button type="submit" class="nextButt"> Next ></button>
+    </form>
         <br>
         </br>
-      <button type="button" class="prevButt"ng-click="essayPrev()">Previous</button>
-    <button type="button" class="nextButt" ng-click="essayNext()">Next</button>
+      <button type="button" class="prevButt" ng-click="essayPrev()"> < Previous</button>
+
   </div>
 </div>
+
+
+<!--   -->
+
+<!--type="submit"  -->
