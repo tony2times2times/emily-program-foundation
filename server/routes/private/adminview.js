@@ -112,7 +112,7 @@ router.put('/switchinterest/:id/:used', function(req, res){
 
 router.get('/allessayqs', function(req, res) {
   console.log('Route allEssayQs hit.');
-  EssayQ.find({}, function(err, essayqs){
+  EssayQ.findOne({}, function(err, essayqs){
     console.log('Found: ', essayqs);
     if (err) {
       res.sendStatus(500);
@@ -122,24 +122,12 @@ router.get('/allessayqs', function(req, res) {
   });
 });
 
-router.post('/addessayq/:essayq', function(req, res){
-  var essayq = new EssayQ();
-  essayq.question = decodeURIComponent(req.params.essayq);
-  essayq.used = true;
-  essayq.save(function(err){
+router.put('/changeessayq/:number', function(req, res){
+  EssayQ.findOne({}, function(err, doc){
     if (err) {
       res.sendStatus(500);
     } else {
-      res.sendStatus(200);
-    }
-  });
-});
-
-router.put('/switchessayq/:id/:used', function(req, res){
-  EssayQ.findByIdAndUpdate(req.params.id, {$set: {used: req.params.used}}, function(err){
-    if (err) {
-      res.sendStatus(500);
-    } else {
+      doc[req.params.number] = req.body.questionText;
       res.sendStatus(200);
     }
   });
