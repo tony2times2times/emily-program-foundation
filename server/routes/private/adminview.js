@@ -39,9 +39,7 @@ router.post('/addadmin/:email', function(req, res){
 });
 
 router.get('/allskills', function(req, res) {
-  console.log('Route allSkills hit.');
   Skill.find({}, function(err, skills){
-    console.log('Found: ', skills);
     if (err) {
       res.sendStatus(500);
     } else {
@@ -64,7 +62,6 @@ router.post('/addskill/:skill', function(req, res){
 });
 
 router.put('/switchskill/:id/:used', function(req, res){
-  console.log("Skill switch, req.params: ", req.params);
   Skill.findByIdAndUpdate(req.params.id, {$set: {used: req.params.used}}, function(err){
     if (err) {
       res.sendStatus(500);
@@ -75,9 +72,7 @@ router.put('/switchskill/:id/:used', function(req, res){
 });
 
 router.get('/allinterests', function(req, res) {
-  console.log('Route allInterests hit.');
   Interest.find({}, function(err, interests){
-    console.log('Found: ', interests);
     if (err) {
       res.sendStatus(500);
     } else {
@@ -123,11 +118,13 @@ router.get('/allessayqs', function(req, res) {
 });
 
 router.put('/changeessayq/:number', function(req, res){
-  EssayQ.findOne({}, function(err, doc){
+  var queryObject = {};
+  queryObject[req.params.number] = req.body.questionText;
+  console.log("Change essay route hit. queryObject: ", queryObject);
+  EssayQ.findOneAndUpdate({}, {$set: queryObject}, function(err){
     if (err) {
       res.sendStatus(500);
     } else {
-      doc[req.params.number] = req.body.questionText;
       res.sendStatus(200);
     }
   });

@@ -110,9 +110,9 @@
     <div class="container admin-subsection" ng-repeat="index in [1, 2, 3, 4]" ng-show="questionToEdit == index">
       <div class="form-group row">
         <label for="template-name" class="col-xs-3 col-form-label">Edit Question #{{index}}</label>
-        <div class="col-xs-9"><textarea class="form-control" ng-model="essayqObject[index]" rows="3"></textarea></div>
+        <div class="col-xs-9"><textarea class="form-control" ng-model="inputEssayQ" rows="3"></textarea></div>
       </div>
-      <button class="btn btn-success" type="button" ng-click="saveQuestion(index)">Save this essay question</button>
+      <button class="btn btn-success" type="button" ng-click="saveQuestion(index, inputEssayQ)">Save this essay question</button>
       <button class="btn btn-danger" type="button" ng-click="cancelQuestion()">Cancel</button>
     </div>
     <hr>

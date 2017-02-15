@@ -58,19 +58,20 @@ function($scope, $http, VolunteerFactory) {
   var getEssayQs = function() {
     $http.get('/private/adminview/allessayqs')
       .then(function(response){
-        console.log('Response: ', response);
         $scope.essayqObject = response.data;
       });
-    console.log($scope.essayqObject);
   };
 
   $scope.modifyQuestionButton = function(index){
     $scope.questionToEdit = index;
+    var placeholder = $scope.essayqObject[index];
+    $scope.inputEssayQ = placeholder;
   };
 
-  $scope.saveQuestion = function(index){
+  $scope.saveQuestion = function(index, text){
     var putHTTP = '/private/adminview/changeessayq/' + index;
-    var sendObject = {questionText: $scope.essayqObject[index]};
+    var sendObject = {questionText: text};
+    console.log("PUT call:", putHTTP, sendObject);
     $http.put(putHTTP, sendObject).then(getEssayQs);
     $scope.questionToEdit = false;
     getEssayQs();
