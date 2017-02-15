@@ -164,23 +164,28 @@ function($scope, $http, $timeout, VolunteerFactory) {
       console.log('error', error);
     });
   };
+
+  //Removes person as a applicant and makes them a volunteer
   $scope.activate = function(){
-    var activeList = [];
     //go threw each hat in hatchery
-    for (var i = 0; i < hatchery.length; i++) {
+    for (var i = 0; i < $scope.hatchery.length; i++) {
       //search each person in that hat
-      for (var j = 0; j < hatchery[i].length; j++) {
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
         //if that person has a check mark
-        if (hatchery[i][j].checked === true) {
+        if ($scope.hatchery[i][j].checked === true) {
           //add them to the email list
-          activeList.push(hatchery[i][j]);
+          $scope.addVolunteer($scope.hatchery[i][j]);
+          $scope.removeAllData($scope.hatchery[i][j]);
         }
       }
     }
+  };
+
+  $scope.addVolunteer = function(volunteer){
     $http({
-      method: 'PUT',
-      url: '',
-      data: activeList
+      method: 'POST',
+      url: '/volunteer/applicant',
+      data: volunteer
     }).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(error) {
@@ -259,7 +264,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
     if (
       confirm('Are you sure you want to remove ' +
       applicant.name.first_name + ' ' + applicant.name.last_name +
-    ' THIS CAN NOT BE UNDONE!')) {
+      ' THIS CAN NOT BE UNDONE!')) {
         $scope.removeAllData(applicant);
       }
     };
@@ -271,11 +276,11 @@ function($scope, $http, $timeout, VolunteerFactory) {
 
       if (confirm( applicant.name.first_name + ' ' + applicant.name.last_name +
       ' has missed ' + applicant.numMissedOrientaion + ' orientations do you want to' +
-    'remove them? THIS CAN NOT BE UNDONE!')) {
-      setTimeout(function(){
-      $scope.removeAllData(applicant);
-      $scope.$apply();
-    }, 500);
+      'remove them? THIS CAN NOT BE UNDONE!')) {
+        setTimeout(function(){
+          $scope.removeAllData(applicant);
+          $scope.$apply();
+        }, 500);
       }
     };
 

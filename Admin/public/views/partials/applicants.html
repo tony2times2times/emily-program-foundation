@@ -3,8 +3,8 @@
 
 <br>
 <br>
-<button type="button" ng-click='email'>EMAIL SELECTED</button>
-<button type="button" ng-click="activate">ACTIVATE SELECTED</button>
+<button type="button" ng-click='email()'>EMAIL SELECTED</button>
+<button type="button" ng-click="activate()">ACTIVATE SELECTED</button>
 <div class=container-fluid>
   <div class='container-fluid'>
     <div class="row buckets">
@@ -110,7 +110,7 @@
       <b>Orientations Scheduled:</b> {{person.numMissedOrientaion}}
     </div>
   </div>
-  <div ng-if="person.edit === true" class="container-fluid" ng-keydown="{esc: cancelEdit()}">
+  <div ng-if="person.edit === true" class="container-fluid">
 
     <h3>
       <input ng-model="person.name.first_name"/>
