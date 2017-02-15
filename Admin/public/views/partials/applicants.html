@@ -24,9 +24,10 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         jqyoui-draggable="{index: {{$index}},animate:true}"
+        ng-class='buttonColor(cat)'
         >
         <input type="checkbox" ng-model="cat.checked">
-        {{cat.name.last_name}}
+        {{cat.name.last_name}}{{cat.numMissedOrientaion}}
       </div>
     </div>
   </div>

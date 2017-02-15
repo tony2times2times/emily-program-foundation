@@ -222,6 +222,21 @@ function($scope, $http, $timeout, VolunteerFactory) {
     $scope.person.interests.splice(index,1);
   };
 
+//determines button color based on number of missed orientations
+  $scope.buttonColor = function(cat){
+    if (cat.numMissedOrientaion < 2) {
+      console.log(cat.last_name + 'is green');
+      return 'green';
+    }
+    else if (cat.numMissedOrientaion === 2) {
+        console.log(cat.last_name + 'is yellow');
+      return 'yellow';
+    }else{
+        console.log(cat.last_name + 'is red');
+      return 'red';
+    }
+  };
+
 
   $scope.loadApplicants();
 }]);

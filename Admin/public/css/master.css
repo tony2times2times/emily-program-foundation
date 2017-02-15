@@ -160,6 +160,18 @@ body>.person{
   width: 100%;
 }
 
+.green{
+  background-color: green;
+}
+
+.yellow{
+  background-color: yellow;
+}
+
+.red{
+  background-color: red;
+}
+
 /*EMAIL DRAFTS*/
 .repeatBox {
   width: 400px;
