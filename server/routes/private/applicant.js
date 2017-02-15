@@ -108,7 +108,8 @@ router.put('/:id', function(req, res) {
       phone: data.referenceTwo.phone
     },
     skills: data.skills, // should be an array
-    notes: data.notes
+    notes: data.notes,
+    numMissedOrientaion: data.numMissedOrientaion
   }; // end updatedApplicant
 
   Applicant.findByIdAndUpdate(req.params.id, {$set: updatedApplicant} , function(err, result){
