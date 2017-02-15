@@ -28,6 +28,10 @@ myForm.config(['$routeProvider', function($routeProvider){
     templateUrl: '../views/partials/volReqs.html',
     controller: 'ReqsController'
   })
+  .when('/thankYou', {
+    templateUrl: '../views/partials/thankYou.html',
+    controller: 'ThanksController'
+  })
   .otherwise({
     redirectTo: 'volReqs'
   });
@@ -114,6 +118,10 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   };
 }]); //end SkillsController
 
+myForm.controller('ThanksController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  
+}]);
+
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
   // function requiredFields(){
   //   var x = document.forms.vInfo.fname.value;
@@ -156,9 +164,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
   //submit button
   $scope.submitApp = function(){
     console.log('Submiting Form');
-
     var sendData = {
-
       additionalInfo: formFactory.additionalInfo,
       street: formFactory.street,
       city: formFactory.city,
@@ -210,8 +216,8 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
     }).then(function(response){
       console.log(response);
     });//end http
-  };//end submitApp()
 
+  };//end submitApp()
 }]);//end waiverController
 
 //filter out the underscores from the interests and skills section

@@ -1,9 +1,5 @@
 body {
-  background-size: 350px;
   font-family: sans-serif;
-  background-image: url("TEPF-Logo-Transparent.png");
-  background-repeat:no-repeat;
-  background-position: left top;
 }
 
 h1 {
@@ -24,7 +20,7 @@ h1 {
   text-align: left;
   font-family: sans-serif;
   margin: 150px 150px 20px 150px;
-  padding:25px;
+  padding:40px;
   border-radius: 10px;
 }
 
@@ -92,6 +88,7 @@ h1 {
 
 #opLinks{
   margin-bottom: 15px;
+  text-align: center;
 }
 
 #infoContent {
@@ -122,4 +119,8 @@ h1 {
   top: 200px;
   left: 30%;
   right: 30%;
+}
+
+#logo {
+  width: 25%;
 }
