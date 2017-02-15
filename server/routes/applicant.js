@@ -36,9 +36,8 @@ router.patch('/status/:id', function(req, res) {
 
 // updates the applicat about missed orientation
 router.patch('/missed/:id', function(req, res) {
-  console.log('hit patch missed orientation');
-//bellow I used findByIdAndUpdate, I used this to try to keep some consistancy. It should work with findById too
-  Applicant.findByIdAndUpdate(req.params.id, function (err, applicant) {
+  console.log('hit patch missed orientation, req.params.id-> ', req.params.id);
+  Applicant.findById(req.params.id, function (err, applicant) {
     if (err){
       console.log(err);
       res.sendStatus(500);
