@@ -107,7 +107,8 @@ router.put('/:id', function(req, res) {
       email: data.referenceTwo.email,
       phone: data.referenceTwo.phone
     },
-    skills: data.skills // should be an array
+    skills: data.skills, // should be an array
+    notes: data.notes
   }; // end updatedApplicant
 
   Applicant.findByIdAndUpdate(req.params.id, {$set: updatedApplicant} , function(err, result){

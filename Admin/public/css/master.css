@@ -158,6 +158,8 @@ body>.person{
 }
 .person {
   width: 100%;
+  border-color: black;
+  color: black;
 }
 
 .green{

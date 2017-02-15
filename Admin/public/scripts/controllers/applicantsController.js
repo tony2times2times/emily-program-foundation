@@ -74,6 +74,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
 
   //DOES NOT EMAIL - keeps track of how many orientations a person has been scheduled for
   $scope.addOrientation = function (applicant){
+    console.log('addint orientation for ' + applicant.last_name);
     applicant.numMissedOrientaion++;
     $http({
       method: 'PATCH',
@@ -225,14 +226,11 @@ function($scope, $http, $timeout, VolunteerFactory) {
 //determines button color based on number of missed orientations
   $scope.buttonColor = function(cat){
     if (cat.numMissedOrientaion < 2) {
-      console.log(cat.last_name + 'is green');
       return 'green';
     }
     else if (cat.numMissedOrientaion === 2) {
-        console.log(cat.last_name + 'is yellow');
       return 'yellow';
     }else{
-        console.log(cat.last_name + 'is red');
       return 'red';
     }
   };
