@@ -184,7 +184,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //search every bucket
     for (var i = 0; i < $scope.hatchery.length; i++) {
       //search every person in those buckets
-      for (var j = 0; j < $scope.hatchery[i].length; i++) {
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
         //when a matching id is found
         if ($scope.hatchery[i][j]._id===$scope.id){
           //update the person in that bucket
