@@ -73,7 +73,6 @@ body {
 img.centerCSS {
   display: block;
   margin: auto;
-  border: red;
   zoom: 1.5;
 }
 

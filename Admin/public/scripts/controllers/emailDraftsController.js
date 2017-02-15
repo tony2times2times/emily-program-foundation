@@ -19,9 +19,22 @@ function($scope, $http, VolunteerFactory, textAngularManager) {
     $scope.newTemplateBody = '';
   };
 
-  $scope.removeTemplateButton = function(id){
+  $scope.removeTemplateButton =
+    function(id){
     var deleteHTTP = '/private/emailTemplate/' + id;
-    $http.delete(deleteHTTP).then(getEmailTemplates);
+    swal({
+  title: "Are you sure?",
+  text: "Your will not be able to recover this imaginary file!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonClass: "btn-danger",
+  confirmButtonText: "Yes, delete it!",
+  closeOnConfirm: false
+},
+function(){
+  $http.delete(deleteHTTP).then(getEmailTemplates);
+  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+});
   };
 
   $scope.modifyTemplateButton = function(id){
@@ -57,6 +70,7 @@ function($scope, $http, VolunteerFactory, textAngularManager) {
     };
     $http.post('/private/emailTemplate/', newTemplate).then(getEmailTemplates);
     $scope.newTemplateEntry = false;
+    swal("Template Saved!", "Thank you!", "success");
     clearNewTemplateEntries();
   };
 
