@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require( 'mongoose' );
-var Applicant = require( '../models/applicant' );
+var Applicant = require( '../../models/applicant' );
 
 // gets ALL applicants from DB
 router.get('/', function(req, res) {
