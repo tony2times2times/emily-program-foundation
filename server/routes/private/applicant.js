@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require( 'mongoose' );
-var Applicant = require( '../models/applicant' );
+var Applicant = require( '../../models/applicant' );
 
 // gets ALL applicants from DB
 router.get('/', function(req, res) {
@@ -36,9 +36,8 @@ router.patch('/status/:id', function(req, res) {
 
 // updates the applicat about missed orientation
 router.patch('/missed/:id', function(req, res) {
-  console.log('hit patch missed orientation');
-//bellow I used findByIdAndUpdate, I used this to try to keep some consistancy. It should work with findById too
-  Applicant.findByIdAndUpdate(req.params.id, function (err, applicant) {
+  console.log('hit patch missed orientation, req.params.id-> ', req.params.id);
+  Applicant.findById(req.params.id, function (err, applicant) {
     if (err){
       console.log(err);
       res.sendStatus(500);
@@ -111,10 +110,6 @@ router.put('/:id', function(req, res) {
     skills: data.skills // should be an array
   }; // end updatedApplicant
 
-/// I really don't know if this will work (or all of the updates for that matter)
-// here one source http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
-// a second source http://stackoverflow.com/questions/27108177/mongoose-findbyidandupdate-doest-not-work-with-req-body
-/// TODO: return when data is in the system and HTTP call is set up
   Applicant.findByIdAndUpdate(req.params.id, {$set: updatedApplicant} , function(err, result){
     if (err){
       console.log(err);

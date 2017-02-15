@@ -2,6 +2,8 @@ emilyApp.controller('AdminViewController', ["$scope", "$http", "VolunteerFactory
 function($scope, $http, VolunteerFactory) {
   console.log("AdminViewController loaded.");
 
+  $scope.questionToEdit = false;
+
   var getAdmins = function() {
     $http.get('/private/adminview/alladmins')
       .then(function(response){
@@ -56,21 +58,27 @@ function($scope, $http, VolunteerFactory) {
   var getEssayQs = function() {
     $http.get('/private/adminview/allessayqs')
       .then(function(response){
-        console.log('Response: ', response);
-        $scope.essayqArray = response.data;
+        $scope.essayqObject = response.data;
       });
-    console.log($scope.essayqArray);
   };
 
-  $scope.addEssayQ = function() {
-    var addHTTP = '/private/adminview/addessayq/' + encodeURIComponent($scope.inputEssayQ);
-    $http.post(addHTTP).then(getEssayQs);
+  $scope.modifyQuestionButton = function(index){
+    $scope.questionToEdit = index;
+    var placeholder = $scope.essayqObject[index];
+    $scope.inputEssayQ = placeholder;
   };
 
-  $scope.switchEssayQ = function(id, used) {
-    var switchHTTP = '/private/adminview/switchessayq/' + id + '/' + used;
-    console.log("Attempting switchEssayQ. HTTP PUT call: ", switchHTTP);
-    $http.put(switchHTTP).then(getEssayQs);
+  $scope.saveQuestion = function(index, text){
+    var putHTTP = '/private/adminview/changeessayq/' + index;
+    var sendObject = {questionText: text};
+    console.log("PUT call:", putHTTP, sendObject);
+    $http.put(putHTTP, sendObject).then(getEssayQs);
+    $scope.questionToEdit = false;
+    getEssayQs();
+  };
+
+  $scope.cancelQuestion = function() {
+    $scope.questionToEdit = false;
   };
 
   getEssayQs();
