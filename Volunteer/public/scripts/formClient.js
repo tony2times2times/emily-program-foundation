@@ -38,6 +38,18 @@ myForm.config(['$routeProvider', function($routeProvider){
 }]); //end routeProvider
 
 myForm.controller('EssayController', ['$scope', '$http', '$window', '$location', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  // begin validation for inputs and alert user if input is skipped
+    $scope.firstLook = true;
+    var form = document.getElementById('essayQuest');
+      form.noValidate = true;
+      form.addEventListener('submit', function(event){
+        if(!event.target.checkValidity()){
+          alert('Please fill out all fields!');
+          $scope.firstLook = false;
+        } else {
+          window.location = '#!/interestSkills';
+        }
+      }, false); //end validation sequence
   //previous button
   $scope.essayPrev = function(){
     window.location ='#!/volInfo';
@@ -70,6 +82,18 @@ myForm.controller('FormController', ['$scope', '$http', 'formFactory', function(
 }]); //end FormController
 
 myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  // begin validation for inputs and alert user if input is skipped
+    $scope.firstLook = true;
+    var form = document.getElementById('formRef');
+      form.noValidate = true;
+      form.addEventListener('submit', function(event){
+        if(!event.target.checkValidity()){
+          alert('Please fill out all fields!');
+          $scope.firstLook = false;
+        } else {
+          window.location = '#!/waiver';
+        }
+      }, false); //end validation sequence
   //previous button
   $scope.refPrev = function(){
     window.location ='#!/interestSkills';
@@ -123,8 +147,8 @@ myForm.controller('ThanksController', ['$scope', '$http', '$location', '$window'
 }]);
 
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
+  //begin validation for inputs and alert user if input is skipped
     $scope.firstLook = true;
-
     var form = document.getElementById('formID');
       form.noValidate = true;
       form.addEventListener('submit', function(event){
@@ -136,16 +160,13 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
           window.location = '#!/essayQues';
         }
 
-      }, false);
-
+      }, false); //end validation sequence
   //next button function
   $scope.infoPrev = function(){
     window.location = '#!/volReqs';
   };
   //previous button function
   $scope.infoNext = function(){
-    // requiredFields();
-    // sendDataToFactory();
     window.location = '#!/essayQues';
   };
     $scope.ff = formFactory;

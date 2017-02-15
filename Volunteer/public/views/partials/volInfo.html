@@ -1,24 +1,20 @@
 <img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo">
 <div class="container">
 <div class="background">
-
-<!-- vInfo.fname.$touched
-vInfo.lastName.$touched -->
-
     <h1>Volunteer Application</h1>
     <form name="vInfo" id="formID">
       <label for="firstName">First Name:</label>
-      <input ng-class="{wrong: firstLook === false && vInfo.fname.$invalid}" type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name" required>
+        <input ng-class="{wrong: firstLook === false && vInfo.fname.$invalid}" type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name" required>
       <label for="lastName">Last Name:</label>
-      <input ng-class="{wrong: firstLook === false && vInfo.lastName.$invalid}" type="text" ng-model="ff.lastName" name="lastName" id="lastName" placeholder="Last Name" required value ="">
+        <input ng-class="{wrong: firstLook === false && vInfo.lastName.$invalid}" type="text" ng-model="ff.lastName" name="lastName" id="lastName" placeholder="Last Name" required>
       <label for="dob">Date of Birth:</label>
-      <input type="text" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year" required value ="">
+        <input type="text" ng-class="{wrong: firstLook === false && vInfo.dob.$invalid}" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year" name="dob" required>
       <label for="address">Street Address:</label>
-      <input type="text" ng-model="ff.street" id= "address" placeholder ="Street Address" required value ="">
+        <input type="text" ng-class="{wrong: firstLook === false && vInfo.address.$invalid}" ng-model="ff.street" id= "address" placeholder ="Street Address" name="address" required>
       <label for="city">City:</label>
-      <input type="text" ng-model="ff.city" id="city"  placeholder ="City" required value ="">
+        <input type="text" ng-class="{wrong: firstLook === false && vInfo.city.$invalid}" ng-model="ff.city" id="city" name="city" placeholder ="City" required>
       <label for="state">State:</label>
-      <select id ="state" ng-model="ff.state" name="state" required value ="">
+        <select id ="state" ng-class="{wrong: firstLook === false && vInfo.state.$invalid}" ng-model="ff.state" name="state" required value>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -70,15 +66,15 @@ vInfo.lastName.$touched -->
         <option value="WV">West Virginia</option>
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
-    </select>
+      </select>
       <label for="zip">Zip Code:</label>
-      <input type="number" ng-model="ff.zip" id="zip" placeholder="Zip Code" required value ="">
+        <input type="number" ng-class="{wrong: firstLook === false && vInfo.zip.$invalid}" ng-model="ff.zip" id="zip" placeholder="Zip Code" name="zip" required>
       <label for="email">Email:</label>
-      <input type="text" ng-model="ff.email" id="email" placeholder="Email Address" required value ="">
+        <input type="text" ng-class="{wrong: firstLook === false && vInfo.email.$invalid}" ng-model="ff.email" id="email" name="email" placeholder="Email Address" required>
       <label for="phone">Phone Number:</label>
-      <input type="text" ng-model="ff.phoneNum" placeholder="Phone Number" required value ="">
+        <input type="text" ng-class="{wrong: firstLook === false && vInfo.phone.$invalid}" ng-model="ff.phoneNum" name="phone" placeholder="Phone Number" required>
       <label for="employment">Place of Employment:</label>
-      <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment" required value ="">
+        <input type="text" ng-class="{wrong: firstLook === false && vInfo.employment.$invalid}" ng-model="ff.employment" id="employment" name="employment" placeholder="Place of Employment" required>
 
       <button class="nextButt" type="submit" >Next ></button>
 <!-- ng-click="infoNext()" -->

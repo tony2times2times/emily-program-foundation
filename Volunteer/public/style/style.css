@@ -8,7 +8,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-.wrong {
+.wrong{
   border-color: red;
 }
 
@@ -71,6 +71,10 @@ h1 {
   /*margin-left: 100px;*/
 
 }
+
+/*.ng-submitted .ng-invalid {
+  border-color: red;
+}*/
 
 #beginApp{
   text-align: center;
