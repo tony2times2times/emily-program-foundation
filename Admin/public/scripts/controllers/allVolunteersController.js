@@ -6,6 +6,7 @@ function($scope, $http, VolunteerFactory) {
     $scope.hideAddVolunteer = true;
     $scope.skillsIn = {};
     $scope.interestsIn = {};
+    $scope.selectedindex = null;
 
     $scope.getFormFields();
     $scope.getAllVolunteers();
@@ -13,6 +14,7 @@ function($scope, $http, VolunteerFactory) {
 
   $scope.clickedVolunteer = function(index){
     console.log('expanding to show more info | index = ', index);
+    if($scope.selectedindex === index) return $scope.selectedindex = null;
     $scope.selectedindex = index;
   };//end clickedVolunteer()
 

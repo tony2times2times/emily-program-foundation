@@ -21,11 +21,11 @@
 <br><br>
 <table>
   <thead>
-    <td><input type="checkbox"></td>
-    <td>Name</td>
-    <td>Interest</td>
-    <td>Phone #</td>
-    <td>Email</td>
+    <th><input type="checkbox"></th>
+    <th>Name</th>
+    <th>Interest</th>
+    <th>Phone #</th>
+    <th>Email</th>
   </thead>
   <div class="allVolunteer_tableEntry">
     <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" ng-repeat-start="person in volunteers" class="table_entries">
@@ -36,11 +36,10 @@
       <td>{{ person.contactInfo.phoneNum }}</td>
       <td>{{ person.contactInfo.email }}</td>
     </tr>
-    <tr ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex}"  ng-repeat-end >
-      <td></td>
-      <td> <span ng-repeat="skill in person.skills"> {{skill}} </br> </span></td>
-      <td>{{person.contactInfo.address.street}} </br> {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</td>
-
+    <tr ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && selectedindex !== -1 }"  ng-repeat-end class="allVolunteer_tableEntry_moreInfo">
+      <td colspan="2" > <label>Skills:</label> <span ng-repeat="skill in person.skills"> {{skill}} </br></span></td>
+      <td colspan="1" >{{person.contactInfo.address.street}} </br> {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</td>
+      <td colspan="3"> <p>this is where I can put even more information which will be really good</p> </td>
     </tr>
   </div >
 </table>

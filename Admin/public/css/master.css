@@ -150,6 +150,8 @@ body>.person{
 }
 
 table {
+  border-collapse: collapse;
+
   width: 80%;
   margin: 0 auto;
   text-align: center;
@@ -161,9 +163,18 @@ thead {
   color: white;
 }
 
-tr {
+tr, th {
   text-align: center;
   height: 2em;
+}
+td {
+  /*not sure that this is the right approach */
+  max-width: 6rem;
+}
+
+.allVolunteer_tableEntry_moreInfo td {
+  padding: 15px 3px;
+  background-color: #eee;
 }
 
 .table_entries {
@@ -171,7 +182,7 @@ tr {
 }
 
 .table_entries:hover{
-  background-color: #eee;
+  background-color: #ccc;
 }
 
 .allVolunteer_tableEntry_hide_extraInfo {
@@ -179,7 +190,7 @@ tr {
 }
 
 .allVolunteer_tableEntry_selected {
-  background-color: #ccc;
+  background-color: #ddd;
 }
 
 loaders: [
