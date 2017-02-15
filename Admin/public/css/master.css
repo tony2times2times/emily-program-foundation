@@ -149,6 +149,32 @@ body>.person{
   display: inline-block;
 }
 
+table {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+thead {
+  background-color: #dd561e;
+  color: white;
+}
+
+tr {
+  text-align: center;
+  height: 2em;
+}
+
+.table_entries {
+  border-bottom: 2px solid #ddd;
+}
+
+.table_entries:hover{
+  background-color: #eee;
+}
+
+
 loaders: [
   {test: /\.css$/, loader: 'style!css!postcss'}
 ]
