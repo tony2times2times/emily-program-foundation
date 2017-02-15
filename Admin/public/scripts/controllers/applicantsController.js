@@ -47,10 +47,12 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //if person was moved into the applied array change thier status
     else {if (index === 0) {
       $scope.person.appStatus = 'applied';
+      if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
     }
     //if person was moved into the pending array change thier status
     else if (index === 1) {
       $scope.person.appStatus = 'pending';
+      if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
     }
     //if person was moved into the scheduled array change thier status
     else if (index === 2) {
@@ -74,12 +76,30 @@ function($scope, $http, $timeout, VolunteerFactory) {
 
   //DOES NOT EMAIL - keeps track of how many orientations a person has been scheduled for
   $scope.addOrientation = function (applicant){
-    console.log('addint orientation for ' + applicant.last_name);
-    applicant.numMissedOrientaion++;
+    console.log('addint orientation for ' + $scope.person.last_name);
+    //update all references localy
+    $scope.person.numMissedOrientaion++;
+    $scope.savePerson.numMissedOrientaion++;
+    bucket:
+    //search every bucket
+    for (var i = 0; i < $scope.hatchery.length; i++) {
+      //search every person in those buckets
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
+        //when a matching id is found
+        if ($scope.hatchery[i][j]._id===$scope.person._id){
+          console.log('person found adding orientation!');
+          //add an orientation to that person
+          $scope.hatchery[i][j].numMissedOrientaion++;
+          //exit the bucket for loop
+          break bucket;
+        }
+      }
+    }
+    //update all the database
     $http({
       method: 'PATCH',
-      url: '/applicant/missed/' + applicant._id,
-      data: applicant
+      url: '/applicant/missed/' + $scope.person._id,
+      data: $scope.person
     }).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(error) {
@@ -223,7 +243,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
     $scope.person.interests.splice(index,1);
   };
 
-//determines button color based on number of missed orientations
+  //determines button color based on number of missed orientations
   $scope.buttonColor = function(cat){
     if (cat.numMissedOrientaion < 2) {
       return 'green';
@@ -234,7 +254,57 @@ function($scope, $http, $timeout, VolunteerFactory) {
       return 'red';
     }
   };
+  //verifies removal if remove applicant button was pushed
+  $scope.removeApplicant = function(applicant){
+    if (
+      confirm('Are you sure you want to remove ' +
+      applicant.name.first_name + ' ' + applicant.name.last_name +
+    ' THIS CAN NOT BE UNDONE!')) {
+        $scope.removeAllData(applicant);
+      }
+    };
+
+    //verifies removal if applicant missed 3 orientations
+    $scope.askToRemove = function(applicant){
+      //make the number of missed orientations a string
+      JSON.stringify(applicant.numMissedOrientaion);
+
+      if (confirm( applicant.name.first_name + ' ' + applicant.name.last_name +
+      ' has missed ' + applicant.numMissedOrientaion + ' orientations do you want to' +
+    'remove them? THIS CAN NOT BE UNDONE!')) {
+      setTimeout(function(){
+      $scope.removeAllData(applicant);
+      $scope.$apply();
+    }, 500);
+      }
+    };
+
+    //actually removes applicant
+    $scope.removeAllData = function(applicant){
+      console.log('removing applicant: ' + applicant.last_name);
+      //remove applicant localy
+      bucket:
+      //search every bucket
+      for (var i = 0; i < $scope.hatchery.length; i++) {
+        //search every person in those buckets
+        for (var j = 0; j < $scope.hatchery[i].length; j++) {
+          //when a matching id is found
+          if ($scope.hatchery[i][j]._id===applicant._id){
+            $scope.hatchery[i].splice(j,1);
+            break bucket;
+          }
+        }
+      }
+      $http({
+        method: 'DELETE',
+        url: '/applicant/' + applicant._id
+      }).then(function successCallback(response) {
+        console.log(response);
+      }, function errorCallback(error) {
+        console.log('error', error);
+      });
+    };
 
 
-  $scope.loadApplicants();
-}]);
+    $scope.loadApplicants();
+  }]);
