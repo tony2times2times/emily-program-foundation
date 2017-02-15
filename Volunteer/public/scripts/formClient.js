@@ -119,7 +119,7 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
 }]); //end SkillsController
 
 myForm.controller('ThanksController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
-  
+
 }]);
 
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
@@ -216,7 +216,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
     }).then(function(response){
       console.log(response);
     });//end http
-
+    window.location ='#!/thankYou';
   };//end submitApp()
 }]);//end waiverController
 
