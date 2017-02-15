@@ -92,25 +92,28 @@
     <table class="table table-condensed">
       <thead>
         <tr>
-          <th>Question</th>
-          <th class="td-centered">Shown in<br/>application?</th>
+          <th></th>
+          <th>Question Text</th>
+          <th class="td-centered">Edit this<br/>question</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="essayq in essayqArray">
-          <td>{{essayq.question}}</td>
-          <td style="vertical-align: middle;" class="td-centered">
-            <toggle style="quick" type="checkbox" ng-model="essayq.used" ng-change="switchEssayQ(essayq._id, essayq.used)" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
-          </td>
+        <tr ng-repeat="index in [1, 2, 3, 4]">
+          <td>Question #{{index}}</td>
+          <td>{{essayqObject[index]}}</td>
+          <td style="vertical-align: middle;" class="td-centered"><button ng-click="modifyQuestionButton(index)" type="button" class="btn btn-sm btn-success">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button></td>
         </tr>
       </tbody>
     </table>
-    <h4>Add a new essay question:</h4>
-    <div class="input-group">
-      <input type="text" class="form-control" ng-model="inputEssayQ">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" ng-click="addEssayQ()">Add new essay question</button>
-      </span>
+    <div class="container admin-subsection" ng-repeat="index in [1, 2, 3, 4]" ng-show="questionToEdit == index">
+      <div class="form-group row">
+        <label for="template-name" class="col-xs-3 col-form-label">Edit Question #{{index}}</label>
+        <div class="col-xs-9"><textarea class="form-control" ng-model="essayqObject[index]" rows="3"></textarea></div>
+      </div>
+      <button class="btn btn-success" type="button" ng-click="saveQuestion(index)">Save this essay question</button>
+      <button class="btn btn-danger" type="button" ng-click="cancelQuestion()">Cancel</button>
     </div>
     <hr>
   </div>
