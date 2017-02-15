@@ -123,23 +123,19 @@ myForm.controller('ThanksController', ['$scope', '$http', '$location', '$window'
 }]);
 
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
-  // function requiredFields(){
-  //   var x = document.forms.vInfo.fname.value;
-  //   console.log(x);
-  //   if(x === " "){
-  //     alert('Please fill out all fields!');
-  //     return false;
-  //   }
-  // }
+    $scope.firstLook = true;
 
     var form = document.getElementById('formID');
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          event.preventDefault();
           alert('Please fill out all fields!');
-          window.location ='#!/volInfo';
+          $scope.firstLook = false;
+          // window.location ='#!/volInfo';
+        } else {
+          window.location = '#!/essayQues';
         }
+
       }, false);
 
   //next button function

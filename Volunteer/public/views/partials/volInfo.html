@@ -1,12 +1,16 @@
 <img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo">
 <div class="container">
 <div class="background">
+
+<!-- vInfo.fname.$touched
+vInfo.lastName.$touched -->
+
     <h1>Volunteer Application</h1>
     <form name="vInfo" id="formID">
       <label for="firstName">First Name:</label>
-      <input type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name" required value ="">
+      <input ng-class="{wrong: firstLook === false && vInfo.fname.$invalid}" type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name" required>
       <label for="lastName">Last Name:</label>
-      <input type="text" ng-model="ff.lastName" id="lastName" placeholder="Last Name" required value ="">
+      <input ng-class="{wrong: firstLook === false && vInfo.lastName.$invalid}" type="text" ng-model="ff.lastName" name="lastName" id="lastName" placeholder="Last Name" required value ="">
       <label for="dob">Date of Birth:</label>
       <input type="text" ng-model="ff.dateOfBirth" id= "dob" placeholder="Month/Day/Year" required value ="">
       <label for="address">Street Address:</label>
@@ -76,12 +80,12 @@
       <label for="employment">Place of Employment:</label>
       <input type="text" ng-model="ff.employment" id="employment" placeholder="Place of Employment" required value ="">
 
-      <button class="nextButt" type="submit" ng-click="infoNext()">Next</button>
-
+      <button class="nextButt" type="submit" >Next ></button>
+<!-- ng-click="infoNext()" -->
     </form>
       <br>
     </br>
-      <button type="button" class="prevButt"   ng-click="infoPrev()">Previous</button>
+      <button type="button" class="prevButt"   ng-click="infoPrev()"> < Previous</button>
       <!-- <button class="nextButt" type="submit" ng-click="infoNext()">Next</button> -->
     </div>
   </div>

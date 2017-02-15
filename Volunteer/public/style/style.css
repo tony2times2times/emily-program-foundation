@@ -8,6 +8,10 @@ h1 {
   margin-bottom: 20px;
 }
 
+.wrong {
+  border-color: red;
+}
+
 .container{
     background-image: url("FoundationCircles_Setof3.jpg");
     background-repeat: repeat;
