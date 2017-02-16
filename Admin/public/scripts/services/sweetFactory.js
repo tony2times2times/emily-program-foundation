@@ -1,21 +1,22 @@
-emilyApp.factory('SweetFactory', function ($http) {
+emilyApp.factory('SweetFactory', function($http){
   var Sweet = {};
 
-  Sweet.emailSend = function (recipientArray) {
+  Sweet.emailSend = function(recipientArray){
     /* Format of recipientArray (from /model/volunteer.js):
     [
-      {name:  {
-                first_name: <name, in lower case>,
-                last_name: <name, in lower case>
-              },
-      email:  <email address>},
-      {<name/email 2>},
-      etc.
+      {name:        {
+                      first_name: <name>,
+                      last_name: <name>
+                    },
+      contactInfo:  {
+                      email: <email address>
+                    }
+      }, {<name/email 2>}, etc.
     ]
     */
     var recipientAddressList = '';
     for (var i = 0; i < recipientArray.length; i++) {
-      recipientAddressList += recipientArray[i].name.first_name + ' ' + recipientArray[i].name.last_name + ' (' + recipientArray[i].email + ')';
+      recipientAddressList += recipientArray[i].name.first_name + ' ' + recipientArray[i].name.last_name + ' (' + recipientArray[i].contactInfo.email + ')';
       if (i < (recipientArray.length - 1)) {
         recipientAddressList += ', ';
       }
@@ -49,29 +50,37 @@ emilyApp.factory('SweetFactory', function ($http) {
           confirmButtonText: 'Send Email(s)',
           showLoaderOnConfirm: true,
           html:
-            '<style type="text/css">' +
-            'table {margin: 0 auto;' +
-            'text-align: left;' +
-            'font: 14px arial, sans-serif;}' +
-            'td {vertical-align: top; ' +
-            'padding: 5px;}' +
-            '.left {width: 100px;}' +
-            '.right {width: 450px;}' +
-            '</style><table><tr>' +
-            '<td class="left">Template:</td>' +
-            '<td class="right">' +
-            emailTemplateArray[index].name +
-            '</td></tr><tr><td>To:</td><td>' + recipientAddressList + '</td></tr>' +
-            '<tr><td>From:</td><td>' +
-            'The Emily Program Foundation' +
-            '</td></tr><tr><td>Subject:</td><td>' +
-            emailTemplateArray[index].subject +
-            '</td></tr><tr><td>Body:</td><td>' +
-            '<p>Dear (addressee),</p>' +
-            emailTemplateArray[index].body +
-            '</td></tr></table>'
+            '<style type="text/css"> table {margin: 0 auto;' +
+            'text-align: left; font: 14px arial, sans-serif;}' +
+            'td {vertical-align: top; padding: 5px;}' +
+            '.left {width: 100px;} .right {width: 450px;}' +
+            '</style><table><tr><td class="left">Template:</td>' +
+            '<td class="right">' + emailTemplateArray[index].name +
+            '</td></tr><tr><td>To:</td><td>' + recipientAddressList +
+            '</td></tr><tr><td>From:</td><td>' +
+            'The Emily Program Foundation</td></tr><tr><td>Subject:' +
+            '</td><td>' + emailTemplateArray[index].subject +
+            '</td></tr><tr><td>Body:</td><td><p>Dear (addressee),</p>' +
+            emailTemplateArray[index].body + '</td></tr></table>',
+          preConfirm: function(){
+            return new Promise(function(resolve){
+              var objectToSend = {
+                templateID: emailTemplateArray[index]._id,
+                recipientArray: recipientArray
+              };
+              console.log(objectToSend);
+              $http.post('/private/sendEmail', objectToSend).then(function(){
+                swal('Emails sent!',
+                  'Check the admin e-mail account. Emails that fail delivery' +
+                  'will generate a return, failure e-mail.',
+                  'success'
+                );
+                resolve();
+              });
+            });
+          }
         });
-      });
+      }).catch(swal.noop);
     });
   };
   return Sweet;
