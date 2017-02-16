@@ -3,7 +3,9 @@ function($scope, $http, $timeout, VolunteerFactory) {
   console.log("ApplicantsController loaded.");
   var init=0;
   $scope.activeView = 'info';
-  $scope.selectedSkill = {};
+  $scope.selected = {};
+  $scope.selected.skill = {};
+  $scope.selected.interest = {};
   $scope.person = {};
   $scope.hatList= ['APPLIED','PENDING','SCHEDULED','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
@@ -329,6 +331,12 @@ function($scope, $http, $timeout, VolunteerFactory) {
     $scope.addSkill = function(skill){
       $scope.person.skills.push(skill);
     };
+
+    //add interst based on the selected interest
+    $scope.addInterest = function(interest){
+      $scope.person.interests.push(interest);
+    };
+
     $scope.getFormFields();
     $scope.loadApplicants();
 

@@ -92,7 +92,7 @@ router.put('/:id', function(req, res) {
     essayFour:{ question: data.essayFour.question,
                 response: data.essayFour.response
                },
-    interests: data.intersts, // should be an array
+    interests: data.interests, // should be an array
     name: {
       first_name: data.name.first_name,
       last_name: data.name.last_name

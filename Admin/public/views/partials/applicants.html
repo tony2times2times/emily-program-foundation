@@ -124,17 +124,20 @@
         <button class='btn-danger' type="button" ng-click="removeSkill($index)">{{skill}}</button>
       </div>
       <p><b>Add Skill: </b></p>
-      <select ng-model='selectedSkill' ng-options="skill as skill.skill for (skill, skill) in skills">
+      <select ng-model='selected.skill' ng-options="skill as skill.skill for (skill, skill) in skills">
       </select>
-      <button type="button" ng-click='addSkill(selectedSkill.skill)'>Add Skill</button>
-      <pre>{{selectedSkill | json}}</pre>
-      <h4>
+      <button type="button" ng-click='addSkill(selected.skill.skill)'>Add Skill</button>
+
         <b>Interests:</b>
         <div ng-repeat='interest in person.interests'>
-          <b>Remove</b>
+          <b>Remove: </b>
           <button class='btn-danger' type="button" ng-click="removeInterest($index)">{{interest}}</button>
         </div>
-      </h4>
+        <p><b>Add Interest: </b></p>
+        <select ng-model='selected.interest' ng-options="interest as interest.interest for (interest, interest) in interests">
+        </select>
+        <button type="button" ng-click='addInterest(selected.interest.interest)'>Add Skill</button>
+  
       <p>
         <b>Email:</b> <input ng-model='person.contactInfo.email'/>
         <br>
