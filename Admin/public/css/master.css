@@ -210,6 +210,7 @@ table.allVollunteer_table {
 
 .table_entries {
   border-top: 2px solid #ddd;
+  font-weight: bold;
 }
 
 .table_entries:hover{
@@ -237,7 +238,11 @@ table.allVollunteer_table {
 
 .allVolunteer_textarea {
   background-color: #eee;
-  
+
+}
+
+.addEditVolunteer {
+  margin: 0 auto 50px;
 }
 
 loaders: [

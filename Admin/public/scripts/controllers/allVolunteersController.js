@@ -8,8 +8,12 @@ function($scope, $http, VolunteerFactory) {
     $scope.interestsIn = {};
     $scope.selectedindex = null;
     $scope.expandAll = false;
-
     $scope.notes = {}
+
+    $scope.seachBy = 'notes';
+    $scope.seachFor = 'Stefan';
+
+
 
     $scope.getFormFields();
     $scope.getAllVolunteers();
