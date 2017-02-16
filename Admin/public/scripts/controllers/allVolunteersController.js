@@ -9,9 +9,16 @@ function($scope, $http, VolunteerFactory) {
     $scope.selectedindex = null;
     $scope.expandAll = false;
 
+    $scope.notes = {}
+
     $scope.getFormFields();
     $scope.getAllVolunteers();
   };// end init()
+
+  $scope.updateVolunteerNotes = function( volunteer, index ){
+    console.log('updating note | volunteer & index = ', volunteer, index );
+    console.log('this should be the new note -> ', $scope.notes[index]);
+  }// end updateVolunteerNotes()
 
   $scope.switchExpandView = function(){
     console.log('expanding | expandAll = ', $scope.expandAll);

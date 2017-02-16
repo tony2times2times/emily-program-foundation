@@ -47,11 +47,22 @@
         <td>{{ person.contactInfo.phoneNum }}</td>
         <td>{{ person.contactInfo.email }}</td>
       </tr>
-      <tr ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end class="allVolunteer_tableEntry_moreInfo">
-        <td colspan="2" > <label>Skills:</label> <span ng-repeat="skill in person.skills"> {{skill}} </br></span></td>
-        <td colspan="1" >{{person.contactInfo.address.street}} </br> {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</td>
-        <td colspan="3"> <p>this is where I can put even more information which will be really good</p> </td>
-      </tr>
+        <tr class="allVolunteer_tableEntry_moreInfo" ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }" >
+          <td></td>
+          <td colspan="5" > <label>Skills:</label> <span ng-repeat="skill in person.skills"> {{skill}} {{$last ? '' : ', '}} </span> </td>
+        </tr >
+        <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  >
+          <td></td>
+          <td colspan="1" ><label>Address:</label> <p>{{person.contactInfo.address.street}}</p>  <p>{{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</p> </td>
+          <td colspan="2" > <p> <label>Employment:</label> {{person.employment}} </p>  <p> <label>DOB:</label> {{person.dateOfBirth}} </p> <label>Begin Date:</label> {{person.dateBegan}} </p> </td>
+          <td colspan="2"> <label>Emergancy Contact:</label> <p>{{person.emergencyContact.name}} </p> <p>{{person.emergencyContact.phone}} </p> </td>
+        </tr>
+        <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end>
+          <td></td>
+          <td colspan="5" ><label style="vertical-align:top;" >Notes:</label> <textarea class="allVolunteer_textarea" ng-model="notes[$index]" ng-init="notes[this.$index]=[person.notes];" rows="3" cols="70"></textarea>
+              <button ng-click="updateVolunteerNotes([person], this.$index)" class="btn btn-xs btn-primary" style="vertical-align: top;" type="button" name="save">Save</button>
+          </td>
+        </tr>
     </tbody >
   </table>
 

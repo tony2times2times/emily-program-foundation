@@ -196,9 +196,16 @@ table.allVollunteer_table {
     border: 3px solid #337ab7;
  }
 
-.allVolunteer_tableEntry_moreInfo td {
-  padding: 15px 3px;
+.allVolunteer_tableEntry_moreInfo {
+  text-align: left;
   background-color: #eee;
+  font-size: 1em;
+  line-height: 1.3em;
+}
+
+.allVolunteer_tableEntry_middleRow {
+  vertical-align: top;
+  padding: 0 12px;
 }
 
 .table_entries {
@@ -226,6 +233,11 @@ table.allVollunteer_table {
   max-width: 18rem;
   padding-right: 0;
   margin-right: -4rem;
+}
+
+.allVolunteer_textarea {
+  background-color: #eee;
+  
 }
 
 loaders: [
