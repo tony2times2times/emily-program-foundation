@@ -1,6 +1,29 @@
 emilyApp.factory('SweetFactory', function($http){
   var Sweet = {};
 
+  Sweet.emailStrip = function(recipientArray){
+    // First, perform deep clone of array.
+    var outputArray = JSON.parse(JSON.stringify(recipientArray));
+    delete outputArray.additionalInfo;
+    delete outputArray.appStatus;
+    delete outputArray.contactInfo.address;
+    delete outputArray.contactInfo.phoneNum;
+    delete outputArray.dateOfBirth;
+    delete outputArray.emailedWhat;
+    delete outputArray.emergencyContact;
+    delete outputArray.employment;
+    delete outputArray.essayOne;
+    delete outputArray.essayTwo;
+    delete outputArray.essayThree;
+    delete outputArray.essayFour;
+    delete outputArray.interests;
+    delete outputArray.notes;
+    delete outputArray.numMissedOrientaion;
+    delete outputArray.referenceOne;
+    delete outputArray.referenceTwo;
+    delete outputArray.skills;
+  };
+
   Sweet.emailSend = function(recipientArray){
     /* Format of recipientArray (from /model/volunteer.js):
     [
@@ -56,7 +79,7 @@ emilyApp.factory('SweetFactory', function($http){
             '.left {width: 100px;} .right {width: 450px;}' +
             '</style><table><tr><td class="left">Template:</td>' +
             '<td class="right">' + emailTemplateArray[index].name +
-            '</td></tr><tr><td>To:</td><td>' + recipientAddressList +
+            '</td></tr><tr><td>To (singly):</td><td>' + recipientAddressList +
             '</td></tr><tr><td>From:</td><td>' +
             'The Emily Program Foundation</td></tr><tr><td>Subject:' +
             '</td><td>' + emailTemplateArray[index].subject +
@@ -70,15 +93,16 @@ emilyApp.factory('SweetFactory', function($http){
               };
               console.log(objectToSend);
               $http.post('/private/sendEmail', objectToSend).then(function(){
-                swal('Emails sent!',
-                  'Check the admin e-mail account. Emails that fail delivery' +
-                  'will generate a return, failure e-mail.',
-                  'success'
-                );
                 resolve();
               });
             });
           }
+        }).then(function(){
+          swal('Emails sent!',
+            'Check the admin e-mail account. Emails that fail delivery' +
+            ' will generate a return, failure e-mail.',
+            'success'
+          );
         });
       }).catch(swal.noop);
     });
