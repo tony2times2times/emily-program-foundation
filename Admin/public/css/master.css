@@ -72,7 +72,7 @@ body {
 /*GLOBAL*/
 
 /*ADMIN VIEW*/
-.admin-section {
+.body-section {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -95,7 +95,7 @@ body {
   text-align: center;
 }
 
-.h3-admin-invert {
+.h3-header {
   font-weight: bold;
   color: white;
   margin-top: 50px;
@@ -149,28 +149,52 @@ body>.person{
   display: inline-block;
 }
 
-table {
-  border-collapse: collapse;
 
-  width: 80%;
+/*ALL VOLUNTEERS*/
+table.allVollunteer_table {
+  width: 90%;
   margin: 0 auto;
   text-align: center;
   font-size: 16px;
 }
 
-thead {
+.allVollunteer_thead {
   background-color: #dd561e;
   color: white;
 }
 
-tr, th {
+.allVollunteer_thead th{
   text-align: center;
-  height: 2em;
+  vertical-align: middle;
 }
-td {
+
+.allVollunteer_thead th:first-of-type {
+  max-width: 1rem;
+}
+
+ .allVolunteer_tableEntry td {
   /*not sure that this is the right approach */
   max-width: 6rem;
+  height: 2em;
 }
+
+.allVolunteer_table_checkbox {
+  max-width: 1rem;
+}
+
+#allVolunteer-selectAll-button {
+    font-size: 1rem;
+    color: #dd561e;
+    background-color: white;
+    border: 3px solid #dd561e;
+    vertical-align: middle;
+
+ }
+
+#allVolunteer-selectAll-button:hover {
+    color: #337ab7;
+    border: 3px solid #337ab7;
+ }
 
 .allVolunteer_tableEntry_moreInfo td {
   padding: 15px 3px;
@@ -191,6 +215,17 @@ td {
 
 .allVolunteer_tableEntry_selected {
   background-color: #ddd;
+}
+
+#expand-all {
+  float: right;
+}
+
+.allVolunteers-selector {
+  background-color: #eeeeee;
+  max-width: 18rem;
+  padding-right: 0;
+  margin-right: -4rem;
 }
 
 loaders: [

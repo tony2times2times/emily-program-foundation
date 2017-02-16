@@ -7,10 +7,17 @@ function($scope, $http, VolunteerFactory) {
     $scope.skillsIn = {};
     $scope.interestsIn = {};
     $scope.selectedindex = null;
+    $scope.expandAll = false;
 
     $scope.getFormFields();
     $scope.getAllVolunteers();
   };// end init()
+
+  $scope.switchExpandView = function(){
+    console.log('expanding | expandAll = ', $scope.expandAll);
+    $scope.expandAll = !($scope.expandAll);
+    console.log('again afterwards | expandAll = ', $scope.expandAll);
+  }; // end switchExpandView()
 
   $scope.clickedVolunteer = function(index){
     console.log('expanding to show more info | index = ', index);
