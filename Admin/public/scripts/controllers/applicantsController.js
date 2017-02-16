@@ -1,5 +1,5 @@
-emilyApp.controller('ApplicantsController', ["$scope", "$http","$timeout", "VolunteerFactory",
-function($scope, $http, $timeout, VolunteerFactory) {
+emilyApp.controller('ApplicantsController', ["$scope", "$http","$timeout", "SweetFactory",
+function($scope, $http, $timeout, SweetFactory) {
 
   //global variables
   var init=0;
