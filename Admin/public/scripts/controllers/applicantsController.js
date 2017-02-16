@@ -1,5 +1,5 @@
-emilyApp.controller('ApplicantsController', ["$scope", "$http","$timeout", "VolunteerFactory",
-function($scope, $http, $timeout, VolunteerFactory) {
+emilyApp.controller('ApplicantsController', ["$scope", "$http","$timeout", "SweetFactory",
+function($scope, $http, $timeout, SweetFactory) {
   console.log("ApplicantsController loaded.");
   var init=0;
   $scope.activeView = 'info';
@@ -161,25 +161,17 @@ function($scope, $http, $timeout, VolunteerFactory) {
   $scope.email = function(){
     var emailList = [];
     //go threw each hat in hatchery
-    for (var i = 0; i < hatchery.length; i++) {
+    for (var i = 0; i < $scope.hatchery.length; i++) {
       //search each person in that hat
-      for (var j = 0; j < hatchery[i].length; j++) {
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
         //if that person has a check mark
-        if (hatchery[i][j].checked === true) {
+        if ($scope.hatchery[i][j].checked === true) {
           //add them to the email list
-          emailList.push(hatchery[i][j]);
+          emailList.push($scope.hatchery[i][j]);
         }
       }
     }
-    $http({
-      method: 'PUT',
-      url: '',
-      data: emailList
-    }).then(function successCallback(response) {
-      console.log(response);
-    }, function errorCallback(error) {
-      console.log('error', error);
-    });
+    SweetFactory.emailSend(emailList);
   };
 
   //Removes person as a applicant and makes them a volunteer
