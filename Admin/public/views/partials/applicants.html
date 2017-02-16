@@ -27,7 +27,7 @@
         ng-class='buttonColor(cat)'
         >
         <input type="checkbox" ng-model="cat.checked">
-        {{cat.name.last_name}}{{cat.numMissedOrientaion}}
+        {{cat.name.last_name}}
       </div>
     </div>
   </div>
@@ -49,11 +49,10 @@
       <div ng-repeat='skill in person.skills'>
         {{skill}}
       </div>
-      <h4><b>Interests:</b>
-        <div ng-repeat='interest in person.interests'>
-          {{interest}}
-        </div>
-      </h4>
+      <b>Interests:</b>
+      <div ng-repeat='interest in person.interests'>
+        {{interest}}
+      </div>
       <p>
         <b>Email:</b> {{person.contactInfo.email}}
         <br>
@@ -124,20 +123,19 @@
         <button class='btn-danger' type="button" ng-click="removeSkill($index)">{{skill}}</button>
       </div>
       <p><b>Add Skill: </b></p>
-      <select ng-model='selected.skill' ng-options="skill as skill.skill for (skill, skill) in skills">
+      <select ng-model='selected.skill' ng-options="skill as skill for (skill, skill) in person.availibleSkills">
       </select>
-      <button type="button" ng-click='addSkill(selected.skill.skill)'>Add Skill</button>
+      <button type="button" ng-click='addSkill(selected.skill)'>Add Skill</button>
 
-        <b>Interests:</b>
-        <div ng-repeat='interest in person.interests'>
-          <b>Remove: </b>
-          <button class='btn-danger' type="button" ng-click="removeInterest($index)">{{interest}}</button>
-        </div>
-        <p><b>Add Interest: </b></p>
-        <select ng-model='selected.interest' ng-options="interest as interest.interest for (interest, interest) in interests">
-        </select>
-        <button type="button" ng-click='addInterest(selected.interest.interest)'>Add Skill</button>
-
+      <b>Interests:</b>
+      <div ng-repeat='interest in person.interests'>
+        <b>Remove: </b>
+        <button class='btn-danger' type="button" ng-click="removeInterest($index)">{{interest}}</button>
+      </div>
+      <p><b>Add Interest: </b></p>
+      <select ng-model='selected.interest' ng-options="interest as interest for (interest, interest) in person.availibleInterests">
+      </select>
+      <button type="button" ng-click='addInterest(selected.interest)'>Add Interest</button>
       <p>
         <b>Email:</b> <input ng-model='person.contactInfo.email'/>
         <br>
