@@ -62,7 +62,7 @@ res.sendFile(path.join(__dirname, '../../Admin/public/views/login.html'));
  */
 router.get('/logout', function (req, res) {
   req.logout();
-  res.sendStatus(200);
+  res.redirect('/auth');
 });
 
 module.exports = router;
