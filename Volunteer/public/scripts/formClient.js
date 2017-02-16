@@ -52,11 +52,11 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
       }, false); //end validation sequence
   //previous button
   $scope.essayPrev = function(){
-    window.location ='#!/volInfo';
+    window.location ='#!/references';
   };
   //next button
   $scope.essayNext = function(){
-    window.location = '#!/interestSkills';
+    window.location = '#!/waiver';
   };
   $scope.ff = formFactory;
 }]); //end EssayController
@@ -100,7 +100,7 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
   };
   //next button
   $scope.refNext = function(){
-    window.location ='#!/waiver';
+    window.location ='#!/essayQues';
   };
 
   $scope.ff = formFactory;
@@ -118,7 +118,7 @@ myForm.controller('ReqsController',['$scope', '$http','$location', '$window', fu
   }; // end showInfoCard
 
   //pop-up for information about the various volunteer opportunities
-  $scope.blogWriting = "We need volunteers to help us explore the messages we are bombarded with in the media and to help us to inspire positive body image in others.  We do this through our Media Monday Blog Series as well as our Love Your Body Blog Series.  Both of these series help us to inspire and create conversation to bring about a new way of looking at health and wellbeing.  To read our blog, <a target='_blank' href='http://emilyprogramfoundation.org/news-events/blog/'>click here</a>.  We are always recruiting blog writers. No need to apply. Questions or a submission? Contact Emily.<p><i>Media Monday</i> – We need volunteer writers to contribute to our Media Monday Blog.  Volunteers use their skills in media literacy to critique and analyze the messages the media sends about body image and related topics. Writers pick a topic and respond to a series of questions aimed at addressing the stereotypes prevalent in the media.  Writers can choose anything from a commercial they view on television, an ad they find in a magazine, a billboard on the side of the road, or even an ad they see on the city bus.</p><p><i>Love Your Body Blog</i> – We need volunteer writers to contribute to our Love Your Body Blog.  Volunteers have the opportunity to express their excitement and celebration about their own body or simply spread encouragement for others to find their appreciation and love for their bodies. This blog post is about inspiring readers to reflect on the unique beauty and strength of our bodies. Writers for this blog can follow any format that they wish; some take the form of poetry and some take the form of a story. Some writers choose to delve into an appreciation about one specific part of their body while other writers choose many things they love about themselves and their bodies. We ask that writers for this blog write about things beyond body weight and shape because our beauty is much more than a person’s weight and shape – we want to highlight all of the great things about ourselves and our bodies!</p><p><i>Recovery Stories</i> – We are looking for individuals to share their recovery experiences with others in order to inspire hope that recovery is possible.  Please follow <a target='_blank' href='http://www.nationaleatingdisorders.org/guidelines-sharing-your-story-responsibly'>NEDA’s Guidelines for Sharing Your Story.</a> Stories can be published anonymously if preferred.</p>";
+  $scope.blogWriting = "<p>We need volunteers to help us explore the messages we are bombarded with in the media and to help us to inspire positive body image in others.  We do this through our Media Monday Blog Series as well as our Love Your Body Blog Series.  Both of these series help us to inspire and create conversation to bring about a new way of looking at health and wellbeing.  To read our blog, <a target='_blank' href='http://emilyprogramfoundation.org/news-events/blog/'>click here</a>.  We are always recruiting blog writers. No need to apply. Questions or a submission? <a href='mailto:emily.monson@emilyprogramfoundation.org'>Contact Emily</a>.</p><p><i>Media Monday</i> – We need volunteer writers to contribute to our Media Monday Blog.  Volunteers use their skills in media literacy to critique and analyze the messages the media sends about body image and related topics. Writers pick a topic and respond to a series of questions aimed at addressing the stereotypes prevalent in the media.  Writers can choose anything from a commercial they view on television, an ad they find in a magazine, a billboard on the side of the road, or even an ad they see on the city bus.</p><p><i>Love Your Body Blog</i> – We need volunteer writers to contribute to our Love Your Body Blog.  Volunteers have the opportunity to express their excitement and celebration about their own body or simply spread encouragement for others to find their appreciation and love for their bodies. This blog post is about inspiring readers to reflect on the unique beauty and strength of our bodies. Writers for this blog can follow any format that they wish; some take the form of poetry and some take the form of a story. Some writers choose to delve into an appreciation about one specific part of their body while other writers choose many things they love about themselves and their bodies. We ask that writers for this blog write about things beyond body weight and shape because our beauty is much more than a person’s weight and shape – we want to highlight all of the great things about ourselves and our bodies!</p><p><i>Recovery Stories</i> – We are looking for individuals to share their recovery experiences with others in order to inspire hope that recovery is possible.  Please follow <a target='_blank' href='http://www.nationaleatingdisorders.org/guidelines-sharing-your-story-responsibly'>NEDA’s Guidelines for Sharing Your Story.</a> Stories can be published anonymously if preferred.</p>";
   $scope.advocacy = "Advocacy is empowering, affirming, and a necessary component in fighting eating disorders across the globe. Advocacy is about having a voice, being part of the solution and standing up for what you believe in which is crucial to achieve our mission.  We ask volunteers to support advocacy in a variety of ways.  These opportunities arise when action is necessary, often surrounding events.  We need a large quantity of volunteers to support these activities as we often see a greater impact in numbers. These efforts could include, but are not limited to the following:<ul><li>Assist in letter writing and/or social media campaigns when action is needed (remember to follow up on <a target='_blank' href='https://www.facebook.com/TheEmilyProgramFoundation'>Facebook</a> and <a target='_blank' href='https://twitter.com/EmilyFoundation'>Twitter</a>).</li><li>Keep the Foundation informed of relevant messages in the media that require response.</li><li> Attend the Eating Disorder Coalition’s Lobby Day on behalf of the Foundation (occurs in spring and fall – watch for updates).</li></ul>";
   $scope.officeWork = "Day-to-day operations of the Foundation are crucial to keeping our education and advocacy efforts going.  We have opportunities for one volunteer to help with daily administrative tasks (3 month minimum commitment). Schedule is part time and flexible, and some of the tasks could include:<ul> <li>Sending thank you notes for donations</li><li>Historian (documenting The Emily Program Foundation in the news)</li><li>Book reviews for the Lending Library</li><li>Keeping Lending Library organized and up to date</li><li>Research for various projects</li><li>Inventory of supplies/promotional items</li></ul>";
   $scope.specialEvents = "The Foundation often hosts events in the community (both education events and fundraising events).  Volunteers play pivotal roles in helping make these events happen.  Volunteers typically work on one event at a time.  Some of the roles volunteers could play are as follows:<ul><li>Sharing your recovery story at Recovery Night</li><li>Setting up/cleaning up at community events</li><li>Tabling at community events</li><li>Launching community awareness campaigns</li><li>Help with fundraising events, which could include the following:</li><ul><li>Soliciting donations (auction items, sponsors, food for meetings, etc.)</li><li>Promotion of the event</li><li>Coordinating the program</li><li>Day of set-up/clean-up tasks</li></ul>";
@@ -133,7 +133,7 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   $scope.interests = formFactory.allIntersts;
   //previous button
   $scope.skillsPrev = function(){
-    window.location ='#!/essayQues';
+    window.location ='#!/volInfo';
   };
   //next button
   $scope.skillsNext = function(){
@@ -157,7 +157,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
           $scope.firstLook = false;
           // window.location ='#!/volInfo';
         } else {
-          window.location = '#!/essayQues';
+          window.location = '#!/interestSkills';
         }
 
       }, false); //end validation sequence
@@ -167,7 +167,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
   };
   //previous button function
   $scope.infoNext = function(){
-    window.location = '#!/essayQues';
+    window.location = '#!/interestSkills';
   };
     $scope.ff = formFactory;
 }]);//endVolInfoController
@@ -176,7 +176,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
 myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', function($scope, $http, formFactory){
   //previous button
   $scope.wavPrev = function(){
-    window.location ='#!/references';
+    window.location ='#!/essayQues';
   };
   //submit button
   $scope.submitApp = function(){

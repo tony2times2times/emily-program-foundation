@@ -2,6 +2,7 @@
 <div class="container">
 <div class="background">
     <h1>Volunteer Application</h1>
+    <button type="button" class="prevButt"   ng-click="infoPrev()"> < Previous</button>
     <form name="vInfo" id="formID">
       <label for="firstName">First Name:</label>
         <input ng-class="{wrong: firstLook === false && vInfo.fname.$invalid}" type="text" ng-model="ff.firstName" id= "firstName" name="fname" placeholder="First Name" required>
@@ -75,13 +76,8 @@
         <input type="text" ng-class="{wrong: firstLook === false && vInfo.phone.$invalid}" ng-model="ff.phoneNum" name="phone" placeholder="Phone Number" required>
       <label for="employment">Place of Employment:</label>
         <input type="text" ng-class="{wrong: firstLook === false && vInfo.employment.$invalid}" ng-model="ff.employment" id="employment" name="employment" placeholder="Place of Employment" required>
-
       <button class="nextButt" type="submit" >Next ></button>
-<!-- ng-click="infoNext()" -->
     </form>
-      <br>
-    </br>
-      <button type="button" class="prevButt"   ng-click="infoPrev()"> < Previous</button>
-      <!-- <button class="nextButt" type="submit" ng-click="infoNext()">Next</button> -->
+    <p class="prog">Page 1 of 5</p>
     </div>
   </div>
