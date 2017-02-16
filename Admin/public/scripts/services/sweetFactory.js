@@ -22,6 +22,7 @@ emilyApp.factory('SweetFactory', function($http){
     delete outputArray.referenceOne;
     delete outputArray.referenceTwo;
     delete outputArray.skills;
+    return outputArray;
   };
 
   Sweet.emailSend = function(recipientArray){
