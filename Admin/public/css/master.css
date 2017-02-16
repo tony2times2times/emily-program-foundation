@@ -96,7 +96,7 @@ img.centerCSS {
 }
 
 /*ADMIN VIEW*/
-.admin-section {
+.body-section {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -119,7 +119,7 @@ img.centerCSS {
   text-align: center;
 }
 
-.h3-admin-invert {
+.h3-header {
   font-weight: bold;
   color: white;
   margin-top: 50px;
@@ -185,6 +185,102 @@ body>.person{
   border-radius: 5px;
   border: 2px;
   display: inline-block;
+}
+
+
+/*ALL VOLUNTEERS*/
+table.allVollunteer_table {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.allVollunteer_thead {
+  background-color: #dd561e;
+  color: white;
+}
+
+.allVollunteer_thead th{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.allVollunteer_thead th:first-of-type {
+  max-width: 1rem;
+}
+
+ .allVolunteer_tableEntry td {
+  /*not sure that this is the right approach */
+  max-width: 6rem;
+  height: 2em;
+}
+
+.allVolunteer_table_checkbox {
+  max-width: 1rem;
+}
+
+#allVolunteer-selectAll-button {
+    font-size: 1rem;
+    color: #dd561e;
+    background-color: white;
+    border: 3px solid #dd561e;
+    vertical-align: middle;
+
+ }
+
+#allVolunteer-selectAll-button:hover {
+    color: #337ab7;
+    border: 3px solid #337ab7;
+ }
+
+.allVolunteer_tableEntry_moreInfo {
+  text-align: left;
+  background-color: #eee;
+  font-size: 1em;
+  line-height: 1.3em;
+}
+
+.allVolunteer_tableEntry_middleRow {
+  vertical-align: top;
+  padding: 0 12px;
+}
+
+.table_entries {
+  border-top: 2px solid #ddd;
+  font-weight: bold;
+}
+
+.table_entries:hover{
+  background-color: #ccc;
+}
+
+.allVolunteer_tableEntry_hide_extraInfo {
+  display: none;
+}
+
+.allVolunteer_tableEntry_selected {
+  background-color: #ddd;
+}
+
+#expand-all {
+  float: right;
+}
+
+.allVolunteers-selector {
+  background-color: #eeeeee;
+  max-width: 18rem;
+  padding-right: 0;
+  margin-right: -4rem;
+}
+
+.allVolunteer_textarea {
+  background-color: #eee;
+
+}
+
+.addEditVolunteer {
+  margin: 0 auto 50px;
 }
 
 loaders: [

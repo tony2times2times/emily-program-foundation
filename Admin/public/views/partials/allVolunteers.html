@@ -1,142 +1,189 @@
-<div ng-init="init()"></div>
-<br><br>
+<div class="container body-section" ng-init="init()">
+  <h3 class="h3-header">All Volunteer</h3>
+    <div class="input-group col-xs-8">
+      <select class="form-control allVolunteers-selector" >
+        <option value="Names">Search by Names</option>
+        <option value="Skills">Search by Skills</option>
+        <option value="Interest">Search by Interests</option>
+        <option value="ContactInfo">Search by Contact Info</option>
+      </select>
+      <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+      <input class="form-control" type="text" >
+      <span class="input-group-btn">
+        <button class="btn btn-primary .btn-block" type="button" name="button">Search Volunteers</button>
+      </span>
+    </div>
+    <div style="float: right;">
+      <button class="btn btn-default" ng-click="hideAddVolunteer = false;" type="button" name="button">Add Volunteer</button>
+    </div>
+  <div style="clear:both;" ></div>
 
-<select >
-  <option value="Names">Search by Names</option>
-  <option value="Skills">Search by Skills</option>
-  <option value="Interest">Search by Interests</option>
-  <option value="ContactInfo">Search by Contact Info</option>
-</select>
-<input type="text" placeholder="Search...">
-<button type="button" name="button">Search</button>
 
-<br><br>
-<button type="button" name="button">Email Selected</button>
-<button ng-click="hideAddVolunteer = false;" type="button" name="button">Add/Upload Volunteer</button>
-
-<br><br>
-<label for="checkbox">expand all?</label>
-<input type="checkbox" value="">
-
-<br><br>
-<table>
-  <thead>
-    <td>Name</td>
-    <td>Interest</td>
-    <td>Phone #</td>
-    <td>Email</td>
-  </thead>
-  <div  class="allVolunteer_tableEntry">
-    <!-- <p>{{person.name.first_name}} {{person.name.last_name}}</p> -->
-    <tr ng-repeat="person in volunteers" >
-      <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
-      <td>interests go here</td>
-      <!-- <td ng-repeat="interest in person.interests">{{ interest }}</td> -->
-      <td>{{ person.contactInfo.phoneNum }}</td>
-      <td>{{ person.contactInfo.email }}</td>
-    </tr>
-    <!-- <tr>
-      <p>test</p>
-      <p>another</p>
-    </tr> -->
+  <div style="float:left; ">
+    <button class="btn btn-default" type="button" name="button">Email Selected</button>
   </div>
-</table>
-
-
-
-
-<div ng-hide="hideAddVolunteer">
-  <h2>Add a New Volunteer</h2>
-
-  <h3>Name</h3>
-  <input ng-model="firstNameIn" type="text" value="" placeholder="First Name">
-  <input ng-model="lastNameIn" type="text" value="" placeholder="Last Name">
-
-  <h3>Address</h3>
-  <input ng-model="streetIn" type="text" value="" placeholder="Street">
-  <input ng-model="cityIn" type="text" value="" placeholder="City">
-  <select ng-model="stateIn" name="state" size="1">
-    <option value="AK">AK</option>
-    <option value="AL">AL</option>
-    <option value="AR">AR</option>
-    <option value="AZ">AZ</option>
-    <option value="CA">CA</option>
-    <option value="CO">CO</option>
-    <option value="CT">CT</option>
-    <option value="DC">DC</option>
-    <option value="DE">DE</option>
-    <option value="FL">FL</option>
-    <option value="GA">GA</option>
-    <option value="HI">HI</option>
-    <option value="IA">IA</option>
-    <option value="ID">ID</option>
-    <option value="IL">IL</option>
-    <option value="IN">IN</option>
-    <option value="KS">KS</option>
-    <option value="KY">KY</option>
-    <option value="LA">LA</option>
-    <option value="MA">MA</option>
-    <option value="MD">MD</option>
-    <option value="ME">ME</option>
-    <option value="MI">MI</option>
-    <option value="MN">MN</option>
-    <option value="MO">MO</option>
-    <option value="MS">MS</option>
-    <option value="MT">MT</option>
-    <option value="NC">NC</option>
-    <option value="ND">ND</option>
-    <option value="NE">NE</option>
-    <option value="NH">NH</option>
-    <option value="NJ">NJ</option>
-    <option value="NM">NM</option>
-    <option value="NV">NV</option>
-    <option value="NY">NY</option>
-    <option value="OH">OH</option>
-    <option value="OK">OK</option>
-    <option value="OR">OR</option>
-    <option value="PA">PA</option>
-    <option value="RI">RI</option>
-    <option value="SC">SC</option>
-    <option value="SD">SD</option>
-    <option value="TN">TN</option>
-    <option value="TX">TX</option>
-    <option value="UT">UT</option>
-    <option value="VA">VA</option>
-    <option value="VT">VT</option>
-    <option value="WA">WA</option>
-    <option value="WI">WI</option>
-    <option value="WV">WV</option>
-    <option value="WY">WY</option>
-  </select>
-  <input ng-model="zipIn" type="numbers" value="" placeholder="Zip">
-
-  <h3>Contact Info</h3>
-  <input ng-model="emailIn" type="text" value="" placeholder="Email">
-  <input ng-model="phoneNumIn" type="numbers" value="" placeholder="Phone Number">
-
-  <h3>About</h3>
-  <input ng-model="dateOfBirthIn" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
-  <input ng-model="employmentIn" type="numbers" value="" placeholder="Employment">
-
-  <h3>Volunteer Info</h3>
-  <input ng-model="dateBeganIn" type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
-  <h4>Skills</h4>
-  <div ng-repeat="skill in allSkills">
-    <input ng-model="skillsIn[skill.skill]" type="checkbox">
-    <label>{{skill.skill}}</label>
+  <div id="expand-all" >
+    <h5 for="checkbox">expand all?</h5>
+    <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
   </div>
-  <h4>Interests</h4>
-  <div ng-repeat="interest in allInterests">
-    <input ng-model="interestsIn[interest.interest]" type="checkbox">
-    <label>{{interest.interest}}</label>
-  </div>
-  <h4>Notes</h4>
-  <textarea ng-model="notesIn" rows="4" cols="60" placeholder="added info about the volunteer..."></textarea>
+  <div style="clear:both;" ></div>
 
-  <h3>Emergency Contact</h3>
-  <input ng-model="emergencyNameIn" type="text" value="" placeholder="Name">
-  <input ng-model="emergencyPhoneIn" type="number" value="" placeholder="Phone Number">
 
-  <br><br><br>
-  <button type="button" name="button" ng-click="submitNewVolunteer()">Submit</button>
+
+  <table class="allVollunteer_table">
+    <thead class="allVollunteer_thead">
+      <th><button id='allVolunteer-selectAll-button' type="button" name="button">Select All</button></th>
+      <th>Name</th>
+      <th>Interest</th>
+      <th>Phone #</th>
+      <th>Email</th>
+    </thead>
+
+<!-- | filter: { seachBy: seachFor } -->
+
+    <tbody class="allVolunteer_tableEntry" >
+      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" ng-repeat-start="person in volunteers " class="table_entries">
+        <td class="allVolunteer_table_checkbox" ><input type="checkbox"></td>
+        <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
+        <td>interests go here</td>
+        <!-- <td ng-repeat="interest in person.interests">{{ interest }}</td> -->
+        <td>{{ person.contactInfo.phoneNum }}</td>
+        <td>{{ person.contactInfo.email }}</td>
+      </tr>
+        <tr class="allVolunteer_tableEntry_moreInfo" ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }" >
+          <td></td>
+          <td colspan="5" > <label>Skills:</label> <span ng-repeat="skill in person.skills"> {{skill}} {{$last ? '' : ', '}} </span> </td>
+        </tr >
+        <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  >
+          <td></td>
+          <td colspan="1" ><label>Address:</label> <p>{{person.contactInfo.address.street}}</p>  <p>{{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</p> </td>
+          <td colspan="2" > <p> <label>Employment:</label> {{person.employment}} </p>  <p> <label>DOB:</label> {{person.dateOfBirth}} </p> <label>Begin Date:</label> {{person.dateBegan}} </p> </td>
+          <td colspan="2"> <label>Emergancy Contact:</label> <p>{{person.emergencyContact.name}} </p> <p>{{person.emergencyContact.phone}} </p> </td>
+        </tr>
+        <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end>
+          <td></td>
+          <td colspan="5" ><label style="vertical-align:top;" >Notes:</label> <textarea class="allVolunteer_textarea" ng-model="notes[$index]" ng-init="notes[this.$index]=[person.notes];" rows="3" cols="70"></textarea>
+              <button ng-click="updateVolunteerNotes([person], this.$index)" class="btn btn-xs btn-primary" style="vertical-align: top;" type="button" name="save">Save</button>
+          </td>
+        </tr>
+    </tbody >
+  </table>
+
+
+
+
+
+  <div class="addEditVolunteer container admin-subsection" ng-hide="hideAddVolunteer">
+    <h3 class="h3-header" >Add a New Volunteer</h3>
+    <div class="col-xs-6">
+      <h3>Name</h3>
+      <input ng-model="firstNameIn" type="text" value="" placeholder="First Name">
+      <input ng-model="lastNameIn" type="text" value="" placeholder="Last Name">
+
+      <h3>Address</h3>
+      <input ng-model="streetIn" style="width:70%" type="text" value="" placeholder="Street">
+      <br>
+      <input ng-model="cityIn" type="text" value="" placeholder="City">
+      <select ng-model="stateIn" name="state" size="1">
+        <option value="AK">AK</option>
+        <option value="AL">AL</option>
+        <option value="AR">AR</option>
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="CO">CO</option>
+        <option value="CT">CT</option>
+        <option value="DC">DC</option>
+        <option value="DE">DE</option>
+        <option value="FL">FL</option>
+        <option value="GA">GA</option>
+        <option value="HI">HI</option>
+        <option value="IA">IA</option>
+        <option value="ID">ID</option>
+        <option value="IL">IL</option>
+        <option value="IN">IN</option>
+        <option value="KS">KS</option>
+        <option value="KY">KY</option>
+        <option value="LA">LA</option>
+        <option value="MA">MA</option>
+        <option value="MD">MD</option>
+        <option value="ME">ME</option>
+        <option value="MI">MI</option>
+        <option value="MN">MN</option>
+        <option value="MO">MO</option>
+        <option value="MS">MS</option>
+        <option value="MT">MT</option>
+        <option value="NC">NC</option>
+        <option value="ND">ND</option>
+        <option value="NE">NE</option>
+        <option value="NH">NH</option>
+        <option value="NJ">NJ</option>
+        <option value="NM">NM</option>
+        <option value="NV">NV</option>
+        <option value="NY">NY</option>
+        <option value="OH">OH</option>
+        <option value="OK">OK</option>
+        <option value="OR">OR</option>
+        <option value="PA">PA</option>
+        <option value="RI">RI</option>
+        <option value="SC">SC</option>
+        <option value="SD">SD</option>
+        <option value="TN">TN</option>
+        <option value="TX">TX</option>
+        <option value="UT">UT</option>
+        <option value="VA">VA</option>
+        <option value="VT">VT</option>
+        <option value="WA">WA</option>
+        <option value="WI">WI</option>
+        <option value="WV">WV</option>
+        <option value="WY">WY</option>
+      </select>
+      <input ng-model="zipIn" type="numbers" value="" placeholder="Zip">
+
+      <h3>Contact Info</h3>
+      <input ng-model="emailIn" type="text" value="" placeholder="Email">
+      <input ng-model="phoneNumIn" type="numbers" value="" placeholder="Phone Number">
+
+      <h3>About</h3>
+      <input ng-model="dateOfBirthIn" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
+      <input ng-model="employmentIn" type="numbers" value="" placeholder="Employment">
+
+      <h3>Volunteer Info</h3>
+      <input ng-model="dateBeganIn" type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
+
+      <h3>Emergency Contact</h3>
+      <input ng-model="emergencyNameIn" type="text" value="" placeholder="Name">
+      <input ng-model="emergencyPhoneIn" type="number" value="" placeholder="Phone Number">
+
+      <h4>Notes</h4>
+      <textarea ng-model="notesIn" rows="4" style="width:90%;" placeholder="added info about the volunteer..."></textarea>
+
+
+      <br><br>
+      <button class="btn btn-primary" type="button" name="button" ng-click="submitNewVolunteer();">Submit</button>
+      <button class="btn btn-link" type="button" name="button" ng-click="hideAddVolunteer = true;">Cancel</button>
+
+    </div>
+
+
+
+    <div class="col-xs-6">\
+      <h3>Contributing</h3>
+      <h4>Interests</h4>
+      <div ng-repeat="interest in allInterests">
+        <input ng-model="interestsIn[interest.interest]" type="checkbox">
+        <label>{{interest.interest}}</label>
+      </div>
+      <h4>Skills</h4>
+      <div ng-repeat="skill in allSkills">
+        <input ng-model="skillsIn[skill.skill]" type="checkbox">
+        <label>{{skill.skill}}</label>
+      </div>
+
+
+      <!-- <br><br>
+      <button class="btn btn-primary" type="button" name="button" ng-click="submitNewVolunteer();">Submit</button>
+      <button class="btn btn-link" type="button" name="button" ng-click="hideAddVolunteer = true;">Cancel</button> -->
+    </div>
+
+</div>
 </div>

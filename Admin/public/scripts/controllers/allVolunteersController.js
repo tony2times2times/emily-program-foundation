@@ -6,10 +6,35 @@ function($scope, $http, VolunteerFactory) {
     $scope.hideAddVolunteer = true;
     $scope.skillsIn = {};
     $scope.interestsIn = {};
+    $scope.selectedindex = null;
+    $scope.expandAll = false;
+    $scope.notes = {}
+
+    $scope.seachBy = 'notes';
+    $scope.seachFor = 'Stefan';
+
+
 
     $scope.getFormFields();
     $scope.getAllVolunteers();
   };// end init()
+
+  $scope.updateVolunteerNotes = function( volunteer, index ){
+    console.log('updating note | volunteer & index = ', volunteer, index );
+    console.log('this should be the new note -> ', $scope.notes[index]);
+  }// end updateVolunteerNotes()
+
+  $scope.switchExpandView = function(){
+    console.log('expanding | expandAll = ', $scope.expandAll);
+    $scope.expandAll = !($scope.expandAll);
+    console.log('again afterwards | expandAll = ', $scope.expandAll);
+  }; // end switchExpandView()
+
+  $scope.clickedVolunteer = function(index){
+    console.log('expanding to show more info | index = ', index);
+    if($scope.selectedindex === index) return $scope.selectedindex = null;
+    $scope.selectedindex = index;
+  };//end clickedVolunteer()
 
   $scope.getAllVolunteers = function(){
     console.log('Getting all of the volunteers');
