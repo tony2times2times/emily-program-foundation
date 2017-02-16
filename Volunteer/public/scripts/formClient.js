@@ -173,13 +173,26 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
 }]);//endVolInfoController
 
 
-myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', function($scope, $http, formFactory){
+myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', '$location', function($scope, $http, $location, formFactory){
+  //validating the checkbox
+  $scope.validateCheck = function(event){
+    var x = document.getElementById("signed").checked;
+    console.log('is checked? ->', x);
+    if(x === true){
+      console.log('true');
+      submitApp();
+    } else {
+      alert('Please sign the terms and conditions by checking the box. Thank you!');
+      console.log('false');
+      window.location = '#!/waiver';
+    }
+  };
   //previous button
   $scope.wavPrev = function(){
     window.location ='#!/essayQues';
   };
   //submit button
-  $scope.submitApp = function(){
+  function submitApp(){
     console.log('Submiting Form');
     var sendData = {
       additionalInfo: formFactory.additionalInfo,
@@ -194,19 +207,19 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
       emergancyPhone: formFactory.emergencyPhone,
       employment: formFactory.employment,
       essayOne: {
-          question: formFactory.allQuestions[0],
+          question: formFactory.allQuestions[1],
           response: formFactory.essayOneResponse
         },
       essayTwo:{
-          question: formFactory.allQuestions[1],
+          question: formFactory.allQuestions[2],
           response: formFactory.essayTwoResponse
         },
       essayThree:{
-          question: formFactory.allQuestions[2],
+          question: formFactory.allQuestions[3],
           response: formFactory.essayThreeResponse
         },
       essayFour:{
-          question: formFactory.allQuestions[3],
+          question: formFactory.allQuestions[4],
           response: formFactory.essayFourResponse
         },
       intersts: formFactory.onlyTrueToArray( formFactory.interestsIn ),
@@ -224,7 +237,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
         },
       skills: formFactory.onlyTrueToArray( formFactory.skillsIn )
     };// end sendData
-
+    //start POST request to DB
     console.log('Data to Send = ', sendData);
     $http({
       method: 'POST',
@@ -234,7 +247,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
       console.log(response);
     });//end http
     window.location ='#!/thankYou';
-  };//end submitApp()
+  }//end submitApp()
 }]);//end waiverController
 
 //filter out the underscores from the interests and skills section
