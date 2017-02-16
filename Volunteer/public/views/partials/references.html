@@ -2,6 +2,7 @@
 <div class="container">
   <div class="background">
     <h1>Volunteer Application</h1>
+    <button type="button" class="prevButt" ng-click="refPrev()"> < Previous</button>
       <label for="supporting">Supporting Material: Include links to any materials that might support your application.</label>
         <textarea ng-model="ff.additionalInfo" id="supporting" cols="70" rows="7"></textarea><br>
       </br>
@@ -32,8 +33,6 @@
             <input ng-class="{wrong: firstLook === false && refForm.emerPhone.$invalid}" name="emerPhone" ng-model="ff.emergencyPhone" type="text" id="emerPhone" placeholder="Phone Number" required>
             <button type="submit" class="nextButt">Next ></button>
           </form>
-            <br>
-              </br>
-      <button type="button" class="prevButt" ng-click="refPrev()"> < Previous</button>
+          <p class="prog">Page 3 of 5</p>
     </div>
 </div>
