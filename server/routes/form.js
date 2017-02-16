@@ -29,8 +29,7 @@ router.get('/formFields', function(req, res){
       .exec(function(err, allInterests){
           if (err) return handleError(err);
 
-          EssayQ.find({ used: true})
-          .select({ question: 1 })
+          EssayQ.find({})
           .exec(function(err, allQuestions){
               if (err) return handleError(err);
 
