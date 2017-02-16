@@ -1,5 +1,5 @@
-emilyApp.controller('EmailDraftsController', ["$scope", "$http", "VolunteerFactory", 'textAngularManager',
-function($scope, $http, VolunteerFactory, textAngularManager) {
+emilyApp.controller('EmailDraftsController', ["$scope", "$http", 'textAngularManager',
+function($scope, $http, textAngularManager) {
   console.log("emailDraftsController loaded.");
 
   // Initialize template editor control values:
