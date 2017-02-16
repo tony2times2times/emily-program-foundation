@@ -1,5 +1,5 @@
-emilyApp.controller('NavController', ["$scope", "$http", "VolunteerFactory", "AuthFactory",
-function($scope, $http, VolunteerFactory, AuthFactory) {
+emilyApp.controller('NavController', ["$scope", "$http", "$window", "VolunteerFactory", "AuthFactory",
+function($scope, $http, $window, VolunteerFactory, AuthFactory) {
   console.log("NavController loaded.");
   $scope.displayLogout = false; // should we display the logout option on the DOM?
   $scope.message = {
@@ -30,7 +30,7 @@ function($scope, $http, VolunteerFactory, AuthFactory) {
       .then(function (response) { // success
         AuthFactory.setLoggedIn(false);
         $scope.username = '';
-        $window.location.href = '/'; // forces a page reload which will update our NavController
+        $window.location.href = '/auth'; // forces a page reload which will update our NavController
       },
 
       function (response) { // error
