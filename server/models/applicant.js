@@ -35,7 +35,7 @@ var applicantSchema = new Schema({
     essayFour:{ essayQuestion: String,
                 response: String
               },
-    interests: [ String ],
+    interests: {type: [String], default: '[]'},
     name: {
       first_name: {type: String, lowercase: true},
       last_name: {type: String, lowercase: true}
@@ -52,7 +52,7 @@ var applicantSchema = new Schema({
       email: String,
       phone: Number
     },
-    skills: [ String ]
+    skills:  {type: [String], default: '[]'}
 
 });
 module.exports = mongoose.model('Applicants', applicantSchema);

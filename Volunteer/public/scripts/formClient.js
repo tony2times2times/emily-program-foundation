@@ -28,12 +28,28 @@ myForm.config(['$routeProvider', function($routeProvider){
     templateUrl: '../views/partials/volReqs.html',
     controller: 'ReqsController'
   })
+  .when('/thankYou', {
+    templateUrl: '../views/partials/thankYou.html',
+    controller: 'ThanksController'
+  })
   .otherwise({
     redirectTo: 'volReqs'
   });
 }]); //end routeProvider
 
 myForm.controller('EssayController', ['$scope', '$http', '$window', '$location', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  // begin validation for inputs and alert user if input is skipped
+    $scope.firstLook = true;
+    var form = document.getElementById('essayQuest');
+      form.noValidate = true;
+      form.addEventListener('submit', function(event){
+        if(!event.target.checkValidity()){
+          alert('Please fill out all fields!');
+          $scope.firstLook = false;
+        } else {
+          window.location = '#!/interestSkills';
+        }
+      }, false); //end validation sequence
   //previous button
   $scope.essayPrev = function(){
     window.location ='#!/volInfo';
@@ -66,8 +82,20 @@ myForm.controller('FormController', ['$scope', '$http', 'formFactory', function(
 }]); //end FormController
 
 myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+  // begin validation for inputs and alert user if input is skipped
+    $scope.firstLook = true;
+    var form = document.getElementById('formRef');
+      form.noValidate = true;
+      form.addEventListener('submit', function(event){
+        if(!event.target.checkValidity()){
+          alert('Please fill out all fields!');
+          $scope.firstLook = false;
+        } else {
+          window.location = '#!/waiver';
+        }
+      }, false); //end validation sequence
   //previous button
-  $scope.refPrev = function(){
+  $scope.refPrev = function(){ 
     window.location ='#!/interestSkills';
   };
   //next button
@@ -114,23 +142,31 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   };
 }]); //end SkillsController
 
+myForm.controller('ThanksController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+
+}]);
+
 myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window,formFactory){
-  // function requiredFields(){
-  //   var x = document.forms.vInfo.fname.value;
-  //   console.log(x);
-  //   if(x === " "){
-  //     alert('Please fill out all fields!');
-  //     return false;
-  //   }
-  // }
+  //begin validation for inputs and alert user if input is skipped
+    $scope.firstLook = true;
+    var form = document.getElementById('formID');
+      form.noValidate = true;
+      form.addEventListener('submit', function(event){
+        if(!event.target.checkValidity()){
+          alert('Please fill out all fields!');
+          $scope.firstLook = false;
+          // window.location ='#!/volInfo';
+        } else {
+          window.location = '#!/essayQues';
+        }
+
+      }, false); //end validation sequence
   //next button function
   $scope.infoPrev = function(){
     window.location = '#!/volReqs';
   };
   //previous button function
   $scope.infoNext = function(){
-    // requiredFields();
-    // sendDataToFactory();
     window.location = '#!/essayQues';
   };
     $scope.ff = formFactory;
@@ -145,9 +181,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
   //submit button
   $scope.submitApp = function(){
     console.log('Submiting Form');
-
     var sendData = {
-
       additionalInfo: formFactory.additionalInfo,
       street: formFactory.street,
       city: formFactory.city,
@@ -199,8 +233,8 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', functio
     }).then(function(response){
       console.log(response);
     });//end http
+    window.location ='#!/thankYou';
   };//end submitApp()
-
 }]);//end waiverController
 
 //filter out the underscores from the interests and skills section

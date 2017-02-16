@@ -3,6 +3,9 @@ function($scope, $http, $timeout, VolunteerFactory) {
   console.log("ApplicantsController loaded.");
   var init=0;
   $scope.activeView = 'info';
+  $scope.selected = {};
+  $scope.selected.skill = {};
+  $scope.selected.interest = {};
   $scope.person = {};
   $scope.hatList= ['APPLIED','PENDING','SCHEDULED','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
@@ -17,7 +20,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //on page load get all aplicants
     $http({
       method: 'GET',
-      url: '/applicant'
+      url: '/applicant',
     }).then(function successCallback(response) {
       console.log(response);
       //for every volunteer in the response
@@ -37,6 +40,20 @@ function($scope, $http, $timeout, VolunteerFactory) {
     });
   };
 
+  $scope.getFormFields = function(){
+    $http({
+      method: 'GET',
+      url: '/formFields',
+      data: {status: $scope.person.appStatus}
+    }).then(function successCallback(response) {
+      console.log(response);
+      $scope.interests = response.data.interests;
+      $scope.skills = response.data.skills;
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
+  };
+
   //Controlls what happens when a object is moved into a array using that array's index
   $scope.incubator = function(index){
     //This is used to prevent posting when webpage is initially loaded
@@ -47,10 +64,12 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //if person was moved into the applied array change thier status
     else {if (index === 0) {
       $scope.person.appStatus = 'applied';
+      if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
     }
     //if person was moved into the pending array change thier status
     else if (index === 1) {
       $scope.person.appStatus = 'pending';
+      if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
     }
     //if person was moved into the scheduled array change thier status
     else if (index === 2) {
@@ -74,12 +93,30 @@ function($scope, $http, $timeout, VolunteerFactory) {
 
   //DOES NOT EMAIL - keeps track of how many orientations a person has been scheduled for
   $scope.addOrientation = function (applicant){
-    console.log('addint orientation for ' + applicant.last_name);
-    applicant.numMissedOrientaion++;
+    console.log('addint orientation for ' + $scope.person.last_name);
+    //update all references localy
+    $scope.person.numMissedOrientaion++;
+    $scope.savePerson.numMissedOrientaion++;
+    bucket:
+    //search every bucket
+    for (var i = 0; i < $scope.hatchery.length; i++) {
+      //search every person in those buckets
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
+        //when a matching id is found
+        if ($scope.hatchery[i][j]._id===$scope.person._id){
+          console.log('person found adding orientation!');
+          //add an orientation to that person
+          $scope.hatchery[i][j].numMissedOrientaion++;
+          //exit the bucket for loop
+          break bucket;
+        }
+      }
+    }
+    //update all the database
     $http({
       method: 'PATCH',
-      url: '/applicant/missed/' + applicant._id,
-      data: applicant
+      url: '/applicant/missed/' + $scope.person._id,
+      data: $scope.person
     }).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(error) {
@@ -144,23 +181,28 @@ function($scope, $http, $timeout, VolunteerFactory) {
       console.log('error', error);
     });
   };
+
+  //Removes person as a applicant and makes them a volunteer
   $scope.activate = function(){
-    var activeList = [];
     //go threw each hat in hatchery
-    for (var i = 0; i < hatchery.length; i++) {
+    for (var i = 0; i < $scope.hatchery.length; i++) {
       //search each person in that hat
-      for (var j = 0; j < hatchery[i].length; j++) {
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
         //if that person has a check mark
-        if (hatchery[i][j].checked === true) {
+        if ($scope.hatchery[i][j].checked === true) {
           //add them to the email list
-          activeList.push(hatchery[i][j]);
+          $scope.addVolunteer($scope.hatchery[i][j]);
+          $scope.removeAllData($scope.hatchery[i][j]);
         }
       }
     }
+  };
+
+  $scope.addVolunteer = function(volunteer){
     $http({
-      method: 'PUT',
-      url: '',
-      data: activeList
+      method: 'POST',
+      url: '/volunteer/applicant',
+      data: volunteer
     }).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(error) {
@@ -223,7 +265,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
     $scope.person.interests.splice(index,1);
   };
 
-//determines button color based on number of missed orientations
+  //determines button color based on number of missed orientations
   $scope.buttonColor = function(cat){
     if (cat.numMissedOrientaion < 2) {
       return 'green';
@@ -234,7 +276,71 @@ function($scope, $http, $timeout, VolunteerFactory) {
       return 'red';
     }
   };
+  //verifies removal if remove applicant button was pushed
+  $scope.removeApplicant = function(applicant){
+    if (
+      confirm('Are you sure you want to remove ' +
+      applicant.name.first_name + ' ' + applicant.name.last_name +
+      ' THIS CAN NOT BE UNDONE!')) {
+        $scope.removeAllData(applicant);
+      }
+    };
 
+    //verifies removal if applicant missed 3 orientations
+    $scope.askToRemove = function(applicant){
+      //make the number of missed orientations a string
+      JSON.stringify(applicant.numMissedOrientaion);
 
-  $scope.loadApplicants();
-}]);
+      if (confirm( applicant.name.first_name + ' ' + applicant.name.last_name +
+      ' has missed ' + applicant.numMissedOrientaion + ' orientations do you want to' +
+      'remove them? THIS CAN NOT BE UNDONE!')) {
+        setTimeout(function(){
+          $scope.removeAllData(applicant);
+          $scope.$apply();
+        }, 500);
+      }
+    };
+
+    //actually removes applicant
+    $scope.removeAllData = function(applicant){
+      console.log('removing applicant: ' + applicant.last_name);
+      //remove applicant localy
+      bucket:
+      //search every bucket
+      for (var i = 0; i < $scope.hatchery.length; i++) {
+        //search every person in those buckets
+        for (var j = 0; j < $scope.hatchery[i].length; j++) {
+          //when a matching id is found
+          if ($scope.hatchery[i][j]._id===applicant._id){
+            $scope.hatchery[i].splice(j,1);
+            break bucket;
+          }
+        }
+      }
+      $http({
+        method: 'DELETE',
+        url: '/applicant/' + applicant._id
+      }).then(function successCallback(response) {
+        console.log(response);
+      }, function errorCallback(error) {
+        console.log('error', error);
+      });
+    };
+
+    //add skill based on the selected skill
+    $scope.addSkill = function(skill){
+      $scope.person.skills.push(skill);
+    };
+
+    //add interst based on the selected interest
+    $scope.addInterest = function(interest){
+      $scope.person.interests.push(interest);
+    };
+
+    $scope.getFormFields();
+    $scope.loadApplicants();
+
+    setTimeout(function(){
+      console.log($scope.skills);
+    }, 500);
+  }]);

@@ -1,6 +1,26 @@
-emilyApp.controller('EmailDraftsController', ["$scope", "$http", "VolunteerFactory", 'textAngularManager',
-function($scope, $http, VolunteerFactory, textAngularManager) {
+emilyApp.controller('EmailDraftsController', ["$scope", "$http", 'SweetFactory', 'textAngularManager',
+function($scope, $http, SweetFactory, textAngularManager) {
   console.log("emailDraftsController loaded.");
+
+//-- DELETE AFTER DEMO
+
+  $scope.sendAndyEmail = function(){
+    var andyArray =
+    [
+      {name:        {
+                      first_name: 'Andy',
+                      last_name: 'Taton'
+                    },
+      contactInfo:  {
+                      email: 'thomas.andrew.taton@gmail.com'
+                    }
+      }
+    ];
+    SweetFactory.emailSend(andyArray);
+  };
+
+//-- END DELETE
+
 
   // Initialize template editor control values:
   $scope.modifyTemplateID = false;
