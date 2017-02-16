@@ -33,14 +33,22 @@
 <body ng-app="emilyApp">
   <div class="container">
     <div class="masthead">
-      <h3>FriendsOfEmily Volunteer Manager</h3>
+      <table style="width: 100%;">
+        <tr>
+          <td class="title-left">
+            <h3 style="margin-bottom: 5px;">FriendsOfEmily Volunteer Manager</h3>
+          </td>
+          <td class="title-right">
+            <a href="#" ng-click="logout()"><span>Logout</span></a>
+          </td>
+        </tr>
+      </table>
       <nav ng-controller="NavController">
-        <ul class="nav nav-justified">
-          <li><a class="single-line" href="#!/allVolunteers">All Volunteers</a></li>
-          <li><a href="#!/applicants">Current Applicants</a></li>
-          <li><a class="single-line" href="#!/emailTemplates">Email Templates</a></li>
-          <li><a class="single-line" href="#!/adminView">Admin Tools</a></li>
-          <li><a class="single-line" href="#" ng-click="logout()">Logout</a></li>
+        <ul class="nav nav-justified" ng-init="tab = 1">
+          <li ng-class="{active: tab === 1}"><a href="#!/allVolunteers" ng-click="tab = 1">All Volunteers</a></li>
+          <li ng-class="{active: tab === 2}"><a href="#!/applicants" ng-click="tab = 2">Current Applicants</a></li>
+          <li ng-class="{active: tab === 3}"><a href="#!/emailTemplates" ng-click="tab = 3">Email Templates</a></li>
+          <li ng-class="{active: tab === 4}"><a href="#!/adminView" ng-click="tab = 4">Admin Tools</a></li>
         </ul>
       </nav>
     </div>
