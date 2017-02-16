@@ -95,7 +95,7 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
         }
       }, false); //end validation sequence
   //previous button
-  $scope.refPrev = function(){
+  $scope.refPrev = function(){ 
     window.location ='#!/interestSkills';
   };
   //next button

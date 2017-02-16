@@ -46,9 +46,9 @@
 
     <div ng-if="activeView === 'info'">
       <b>Skills:</b>
-        <div ng-repeat='skill in person.skills'>
-          {{skill}}
-        </div>
+      <div ng-repeat='skill in person.skills'>
+        {{skill}}
+      </div>
       <h4><b>Interests:</b>
         <div ng-repeat='interest in person.interests'>
           {{interest}}
@@ -118,11 +118,16 @@
       <button class='btn-danger' ng-click='removeApplicant(person)'>REMOVE APPLICANT</button>
     </h3>
     <div ng-if="activeView === 'info'">
-        <b>Skills:</b>
-        <div ng-repeat='skill in person.skills'>
-          <b>Remove:</b>
-          <button class='btn-danger' type="button" ng-click="removeSkill($index)">{{skill}}</button>
-        </div>
+      <b>Skills:</b>
+      <div ng-repeat='skill in person.skills'>
+        <b>Remove:</b>
+        <button class='btn-danger' type="button" ng-click="removeSkill($index)">{{skill}}</button>
+      </div>
+      <p><b>Add Skill: </b></p>
+      <select ng-model='selectedSkill' ng-options="skill as skill.skill for (skill, skill) in skills">
+      </select>
+      <button type="button" ng-click='addSkill(selectedSkill.skill)'>Add Skill</button>
+      <pre>{{selectedSkill | json}}</pre>
       <h4>
         <b>Interests:</b>
         <div ng-repeat='interest in person.interests'>
@@ -162,14 +167,14 @@
 
     <div ng-if="activeView === 'references'">
       <p>
-      <b>Reference One:</b>
-      <br>
-      <input type='text' ng-model='person.referenceOne.name'/>
-      <br>
-      <input type='text' ng-model='person.referenceOne.email'/>
-      <br>
-      <input type='text' ng-model='person.referenceOne.phone'/>
-      <br>
+        <b>Reference One:</b>
+        <br>
+        <input type='text' ng-model='person.referenceOne.name'/>
+        <br>
+        <input type='text' ng-model='person.referenceOne.email'/>
+        <br>
+        <input type='text' ng-model='person.referenceOne.phone'/>
+        <br>
       </p>
       <p>
         <b>Reference Two:</b>

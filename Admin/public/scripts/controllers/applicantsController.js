@@ -3,6 +3,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
   console.log("ApplicantsController loaded.");
   var init=0;
   $scope.activeView = 'info';
+  $scope.selectedSkill = {};
   $scope.person = {};
   $scope.hatList= ['APPLIED','PENDING','SCHEDULED','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
@@ -17,7 +18,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
     //on page load get all aplicants
     $http({
       method: 'GET',
-      url: '/applicant'
+      url: '/applicant',
     }).then(function successCallback(response) {
       console.log(response);
       //for every volunteer in the response
@@ -32,6 +33,20 @@ function($scope, $http, $timeout, VolunteerFactory) {
           console.log('unrecognized status for: ' + response.data[i].appStatus);
         }
       }
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
+  };
+
+  $scope.getFormFields = function(){
+    $http({
+      method: 'GET',
+      url: '/formFields',
+      data: {status: $scope.person.appStatus}
+    }).then(function successCallback(response) {
+      console.log(response);
+      $scope.interests = response.data.interests;
+      $scope.skills = response.data.skills;
     }, function errorCallback(error) {
       console.log('error', error);
     });
@@ -310,6 +325,14 @@ function($scope, $http, $timeout, VolunteerFactory) {
       });
     };
 
-
+    //add skill based on the selected skill
+    $scope.addSkill = function(skill){
+      $scope.person.skills.push(skill);
+    };
+    $scope.getFormFields();
     $scope.loadApplicants();
+
+    setTimeout(function(){
+      console.log($scope.skills);
+    }, 500);
   }]);
