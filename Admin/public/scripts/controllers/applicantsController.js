@@ -348,29 +348,84 @@ function($scope, $http, $timeout, SweetFactory) {
       return 'red';
     }
   };
-  //verifies removal if remove applicant button was pushed
+  //verifies removal if remove applicant DELETE button was pushed
   $scope.removeApplicant = function(applicant){
-    if (
-      confirm('Are you sure you want to remove ' +
-      applicant.name.first_name + ' ' + applicant.name.last_name +
-      ' THIS CAN NOT BE UNDONE!')) {
-        $scope.removeAllData(applicant);
+    swal({
+      title: ('THIS CAN NOT BE UNDONE'),
+      text: ('Remove ' + applicant.name.first_name +
+       ' ' + applicant.name.last_name + '? '),
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: ('Yes, remove ' + applicant.name.first_name),
+      cancelButtonText: ('No, keep ' + applicant.name.first_name),
+      confirmButtonClass: 'btn btn-danger',
+      cancelButtonClass: 'btn btn-success',
+      buttonsStyling: false
+    }).then(function () {
+      swal(
+        'Deleted!',
+        (applicant.name.first_name +' ' + applicant.name.last_name +
+        ' has been removed.'),
+        'error'
+      );
+      //remove applicant
+      $scope.removeAllData(applicant);
+    }, function (dismiss) {
+      // dismiss can be 'cancel', 'overlay',
+      // 'close', and 'timer'
+      if (dismiss === 'cancel') {
+        swal(
+          'Saved!',
+          (applicant.name.first_name +' ' + applicant.name.last_name +
+          ' has been saved.'),
+          'success'
+        );
       }
+    });
     };
 
     //verifies removal if applicant missed 3 orientations
     $scope.askToRemove = function(applicant){
       //make the number of missed orientations a string
       JSON.stringify(applicant.numMissedOrientaion);
-
-      if (confirm( applicant.name.first_name + ' ' + applicant.name.last_name +
-      ' has missed ' + applicant.numMissedOrientaion + ' orientations do you want to' +
-      'remove them? THIS CAN NOT BE UNDONE!')) {
-        setTimeout(function(){
-          $scope.removeAllData(applicant);
-          $scope.$apply();
-        }, 500);
-      }
+      //call confirm with seet alert
+      swal({
+        title: ('THIS CAN NOT BE UNDONE'),
+        text: ('Remove ' + applicant.name.first_name +
+         ' ' + applicant.name.last_name + '? ' + applicant.name.first_name +
+         ' has missed ' + applicant.numMissedOrientaion + ' orientations.'),
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: ('Yes, remove ' + applicant.name.first_name),
+        cancelButtonText: ('No, keep ' + applicant.name.first_name),
+        confirmButtonClass: 'btn btn-danger',
+        cancelButtonClass: 'btn btn-success',
+        buttonsStyling: false
+      }).then(function () {
+        swal(
+          'Deleted!',
+          (applicant.name.first_name +' ' + applicant.name.last_name +
+          ' has been removed.'),
+          'error'
+        );
+        //remove applicant
+        $scope.removeAllData(applicant);
+      }, function (dismiss) {
+        // dismiss can be 'cancel', 'overlay',
+        // 'close', and 'timer'
+        if (dismiss === 'cancel') {
+          swal(
+            'Saved!',
+            (applicant.name.first_name +' ' + applicant.name.last_name +
+            ' will get another chance'),
+            'success'
+          );
+        }
+      });
     };
 
     //actually removes applicant

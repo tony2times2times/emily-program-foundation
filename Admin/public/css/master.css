@@ -39,7 +39,7 @@ body {
   background-image: none;
   color: #000;
   -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
-          box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+  box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
 }
 .nav-justified > li:first-child > a {
   border-radius: 5px 5px 0 0;
@@ -112,8 +112,8 @@ img.centerCSS {
 
 .loginText {
   font-family: 'Roboto', serif;
-        font-size: 48px;
-        text-align: center;
+  font-size: 48px;
+  text-align: center;
 }
 
 /*ADMIN VIEW*/
@@ -152,8 +152,8 @@ img.centerCSS {
 }
 
 .quick .toggle-group {
-   transition: none;
-   -webkit-transition: none;
+  transition: none;
+  -webkit-transition: none;
 }
 
 .template-edit {
@@ -161,17 +161,18 @@ img.centerCSS {
   margin-bottom: 20px;
 }
 
-/*ALL VOLUNTEERS*/
-
 /*APPLICANTS*/
 body>.person{
   width: auto;
 }
 .bucket{
-  margin: 5px;
+  margin: 1%;
+  width:30%;
   min-height: 450px;
   outline: 2px solid #ccc;
   outline-offset: -1px;
+  margin-left: 2%;
+  margin-right: 0;
 }
 
 .italic {
@@ -193,6 +194,30 @@ body>.person{
 
 .red{
   background-color: red;
+}
+
+.info-view{
+  border: 2px solid grey;
+}
+
+.select-action-buttons{
+  width : 300px;
+  margin : auto;
+}
+
+.info-buttons{
+  
+}
+
+
+.hatchery{
+  width : 90%;
+  margin : auto;
+}
+
+.check-all-button{
+  width : 110%;
+  margin-left : -5%;
 }
 
 /*EMAIL DRAFTS*/
@@ -231,7 +256,7 @@ table.allVollunteer_table {
   max-width: 1rem;
 }
 
- .allVolunteer_tableEntry td {
+.allVolunteer_tableEntry td {
   /*not sure that this is the right approach */
   max-width: 6rem;
   height: 2em;
@@ -242,18 +267,18 @@ table.allVollunteer_table {
 }
 
 #allVolunteer-selectAll-button {
-    font-size: 1rem;
-    color: #dd561e;
-    background-color: white;
-    border: 3px solid #dd561e;
-    vertical-align: middle;
+  font-size: 1rem;
+  color: #dd561e;
+  background-color: white;
+  border: 3px solid #dd561e;
+  vertical-align: middle;
 
- }
+}
 
 #allVolunteer-selectAll-button:hover {
-    color: #337ab7;
-    border: 3px solid #337ab7;
- }
+  color: #337ab7;
+  border: 3px solid #337ab7;
+}
 
 .allVolunteer_tableEntry_moreInfo {
   text-align: left;
@@ -305,5 +330,5 @@ table.allVollunteer_table {
 }
 
 loaders: [
-  {test: /\.css$/, loader: 'style!css!postcss'}
+{test: /\.css$/, loader: 'style!css!postcss'}
 ]
