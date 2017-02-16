@@ -9,15 +9,77 @@ function($scope, $http, VolunteerFactory) {
     $scope.selectedindex = null;
     $scope.expandAll = false;
     $scope.notes = {}
-
-    $scope.seachBy = 'notes';
-    $scope.seachFor = 'Stefan';
-
+    $scope.searchBy = 'names';
+    $scope.showSearchResults = false;
 
 
     $scope.getFormFields();
     $scope.getAllVolunteers();
   };// end init()
+
+
+  // $scope.searchFilter = function(item){
+  //
+  //   if (!$scope.search.$ || (!$scope.search.value && !$scope.search.name)) {// your input field is empty or no checkbox checked
+  //   return true;
+  //   }
+  //
+  //   var searchVal = $scope.seachFor;
+  //   searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
+  //
+  //   console.log('searchVal = ', searchVal);
+  //
+  //   var regex = new RegExp('' + searchVal, 'i');
+  //
+  //   var matchOnValue = false, matchOnName= false;
+  //
+  //   if ($scope.search.value) {
+  //      matchOnValue = regex.test(item.value);
+  //   }
+  //   if ($scope.search.name) {
+  //      matchOnName = regex.test(item.name);
+  //   }
+  //   return matchOnValue || matchOnName;
+  // };// end searchFilter()
+
+  $scope.filterThroughVolunteers = function(){
+    if (!($scope.searchFor))return $scope.filteredVolunteers = $scope.volunteers;
+    $scope.searchedInquiry = $scope.searchFor
+    switch ($scope.searchBy) {
+      case 'names':
+        $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
+          var re = new RegExp($scope.searchFor);
+          var searchFeild = x.name.first_name + ' ' + x.name.last_name;
+          return ( searchFeild.match(re) )
+        });// end filter
+
+
+        break;
+      case 'skills':
+        console.log('filter by skill??');
+
+
+        break;
+      case 'interests':
+        console.log('filter by interests??');
+
+
+        break;
+      default:
+      console.log('didnt filter');
+      $scope.filteredVolunteers = $scope.volunteers;
+
+    }
+
+  $scope.cancelSearchResults = function(){
+      $scope.showSearchResults = false;
+      $scope.filteredVolunteers = $scope.volunteers;
+      $scope.searchFor = '';
+  }; //end cancelSearchResults()
+
+  $scope.showSearchResults = true;
+    console.log('else');
+  };// end filterThroughVolunteers()
 
   $scope.updateVolunteerNotes = function( volunteer, index ){
     console.log('updating note | volunteer & index = ', volunteer, index );
@@ -46,6 +108,7 @@ function($scope, $http, VolunteerFactory) {
       console.log(response.data);
 
       $scope.volunteers = response.data;
+      $scope.filterThroughVolunteers();
     }); // end http
   }// getAllVolunteers()
 

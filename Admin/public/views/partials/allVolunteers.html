@@ -1,16 +1,15 @@
 <div class="container body-section" ng-init="init()">
   <h3 class="h3-header">All Volunteer</h3>
     <div class="input-group col-xs-8">
-      <select class="form-control allVolunteers-selector" >
-        <option value="Names">Search by Names</option>
-        <option value="Skills">Search by Skills</option>
-        <option value="Interest">Search by Interests</option>
-        <option value="ContactInfo">Search by Contact Info</option>
+      <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
+        <option value="names">Search by Names</option>
+        <option value="skills">Search by Skills</option>
+        <option value="interests">Search by Interests</option>
       </select>
       <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
-      <input class="form-control" type="text" >
+      <input ng-model="searchFor" class="form-control" type="text" >
       <span class="input-group-btn">
-        <button class="btn btn-primary .btn-block" type="button" name="button">Search Volunteers</button>
+        <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search Volunteers</button>
       </span>
     </div>
     <div style="float: right;">
@@ -26,6 +25,10 @@
     <h5 for="checkbox">expand all?</h5>
     <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
   </div>
+  <br><br><br>
+  <div ng-show="showSearchResults" style="float:left; " >
+    <p> <b> Search Results for "{{searchedInquiry}}" </b> <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button></p>
+  </div>
   <div style="clear:both;" ></div>
 
 
@@ -39,10 +42,10 @@
       <th>Email</th>
     </thead>
 
-<!-- | filter: { seachBy: seachFor } -->
+<!-- | filter: (seachBy: seachFor) -->
 
     <tbody class="allVolunteer_tableEntry" >
-      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" ng-repeat-start="person in volunteers " class="table_entries">
+      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" ng-repeat-start="person in filteredVolunteers" class="table_entries">
         <td class="allVolunteer_table_checkbox" ><input type="checkbox"></td>
         <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
         <td>interests go here</td>
