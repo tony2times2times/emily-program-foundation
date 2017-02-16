@@ -383,6 +383,7 @@ function($scope, $http, $timeout, VolunteerFactory) {
 
     //actually removes applicant
     $scope.removeAllData = function(applicant){
+      $scope.person = {};
       console.log('removing applicant: ' + applicant.last_name);
       //remove applicant localy
       bucket:
