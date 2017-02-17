@@ -75,7 +75,7 @@ myForm.controller('FormController', ['$scope', '$http', 'formFactory', function(
 
       formFactory.allSkills = response.data.skills;
       formFactory.allIntersts = response.data.interests;
-      formFactory.allQuestions = response.data.essayQuestions;
+      formFactory.allQuestions = response.data.essayQuestions[0];
     });//end http
   };// end getFormFields()
 
@@ -95,7 +95,7 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
         }
       }, false); //end validation sequence
   //previous button
-  $scope.refPrev = function(){ 
+  $scope.refPrev = function(){
     window.location ='#!/interestSkills';
   };
   //next button
@@ -173,7 +173,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
 }]);//endVolInfoController
 
 
-myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', '$location', function($scope, $http, $location, formFactory){
+myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFactory', function($scope, $http, $location, formFactory){
   //validating the checkbox
   $scope.validateCheck = function(event){
     var x = document.getElementById("signed").checked;
