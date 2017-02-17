@@ -69,21 +69,21 @@ function($scope, $http, $timeout, SweetFactory) {
     //if person was moved into the applied array change thier status
     else {if (index === 0) {
       if ($scope.person.appStatus !== 'applied') {
-        $scope.person.appStatus = 'applied';
+        $scope.setStatus('applied');
         if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
       }
     }
     //if person was moved into the pending array change thier status
     else if (index === 1) {
       if ($scope.person.appStatus !== 'pending') {
-        $scope.person.appStatus = 'pending';
+        $scope.setStatus('pending');
         if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
       }
     }
     //if person was moved into the scheduled array change thier status
     else if (index === 2) {
       if ($scope.person.appStatus !== 'scheduled') {
-        $scope.person.appStatus = 'scheduled';
+        $scope.setStatus('scheduled');
         $scope.addOrientation($scope.person);
       }
     }
@@ -100,6 +100,26 @@ function($scope, $http, $timeout, SweetFactory) {
     }, function errorCallback(error) {
       console.log('error', error);
     });
+  };
+
+  //sets sets status for active person and its twin in the hatchery
+  $scope.setStatus = function(status){
+    //set status for active person
+    $scope.person.appStatus = status;
+    bucket:
+    //search every bucket
+    for (var i = 0; i < $scope.hatchery.length; i++) {
+      //search every person in those buckets
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
+        //when a matching id is found
+        if ($scope.hatchery[i][j]._id===$scope.person._id){
+          //set status to that person
+          $scope.hatchery[i][j].appStatus = status;
+          //exit the bucket for loop
+          break bucket;
+        }
+      }
+    }
   };
 
   //DOES NOT EMAIL - keeps track of how many orientations a person has been scheduled for
