@@ -162,10 +162,6 @@ img.centerCSS {
 }
 
 /*APPLICANTS*/
-body>.person{
-  width: auto;
-}
-
 .hatchery{
   width : 90%;
   margin : auto;
@@ -178,14 +174,24 @@ body>.person{
 }
 
 .info-buttons{
-
-  width : 525px;
+  width : 505px;
   margin: auto;
+}
+
+.info-buttons button{
+  width : 19%;
+  margin: 0;
+  padding: 0;
 }
 
 .check-all-button{
   width : 100%;
   margin: auto;
+  background-color: #dd561e;
+  border-color : white;
+  margin-bottom: 10px;
+  font-size:20px;
+  font-weight:bold;
 }
 
 .bucket{
@@ -203,12 +209,25 @@ body>.person{
 .italic {
   font-style: italic;
 }
+
+body>.person{
+  width: auto;
+}
+
 .person {
   width : 90%;
   border-color : black;
   color : black;
   margin-left : 5%;
   margin-right:  : 5%;
+  height: 40px;
+  font-size:20px;
+}
+
+.person:hover{
+  margin:0;
+  color: black;
+  width: 100%;
 }
 
 .person input[type=checkbox]
@@ -217,18 +236,35 @@ body>.person{
   left: 15px;
   -webkit-transform: scale(2);
   padding: 10px;
+  color: #ffffff;
 }
 
 .green{
-  background-color: green;
+  background-color : #33ee33;
+}
+
+.green:hover{
+  background-color : #00ff00;
 }
 
 .yellow{
-  background-color: yellow;
+  background-color :  #eeee33;
+}
+
+.yellow:hover{
+  background-color : #ffff00;
 }
 
 .red{
-  background-color: red;
+  background-color : #ff3333;
+}
+
+.red:hover{
+  background-color : #ff0000;
+}
+
+.red:hover{
+
 }
 
 .info-display-name{
@@ -237,13 +273,14 @@ body>.person{
   margin : auto;
 }
 
+
 /*APPLICANT INFO table appearence*/
 .info-view table, .info-view td, .info-view thead, .info-view tr {
   border: 1px solid black;
 }
 
 .info-view .edit-table table, .info-view .edit-table td, .info-view .edit-table thead, .info-view .edit-table tr {
-  border: 1px solid orange;
+  border: 1px solid #dd561e;
 }
 
 .info-view table{
@@ -259,6 +296,11 @@ body>.person{
   padding: 5px;
 }
 
+.info-view .edit-table td{
+  text-align: center;
+  padding: 0;
+}
+
 .info-view table input{
   padding: 0;
   border: none;
@@ -266,9 +308,22 @@ body>.person{
   box-sizing : border-box;
 }
 
-.edit-control-buttons{
+.edit-control{
   width: 200px;
   margin: auto;
+}
+
+.edit-control-buttons{
+  width: 48%;
+  -webkit-appearance: button;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.remove-button{
+  width : 100%;
 }
 
 /*EMAIL DRAFTS*/

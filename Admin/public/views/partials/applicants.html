@@ -38,21 +38,22 @@
 <!-- ///////////////////////////////INFO VIEW\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
 <br>
-<div ng-if="person.name.first_name !== undefined">
-  <div class="info-buttons">
+<div ng-if="person.name.first_name !== undefined" class="">
+
+  <div class="info-buttons" >
     <button ng-click="changeView('info')">Info</button>
-    <button ng-click="changeView('skills')">Skills and Interests</button>
+    <button ng-click="changeView('skills')">Skills</button>
     <button ng-click="changeView('essays')">Essays</button>
     <button ng-click="changeView('references')">References</button>
     <button ng-click="changeView('notes')">Notes</button>
-
   </div>
-  <div class="info-view" ng-if="person.edit !== true" ng-dblclick='edit()' class="container-fluid">
-    <div class="info-display-name">
-      <h3>{{person.name.first_name}} {{person.name.last_name}}</h3>
-    </div>
 
-    <table ng-if="activeView === 'info'">
+  <div class="info-display-name ">
+    <h3>{{person.name.first_name}} {{person.name.last_name}}</h3>
+  </div>
+
+  <div class="info-view" ng-if="person.edit !== true" ng-dblclick='edit()' class="container-fluid">
+    <table class="" ng-if="activeView === 'info'">
       <tr>
         <th>Email</th>
         <td>{{person.contactInfo.email}}</td>
@@ -71,7 +72,7 @@
       </tr>
     </table>
 
-    <div ng-if="activeView === 'skills'">
+    <div class="" ng-if="activeView === 'skills'">
       <table>
         <tr>
           <th>skills</th>
@@ -80,8 +81,6 @@
           <td>{{skill}}</td>
         </tr>
       </table>
-      <br>
-      <br>
       <table>
         <tr>
           <th>Interests</th>
@@ -92,7 +91,7 @@
       </table>
     </div>
 
-    <table ng-if="activeView === 'essays'">
+    <table class="" ng-if="activeView === 'essays'">
       <tr>
         <th>Essay One</th>
         <td>{{person.essayOne.response}}</td>
@@ -150,17 +149,14 @@
 
   <div>
     <div class="info-view" ng-if="person.edit === true" class="container-fluid">
-      <div class="info-display-name">
-        <table class="edit-table">
-          <tr>
-            <th><input ng-model="person.name.first_name"/></th>
-            <th><input ng-model="person.name.last_name"/></th>
-          </tr>
-        </table>
-      </div>
-      <br>
-      <br>
       <table class="edit-table" ng-if="activeView === 'info'">
+        <tr>
+          <th>Name</th>
+          <td>
+            <input ng-model="person.name.first_name"/>
+            <input ng-model="person.name.last_name"/>
+          </td>
+        </tr>
         <tr>
           <th>Email</th>
           <td><input ng-model='person.contactInfo.email'/></td>
@@ -191,7 +187,7 @@
           </tr>
           <tr ng-repeat='skill in person.skills'>
             <td>
-              <button class='btn-danger'
+              <button class='btn-danger remove-button'
               type="button"
               ng-click="removeSkill($index)">
               {{skill}}
@@ -203,20 +199,17 @@
             <select ng-model='selected.skill'
             ng-options="skill as skill for (skill, skill) in person.availibleSkills">
           </select>
-          <br>
           <button type="button" ng-click='addSkill(selected.skill)'>Add Skill</button>
         </td>
       </tr>
-    </table class="edit-table">
-    <br>
-    <br>
+    </table>
     <table class="edit-table">
       <tr>
         <th>Interests</th>
       </tr>
       <tr ng-repeat='interest in person.interests'>
         <td>
-          <button class='btn-danger'
+          <button class='btn-danger remove-button'
           type="button"
           ng-click="removeInterest($index)">
           {{interest}}
@@ -292,15 +285,19 @@
   </tr>
 </table>
 
-<div class="edit-control-buttons">
+<div class="edit-control">
   <br>
-  <button class='btn-danger' ng-click='removeApplicant(person)'>
+  <button class='btn-danger remove-button' ng-click='removeApplicant(person)'>
     REMOVE APPLICANT
   </button>
   <br>
   <br>
-  <button type="button" ng-click="cancelEdit()">Cancel</button>
-  <button type="button" ng-click="saveEdit()">Save</button>
+  <button class="edit-control-buttons red" type="button" ng-click="cancelEdit()">
+    Cancel
+  </button>
+  <button class="edit-control-buttons green" type="button" ng-click="saveEdit()">
+    Save
+  </button>
 </div>
 </div>
 </div>
