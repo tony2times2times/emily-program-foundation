@@ -44,7 +44,7 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          alert('Please fill out all fields!');
+          swal('Please fill out all fields!');
           $scope.firstLook = false;
         } else {
           window.location = '#!/interestSkills';
@@ -88,14 +88,14 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          alert('Please fill out all fields!');
+          swal('Please fill out all fields!');
           $scope.firstLook = false;
         } else {
           window.location = '#!/waiver';
         }
       }, false); //end validation sequence
   //previous button
-  $scope.refPrev = function(){ 
+  $scope.refPrev = function(){
     window.location ='#!/interestSkills';
   };
   //next button
@@ -153,7 +153,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          alert('Please fill out all fields!');
+          swal('Please fill out all fields!');
           $scope.firstLook = false;
           // window.location ='#!/volInfo';
         } else {
@@ -182,7 +182,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', '$locat
       console.log('true');
       submitApp();
     } else {
-      alert('Please sign the terms and conditions by checking the box. Thank you!');
+      swal('Please sign the terms and conditions by checking the box. Thank you!');
       console.log('false');
       window.location = '#!/waiver';
     }
