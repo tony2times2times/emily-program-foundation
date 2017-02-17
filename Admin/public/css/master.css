@@ -165,23 +165,58 @@ img.centerCSS {
 body>.person{
   width: auto;
 }
+
+.hatchery{
+  width : 90%;
+  margin : auto;
+  margin-top: 0;
+}
+
+.select-action-buttons{
+  width : 300px;
+  margin : auto;
+}
+
+.info-buttons{
+
+  width : 525px;
+  margin: auto;
+}
+
+.check-all-button{
+  width : 100%;
+  margin: auto;
+}
+
 .bucket{
-  margin: 1%;
-  width:30%;
-  min-height: 450px;
-  outline: 2px solid #ccc;
-  outline-offset: -1px;
-  margin-left: 2%;
-  margin-right: 0;
+  padding : 0;
+  width : 30%;
+  min-height : 450px;
+  outline : 2px solid #ccc;
+  outline-offset : -1px;
+  margin-top : 0;
+  margin-bottom : 0;
+  margin-left : 2%;
+  margin-right : 0;
 }
 
 .italic {
   font-style: italic;
 }
 .person {
-  width: 100%;
-  border-color: black;
-  color: black;
+  width : 90%;
+  border-color : black;
+  color : black;
+  margin-left : 5%;
+  margin-right:  : 5%;
+}
+
+.person input[type=checkbox]
+{
+  position: absolute;
+  left: 15px;
+  -webkit-transform: scale(2);
+  padding: 10px;
 }
 
 .green{
@@ -196,28 +231,44 @@ body>.person{
   background-color: red;
 }
 
-.info-view{
-  border: 2px solid grey;
-}
-
-.select-action-buttons{
-  width : 300px;
+.info-display-name{
+  text-align: center;
+  width : 100%;
   margin : auto;
 }
 
-.info-buttons{
-  
+/*APPLICANT INFO table appearence*/
+.info-view table, .info-view td, .info-view thead, .info-view tr {
+  border: 1px solid black;
 }
 
-
-.hatchery{
-  width : 90%;
-  margin : auto;
+.info-view .edit-table table, .info-view .edit-table td, .info-view .edit-table thead, .info-view .edit-table tr {
+  border: 1px solid orange;
 }
 
-.check-all-button{
-  width : 110%;
-  margin-left : -5%;
+.info-view table{
+  width: 500px;
+  margin: 0 auto;
+  border : 1px;
+  border-spacing : 0;
+  border-collapse : collapse;
+  /*table-layout : fixed;*/
+}
+.info-view td, .info-view th{
+  text-align: center;
+  padding: 5px;
+}
+
+.info-view table input{
+  padding: 0;
+  border: none;
+  width: 100%;
+  box-sizing : border-box;
+}
+
+.edit-control-buttons{
+  width: 200px;
+  margin: auto;
 }
 
 /*EMAIL DRAFTS*/
