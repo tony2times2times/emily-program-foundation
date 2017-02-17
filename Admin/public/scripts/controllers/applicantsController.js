@@ -226,9 +226,10 @@ function($scope, $http, $timeout, SweetFactory) {
       for (var j = 0; j < $scope.hatchery[i].length; j++) {
         //if that person has a check mark
         if ($scope.hatchery[i][j].checked === true) {
-          //add them to the email list
+          //add them to activateList
           $scope.addVolunteer($scope.hatchery[i][j]);
           $scope.removeAllData($scope.hatchery[i][j]);
+          j--;
         }
       }
     }

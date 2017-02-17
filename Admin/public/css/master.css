@@ -168,6 +168,18 @@ img.centerCSS {
   margin-top: 0;
 }
 
+.bucket{
+  padding : 0;
+  width : 30%;
+  min-height : 450px;
+  outline : 2px solid #ccc;
+  outline-offset : -1px;
+  margin-top : 0;
+  margin-bottom : 0;
+  margin-left : 2%;
+  margin-right : 0;
+}
+
 .select-action-buttons{
   width : 300px;
   margin : auto;
@@ -192,18 +204,6 @@ img.centerCSS {
   margin-bottom: 10px;
   font-size:20px;
   font-weight:bold;
-}
-
-.bucket{
-  padding : 0;
-  width : 30%;
-  min-height : 450px;
-  outline : 2px solid #ccc;
-  outline-offset : -1px;
-  margin-top : 0;
-  margin-bottom : 0;
-  margin-left : 2%;
-  margin-right : 0;
 }
 
 .italic {
