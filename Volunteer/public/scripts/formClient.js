@@ -44,10 +44,10 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          alert('Please fill out all fields!');
+          swal('Please fill out all fields!');
           $scope.firstLook = false;
         } else {
-          window.location = '#!/interestSkills';
+          window.location = '#!/waiver';
         }
       }, false); //end validation sequence
   //previous button
@@ -75,7 +75,7 @@ myForm.controller('FormController', ['$scope', '$http', 'formFactory', function(
 
       formFactory.allSkills = response.data.skills;
       formFactory.allIntersts = response.data.interests;
-      formFactory.allQuestions = response.data.essayQuestions;
+      formFactory.allQuestions = response.data.essayQuestions[0];
     });//end http
   };// end getFormFields()
 
@@ -88,14 +88,14 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          alert('Please fill out all fields!');
+          swal('Please fill out all fields!');
           $scope.firstLook = false;
         } else {
-          window.location = '#!/waiver';
+          window.location = '#!/essayQues';
         }
       }, false); //end validation sequence
   //previous button
-  $scope.refPrev = function(){ 
+  $scope.refPrev = function(){
     window.location ='#!/interestSkills';
   };
   //next button
@@ -153,7 +153,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
       form.noValidate = true;
       form.addEventListener('submit', function(event){
         if(!event.target.checkValidity()){
-          alert('Please fill out all fields!');
+          swal('Please fill out all fields!');
           $scope.firstLook = false;
           // window.location ='#!/volInfo';
         } else {
@@ -173,7 +173,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
 }]);//endVolInfoController
 
 
-myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', '$location', function($scope, $http, $location, formFactory){
+myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFactory', function($scope, $http, $location, formFactory){
   //validating the checkbox
   $scope.validateCheck = function(event){
     var x = document.getElementById("signed").checked;
@@ -182,7 +182,7 @@ myForm.controller('WaiverController', ['$scope', '$http', 'formFactory', '$locat
       console.log('true');
       submitApp();
     } else {
-      alert('Please sign the terms and conditions by checking the box. Thank you!');
+      swal('Please sign the terms and conditions by checking the box. Thank you!');
       console.log('false');
       window.location = '#!/waiver';
     }

@@ -39,7 +39,7 @@ body {
   background-image: none;
   color: #000;
   -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
-          box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+  box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
 }
 .nav-justified > li:first-child > a {
   border-radius: 5px 5px 0 0;
@@ -115,10 +115,11 @@ body {
   border-radius: 9px;
 }
 
+
 #centerCSS>img {
   display: block;
   margin: 0 auto;
-}
+
 
 /*ADMIN VIEW*/
 .body-section {
@@ -156,8 +157,8 @@ body {
 }
 
 .quick .toggle-group {
-   transition: none;
-   -webkit-transition: none;
+  transition: none;
+  -webkit-transition: none;
 }
 
 .template-edit {
@@ -165,38 +166,169 @@ body {
   margin-bottom: 20px;
 }
 
-/*ALL VOLUNTEERS*/
-
 /*APPLICANTS*/
-body>.person{
-  width: auto;
+.hatchery{
+  width : 90%;
+  margin : auto;
+  margin-top: 0;
 }
+
 .bucket{
-  margin: 5px;
-  min-height: 450px;
-  outline: 2px solid #ccc;
-  outline-offset: -1px;
+  padding : 0;
+  width : 30%;
+  min-height : 450px;
+  outline : 2px solid #ccc;
+  outline-offset : -1px;
+  margin-top : 0;
+  margin-bottom : 0;
+  margin-left : 2%;
+  margin-right : 0;
+}
+
+.select-action-buttons{
+  width : 300px;
+  margin : auto;
+}
+
+.info-buttons{
+  width : 505px;
+  margin: auto;
+}
+
+.info-buttons button{
+  width : 19%;
+  margin: 0;
+  padding: 0;
+}
+
+.check-all-button{
+  width : 100%;
+  margin: auto;
+  background-color: #dd561e;
+  border-color : white;
+  margin-bottom: 10px;
+  font-size:20px;
+  font-weight:bold;
 }
 
 .italic {
   font-style: italic;
 }
+
+body>.person{
+  width: auto;
+}
+
 .person {
-  width: 100%;
-  border-color: black;
+  width : 90%;
+  border-color : black;
+  color : black;
+  margin-left : 5%;
+  margin-right:  : 5%;
+  height: 40px;
+  font-size:20px;
+}
+
+.person:hover{
+  margin:0;
   color: black;
+  width: 100%;
+}
+
+.person input[type=checkbox]
+{
+  position: absolute;
+  left: 15px;
+  -webkit-transform: scale(2);
+  padding: 10px;
+  color: #ffffff;
 }
 
 .green{
-  background-color: green;
+  background-color : #33ee33;
+}
+
+.green:hover{
+  background-color : #00ff00;
 }
 
 .yellow{
-  background-color: yellow;
+  background-color :  #eeee33;
+}
+
+.yellow:hover{
+  background-color : #ffff00;
 }
 
 .red{
-  background-color: red;
+  background-color : #ff3333;
+}
+
+.red:hover{
+  background-color : #ff0000;
+}
+
+.red:hover{
+
+}
+
+.info-display-name{
+  text-align: center;
+  width : 100%;
+  margin : auto;
+}
+
+
+/*APPLICANT INFO table appearence*/
+.info-view table, .info-view td, .info-view thead, .info-view tr {
+  border: 1px solid black;
+}
+
+.info-view .edit-table table, .info-view .edit-table td, .info-view .edit-table thead, .info-view .edit-table tr {
+  border: 1px solid #dd561e;
+}
+
+.info-view table{
+  width: 500px;
+  margin: 0 auto;
+  border : 1px;
+  border-spacing : 0;
+  border-collapse : collapse;
+  /*table-layout : fixed;*/
+}
+.info-view td, .info-view th{
+  text-align: center;
+  padding: 5px;
+}
+
+.info-view .edit-table td{
+  text-align: center;
+  padding: 0;
+}
+
+.info-view table input{
+  padding: 0;
+  border: none;
+  width: 100%;
+  box-sizing : border-box;
+}
+
+.edit-control{
+  width: 200px;
+  margin: auto;
+}
+
+.edit-control-buttons{
+  width: 48%;
+  -webkit-appearance: button;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.remove-button{
+  width : 100%;
 }
 
 /*EMAIL DRAFTS*/
@@ -235,7 +367,7 @@ table.allVollunteer_table {
   max-width: 1rem;
 }
 
- .allVolunteer_tableEntry td {
+.allVolunteer_tableEntry td {
   /*not sure that this is the right approach */
   max-width: 6rem;
   height: 2em;
@@ -246,18 +378,18 @@ table.allVollunteer_table {
 }
 
 #allVolunteer-selectAll-button {
-    font-size: 1rem;
-    color: #dd561e;
-    background-color: white;
-    border: 3px solid #dd561e;
-    vertical-align: middle;
+  font-size: 1rem;
+  color: #dd561e;
+  background-color: white;
+  border: 3px solid #dd561e;
+  vertical-align: middle;
 
- }
+}
 
 #allVolunteer-selectAll-button:hover {
-    color: #337ab7;
-    border: 3px solid #337ab7;
- }
+  color: #337ab7;
+  border: 3px solid #337ab7;
+}
 
 .allVolunteer_tableEntry_moreInfo {
   text-align: left;
@@ -309,5 +441,5 @@ table.allVollunteer_table {
 }
 
 loaders: [
-  {test: /\.css$/, loader: 'style!css!postcss'}
+{test: /\.css$/, loader: 'style!css!postcss'}
 ]

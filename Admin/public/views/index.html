@@ -31,7 +31,7 @@
   <title>FriendsOfEmily Volunteer Manager</title>
 </head>
 <body ng-app="emilyApp">
-  <div class="container">
+  <div class="container" ng-controller="NavController">
     <div class="masthead">
       <table style="width: 100%;">
         <tr>
@@ -43,7 +43,7 @@
           </td>
         </tr>
       </table>
-      <nav ng-controller="NavController">
+      <nav>
         <ul class="nav nav-justified" ng-init="tab = 1">
           <li ng-class="{active: tab === 1}"><a href="#!/allVolunteers" ng-click="tab = 1">All Volunteers</a></li>
           <li ng-class="{active: tab === 2}"><a href="#!/applicants" ng-click="tab = 2">Current Applicants</a></li>
