@@ -91,29 +91,33 @@ body {
 }
 
 /*AUTH*/
-img.centerCSS {
+
+#loginLogo {
   display: block;
-  margin: auto;
-  zoom: 1.5;
+  margin: 0 auto;
+  padding: 60px 0 40px;
+  border-bottom: 3px solid #a8ced6;
 }
 
-.centerEmily {
-  background-position: center;
-  height: 200px;
-  background-image: url("TEP_FOUNDATION_BRAND_545x160.jpg");
-  background-repeat: no-repeat;
-}
 
-.loginStyle {
+#centerCSS {
+  display: block;
+  padding: 10px 0;
+  margin: 60px auto;
+  zoom: .8;
   background-image: url("FoundationCircles_Setof3.jpg");
   background-repeat: repeat;
-  background-size: 10%;
+  background-size: 30%;
+  background-position: -10px -20px;
+  max-height: 120px;
+  width: 400px;
+  border: 5px solid #f9790e;
+  border-radius: 9px;
 }
 
-.loginText {
-  font-family: 'Roboto', serif;
-        font-size: 48px;
-        text-align: center;
+#centerCSS>img {
+  display: block;
+  margin: 0 auto;
 }
 
 /*ADMIN VIEW*/
