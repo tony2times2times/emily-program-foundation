@@ -47,7 +47,7 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
           swal('Please fill out all fields!');
           $scope.firstLook = false;
         } else {
-          window.location = '#!/interestSkills';
+          window.location = '#!/waiver';
         }
       }, false); //end validation sequence
   //previous button
@@ -91,7 +91,7 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
           swal('Please fill out all fields!');
           $scope.firstLook = false;
         } else {
-          window.location = '#!/waiver';
+          window.location = '#!/essayQues';
         }
       }, false); //end validation sequence
   //previous button
