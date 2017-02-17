@@ -11,6 +11,7 @@ function($scope, $http, VolunteerFactory) {
     $scope.notes = {}
     $scope.searchBy = 'names';
     $scope.showSearchResults = false;
+    $scope.selectedCheckbox = {};
 
 
     $scope.getFormFields();
@@ -18,33 +19,18 @@ function($scope, $http, VolunteerFactory) {
   };// end init()
 
 
-  // $scope.searchFilter = function(item){
-  //
-  //   if (!$scope.search.$ || (!$scope.search.value && !$scope.search.name)) {// your input field is empty or no checkbox checked
-  //   return true;
-  //   }
-  //
+ // BELLOW WAS CODE THAT I FOUND THAT I FOUND INTERESTING FOR REMOVING MALICIOUS CODE
   //   var searchVal = $scope.seachFor;
   //   searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
   //
   //   console.log('searchVal = ', searchVal);
   //
-  //   var regex = new RegExp('' + searchVal, 'i');
-  //
-  //   var matchOnValue = false, matchOnName= false;
-  //
-  //   if ($scope.search.value) {
-  //      matchOnValue = regex.test(item.value);
-  //   }
-  //   if ($scope.search.name) {
-  //      matchOnName = regex.test(item.name);
-  //   }
-  //   return matchOnValue || matchOnName;
-  // };// end searchFilter()
+
 
   $scope.filterThroughVolunteers = function(){
     if (!($scope.searchFor))return $scope.filteredVolunteers = $scope.volunteers;
-    $scope.searchedInquiry = $scope.searchFor
+    $scope.selectedCheckbox = {};
+    $scope.searchedInquiry = $scope.searchFor;
     switch ($scope.searchBy) {
       case 'names':
         $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
@@ -92,8 +78,27 @@ function($scope, $http, VolunteerFactory) {
     console.log('again afterwards | expandAll = ', $scope.expandAll);
   }; // end switchExpandView()
 
+
+  $scope.checkAll = function(){
+    var numberChecked = 0;
+    //search every person in the hat array
+    for (var key in $scope.selectedCheckbox) {
+      //count # of previously checked boxes
+      if ($scope.selectedCheckbox[key]) numberChecked++
+    }
+    // if all are checked by seeing if checked # = total volun #
+    if ( numberChecked === $scope.filteredVolunteers.length ) {
+        // if all un check all
+        $scope.selectedCheckbox = {};
+    } else {
+      // if not all, make all checked by iterating through and creating true values for all indexes
+      for (var i = 0; i < $scope.filteredVolunteers.length; i++) {
+        $scope.selectedCheckbox[i] = true;
+      }
+    }
+  }; // end checkAll()
+
   $scope.clickedVolunteer = function(index){
-    console.log('expanding to show more info | index = ', index);
     if($scope.selectedindex === index) return $scope.selectedindex = null;
     $scope.selectedindex = index;
   };//end clickedVolunteer()
