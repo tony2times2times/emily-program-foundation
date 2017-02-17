@@ -68,18 +68,24 @@ function($scope, $http, $timeout, SweetFactory) {
     }
     //if person was moved into the applied array change thier status
     else {if (index === 0) {
-      $scope.person.appStatus = 'applied';
-      if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
+      if ($scope.person.appStatus !== 'applied') {
+        $scope.person.appStatus = 'applied';
+        if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
+      }
     }
     //if person was moved into the pending array change thier status
     else if (index === 1) {
-      $scope.person.appStatus = 'pending';
-      if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
+      if ($scope.person.appStatus !== 'pending') {
+        $scope.person.appStatus = 'pending';
+        if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
+      }
     }
     //if person was moved into the scheduled array change thier status
     else if (index === 2) {
-      $scope.person.appStatus = 'scheduled';
-      $scope.addOrientation($scope.person);
+      if ($scope.person.appStatus !== 'scheduled') {
+        $scope.person.appStatus = 'scheduled';
+        $scope.addOrientation($scope.person);
+      }
     }
     else {
       console.log(index + " is not a recognized index please check the incubator function");
@@ -353,7 +359,7 @@ function($scope, $http, $timeout, SweetFactory) {
     swal({
       title: ('THIS CAN NOT BE UNDONE'),
       text: ('Remove ' + applicant.name.first_name +
-       ' ' + applicant.name.last_name + '? '),
+      ' ' + applicant.name.last_name + '? '),
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -384,81 +390,81 @@ function($scope, $http, $timeout, SweetFactory) {
         );
       }
     });
-    };
+  };
 
-    //verifies removal if applicant missed 3 orientations
-    $scope.askToRemove = function(applicant){
-      //make the number of missed orientations a string
-      JSON.stringify(applicant.numMissedOrientaion);
-      //call confirm with seet alert
-      swal({
-        title: ('THIS CAN NOT BE UNDONE'),
-        text: ('Remove ' + applicant.name.first_name +
-         ' ' + applicant.name.last_name + '? ' + applicant.name.first_name +
-         ' has missed ' + applicant.numMissedOrientaion + ' orientations.'),
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: ('Yes, remove ' + applicant.name.first_name),
-        cancelButtonText: ('No, keep ' + applicant.name.first_name),
-        confirmButtonClass: 'btn btn-danger',
-        cancelButtonClass: 'btn btn-success',
-        buttonsStyling: false
-      }).then(function () {
+  //verifies removal if applicant missed 3 orientations
+  $scope.askToRemove = function(applicant){
+    //make the number of missed orientations a string
+    JSON.stringify(applicant.numMissedOrientaion);
+    //call confirm with seet alert
+    swal({
+      title: ('THIS CAN NOT BE UNDONE'),
+      text: ('Remove ' + applicant.name.first_name +
+      ' ' + applicant.name.last_name + '? ' + applicant.name.first_name +
+      ' has missed ' + applicant.numMissedOrientaion + ' orientations.'),
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: ('Yes, remove ' + applicant.name.first_name),
+      cancelButtonText: ('No, keep ' + applicant.name.first_name),
+      confirmButtonClass: 'btn btn-danger',
+      cancelButtonClass: 'btn btn-success',
+      buttonsStyling: false
+    }).then(function () {
+      swal(
+        'Deleted!',
+        (applicant.name.first_name +' ' + applicant.name.last_name +
+        ' has been removed.'),
+        'error'
+      );
+      //remove applicant
+      $scope.removeAllData(applicant);
+    }, function (dismiss) {
+      // dismiss can be 'cancel', 'overlay',
+      // 'close', and 'timer'
+      if (dismiss === 'cancel') {
         swal(
-          'Deleted!',
+          'Saved!',
           (applicant.name.first_name +' ' + applicant.name.last_name +
-          ' has been removed.'),
-          'error'
+          ' will get another chance'),
+          'success'
         );
-        //remove applicant
-        $scope.removeAllData(applicant);
-      }, function (dismiss) {
-        // dismiss can be 'cancel', 'overlay',
-        // 'close', and 'timer'
-        if (dismiss === 'cancel') {
-          swal(
-            'Saved!',
-            (applicant.name.first_name +' ' + applicant.name.last_name +
-            ' will get another chance'),
-            'success'
-          );
-        }
-      });
-    };
+      }
+    });
+  };
 
-    //actually removes applicant
-    $scope.removeAllData = function(applicant){
-      $scope.person = {};
-      console.log('removing applicant: ' + applicant.last_name);
-      //remove applicant localy
-      bucket:
-      //search every bucket
-      for (var i = 0; i < $scope.hatchery.length; i++) {
-        //search every person in those buckets
-        for (var j = 0; j < $scope.hatchery[i].length; j++) {
-          //when a matching id is found
-          if ($scope.hatchery[i][j]._id===applicant._id){
-            $scope.hatchery[i].splice(j,1);
-            break bucket;
-          }
+  //actually removes applicant
+  $scope.removeAllData = function(applicant){
+    $scope.person = {};
+    console.log('removing applicant: ' + applicant.last_name);
+    //remove applicant localy
+    bucket:
+    //search every bucket
+    for (var i = 0; i < $scope.hatchery.length; i++) {
+      //search every person in those buckets
+      for (var j = 0; j < $scope.hatchery[i].length; j++) {
+        //when a matching id is found
+        if ($scope.hatchery[i][j]._id===applicant._id){
+          $scope.hatchery[i].splice(j,1);
+          break bucket;
         }
       }
-      $http({
-        method: 'DELETE',
-        url: '/applicant/' + applicant._id
-      }).then(function successCallback(response) {
-        console.log(response);
-      }, function errorCallback(error) {
-        console.log('error', error);
-      });
-    };
+    }
+    $http({
+      method: 'DELETE',
+      url: '/applicant/' + applicant._id
+    }).then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
+  };
 
-    $scope.getFormFields();
-    $scope.loadApplicants();
+  $scope.getFormFields();
+  $scope.loadApplicants();
 
-    setTimeout(function(){
-      console.log($scope.skills);
-    }, 500);
-  }]);
+  setTimeout(function(){
+    console.log($scope.skills);
+  }, 500);
+}]);
