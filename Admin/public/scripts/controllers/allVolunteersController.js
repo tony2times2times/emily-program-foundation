@@ -1,5 +1,5 @@
-emilyApp.controller('AllVolunteersController', ["$scope", "$http", "VolunteerFactory",
-function($scope, $http, VolunteerFactory) {
+emilyApp.controller('AllVolunteersController', ["$scope", "$http", "SweetFactory",
+function($scope, $http, SweetFactory) {
   console.log("AllVolunteersController loaded.");
 
   $scope.init = function(){
@@ -117,6 +117,15 @@ function($scope, $http, VolunteerFactory) {
     }); // end http
   }// getAllVolunteers()
 
+  $scope.mailAllChecked = function(){
+    var recipientArray = [];
+    for (var index in $scope.selectedCheckbox) {
+      if ($scope.selectedCheckbox) {
+        recipientArray.push($scope.filteredVolunteers[index]);
+      }
+    }
+    SweetFactory.emailSend(recipientArray);
+  };
 
   $scope.getFormFields = function(){
     console.log("Getting feilds for form");
