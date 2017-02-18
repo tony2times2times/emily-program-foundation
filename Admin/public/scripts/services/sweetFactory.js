@@ -3,18 +3,21 @@ emilyApp.factory('SweetFactory', function($http){
 
   Sweet.emailStrip = function(recipientArray){
     // First, perform deep clone of array.
+    console.log(recipientArray);
     var outputArray = JSON.parse(JSON.stringify(recipientArray));
-    var firstLevelPropertiesToDelete = [additionalInfo, appStatus, dateBegan, dateOfBirth, emailedWhat, emergencyContact, employment, essayOne, essayTwo, essayThree, essayFour, interests, notes, numMissedOrientaion, referenceOne, referenceTwo, skills];
-    for (var i = 0; i < firstLevelPropertiesToDelete.length; i++) {
-      if (outputArray.hasOwnProperty(firstLevelPropertiesToDelete[i])) {
-        delete outputArray[firstLevelPropertiesToDelete[i]];
+    var firstLevelPropertiesToDelete = ['additionalInfo', 'appStatus', 'dateBegan', 'dateOfBirth', 'emailedWhat', 'emergencyContact', 'employment', 'essayOne', 'essayTwo', 'essayThree', 'essayFour', 'interests', 'notes', 'numMissedOrientaion', 'referenceOne', 'referenceTwo', 'skills'];
+    for (i = 0; i < outputArray.length; i++) {
+      for (var j = 0; j < firstLevelPropertiesToDelete.length; j++) {
+        if (outputArray[i].hasOwnProperty(firstLevelPropertiesToDelete[j])) {
+          delete outputArray[i][firstLevelPropertiesToDelete[j]];
+        }
       }
-    }
-    if (outputArray.contactInfo.hasOwnProperty('address')) {
-      delete outputArray.contactInfo.address;
-    }
-    if (outputArray.contactInfo.hasOwnProperty('phoneNum')) {
-      delete outputArray.contactInfo.phoneNum;
+      if (outputArray[i].contactInfo.hasOwnProperty('address')) {
+        delete outputArray[i].contactInfo.address;
+      }
+      if (outputArray[i].contactInfo.hasOwnProperty('phoneNum')) {
+        delete outputArray[i].contactInfo.phoneNum;
+      }
     }
     return outputArray;
   };

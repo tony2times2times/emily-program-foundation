@@ -235,7 +235,7 @@ function($scope, $http, $timeout, SweetFactory) {
         }
       }
     }
-    SweetFactory.emailSend(emailList);
+    SweetFactory.emailSend(SweetFactory.emailStrip(emailList));
   };
 
   //Removes person as a applicant and makes them a volunteer

@@ -124,7 +124,7 @@ function($scope, $http, SweetFactory) {
         recipientArray.push($scope.filteredVolunteers[index]);
       }
     }
-    SweetFactory.emailSend(recipientArray);
+    SweetFactory.emailSend(SweetFactory.emailStrip(recipientArray));
   };
 
   $scope.getFormFields = function(){
