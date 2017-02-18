@@ -23,8 +23,8 @@ var volunteerSchema = new Schema({
   employment: String,
   interests: [ String ],
   name: {
-    first_name: {type: String, lowercase: true},
-    last_name: {type: String, lowercase: true}
+    first_name: {type: String},
+    last_name: {type: String}
   },
   notes: { type: String, default: '' },
   skills: [ String ]

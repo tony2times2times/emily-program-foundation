@@ -37,8 +37,8 @@ var applicantSchema = new Schema({
               },
     interests: {type: [String], default: '[]'},
     name: {
-      first_name: {type: String, lowercase: true},
-      last_name: {type: String, lowercase: true}
+      first_name: {type: String},
+      last_name: {type: String}
     },
     notes: { type: String, default: '' },
     numMissedOrientaion: { type: Number, default: 0 },
