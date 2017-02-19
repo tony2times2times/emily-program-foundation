@@ -4,13 +4,19 @@ body {
 
 form li {
   list-style: none;
-  margin: 25px;
+  margin: 10px auto;
   padding: 0px;
   display: inline-block;
 }
 
 form label {
   display: block;
+}
+
+form input{
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+
 }
 
 .wrong{
