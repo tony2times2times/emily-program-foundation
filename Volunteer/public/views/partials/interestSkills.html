@@ -1,25 +1,25 @@
-<img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo">
+<!-- <img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo"> -->
 <div class="container">
-<div class="background">
-<h1>Volunteer Application</h1>
-<button type="button" class="prevButt" ng-click="skillsPrev()"> < Previous</button>
-<div id="skillsSection">
-  <label for="skills">I have the following skills (check all that apply):</label>
-  <div ng-repeat="item in skills" >
-    <label>{{ item.skill | removeUnderscores }}</label>
-    <input ng-model="skillsIn[item.skill]" type="checkbox">
+  <div class="background">
+  <h1 id="skillsHeader">Skills & Interests</h1>
+  <button type="button" class="prevButt" ng-click="skillsPrev()"> < Previous</button>
+  <div id="skillsSection">
+    <label for="skills">I have the following skills (check all that apply):</label>
+    <div ng-repeat="item in skills" >
+      <label class="skillItems">{{ item.skill | removeUnderscores }}</label>
+      <input ng-model="skillsIn[item.skill]" type="checkbox">
+    </div>
   </div>
-</div>
-<br></br>
-<div id="interestsSection">
-  <label for="interests">The Emily Program Foundation depends on committed volunteers for our work. Please indicate which
-  opportunities you are able to commit to while volunteering with us (check all that apply).</label>
-  <div ng-repeat="item in interests">
-    <label>{{item.interest | removeUnderscores}}</label>
-    <input ng-model="interestsIn[item.interest]" type="checkbox">
+  <br></br>
+  <div id="interestsSection">
+    <label for="interests">The Emily Program Foundation depends on committed volunteers for our work. Please indicate which
+    opportunities you are able to commit to while volunteering with us (check all that apply):</label>
+    <div ng-repeat="item in interests">
+      <label class="interestItems">{{item.interest | removeUnderscores}}</label>
+      <input ng-model="interestsIn[item.interest]" type="checkbox">
+    </div>
   </div>
-</div>
-<button type="button" class="nextButt" ng-click="skillsNext()">Next ></button>
-<p class="prog">Page 2 of 5</p>
-</div>
+  <button type="button" class="nextButt" ng-click="skillsNext()">Next ></button>
+  <p class="prog">Page 2 of 5</p>
+  </div>
 </div>
