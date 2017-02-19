@@ -2,9 +2,10 @@
   <div class="container">
     <div class="background">
       <h1>Volunteer Application</h1>
-        <button type="button" class="prevButt" ng-click="wavPrev()"> < Previous</button><br>
-          </br>
-        <iframe src="resources/Volunteer_Consent_and_Liability_Waiver_2017.pdf" width="500px" height="500px" style="border: none;"></iframe><br></br>
+        <button type="button" class="prevButt" ng-click="wavPrev()"> < Previous</button>
+        <div class="waiver-container">
+          <iframe src="resources/Volunteer_Consent_and_Liability_Waiver_2017.pdf" width="500px" height="500px" style="border: none;"></iframe><br></br>
+        </div>
         <input type="checkbox" id="signed" required> <i>My checking the box indicates I have read this entire document, understand it completely, acknowledge that it cannot be modified or changed in any way by oral representations, and agree to be bound by its terms.</i></input>
 
       <button type="submit" class="submitButt" ng-click="validateCheck();">Submit Application</button>
