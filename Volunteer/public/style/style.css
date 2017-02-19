@@ -2,10 +2,9 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+form input{
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
 }
 
 .wrong{
@@ -15,29 +14,45 @@ h1 {
 .container{
     background-image: url("FoundationCircles_Setof3.jpg");
     background-repeat: repeat;
-    background-size: 20%;
+    background-size: 25%;
+    width: auto;
 }
 
 .background{
   background-color: white;
   text-align: left;
   font-family: sans-serif;
-  margin: 150px 150px 20px 150px;
-  padding:40px;
-  border-radius: 10px;
+  margin: 50px 150px 50px 150px;
+  padding:30px;
+  border-radius: 20px;
+  border: 2px solid #999999;
+}
+
+.socialLinks{
+  text-align: center;
+  margin-top: 100px;
 }
 
 .prevButt {
   text-align: center;
-  display: inline;
+  /*display: inline-block;*/
   background-color: #a8e5d9;
   border: none;
   cursor:pointer;
-  padding: 15px;
+  padding: 15px 20px 15px 20px;
   border-radius: 3px;
   font-weight: bold;
   font-size: 14px;
-  margin: 25px;
+  margin: 20px;
+  width: 150px;
+}
+
+.skillItems{
+  font-weight: normal;
+}
+
+.interestItems{
+  font-weight: normal;
 }
 
 .nextButt {
@@ -46,12 +61,13 @@ h1 {
   background-color: #dd561e;
   border: none;
   cursor:pointer;
-  padding: 15px;
+  padding: 15px 20px 15px 20px;
   border-radius: 3px;
   font-weight: bold;
   font-size: 14px;
   color: white;
-  margin: 25px;
+  margin: 20px auto 20px auto;
+  width: 150px;
 }
 
 .submitButt{
@@ -65,6 +81,7 @@ h1 {
   font-weight: bold;
   font-size: 18px;
   color: white;
+  margin: 20px auto 20px auto;
 }
 
 .return{
@@ -76,14 +93,33 @@ h1 {
   text-align: center;
 }
 
-#formID input {
-  text-align: center;
-  display:inline;
+.waiver-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 75%;
+  height: 0;
+  margin-bottom: 20px;
 }
 
-#formID label{
-  text-align: left;
-  display: inline;
+.waiver-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.thanksText{
+  text-align: center;
+}
+
+.submitButt:hover{
+  background-color:  #a8e5d9;
+  color: black;
+}
+
+#essayQuest{
+  margin-top: 30px;
 }
 
 #beginApp{
@@ -92,7 +128,7 @@ h1 {
   background-color: #a8e5d9;
   border: none;
   cursor:pointer;
-  padding: 20px;
+  padding: 20px 50px 20px 50px;
   border-radius: 3px;
   font-weight: bold;
   font-size: 18px;
@@ -117,7 +153,7 @@ h1 {
   border-radius: 5px;
   border: 2px solid #999999;
   padding: 25px;
-  top: 400px;
+  top: 300px;
   left: 30%;
   right: 30%;
 }
@@ -134,11 +170,67 @@ h1 {
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
-  top: 400px;
+  top: 300px;
   left: 30%;
   right: 30%;
 }
 
 #logo {
-  width: 25%;
+  width: 40%;
+}
+
+#yourInfo{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#skillsHeader {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#formID li {
+  list-style: none;
+  margin: 25px 25px 25px 25px;
+  padding: 0px;
+  display: inline-block;
+}
+
+#formID label {
+  display: block;
+}
+
+#emerHeader{
+  display:block;
+  margin-top: 20px;
+  margin-bottom:10px;
+}
+
+#refHeader{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#supporting {
+  display:block;
+}
+
+#essayHeader{
+  text-align: center;
+  /*margin-bottom: 50px;*/
+}
+
+#essayOne{
+  display: block;
+  margin-bottom: 5px;
+}
+
+#waiverHeader{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#thanksHeader{
+  margin-top: 50px;
+  text-align: center;
 }
