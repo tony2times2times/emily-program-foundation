@@ -8,7 +8,7 @@ function($scope, $http, $timeout, SweetFactory) {
   $scope.selected.skill = {};
   $scope.selected.interest = {};
   $scope.person = {};
-  $scope.hatList= ['APPLIED','PENDING','SCHEDULED','PROGRAM ERROR!!! CHECK bucketList'];
+  $scope.hatList= ['Applied','Approved & Pending','Scheduled','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
   $scope.applied = [];
   $scope.pending = [];
