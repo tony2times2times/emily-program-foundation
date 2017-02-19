@@ -165,7 +165,7 @@
           <input ng-click="$event.stopPropagation()" ng-model="selectedCheckbox[$index]" type="checkbox">
         </td>
         <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
-        <td ng-repeat="interest in person.interests">{{ interest }}{{$last ? '' : ', '}} </td>
+        <td> <span ng-repeat="interest in person.interests">{{ interest }}{{$last ? '' : ', '}}<span> </td>
         <td>{{ person.contactInfo.phoneNum  | phoneNumFormate}}</td>
         <td>{{ person.contactInfo.email }}</td>
       </tr>
