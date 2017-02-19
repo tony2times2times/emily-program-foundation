@@ -31,41 +31,53 @@ function($scope, $http, SweetFactory) {
     if (!($scope.searchFor))return $scope.filteredVolunteers = $scope.volunteers;
     $scope.selectedCheckbox = {};
     $scope.searchedInquiry = $scope.searchFor;
+    $scope.searchedInquiryBy = $scope.searchBy;
+    $scope.showSearchResults = true;
     switch ($scope.searchBy) {
       case 'names':
         $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
-          var re = new RegExp($scope.searchFor);
-          var searchFeild = x.name.first_name + ' ' + x.name.last_name;
-          return ( searchFeild.match(re) )
+          var re = new RegExp(  $scope.searchFor, "i"  );
+          var searchField = x.name.first_name + ' ' + x.name.last_name;
+          return ( searchField.match(re) ? true : false );
         });// end filter
 
-
         break;
+
       case 'skills':
-        console.log('filter by skill??');
-
-
+        console.log('filter by skill??', $scope.volunteers);
+        $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
+          var re = new RegExp($scope.searchFor, "i" );
+          var searchField = '';
+          for (var i = 0; i < x.skills.length; i++) {
+            searchField += ' ' + x.skills[i]
+          }
+          return ( searchField.match(re) ? true : false );
+        });// end filter
         break;
+
       case 'interests':
         console.log('filter by interests??');
-
-
+        $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
+          var re = new RegExp($scope.searchFor, "i" );
+          var searchField = '';
+          for (var i = 0; i < x.interests.length; i++) {
+            searchField += ' ' + x.interests[i];
+          }
+          return ( searchField.match(re) ? true : false );
+        });// end filter
         break;
+
       default:
       console.log('didnt filter');
       $scope.filteredVolunteers = $scope.volunteers;
-
-    }
+    }// end switch
+  };// end filterThroughVolunteers()
 
   $scope.cancelSearchResults = function(){
       $scope.showSearchResults = false;
       $scope.filteredVolunteers = $scope.volunteers;
       $scope.searchFor = '';
   }; //end cancelSearchResults()
-
-  $scope.showSearchResults = true;
-    console.log('else');
-  };// end filterThroughVolunteers()
 
   $scope.updateVolunteerNotes = function( volunteer, index ){
     console.log('updating note | volunteer & index = ', volunteer, index );
@@ -188,3 +200,20 @@ function($scope, $http, SweetFactory) {
   };// end submitNewVolunteer()
 
 }]); // end controller
+
+emilyApp.filter('dateFormate', function(){
+   return function(input){
+     if (!input)return;
+     var x = 5
+     if (input.slice(5,6)==='0' )x=6;
+     return input.slice(x,10) + '-' + input.slice(0,4);
+    };
+  });
+
+emilyApp.filter('phoneNumFormate', function(){
+   return function(input){
+     if (!input)return;
+     var input = input.toString()
+     return '(' + input.slice(0,3) + ') ' + input.slice(3,6) + '-' + input.slice(6);
+    };
+  });

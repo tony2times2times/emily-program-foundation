@@ -349,7 +349,7 @@ body>.person{
 table.allVollunteer_table {
   width: 90%;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
   font-size: 16px;
 }
 
@@ -359,11 +359,13 @@ table.allVollunteer_table {
 }
 
 .allVollunteer_thead th{
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
+  padding-left: 13px;
 }
 
 .allVollunteer_thead th:first-of-type {
+  padding-left: 0;
   max-width: 1rem;
 }
 
@@ -371,6 +373,10 @@ table.allVollunteer_table {
   /*not sure that this is the right approach */
   max-width: 6rem;
   height: 2em;
+}
+
+.allVolunteer_tableEntry label {
+  margin-bottom: 0;
 }
 
 .allVolunteer_table_checkbox {

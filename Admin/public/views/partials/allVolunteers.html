@@ -139,7 +139,10 @@
   </div>
   <br><br><br>
   <div ng-show="showSearchResults" style="float:left; " >
-    <p> <b> Search Results for "{{searchedInquiry}}" </b> <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button></p>
+    <p>
+      <b> Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
+      <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
+    </p>
   </div>
   <div style="clear:both;" ></div>
 
@@ -147,7 +150,9 @@
 
   <table class="allVollunteer_table">
     <thead class="allVollunteer_thead">
-      <th><button id='allVolunteer-selectAll-button' ng-click="checkAll();" type="button" name="button">Select All</button></th>
+      <th>
+        <button id='allVolunteer-selectAll-button' ng-click="checkAll();" type="button" name="button">Select All</button>
+      </th>
       <th>Name</th>
       <th>Interest</th>
       <th>Phone #</th>
@@ -155,44 +160,63 @@
     </thead>
 
     <tbody class="allVolunteer_tableEntry" >
-      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" ng-repeat-start="person in filteredVolunteers" class="table_entries">
-        <td class="allVolunteer_table_checkbox" ><input ng-click="$event.stopPropagation()" ng-model="selectedCheckbox[$index]" type="checkbox"></td>
+      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" class="table_entries" ng-repeat-start="person in filteredVolunteers" >
+        <td class="allVolunteer_table_checkbox" >
+          <input ng-click="$event.stopPropagation()" ng-model="selectedCheckbox[$index]" type="checkbox">
+        </td>
         <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
-        <td>interests go here</td>
-        <!-- <td ng-repeat="interest in person.interests">{{ interest }}</td> -->
-        <td>{{ person.contactInfo.phoneNum }}</td>
+        <td ng-repeat="interest in person.interests">{{ interest }}{{$last ? '' : ', '}} </td>
+        <td>{{ person.contactInfo.phoneNum  | phoneNumFormate}}</td>
         <td>{{ person.contactInfo.email }}</td>
       </tr>
-        <tr class="allVolunteer_tableEntry_moreInfo" ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }" >
-          <td></td>
-          <td colspan="3" > <label>Skills:</label> <span ng-repeat="skill in person.skills"> {{skill}} {{$last ? '' : ', '}} </span> </td>
 
-          <td style="vertical-align: middle;" class="td-centered">
-            <button ng-click="" type="button" class="btn btn-sm btn-primary">
-              <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-            </button>
-            <button ng-click="" type="button" class="btn btn-sm btn-success">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-            </button>
-            <button ng-click="" type="button" class="btn btn-sm btn-danger">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </button>
-          </td>
+      <tr class="allVolunteer_tableEntry_moreInfo" ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }" >
+        <td></td>
+        <td colspan="3" >
+          <label>Skills:</label>
+          <span ng-repeat="skill in person.skills"> {{skill}} {{$last ? '' : ', '}} </span>
+        </td>
+        <td style="vertical-align: middle;" class="td-centered">
+          <button ng-click="" type="button" class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+          </button>
+          <button ng-click="" type="button" class="btn btn-sm btn-success">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button>
+          <button ng-click="" type="button" class="btn btn-sm btn-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr >
 
+      <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  >
+        <td></td>
+        <td colspan="1" >
+          <label>Address:</label>
+          <p>{{person.contactInfo.address.street}}<br>
+          {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</p>
+          <label>Employment:</label> <p> {{person.employment}} </p>
 
-        </tr >
-        <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  >
-          <td></td>
-          <td colspan="1" ><label>Address:</label> <p>{{person.contactInfo.address.street}}</p>  <p>{{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</p> </td>
-          <td colspan="2" > <p> <label>Employment:</label> {{person.employment}} </p>  <p> <label>DOB:</label> {{person.dateOfBirth}} </p> <label>Begin Date:</label> {{person.dateBegan}} </p> </td>
-          <td colspan="2"> <label>Emergancy Contact:</label> <p>{{person.emergencyContact.name}} </p> <p>{{person.emergencyContact.phone}} </p> </td>
-        </tr>
-        <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end>
-          <td></td>
-          <td colspan="5" ><label style="vertical-align:top;" >Notes:</label> <textarea class="allVolunteer_textarea" ng-model="notes[$index]" ng-init="notes[this.$index]=[person.notes];" rows="3" cols="70"></textarea>
-              <button ng-click="updateVolunteerNotes([person], this.$index)" class="btn btn-xs btn-primary" style="vertical-align: top;" type="button" name="save">Save</button>
-          </td>
-        </tr>
+        </td>
+        <td colspan="1" >
+          <label>DOB:</label> <p> {{person.dateOfBirth | dateFormate}} </p>
+          <label>Begin Date:</label> <p> {{person.dateBegan | dateFormate}} </p>
+        </td>
+        <td colspan="2">
+          <label>Emergency Contact:</label>
+          <p>{{person.emergencyContact.name}} <br>
+          {{person.emergencyContact.phone | phoneNumFormate}} </p>
+        </td>
+      </tr>
+
+      <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end>
+        <td></td>
+        <td colspan="5" >
+          <label style="vertical-align:top;" >Notes:</label>
+          <textarea class="allVolunteer_textarea" ng-model="notes[$index]" ng-init="notes[this.$index]=[person.notes];" rows="3" cols="70"></textarea>
+          <button ng-click="updateVolunteerNotes([person], this.$index)" class="btn btn-xs btn-primary" style="vertical-align: top;" type="button" name="save">Save</button>
+        </td>
+      </tr>
     </tbody >
   </table>
 
