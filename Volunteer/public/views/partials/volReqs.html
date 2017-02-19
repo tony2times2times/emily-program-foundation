@@ -1,37 +1,34 @@
-<img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo">
 <div ng-init="hideInfoCard = true" class="container">
   <div class="background">
-<a class="return" href="http://emilyprogramfoundation.org/get-involved/volunteer/">Return to The Emily Program Foundation website</a>
-
-<h1>Welcome!</h1>
-  <p>The Emily Program Foundation loves and appreciates volunteers, and they are needed in a variety of ways to increase education and awareness about eating
-  disorders and related issues. Some opportunities are available during business hours, M-F between 9am and 5pm and some opportunities can be done on your own
-  time from your home. Below you will find volunteer requirements and a listing of current volunteer opportunities. Please fill out the following application.</p>
-  <p>Please note: The Emily Program Foundation is a non-clinical organization affiliated with but separate from The Emily Program's clinical sites.
-  In order to protect the confidentiality of those seeking services at The Emily Program, volunteers are not able to work directly with clients.</p>
-
-  <p>The Emily Program Foundation has specific needs for volunteers in four areas. To learn more about the areas before beginning the application, click on the links below.</p>
-      <div id ="opLinks">
-      <a href='' ng-click="showInfoCard(blogWriting)">Blog Writing</a> |
-      <a href='' ng-click="showInfoCard(advocacy)">Advocacy</a> |
-      <a href='' ng-click="showInfoCard(officeWork)">Office Work</a> |
-      <a href='' ng-click="showInfoCard(specialEvents)">Special Events</a>
+    <img id="logo" src="./style/TEPF-Logo-Transparent.png" alt="Emily Program logo">
+    <a class="return" href="http://emilyprogramfoundation.org/get-involved/volunteer/">Return to The Emily Program Foundation website</a>
+      <h1 id="welcome">Welcome!</h1>
+        <p>The Emily Program Foundation loves and appreciates volunteers, and they are needed in a variety of ways to increase education and awareness about eating
+          disorders and related issues. Some opportunities are available during business hours, M-F between 9am and 5pm and some opportunities can be done on your own
+          time from your home. Below you will find volunteer requirements and a listing of current volunteer opportunities. Please fill out the following application.</p>
+        <p>Please note: The Emily Program Foundation is a non-clinical organization affiliated with but separate from The Emily Program's clinical sites.
+          In order to protect the confidentiality of those seeking services at The Emily Program, volunteers are not able to work directly with clients.</p>
+      <p>The Emily Program Foundation has specific needs for volunteers in four areas. To learn more about the areas before beginning the application, click on the links below.</p>
+        <div id ="opLinks">
+          <a href='' ng-click="showInfoCard(blogWriting)">Blog Writing</a> |
+          <a href='' ng-click="showInfoCard(advocacy)">Advocacy</a> |
+          <a href='' ng-click="showInfoCard(officeWork)">Office Work</a> |
+          <a href='' ng-click="showInfoCard(specialEvents)">Special Events</a>
+        </div>
+    <div ng-hide ="hideInfoCard">
+      <button id="exit" ng-click="hideInfoCard = true">X</button>
+      <div id="infoContent"></div>
     </div>
-  <div ng-hide ="hideInfoCard">
-    <button id="exit" ng-click="hideInfoCard = true">X</button>
-    <div id="infoContent"></div>
-  </div>
-
-<h3>Volunteer Requirements</h3>
-  <ul>
-    <li>All volunteers with The Emily Program Foundation must be at least 18 years old of age. If you are under the age of 18 and still wish to volunteer, you must
-    include a signed consent and liability waiver from a parent or guardian who must also be present during all volunteering activities, including orientation.</li>
-    <li>All volunteers with The Emily Program Foundation will be expected to sign a consent and liability waiver and a confidentiality agreement during orientation.</li>
-    <li>The Emily Program Foundation draws the interest of many people of different backgrounds and experiences. Volunteering in an area where you have previously
-    struggled can have benefits and risks. It may feel gratifying and empowering to help others who are at a darker place in their eating disorder (ED) journey. Conversely, thinking
-  and talking about ED symptoms can trigger old behavior patterns and maladaptive coping methods. We recommend that you carefully consider how you may be impacted
-by volunteering for The Emily Program Foundation and consult with a treatment provider if appropriate.</li>
-  </ul>
-  <button id="beginApp" ng-click='beginApp()' type="button" name="button">Start</button>
+  <h3>Volunteer Requirements</h3>
+    <ul>
+      <li>All volunteers with The Emily Program Foundation must be at least 18 years old of age. If you are under the age of 18 and still wish to volunteer, you must
+      include a signed consent and liability waiver from a parent or guardian who must also be present during all volunteering activities, including orientation.</li>
+      <li>All volunteers with The Emily Program Foundation will be expected to sign a consent and liability waiver and a confidentiality agreement during orientation.</li>
+      <li>The Emily Program Foundation draws the interest of many people of different backgrounds and experiences. Volunteering in an area where you have previously
+      struggled can have benefits and risks. It may feel gratifying and empowering to help others who are at a darker place in their eating disorder (ED) journey. Conversely, thinking
+    and talking about ED symptoms can trigger old behavior patterns and maladaptive coping methods. We recommend that you carefully consider how you may be impacted
+  by volunteering for The Emily Program Foundation and consult with a treatment provider if appropriate.</li>
+    </ul>
+    <button id="beginApp" ng-click='beginApp()' type="button" name="button">Start</button>
 </div>
 </div>
