@@ -94,6 +94,10 @@ body {
 
 /*AUTH*/
 
+#loggin-body {
+  background-color: white;
+}
+
 #loginLogo {
   display: block;
   margin: 0 auto;
