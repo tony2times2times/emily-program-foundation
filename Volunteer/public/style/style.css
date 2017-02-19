@@ -35,7 +35,7 @@ form input{
 
 .prevButt {
   text-align: center;
-  display: inline;
+  /*display: inline-block;*/
   background-color: #a8e5d9;
   border: none;
   cursor:pointer;
@@ -61,7 +61,7 @@ form input{
   background-color: #dd561e;
   border: none;
   cursor:pointer;
-  padding: 15px;
+  padding: 15px 20px 15px 20px;
   border-radius: 3px;
   font-weight: bold;
   font-size: 14px;
@@ -116,6 +116,10 @@ form input{
 .submitButt:hover{
   background-color:  #a8e5d9;
   color: black;
+}
+
+#essayQuest{
+  margin-top: 30px;
 }
 
 #beginApp{
@@ -177,10 +181,12 @@ form input{
 
 #yourInfo{
   text-align: center;
+  margin-bottom: 30px;
 }
 
 #skillsHeader {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 #formID li {
@@ -202,6 +208,7 @@ form input{
 
 #refHeader{
   text-align: center;
+  margin-bottom: 30px;
 }
 
 #supporting {
@@ -210,10 +217,17 @@ form input{
 
 #essayHeader{
   text-align: center;
+  /*margin-bottom: 50px;*/
+}
+
+#essayOne{
+  display: block;
+  margin-bottom: 5px;
 }
 
 #waiverHeader{
   text-align: center;
+  margin-bottom: 30px;
 }
 
 #thanksHeader{
