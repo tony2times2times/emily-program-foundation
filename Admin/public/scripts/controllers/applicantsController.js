@@ -158,38 +158,9 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //sets active Applicant
   $scope.setActive = function(listIndex, personIndex){
-    var i;
-    var j;
     //create an acite person cloned from the selected person
     $scope.person = angular.copy($scope.hatchery[listIndex][personIndex]);
-    //init the availibleSkills and availibleInterests as an array
-    $scope.person.availibleSkills = [];
-    $scope.person.availibleInterests = [];
-    //check each active skill
-    skill:
-    for (i = 0; i < $scope.skills.length; i++) {
-      //check each skill a applicant has
-      for (j = 0; j < $scope.person.skills.length; j++) {
-        if ($scope.skills[i].skill === $scope.person.skills[j]) {
-          //if the applicant already has the skill continue to the next skill
-          continue skill;
-        }
-      }
-      //if the skill was not found then add it to the availibleSkills
-      $scope.person.availibleSkills.push($scope.skills[i].skill);
-    }
-    interest:
-    for (i = 0; i < $scope.interests.length; i++) {
-      //check each interest a applicant has
-      for (j = 0; j < $scope.person.interests.length; j++) {
-        if ($scope.interests[i].interest === $scope.person.interests[j]) {
-          //if the applicant already has the interest continue to the nex interest
-          continue interest;
-        }
-      }
-      //if the interest was not found then add it to the availibleInterests
-      $scope.person.availibleInterests.push($scope.interests[i].interest);
-    }
+
     //create a active person backup
     $scope.savePerson = angular.copy($scope.hatchery[listIndex][personIndex]);
     console.log('the active person is: ' + $scope.person.name.first_name,
@@ -200,11 +171,38 @@ function($scope, $http, $timeout, SweetFactory) {
   // tring to seperate shit!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   $scope.setViewedPerson = function(listIndex, personIndex){
-    console.log('another set');
+    var i;
+    var j;
     $scope.viewedPerson = angular.copy($scope.hatchery[listIndex][personIndex]);
-
-
-  }
+    //init the availibleSkills and availibleInterests as an array
+    $scope.viewedPerson.availibleSkills = [];
+    $scope.viewedPerson.availibleInterests = [];
+    //check each active skill
+    skill:
+    for (i = 0; i < $scope.skills.length; i++) {
+      //check each skill a applicant has
+      for (j = 0; j < $scope.viewedPerson.skills.length; j++) {
+        if ($scope.skills[i].skill === $scope.viewedPerson.skills[j]) {
+          //if the applicant already has the skill continue to the next skill
+          continue skill;
+        }
+      }
+      //if the skill was not found then add it to the availibleSkills
+      $scope.viewedPerson.availibleSkills.push($scope.skills[i].skill);
+    }
+    interest:
+    for (i = 0; i < $scope.interests.length; i++) {
+      //check each interest a applicant has
+      for (j = 0; j < $scope.viewedPerson.interests.length; j++) {
+        if ($scope.interests[i].interest === $scope.viewedPerson.interests[j]) {
+          //if the applicant already has the interest continue to the nex interest
+          continue interest;
+        }
+      }
+      //if the interest was not found then add it to the availibleInterests
+      $scope.viewedPerson.availibleInterests.push($scope.interests[i].interest);
+    }
+  };
 
   //Changes info view
   $scope.changeView = function (attribute) {
@@ -283,8 +281,12 @@ function($scope, $http, $timeout, SweetFactory) {
     $scope.viewedPerson.edit = true;
   };
 
+
   //makes active person data editable
   $scope.saveEdit = function(){
+    //if saving from non edit screen
+    if (!$scope.viewedPerson.edit) $scope.viewedPerson.notes = $scope.newNote;
+    console.log('notes?: ', $scope.newNote,  $scope.viewedPerson.notes);
     $scope.viewedPerson.edit = false;
     //save the id
     $scope.id = $scope.viewedPerson._id;

@@ -160,7 +160,7 @@
     </thead>
 
     <tbody class="allVolunteer_tableEntry" >
-      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" class="table_entries" ng-repeat-start="person in filteredVolunteers" >
+      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex, blue_background: this.$index%2 === 1 || (expandAll) }" class="table_entries" ng-repeat-start="person in filteredVolunteers" >
         <td class="allVolunteer_table_checkbox" >
           <input ng-click="$event.stopPropagation()" ng-model="selectedCheckbox[$index]" type="checkbox">
         </td>
@@ -196,7 +196,6 @@
           <p>{{person.contactInfo.address.street}}<br>
           {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</p>
           <label>Employment:</label> <p> {{person.employment}} </p>
-
         </td>
         <td colspan="1" >
           <label>DOB:</label> <p> {{person.dateOfBirth | dateFormate}} </p>
@@ -211,7 +210,7 @@
 
       <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end>
         <td></td>
-        <td colspan="5" >
+        <td colspan="4" >
           <label style="vertical-align:top;" >Notes:</label>
           <textarea class="allVolunteer_textarea" ng-model="notes[$index]" ng-init="notes[this.$index]=[person.notes];" rows="3" cols="70"></textarea>
           <button ng-click="updateVolunteerNotes([person], this.$index)" class="btn btn-xs btn-primary" style="vertical-align: top;" type="button" name="save">Save</button>
