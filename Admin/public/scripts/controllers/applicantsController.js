@@ -76,7 +76,10 @@ function($scope, $http, $timeout, SweetFactory) {
     }
     //if person was moved into the pending array change thier status
     else if (index === 1) {
-      if ($scope.person.appStatus !== 'pending') {
+      if ($scope.person.appStatus === 'scheduled') {
+        $scope.setStatus('pending');
+        $scope.addOrientation($scope.person);
+      }else if ($scope.person.appStatus !== 'pending') {
         $scope.setStatus('pending');
         if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
       }
@@ -85,7 +88,6 @@ function($scope, $http, $timeout, SweetFactory) {
     else if (index === 2) {
       if ($scope.person.appStatus !== 'scheduled') {
         $scope.setStatus('scheduled');
-        $scope.addOrientation($scope.person);
       }
     }
     else {
@@ -335,7 +337,7 @@ function($scope, $http, $timeout, SweetFactory) {
   'Edit Canceled',
   '',
   'error'
-)
+);
   };
 
   //add skill to active applicant user based on the selected skill
@@ -391,10 +393,10 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //determines button color based on number of missed orientations
   $scope.buttonColor = function(cat){
-    if (cat.numMissedOrientaion < 2) {
+    if (cat.numMissedOrientaion < 1) {
       return 'green';
     }
-    else if (cat.numMissedOrientaion === 2) {
+    else if (cat.numMissedOrientaion === 1) {
       return 'yellow';
     }else{
       return 'red';
