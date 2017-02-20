@@ -204,6 +204,7 @@ text-align: center;
 .info-buttons{
   width : 505px;
   text-align: center;
+  margin: 0 auto;
 }
 
 /*.info-buttons button{
