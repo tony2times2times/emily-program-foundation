@@ -193,7 +193,7 @@ text-align: center;
   background-color: white;
   min-height : 450px;
   padding: 1rem 0;
-
+  margin: 0 0 15rem;
 }
 
 .select-action-buttons{
@@ -223,16 +223,31 @@ text-align: center;
   font-style: italic;
 }
 
+.applicant-view-btn {
+  margin-top: 10px;
+  float: right;
+  zoom: .4;
+}
 
+.applicant-select {
+  float: left;
+  zoom: 1.2;
+}
 
 .person {
   width : 90%;
-  /*border: black;*/
   color : black;
   margin: 0 5% .4rem;
-
   height: 40px;
   font-size:20px;
+  text-align: center;
+  padding: 5px 5px;
+}
+
+.person p {
+  vertical-align: text-bottom;
+  width: 100%;
+  display: block;
 }
 
 .person:hover{
@@ -241,14 +256,14 @@ text-align: center;
   border: 3px solid #ccc;
 }
 
-.person input[type=checkbox]
+/*.person input[type=checkbox]
 {
   position: absolute;
   left: 15px;
   -webkit-transform: scale(2);
   padding: 10px;
   color: #ffffff;
-}
+}*/
 
 .green{
   background-color : #d8edff;

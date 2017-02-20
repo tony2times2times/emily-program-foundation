@@ -8,6 +8,7 @@ function($scope, $http, $timeout, SweetFactory) {
   $scope.selected.skill = {};
   $scope.selected.interest = {};
   $scope.person = {};
+  $scope.viewedPerson = {};
   $scope.hatList= ['Applied','Approved & Pending','Scheduled','PROGRAM ERROR!!! CHECK bucketList'];
   $scope.hatchery = [];
   $scope.applied = [];
@@ -170,7 +171,7 @@ function($scope, $http, $timeout, SweetFactory) {
       //check each skill a applicant has
       for (j = 0; j < $scope.person.skills.length; j++) {
         if ($scope.skills[i].skill === $scope.person.skills[j]) {
-          //if the applicant already has the skill continue to the nex skill
+          //if the applicant already has the skill continue to the next skill
           continue skill;
         }
       }
@@ -194,6 +195,16 @@ function($scope, $http, $timeout, SweetFactory) {
     console.log('the active person is: ' + $scope.person.name.first_name,
     $scope.person.name.last_name);
   };
+
+
+  // tring to seperate shit!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  $scope.setViewedPerson = function(listIndex, personIndex){
+    console.log('another set');
+    $scope.viewedPerson = angular.copy($scope.hatchery[listIndex][personIndex]);
+
+
+  }
 
   //Changes info view
   $scope.changeView = function (attribute) {
@@ -269,16 +280,16 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //makes active person data editable
   $scope.edit = function(){
-    $scope.person.edit = true;
+    $scope.viewedPerson.edit = true;
   };
 
   //makes active person data editable
   $scope.saveEdit = function(){
-    $scope.person.edit = false;
+    $scope.viewedPerson.edit = false;
     //save the id
-    $scope.id = $scope.person._id;
+    $scope.id = $scope.viewedPerson._id;
     //update the backup person
-    $scope.savePerson = angular.copy($scope.person);
+    $scope.savePerson = angular.copy($scope.viewedPerson);
     //label the for loop so i can break it later
     bucket:
     //search every bucket
@@ -288,7 +299,7 @@ function($scope, $http, $timeout, SweetFactory) {
         //when a matching id is found
         if ($scope.hatchery[i][j]._id===$scope.id){
           //update the person in that bucket
-          $scope.hatchery[i][j] = angular.copy($scope.person);
+          $scope.hatchery[i][j] = angular.copy($scope.viewedPerson);
           //exit the bucket loop
           break bucket;
         }
@@ -298,7 +309,7 @@ function($scope, $http, $timeout, SweetFactory) {
     $http({
       method: 'PUT',
       url: '/applicant/' + $scope.id,
-      data: $scope.person
+      data: $scope.viewedPerson
     }).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(error) {
@@ -308,9 +319,9 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //reverts changes made while editing
   $scope.cancelEdit = function(){
-    $scope.person.edit = false;
+    $scope.viewedPerson.edit = false;
     //reset active data from backup person
-    $scope.person = angular.copy($scope.savePerson) ;
+    $scope.viewedPerson = angular.copy($scope.savePerson) ;
   };
 
   //add skill to active applicant user based on the selected skill
@@ -320,12 +331,12 @@ function($scope, $http, $timeout, SweetFactory) {
       return;
     }
     //add the skill to the applicants skills list
-    $scope.person.skills.push(skill);
+    $scope.viewedPerson.skills.push(skill);
     //search the applicants availibleSkills
-    for (var i = 0; i < $scope.person.availibleSkills.length; i++) {
+    for (var i = 0; i < $scope.viewedPerson.availibleSkills.length; i++) {
       //when the skill is found remove it from availibleSkills
-      if ($scope.person.availibleSkills[i] === skill) {
-        $scope.person.availibleSkills.splice(i, 1);
+      if ($scope.viewedPerson.availibleSkills[i] === skill) {
+        $scope.viewedPerson.availibleSkills.splice(i, 1);
         break;
       }
     }
@@ -334,9 +345,9 @@ function($scope, $http, $timeout, SweetFactory) {
   //removes skill from active applicant
   $scope.removeSkill = function(index){
     //add skill to list availibleSkills
-    $scope.person.availibleSkills.push($scope.person.skills[index]);
+    $scope.viewedPerson.availibleSkills.push($scope.viewedPerson.skills[index]);
     //remove skill from applicant
-    $scope.person.skills.splice(index,1);
+    $scope.viewedPerson.skills.splice(index,1);
   };
 
   //add interst based on the selected interest
@@ -346,12 +357,12 @@ function($scope, $http, $timeout, SweetFactory) {
       return;
     }
     //adds interest to applicants interests list
-    $scope.person.interests.push(interest);
+    $scope.viewedPerson.interests.push(interest);
     //search the applicants availibleInterests
-    for (var i = 0; i < $scope.person.availibleInterests.length; i++) {
+    for (var i = 0; i < $scope.viewedPerson.availibleInterests.length; i++) {
       //find the interest and remove it from availibleInterests
-      if ($scope.person.availibleInterests[i] === interest) {
-        $scope.person.availibleInterests.splice(i, 1);
+      if ($scope.viewedPerson.availibleInterests[i] === interest) {
+        $scope.viewedPerson.availibleInterests.splice(i, 1);
         break;
       }
     }
@@ -359,9 +370,9 @@ function($scope, $http, $timeout, SweetFactory) {
 
   $scope.removeInterest = function(index){
     //add interest to the applicants availibleInterests
-    $scope.person.availibleInterests.push($scope.person.interests[index]);
+    $scope.viewedPerson.availibleInterests.push($scope.viewedPerson.interests[index]);
     //remove interest from applicants interests
-    $scope.person.interests.splice(index, 1);
+    $scope.viewedPerson.interests.splice(index, 1);
   };
 
   //determines button color based on number of missed orientations
@@ -458,6 +469,7 @@ function($scope, $http, $timeout, SweetFactory) {
   //actually removes applicant
   $scope.removeAllData = function(applicant){
     $scope.person = {};
+    $scope.viewedPerson = {};
     console.log('removing applicant: ' + applicant.last_name);
     //remove applicant localy
     bucket:
