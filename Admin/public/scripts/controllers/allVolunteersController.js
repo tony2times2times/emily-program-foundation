@@ -12,6 +12,7 @@ function($scope, $http, SweetFactory) {
     $scope.searchBy = 'names';
     $scope.showSearchResults = false;
     $scope.selectedCheckbox = {};
+    $scope.helloYou = 'may be interested in an internship';
 
 
     $scope.getFormFields();
@@ -77,6 +78,8 @@ function($scope, $http, SweetFactory) {
       $scope.showSearchResults = false;
       $scope.filteredVolunteers = $scope.volunteers;
       $scope.searchFor = '';
+      $scope.selectedindex = null;
+      $scope.selectedCheckbox = {};
   }; //end cancelSearchResults()
 
   $scope.updateVolunteerNotes = function( volunteer, index ){
