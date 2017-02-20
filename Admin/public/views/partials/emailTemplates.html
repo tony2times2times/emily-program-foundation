@@ -48,8 +48,8 @@
         </div>
       </div>
       <text-angular ng-model="template.body"></text-angular>
-      <button class="btn btn-success" type="button" ng-click="saveTemplate(template._id, template.subject, template.body)">Save this e-mail template</button>
-      <button class="btn btn-danger" type="button" ng-click="cancelTemplate()">Cancel</button>
+      <button class="btn btn-primary" type="button" ng-click="saveTemplate(template._id, template.subject, template.body)">Save this e-mail template</button>
+      <button class="btn btn-link" type="button" ng-click="cancelTemplate()">Cancel</button>
       <hr>
     </div>
     <div class="container admin-subsection" ng-show="newTemplateEntry">
@@ -75,8 +75,8 @@
         </div>
       </div>
       <text-angular ng-model="newTemplateBody"></text-angular>
-      <button class="btn btn-success" type="button" ng-click="saveNewTemplate()">Save this e-mail template</button>
-      <button class="btn btn-danger" type="button" ng-click="cancelNewTemplate()">Cancel</button>
+      <button class="btn btn-primary" type="button" ng-click="saveNewTemplate()">Save this e-mail template</button>
+      <button class="btn btn-link" type="button" ng-click="cancelNewTemplate()">Cancel</button>
       <hr>
     </div>
   </div>

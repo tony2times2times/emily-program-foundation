@@ -284,9 +284,6 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //makes active person data editable
   $scope.saveEdit = function(){
-    //if saving from non edit screen
-    if (!$scope.viewedPerson.edit) $scope.viewedPerson.notes = $scope.newNote;
-    console.log('notes?: ', $scope.newNote,  $scope.viewedPerson.notes);
     $scope.viewedPerson.edit = false;
     //save the id
     $scope.id = $scope.viewedPerson._id;

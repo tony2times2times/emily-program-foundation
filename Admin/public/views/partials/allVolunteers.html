@@ -112,7 +112,7 @@
 
 
 
-    <div class="input-group col-xs-8">
+    <!-- <div class="input-group col-xs-7">
       <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
         <option value="names">Search by Names</option>
         <option value="skills">Search by Skills</option>
@@ -123,29 +123,51 @@
       <span class="input-group-btn">
         <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search Volunteers</button>
       </span>
+    </div> -->
+
+
+    <div class="container">
+      <table style="width: 95%; margin: 0 auto;">
+        <tr>
+          <td>
+            <div class="input-group col-xs-9">
+              <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
+                <option value="names">Search by Names</option>
+                <option value="skills">Search by Skills</option>
+                <option value="interests">Search by Interests</option>
+              </select>
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+              <input ng-model="searchFor" class="form-control" type="text" >
+              <span class="input-group-btn">
+                <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search Volunteers</button>
+              </span>
+            </div>
+          </td>
+          <td style="text-align: right;">
+            <button class="btn btn-default" ng-click="hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button ng-click="mailAllChecked()" class="btn btn-default" type="button" name="button">Email Selected</button>
+          </td>
+          <td style="text-align: right;" >
+            <h5 for="checkbox">expand all?</h5>
+            <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div ng-show="showSearchResults" >
+              <p>
+                <b> Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
+                <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
+              </p>
+            </div>
+          </td>
+          <td style="color: #efefe0;">//</td>
+        </tr>
     </div>
-    <div style="float: right;">
-      <button class="btn btn-default" ng-click="hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
-    </div>
-  <div style="clear:both;" ></div>
-
-
-  <div style="float:left; ">
-    <button ng-click="mailAllChecked()" class="btn btn-default" type="button" name="button">Email Selected</button>
-  </div>
-  <div id="expand-all" >
-    <h5 for="checkbox">expand all?</h5>
-    <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
-  </div>
-  <br><br><br>
-  <div ng-show="showSearchResults" style="float:left; " >
-    <p>
-      <b> Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
-      <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
-    </p>
-  </div>
-  <div style="clear:both;" ></div>
-
 
 
   <table class="allVollunteer_table">
@@ -155,7 +177,7 @@
       </th>
       <th>Name</th>
       <th>Interest</th>
-      <th>Phone #</th>
+      <th class="allVolunteer_fourth_td" >Phone #</th>
       <th>Email</th>
     </thead>
 
@@ -166,7 +188,7 @@
         </td>
         <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
         <td> <span ng-repeat="interest in person.interests">{{ interest }}{{$last ? '' : ', '}}<span> </td>
-        <td>{{ person.contactInfo.phoneNum  | phoneNumFormate}}</td>
+        <td class="allVolunteer_fourth_td">{{ person.contactInfo.phoneNum  | phoneNumFormate}}</td>
         <td>{{ person.contactInfo.email }}</td>
       </tr>
 
