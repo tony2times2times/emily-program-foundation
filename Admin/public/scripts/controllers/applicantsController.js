@@ -262,6 +262,11 @@ function($scope, $http, $timeout, SweetFactory) {
         }
       }
     }
+    swal(
+  'Volunteer(s) Activated',
+  '',
+  'success'
+);
   };
 
   $scope.addVolunteer = function(volunteer){
@@ -314,6 +319,11 @@ function($scope, $http, $timeout, SweetFactory) {
     }, function errorCallback(error) {
       console.log('error', error);
     });
+    swal(
+  'Edit Saved',
+  '',
+  'success'
+);
   };
 
   //reverts changes made while editing
@@ -321,6 +331,11 @@ function($scope, $http, $timeout, SweetFactory) {
     $scope.viewedPerson.edit = false;
     //reset active data from backup person
     $scope.viewedPerson = angular.copy($scope.savePerson) ;
+    swal(
+  'Edit Canceled',
+  '',
+  'error'
+)
   };
 
   //add skill to active applicant user based on the selected skill
