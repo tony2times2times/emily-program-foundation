@@ -335,7 +335,7 @@ function($scope, $http, $timeout, SweetFactory) {
   'Edit Canceled',
   '',
   'error'
-)
+);
   };
 
   //add skill to active applicant user based on the selected skill
