@@ -80,16 +80,16 @@ router.put('/:id', function(req, res) {
       phone: data.emergencyContact.phone
     },
     employment: data.employment,
-    essayOne: { question: data.essayOne.question,
+    essayOne: { question: data.essayOne.essayQuestion,
                 response: data.essayOne.response
               },
-    essayTwo: { question: data.essayTwo.question,
+    essayTwo: { question: data.essayTwo.essayQuestion,
                 response: data.essayTwo.response
               },
-    essayThree:{ question: data.essayThree.question,
+    essayThree:{ question: data.essayThree.essayQuestion,
                  response: data.essayThree.response
                },
-    essayFour:{ question: data.essayFour.question,
+    essayFour:{ question: data.essayFour.essayQuestion,
                 response: data.essayFour.response
                },
     interests: data.interests, // should be an array

@@ -129,7 +129,7 @@ body {
 
 /*ADMIN VIEW*/
 .body-section {
-  width: 80%;
+  width: 86%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -193,7 +193,7 @@ text-align: center;
   background-color: white;
   min-height : 450px;
   padding: 1rem 0;
-
+  margin: 0 0 15rem;
 }
 
 .select-action-buttons{
@@ -203,14 +203,14 @@ text-align: center;
 
 .info-buttons{
   width : 505px;
-  margin: auto;
+  text-align: center;
 }
 
-.info-buttons button{
+/*.info-buttons button{
   width : 19%;
   margin: 0;
   padding: 0;
-}
+}*/
 
 .check-all-button {
   display: block;
@@ -223,16 +223,31 @@ text-align: center;
   font-style: italic;
 }
 
+.applicant-view-btn {
+  margin-top: 10px;
+  float: right;
+  zoom: .4;
+}
 
+.applicant-select {
+  float: left;
+  zoom: 1.2;
+}
 
 .person {
   width : 90%;
-  /*border: black;*/
   color : black;
   margin: 0 5% .4rem;
-
   height: 40px;
   font-size:20px;
+  text-align: center;
+  padding: 5px 5px;
+}
+
+.person p {
+  vertical-align: text-bottom;
+  width: 100%;
+  display: block;
 }
 
 .person:hover{
@@ -241,14 +256,14 @@ text-align: center;
   border: 3px solid #ccc;
 }
 
-.person input[type=checkbox]
+/*.person input[type=checkbox]
 {
   position: absolute;
   left: 15px;
   -webkit-transform: scale(2);
   padding: 10px;
   color: #ffffff;
-}
+}*/
 
 .green{
   background-color : #d8edff;
@@ -259,11 +274,11 @@ text-align: center;
 }
 
 .yellow{
-  background-color :  #faffc0;
+  background-color :  #f5f5b8;
 }
 
 .yellow:hover{
-  background-color : #faffc0;
+  background-color : #f5f5b8;
 }
 
 .red{
@@ -283,51 +298,67 @@ text-align: center;
 
 
 /*APPLICANT INFO table appearence*/
-.info-view table, .info-view td, .info-view thead, .info-view tr {
-  border: 1px solid black;
-}
-
-.info-view .edit-table table, .info-view .edit-table td, .info-view .edit-table thead, .info-view .edit-table tr {
-  border: 1px solid #dd561e;
-}
 
 .info-view table{
   width: 500px;
-  margin: 0 auto;
-  border : 1px;
+  margin: 0 auto 3rem;
+  /*border : 1px;
   border-spacing : 0;
   border-collapse : collapse;
   /*table-layout : fixed;*/
 }
-.info-view td, .info-view th{
-  text-align: center;
+
+.info-view th{
+  text-align: right;
   padding: 5px;
+  width: 40%;
+  vertical-align: text-top;
 }
 
-.info-view .edit-table td{
-  text-align: center;
-  padding: 0;
+.info-view td {
+  text-align: left;
+  width: 60%;
+  vertical-align: text-top;
 }
 
-.info-view table input{
-  padding: 0;
-  border: none;
+.info-save-notes  {
+  vertical-align: top !important;
+  text-align: right !important;
+}
+
+.edit-table th{
+  text-align: right;
+  padding: 5px;
+  width: 40%;
+  vertical-align: text-top;
+}
+
+.edit-table td{
+  text-align: left;
+  width: 60%;
+  vertical-align: text-top;
+}
+
+.edit-table input{
   width: 100%;
-  box-sizing : border-box;
+}
+
+.info-view {
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 3rem;
 }
 
 .edit-control{
   width: 200px;
-  margin: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .edit-control-buttons{
   width: 48%;
-  -webkit-appearance: button;
-  text-decoration: none;
   display: inline-block;
   padding: 0;
-  margin: 0;
+  margin: 1rem 0 2rem ;
 }
 
 .remove-button{
@@ -384,6 +415,7 @@ table.allVollunteer_table {
 
 .allVolunteer_table_checkbox {
   max-width: 1rem;
+  text-align: center;
 }
 
 #allVolunteer-selectAll-button {
@@ -402,9 +434,11 @@ table.allVollunteer_table {
 
 .allVolunteer_tableEntry_moreInfo {
   text-align: left;
-  background-color: #eee;
+  background-color: white;
   font-size: 1em;
   line-height: 1.3em;
+  border-left: 20px solid #efefe0;
+  border-right: 20px solid #efefe0;
 }
 
 .allVolunteer_tableEntry_middleRow {
@@ -412,10 +446,20 @@ table.allVollunteer_table {
   padding: 0 12px;
 }
 
-.table_entries {
-  border-top: 2px solid #ddd;
-  font-weight: bold;
+.allVolunteer_fourth_td {
+  width: 13rem;
 }
+
+.table_entries {
+  /*border-top: 2px solid #ddd;*/
+  font-weight: bold;
+  background-color: white;
+}
+
+.blue_background {
+  background-color: #ebf6ff;
+}
+
 
 .table_entries:hover{
   background-color: #ccc;
@@ -426,8 +470,9 @@ table.allVollunteer_table {
 }
 
 .allVolunteer_tableEntry_selected {
-  background-color: #ddd;
+  background-color: #ddd !important;
 }
+
 
 #expand-all {
   float: right;
@@ -435,13 +480,16 @@ table.allVollunteer_table {
 
 .allVolunteers-selector {
   background-color: #eeeeee;
-  max-width: 18rem;
+  /*max-width: 19rem;*/
+  min-width: 17rem;
   padding-right: 0;
   margin-right: -4rem;
 }
 
 .allVolunteer_textarea {
   background-color: #eee;
+  border: 2px solid #3f88c5;
+  margin-bottom: 1rem;
 
 }
 

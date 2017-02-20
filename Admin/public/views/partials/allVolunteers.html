@@ -112,7 +112,7 @@
 
 
 
-    <div class="input-group col-xs-8">
+    <!-- <div class="input-group col-xs-7">
       <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
         <option value="names">Search by Names</option>
         <option value="skills">Search by Skills</option>
@@ -123,29 +123,51 @@
       <span class="input-group-btn">
         <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search Volunteers</button>
       </span>
+    </div> -->
+
+
+    <div class="container">
+      <table style="width: 95%; margin: 0 auto;">
+        <tr>
+          <td>
+            <div class="input-group col-xs-9">
+              <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
+                <option value="names">Search by Names</option>
+                <option value="skills">Search by Skills</option>
+                <option value="interests">Search by Interests</option>
+              </select>
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+              <input ng-model="searchFor" class="form-control" type="text" >
+              <span class="input-group-btn">
+                <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search Volunteers</button>
+              </span>
+            </div>
+          </td>
+          <td style="text-align: right;">
+            <button class="btn btn-default" ng-click="hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button ng-click="mailAllChecked()" class="btn btn-default" type="button" name="button">Email Selected</button>
+          </td>
+          <td style="text-align: right;" >
+            <h5 for="checkbox">expand all?</h5>
+            <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div ng-show="showSearchResults" >
+              <p>
+                <b> Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
+                <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
+              </p>
+            </div>
+          </td>
+          <td style="color: #efefe0;">//</td>
+        </tr>
     </div>
-    <div style="float: right;">
-      <button class="btn btn-default" ng-click="hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
-    </div>
-  <div style="clear:both;" ></div>
-
-
-  <div style="float:left; ">
-    <button ng-click="mailAllChecked()" class="btn btn-default" type="button" name="button">Email Selected</button>
-  </div>
-  <div id="expand-all" >
-    <h5 for="checkbox">expand all?</h5>
-    <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
-  </div>
-  <br><br><br>
-  <div ng-show="showSearchResults" style="float:left; " >
-    <p>
-      <b> Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
-      <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
-    </p>
-  </div>
-  <div style="clear:both;" ></div>
-
 
 
   <table class="allVollunteer_table">
@@ -155,18 +177,18 @@
       </th>
       <th>Name</th>
       <th>Interest</th>
-      <th>Phone #</th>
+      <th class="allVolunteer_fourth_td" >Phone #</th>
       <th>Email</th>
     </thead>
 
     <tbody class="allVolunteer_tableEntry" >
-      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex}" class="table_entries" ng-repeat-start="person in filteredVolunteers" >
+      <tr ng-click="clickedVolunteer($index);" ng-class="{allVolunteer_tableEntry_selected: this.$index === selectedindex, blue_background: this.$index%2 === 1 || (expandAll) }" class="table_entries" ng-repeat-start="person in filteredVolunteers" >
         <td class="allVolunteer_table_checkbox" >
           <input ng-click="$event.stopPropagation()" ng-model="selectedCheckbox[$index]" type="checkbox">
         </td>
         <td>{{ person.name.first_name }} {{ person.name.last_name }}</td>
         <td> <span ng-repeat="interest in person.interests">{{ interest }}{{$last ? '' : ', '}}<span> </td>
-        <td>{{ person.contactInfo.phoneNum  | phoneNumFormate}}</td>
+        <td class="allVolunteer_fourth_td">{{ person.contactInfo.phoneNum  | phoneNumFormate}}</td>
         <td>{{ person.contactInfo.email }}</td>
       </tr>
 
@@ -196,7 +218,6 @@
           <p>{{person.contactInfo.address.street}}<br>
           {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</p>
           <label>Employment:</label> <p> {{person.employment}} </p>
-
         </td>
         <td colspan="1" >
           <label>DOB:</label> <p> {{person.dateOfBirth | dateFormate}} </p>
@@ -211,7 +232,7 @@
 
       <tr class="allVolunteer_tableEntry_moreInfo allVolunteer_tableEntry_middleRow " ng-class="{allVolunteer_tableEntry_hide_extraInfo: this.$index !== selectedindex && !(expandAll) }"  ng-repeat-end>
         <td></td>
-        <td colspan="5" >
+        <td colspan="4" >
           <label style="vertical-align:top;" >Notes:</label>
           <textarea class="allVolunteer_textarea" ng-model="notes[$index]" ng-init="notes[this.$index]=[person.notes];" rows="3" cols="70"></textarea>
           <button ng-click="updateVolunteerNotes([person], this.$index)" class="btn btn-xs btn-primary" style="vertical-align: top;" type="button" name="save">Save</button>

@@ -3,54 +3,63 @@
 
   <!-- ///////////////////////////////INFO VIEW\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
-  <div ng-if="person.name.first_name !== undefined" class="">
+  <div ng-if="viewedPerson.name.first_name !== undefined" class="">
 
-    <div class="info-buttons" >
-      <button ng-click="changeView('info')">Info</button>
-      <button ng-click="changeView('skills')">Skills</button>
-      <button ng-click="changeView('essays')">Essays</button>
-      <button ng-click="changeView('references')">References</button>
-      <button ng-click="changeView('notes')">Notes</button>
+    <div class="container info-buttons">
+      <div class="btn-group"   >
+        <button class="btn btn-default" ng-click="changeView('info')">Info</button>
+        <button class="btn btn-default" ng-click="changeView('skills')">Skills</button>
+        <button class="btn btn-default" ng-click="changeView('essays')">Essays</button>
+        <button class="btn btn-default" ng-click="changeView('references')">References</button>
+        <button class="btn btn-default" ng-click="changeView('notes')">Notes</button>
+      </div>
     </div>
 
     <div class="info-display-name ">
-      <h3>{{person.name.first_name}} {{person.name.last_name}}</h3>
+      <h3>{{viewedPerson.name.first_name}} {{viewedPerson.name.last_name}}</h3>
     </div>
 
-    <div class="info-view" ng-if="person.edit !== true" ng-dblclick='edit()' class="container-fluid">
+    <div class="info-view" ng-if="viewedPerson.edit !== true" ng-dblclick='edit()' class="container-fluid">
       <table class="" ng-if="activeView === 'info'">
         <tr>
-          <th>Email</th>
-          <td>{{person.contactInfo.email}}</td>
+          <th>Phone:</th>
+          <td>{{viewedPerson.contactInfo.phoneNum | phoneNumFormate}}</td>
         </tr>
         <tr>
-          <th>Phone</th>
-          <td>{{person.contactInfo.phoneNum}}</td>
+          <th>Email:</th>
+          <td>{{viewedPerson.contactInfo.email}}</td>
         </tr>
         <tr>
-          <th>Address</th>
-          <td>{{person.contactInfo.address.street}} {{person.contactInfo.address.city}}, {{person.contactInfo.address.state}} {{person.contactInfo.address.zip}}</td>
+          <th>Address:</th>
+          <td>{{viewedPerson.contactInfo.address.street}} <br>
+            {{viewedPerson.contactInfo.address.city}}, {{viewedPerson.contactInfo.address.state}} {{viewedPerson.contactInfo.address.zip}}</td>
         </tr>
         <tr>
-          <th>Employment</th>
-          <td>{{person.employment}}</td>
+          <th>Employment:</th>
+          <td>{{viewedPerson.employment}}</td>
+        </tr>
+        <tr>
+          <th>Date of Birth:</th>
+          <td>{{viewedPerson.dateOfBirth | dateFormate }}</td>
         </tr>
       </table>
 
       <div class="" ng-if="activeView === 'skills'">
         <table>
           <tr>
-            <th>skills</th>
+            <th>Skills:</th>
+            <td><td/>
           </tr>
-          <tr ng-repeat='skill in person.skills'>
+          <tr ng-repeat='skill in viewedPerson.skills'>
+            <th></th>
             <td>{{skill}}</td>
           </tr>
-        </table>
-        <table>
           <tr>
-            <th>Interests</th>
+            <th>Interests:</th>
+            <td></td>
           </tr>
-          <tr ng-repeat='interest in person.interests'>
+          <tr ng-repeat='interest in viewedPerson.interests'>
+            <th></th>
             <td>{{interest}}</td>
           </tr>
         </table>
@@ -58,211 +67,256 @@
 
       <table class="" ng-if="activeView === 'essays'">
         <tr>
-          <th>Essay One</th>
-          <td>{{person.essayOne.response}}</td>
+          <th>Essay One:</th>
+          <td>{{viewedPerson.essayOne.response}}</td>
         </tr>
         <tr>
-          <th>Essay Two</th>
-          <td>{{person.essayTwo.response}}</td>
+          <th>Essay Two:</th>
+          <td>{{viewedPerson.essayTwo.response}}</td>
         </tr>
         <tr>
-          <th>Essay Three</th>
-          <td>{{person.essayThree.response}}</td>
+          <th>Essay Three:</th>
+          <td>{{viewedPerson.essayThree.response}}</td>
         </tr>
         <tr>
-          <th>Essay Four</th>
-          <td>{{person.essayFour.response}}</td>
+          <th>Essay Four:</th>
+          <td>{{viewedPerson.essayFour.response}}</td>
         </tr>
       </table>
 
       <table ng-if="activeView === 'references'">
         <tr>
+          <th>Reference One</th>
           <td></td>
-          <td><b>Reference One</b></td>
+        </tr>
+        <tr>
+          <th>Name:</th>
+          <td>{{viewedPerson.referenceOne.name}}</td>
+        </tr>
+        <tr>
+          <th>Phone:</th>
+          <td>{{viewedPerson.referenceOne.phone | phoneNumFormate}}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{{viewedPerson.referenceOne.email}}</td>
+        </tr>
+        <tr>
           <th>Reference Two</th>
+          <td></td>
         </tr>
         <tr>
-          <th>Name</th>
-          <td>{{person.referenceOne.name}}</td>
-          <td>{{person.referenceTwo.name}}</td>
+          <th>Name:</th>
+          <td>{{viewedPerson.referenceTwo.name}}</td>
         </tr>
         <tr>
-          <th>Email</th>
-          <td>{{person.referenceOne.email}}</td>
-          <td>{{person.referenceTwo.email}}</td>
+          <th>Phone:</th>
+          <td>{{viewedPerson.referenceTwo.phone | phoneNumFormate}}</td>
         </tr>
         <tr>
-          <th>Phone</th>
-          <td>{{person.referenceOne.phone}}</td>
-          <td>{{person.referenceTwo.phone}}</td>
+          <th>Email:</th>
+          <td>{{viewedPerson.referenceTwo.email}}</td>
         </tr>
       </table>
 
       <table ng-if="activeView === 'notes'">
         <tr>
-          <th>Notes</th>
-          <td>{{person.notes}}</td>
+          <th class="info-save-notes" >Notes:</th>
+          <td><textarea rows="6" style="width:100%;" ng-model="viewedPerson.notes" ></textarea></td>
         </tr>
         <tr>
-          <th>Orientations Scheduled</th>
-          <td>{{person.numMissedOrientaion}}</td>
+          <th>{{newNote}}</th>
+          <td class="info-save-notes" ><button class="btn btn-xs btn-primary" ng-click="saveEdit();" type="button" name="button">Save</button></td>
+        </tr>
+        <tr>
+          <th>Orientations Scheduled:</th>
+          <td>{{viewedPerson.numMissedOrientaion}}</td>
         </tr>
       </table>
+      <button class="btn btn-link edit-control" ng-click="viewedPerson.name.first_name = undefined" type="button" name="button">hide</button>
     </div>
 
     <!-- ///////////////////////////////EDIT VIEW\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
     <div>
-      <div class="info-view" ng-if="person.edit === true" class="container-fluid">
+      <div class="info-view" ng-if="viewedPerson.edit === true" class="container-fluid">
         <table class="edit-table" ng-if="activeView === 'info'">
           <tr>
-            <th>Name</th>
+            <th>Name:</th>
             <td>
-              <input ng-model="person.name.first_name"/>
-              <input ng-model="person.name.last_name"/>
+              <input ng-model="viewedPerson.name.first_name"/>
+              <input ng-model="viewedPerson.name.last_name"/>
             </td>
           </tr>
           <tr>
-            <th>Email</th>
-            <td><input ng-model='person.contactInfo.email'/></td>
+            <th>Phone:</th>
+            <td><input ng-model='viewedPerson.contactInfo.phoneNum'/></td>
           </tr>
           <tr>
-            <th>Phone</th>
-            <td><input ng-model='person.contactInfo.phoneNum'/></td>
+            <th>Email:</th>
+            <td><input ng-model='viewedPerson.contactInfo.email'/></td>
           </tr>
           <tr>
-            <th>Address</th>
+            <th>Address:</th>
             <td>
-              <input ng-model='person.contactInfo.address.street'/>
-              <input ng-model='person.contactInfo.address.city'/>
-              <input ng-model='person.contactInfo.address.state'/>
-              <input ng-model='person.contactInfo.address.zip'/>
+              <input ng-model='viewedPerson.contactInfo.address.street'/>
+              <input ng-model='viewedPerson.contactInfo.address.city'/>
+              <input ng-model='viewedPerson.contactInfo.address.state'/>
+              <input ng-model='viewedPerson.contactInfo.address.zip'/>
             </td>
           </tr>
           <tr>
-            <th>Employment</th>
-            <td><input ng-model='person.employment'/></td>
+            <th>Employment:</th>
+            <td><input ng-model='viewedPerson.employment'/></td>
+          </tr>
+          <tr>
+            <th>Date of Birth:</th>
+            <td><input ng-model='viewedPerson.dateOfBirth'/></td>
           </tr>
         </table>
 
         <div ng-if="activeView === 'skills'">
           <table class="edit-table">
             <tr>
-              <th>skills</th>
+              <th>Skills:</th>
+              <td></td>
             </tr>
-            <tr ng-repeat='skill in person.skills'>
+            <tr ng-repeat='skill in viewedPerson.skills'>
+              <th></th>
               <td>
-                <button class='btn-danger remove-button'
-                type="button"
-                ng-click="removeSkill($index)">
-                {{skill}}
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <select ng-model='selected.skill'
-              ng-options="skill as skill for (skill, skill) in person.availibleSkills">
-            </select>
-            <button type="button" ng-click='addSkill(selected.skill)'>Add Skill</button>
-          </td>
-        </tr>
-      </table>
-      <table class="edit-table">
-        <tr>
-          <th>Interests</th>
-        </tr>
-        <tr ng-repeat='interest in person.interests'>
-          <td>
-            <button class='btn-danger remove-button'
-            type="button"
-            ng-click="removeInterest($index)">
-            {{interest}}
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <select ng-model='selected.interest'
-          ng-options="interest as interest for (interest, interest) in person.availibleInterests">
-        </select>
-        <br>
-        <button type="button"
-        ng-click='addInterest(selected.interest)'>
-        Add Interest</button>
-      </td>
-    </tr>
-    </table>
+                <p>
+                  <button ng-click="removeSkill($index)" class="btn btn-sm btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+                  {{skill}}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div class="input-group">
+                  <select ng-model='selected.skill' class="form-control"
+                    ng-options="skill as skill for (skill, skill) in viewedPerson.availibleSkills">
+                  </select>
+                  <span class="input-group-btn" >
+                    <button class="btn btn-success" type="button" ng-click='addSkill(selected.skill)'>Add Skill</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>Interests:</th>
+              <td></td>
+            </tr>
+            <tr ng-repeat='interest in viewedPerson.interests'>
+              <th></th>
+              <td>
+                <p>
+                  <button ng-click="removeInterest($index)" class="btn btn-sm btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+                  {{interest}}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div class="input-group">
+                  <select ng-model='selected.interest' class="form-control"
+                    ng-options="interest as interest for (interest, interest) in viewedPerson.availibleInterests">
+                  </select>
+                  <span class="input-group-btn" >
+                    <button class="btn btn-success" type="button"  ng-click='addInterest(selected.interest)'>Add Interest</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+        </table>
 
     </div>
 
     <table class="edit-table" ng-if="activeView === 'essays'">
-
       <tr>
         <th>Essay One:</th>
-        <td><input ng-model='person.essayOne.response'/></td>
+        <td><input ng-model='viewedPerson.essayOne.response'/></td>
       </tr>
       <tr>
         <th>Essay Two:</th>
-        <td><input ng-model='person.essayTwo.response'/></td>
+        <td><input ng-model='viewedPerson.essayTwo.response'/></td>
       </tr>
       <tr>
         <th>Essay Three:</th>
-        <td><input ng-model='person.essayThree.response'/></td>
+        <td><input ng-model='viewedPerson.essayThree.response'/></td>
       </tr>
       <tr>
         <th>Essay Four:</th>
-        <td><input ng-model='person.essayFour.response'/></td>
+        <td><input ng-model='viewedPerson.essayFour.response'/></td>
       </tr>
     </table>
 
 
     <table class="edit-table" ng-if="activeView === 'references'">
       <tr>
+        <th>Reference One</th>
         <td></td>
-        <td><b>Reference One</b></td>
+      </tr>
+      <tr>
+        <th>Name:</th>
+        <td><input type='text' ng-model='viewedPerson.referenceOne.name'/></td>
+      </tr>
+      <tr>
+        <th>Phone:</th>
+        <td><input type='text' ng-model='viewedPerson.referenceOne.phone'/></td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td><input type='text' ng-model='viewedPerson.referenceOne.email'/></td>
+      </tr>
+
+      <tr>
         <th>Reference Two</th>
+        <td></td>
       </tr>
       <tr>
-        <th>Name</th>
-        <td><input type='text' ng-model='person.referenceOne.name'/></td>
-        <td><input type='text' ng-model='person.referenceTwo.name'/></td>
+        <th>Name:</th>
+        <td><input type='text' ng-model='viewedPerson.referenceTwo.name'/></td>
       </tr>
       <tr>
-        <th>Email</th>
-        <td><input type='text' ng-model='person.referenceOne.email'/></td>
-        <td><input type='text' ng-model='person.referenceTwo.email'/></td>
+        <th>Phone:</th>
+        <td><input type='text' ng-model='viewedPerson.referenceTwo.phone'/></td>
       </tr>
       <tr>
-        <th>Phone</th>
-        <td><input type='text' ng-model='person.referenceOne.phone'/></td>
-        <td><input type='text' ng-model='person.referenceTwo.phone'/></td>
+        <th>Email:</th>
+        <td><input type='text' ng-model='viewedPerson.referenceTwo.email'/></td>
       </tr>
     </table>
 
-    <table class="edit-table" ng-if="activeView === 'notes'">
+    <table class="edit-table " ng-if="activeView === 'notes'">
       <tr>
-        <th>Notes</th>
-        <td><input type='text' ng-model='person.notes'/></td>
+        <th class="info-save-notes" >Notes</th>
+        <td><textarea rows="6" style="width:100%;" ng-model="viewedPerson.notes" ></textarea></td>
       </tr>
       <tr>
         <th>Orientations Scheduled</th>
-        <td><input  type='number' ng-model='person.numMissedOrientaion'/></td>
+        <td><input  type='number' ng-model='viewedPerson.numMissedOrientaion'/></td>
       </tr>
     </table>
 
     <div class="edit-control">
-      <br>
-      <button class='btn-danger remove-button' ng-click='removeApplicant(person)'>
+
+      <button class='btn btn-danger remove-button' ng-click='removeApplicant(viewedPerson)'>
         REMOVE APPLICANT
       </button>
       <br>
-      <br>
-      <button class="edit-control-buttons red" type="button" ng-click="cancelEdit()">
-        Cancel
-      </button>
-      <button class="edit-control-buttons green" type="button" ng-click="saveEdit()">
+
+
+      <button class="edit-control-buttons btn btn-primary" type="button" ng-click="saveEdit()">
         Save
+      </button>
+      <button class="edit-control-buttons btn btn-link" type="button" ng-click="cancelEdit()">
+        Cancel
       </button>
     </div>
     </div>
@@ -289,18 +343,25 @@
         <div class="caption">
           <button class="check-all-button btn btn-default" type="button" ng-click= "checkAll(hat)">Select All</button>
           <div
-            class="btn btn-draggable person"
+            class=" btn-draggable person"
             ng-repeat="cat in hat"
-            ng-model='hat'
-            ng-click= 'setActive($parent.$index, $index)'
+            ng-model="hat"
+            ng-click="setActive($parent.$index, $index)"
             data-drag="true"
             data-jqyoui-options="{revert: 'invalid'}"
             jqyoui-draggable="{index: {{$index}},animate:true}"
             ng-class='buttonColor(cat)'
             >
-            <input class="applicant-select" type="checkbox" ng-model="cat.checked">
-            <p>{{cat.name.last_name}}</p>
-            <!-- <button></button> -->
+            <!-- ng-click= 'setActive($parent.$index, $index)' -->
+
+            <p>
+              <input class="applicant-select" type="checkbox" ng-model="cat.checked">
+              <span class="p-span">{{cat.name.last_name}}</span>
+              <button ng-click="setViewedPerson($parent.$index, $index)" type="button" class="applicant-view-btn btn btn-sm btn-default">
+                <!-- view -->
+                <span class=" glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </p>
           </div>
         </div>
       </div>
