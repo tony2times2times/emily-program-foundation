@@ -79,9 +79,9 @@ function($scope, $http, $timeout, SweetFactory) {
       if ($scope.person.appStatus === 'scheduled') {
         $scope.setStatus('pending');
         $scope.addOrientation($scope.person);
+        if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
       }else if ($scope.person.appStatus !== 'pending') {
         $scope.setStatus('pending');
-        if ($scope.person.numMissedOrientaion>2) {$scope.askToRemove($scope.person);}
       }
     }
     //if person was moved into the scheduled array change thier status
