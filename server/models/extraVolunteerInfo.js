@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 var extraVolunteerInfoSchema = new Schema({
 
     additionalInfo: String,
-    emailedWhat: [ String ], //not sure if this should be kept
     essayOne: { essayQuestion: String,
                 response: String
               },

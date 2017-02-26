@@ -12,7 +12,6 @@ function($scope, $http, SweetFactory) {
     $scope.searchBy = 'names';
     $scope.showSearchResults = false;
     $scope.selectedCheckbox = {};
-    $scope.helloYou = 'may be interested in an internship';
 
 
     $scope.getFormFields();
@@ -74,6 +73,67 @@ function($scope, $http, SweetFactory) {
     }// end switch
   };// end filterThroughVolunteers()
 
+  $scope.showExtraInfo = function(name , id){
+    console.log('Showing Extra Info | ID: ', id);
+
+    $http({
+      method: 'GET',
+      url: '/volunteer/extraInfo/' + id
+    }).then(function(response){
+      console.log(response.data);
+      var info = response.data;
+
+      var htmlReferences = '<p><strong>Reference One</strong></p>' +
+                        '<p>'+ info.referenceOne.name + '</p>' +
+                        '<p>'+ info.referenceOne.phone + '</p>' +
+                        '<p>'+ info.referenceOne.email + '</p>' +
+                        '<p><strong>Reference Two</strong></p>' +
+                        '<p>'+ info.referenceTwo.name + '</p>' +
+                        '<p>'+ info.referenceTwo.phone + '</p>' +
+                        '<p>'+ info.referenceTwo.email + '</p>';
+
+      var htmlEssayQuestions = '<p><strong>' + info.essayOne.essayQuestion + '</strong></p>' +
+                                '<p>'+ info.essayOne.response + '</p>' +
+                                '<p><strong>' + info.essayTwo.essayQuestion + '</strong></p>' +
+                                '<p>'+ info.essayTwo.response + '</p>';
+
+      var htmlMoreEssayQuestions = '<p><strong>' + info.essayThree.essayQuestion + '</strong></p>' +
+                                    '<p>'+ info.essayThree.response + '</p>' +
+                                    '<p><strong>' + info.essayFour.essayQuestion + '</strong></p>' +
+                                    '<p>'+ info.essayFour.response + '</p>';
+
+      var htmlSupportingMaterial =  '<p><strong>Additional Information</strong></p>' +
+                                    '<p>'+ info.additionalInfo + '</p>';
+
+      swal.setDefaults({
+        confirmButtonText: 'Next &rarr;',
+        showCancelButton: true,
+        progressSteps: ['1', '2', '3', '4']
+      });
+
+      var steps = [
+        {
+          title: name + '\'s References',
+          html: htmlReferences
+        },
+        {
+          title: name + '\'s Essay Questions',
+          html: htmlEssayQuestions
+        },
+        {
+          title: name + '\'s Essay Questions',
+          html: htmlMoreEssayQuestions
+        },
+        {
+          title: name + '\'s Supporting Material',
+          html: htmlSupportingMaterial
+        }
+      ];
+
+      swal.queue(steps);
+    }); // end http
+  };// end showExtraInfo()
+
   $scope.cancelSearchResults = function(){
       $scope.showSearchResults = false;
       $scope.filteredVolunteers = $scope.volunteers;
@@ -82,10 +142,58 @@ function($scope, $http, SweetFactory) {
       $scope.selectedCheckbox = {};
   }; //end cancelSearchResults()
 
-  $scope.updateVolunteerNotes = function( volunteer, index ){
-    console.log('updating note | volunteer & index = ', volunteer, index );
-    console.log('this should be the new note -> ', $scope.notes[index]);
-  }// end updateVolunteerNotes()
+  $scope.updateVolunteer = function( volunteer ){
+    console.log('updating Volunteer | volunteer = ', volunteer );
+  }// end updateVolunteer()
+
+  $scope.deleteVolunteer = function( volunteer ){
+    swal({
+      title: ('THIS CAN NOT BE UNDONE'),
+      text: ('Remove ' + volunteer.name.first_name +
+      ' ' + volunteer.name.last_name + '? '),
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: ('Yes, remove ' + volunteer.name.first_name),
+      cancelButtonText: ('No, keep ' + volunteer.name.first_name),
+      confirmButtonClass: 'btn btn-danger',
+      cancelButtonClass: 'btn btn-success',
+      buttonsStyling: false
+    }).then(function () {
+      swal(
+        'Deleted!',
+        (volunteer.name.first_name +' ' + volunteer.name.last_name +
+        ' has been removed.'),
+        'error'
+      );
+      //remove volunteer
+      $scope.removeAllData(volunteer);
+    }, function (dismiss) {
+      // dismiss can be 'cancel', 'overlay',
+      // 'close', and 'timer'
+      if (dismiss === 'cancel') {
+        swal(
+          'Saved!',
+          (volunteer.name.first_name +' ' + volunteer.name.last_name +
+          ' has been saved.'),
+          'success'
+        );
+      }
+    });
+  }// end deleteVolunteer()
+
+  $scope.removeAllData = function(volunteer){
+    $http({
+      method: 'DELETE',
+      url: '/volunteer/' + volunteer._id
+    }).then(function(response) {
+      console.log(response);
+      $scope.cancelSearchResults();
+      $scope.getAllVolunteers();
+      $scope.expandAll = false;
+    }); //end http
+  };// end removeAllData()
 
   $scope.switchExpandView = function(){
     console.log('expanding | expandAll = ', $scope.expandAll);

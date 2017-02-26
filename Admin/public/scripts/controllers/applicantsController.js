@@ -274,7 +274,7 @@ function($scope, $http, $timeout, SweetFactory) {
   $scope.addVolunteer = function(volunteer){
     $http({
       method: 'POST',
-      url: '/volunteer/applicant',
+      url: '/volunteer',
       data: volunteer
     }).then(function successCallback(response) {
       console.log(response);

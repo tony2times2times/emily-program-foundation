@@ -207,19 +207,19 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
       emergancyPhone: formFactory.emergencyPhone,
       employment: formFactory.employment,
       essayOne: {
-          question: formFactory.allQuestions[1],
+          essayQuestion: formFactory.allQuestions[1],
           response: formFactory.essayOneResponse
         },
       essayTwo:{
-          question: formFactory.allQuestions[2],
+          essayQuestion: formFactory.allQuestions[2],
           response: formFactory.essayTwoResponse
         },
       essayThree:{
-          question: formFactory.allQuestions[3],
+          essayQuestion: formFactory.allQuestions[3],
           response: formFactory.essayThreeResponse
         },
       essayFour:{
-          question: formFactory.allQuestions[4],
+          essayQuestion: formFactory.allQuestions[4],
           response: formFactory.essayFourResponse
         },
       intersts: formFactory.onlyTrueToArray( formFactory.interestsIn ),

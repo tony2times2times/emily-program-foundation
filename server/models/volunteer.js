@@ -21,6 +21,7 @@ var volunteerSchema = new Schema({
     phone: Number
   },
   employment: String,
+  extraInfo: {type: Boolean, default: false },
   interests: [ String ],
   name: {
     first_name: {type: String},

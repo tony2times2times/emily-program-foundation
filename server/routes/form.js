@@ -67,16 +67,16 @@ router.post('/', function(req, res) {
       phone: data.emergancyPhone
     },
     employment: data.employment,
-    essayOne: { question: data.essayOne.essayQuestion,
+    essayOne: { essayQuestion: data.essayOne.essayQuestion,
                 response: data.essayOne.response
               },
-    essayTwo: { question: data.essayTwo.essayQuestion,
+    essayTwo: { essayQuestion: data.essayTwo.essayQuestion,
                 response: data.essayTwo.response
               },
-    essayThree:{ question: data.essayThree.essayQuestion,
+    essayThree:{ essayQuestion: data.essayThree.essayQuestion,
                  response: data.essayThree.response
                },
-   essayFour:{ question: data.essayFour.essayQuestion,
+   essayFour:{ essayQuestion: data.essayFour.essayQuestion,
                 response: data.essayFour.response
               },
     interests: data.intersts, // should be an array
