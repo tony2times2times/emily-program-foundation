@@ -11,6 +11,10 @@ form input{
   border-bottom: solid 2px #c9c9c9;
 }
 
+h5{
+  font-weight: bold;
+}
+
 .wrong{
   border-color: red;
 }
@@ -128,6 +132,14 @@ form input{
   color: black;
 }
 
+.eOne{
+  display: block;
+}
+
+.eOne textarea{
+  width: 80%;
+}
+
 #essayQuest{
   margin-top: 30px;
 }
@@ -230,10 +242,10 @@ form input{
   /*margin-bottom: 50px;*/
 }
 
-#essayOne{
+/*#essayOne{
   display: block;
   margin-bottom: 5px;
-}
+}*/
 
 #waiverHeader{
   text-align: center;
@@ -243,4 +255,8 @@ form input{
 #thanksHeader{
   margin-top: 50px;
   text-align: center;
+}
+
+#formRef {
+  margin-top: 40px;
 }
