@@ -393,7 +393,7 @@ text-align: center;
 
 .searchOpt:nth-of-type(6n+6)::before {
   content: "\A";
-   white-space: pre;
+   white-space: pre; 
 }
 
 table.allVollunteer_table {

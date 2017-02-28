@@ -70,7 +70,7 @@
 
         <h3>Contact Info</h3>
         <input ng-model="emailIn" type="text" value="" placeholder="Email">
-        <input ng-model="phoneNumIn" type="numbers" value="" placeholder="Phone Number">
+        <input ng-model="phoneNumIn" type="tel" value="" placeholder="Phone Number">
 
         <h3>About</h3>
         <input ng-model="dateOfBirthIn" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
@@ -138,7 +138,7 @@
         <tr ng-if="expandSearchOpt" class="searchOpt_tr">
           <td colspan="2">
             <span class="searchOpt" ng-repeat="interest in allInterests">
-              <input ng-model="interestsSearchOpt[interest.interest]" type="checkbox">
+              <input ng-click="filterThroughVolunteers();" ng-model="interestsSearchOpt[interest.interest]" type="checkbox">
               <label>{{interest.interest}}</label>
             </span>
           </td>
@@ -150,7 +150,7 @@
         <tr ng-if="expandSearchOpt" class="searchOpt_tr">
           <td colspan="2">
             <span class="searchOpt" ng-repeat="skill in allSkills">
-              <input ng-model="skillsSearchOpt[skill.skill]" type="checkbox">
+              <input ng-click="filterThroughVolunteers();" ng-model="skillsSearchOpt[skill.skill]" type="checkbox">
               <label>{{skill.skill}}</label>
             </span>
           </td>
@@ -176,14 +176,23 @@
         </tr>
         <tr>
           <td>
-            <div ng-show="showSearchResults" >
+            <div ng-if="filteredVolunteers.length < volunteers.length" >
               <p>
-                <b><span style="font-size:1.3em;" > Found {{filteredVolunteers.length}} Results</span> | <span ng-if="searchedInquiry" >Searched Names for "{{searchedInquiry}}"</span> </b>
+                <b style="font-size:1.3em;" > Found {{filteredVolunteers.length}} Results</ </b>
                 <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
               </p>
             </div>
           </td>
-          <td style="color: #efefe0;"></td>
+          <td style="color: #efefe0;">//</td>
+        </tr>
+        <tr>
+          <td colspan="2" ng-if="filteredVolunteers.length < volunteers.length">
+            <p style="text-indent: 3rem;" > Searched for
+              <span ng-if="searchedName" >| Name: <strong>"{{searchedName}}"</strong></span>
+              <span ng-if="searchedInterests.length > 0" ng-repeat="interest in searchedInterests" > | Interest: <strong>{{interest}}</strong></span>
+              <span ng-if="searchedSkills.length > 0" ng-repeat="skill in searchedSkills"> | Skill: <strong>{{skill}}</strong></span>
+            </p>
+          </td>
         </tr>
     </div>
 
