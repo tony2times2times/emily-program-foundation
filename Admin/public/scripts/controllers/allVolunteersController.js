@@ -20,7 +20,7 @@ function($scope, $http, SweetFactory) {
   };// end init()
 
 
- // BELLOW WAS CODE THAT I FOUND THAT I FOUND INTERESTING FOR REMOVING MALICIOUS CODE
+ //--------- BELLOW WAS CODE THAT I FOUND THAT I FOUND INTERESTING FOR REMOVING MALICIOUS CODE
   //   var searchVal = $scope.seachFor;
   //   searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
   //
