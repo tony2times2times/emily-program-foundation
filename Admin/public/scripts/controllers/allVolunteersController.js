@@ -6,10 +6,12 @@ function($scope, $http, SweetFactory) {
     $scope.hideAddVolunteer = true;
     $scope.skillsIn = {};
     $scope.interestsIn = {};
+    $scope.skillsSearchOpt = {};
+    $scope.interestsSearchOpt = {};
     $scope.selectedindex = null;
     $scope.expandAll = false;
     $scope.notes = {}
-    $scope.searchBy = 'names';
+    // $scope.nameSearch;
     $scope.showSearchResults = false;
     $scope.selectedCheckbox = {};
     $scope.sortBy = 'nameDownSort';
@@ -66,53 +68,83 @@ function($scope, $http, SweetFactory) {
       default:
         console.log('hello from something else');
     } // end switch
-    $scope.filterThroughVolunteers();
+
+    // TODO need something else here
+    // this was to make sure that if a new sort happened it would update the search resaults
+    // $scope.filterThroughVolunteers();
   };// end sortVolunteers
 
   $scope.filterThroughVolunteers = function(){
-    if (!($scope.searchFor))return $scope.filteredVolunteers = $scope.volunteers;
     $scope.selectedCheckbox = {};
-    $scope.searchedInquiry = $scope.searchFor;
-    $scope.searchedInquiryBy = $scope.searchBy;
+    $scope.filteredVolunteers = $scope.volunteers;
+
+    // if (!($scope.searchFor))return $scope.filteredVolunteers = $scope.volunteers;
+    var searchedName = $scope.nameSearch;
+
+    //filter name search
+    $scope.filteredVolunteers = $scope.filteredVolunteers.filter(function(x) {
+      var re = new RegExp(  searchedName, "i"  );
+      var searchField = x.name.first_name + ' ' + x.name.last_name;
+      // console.log('match?:', searchField.match(re) );
+      return ( searchField.match(re) ? true : false );
+    });
+
+    //filter interests search
+    $scope.searchedInterests = onlyTrueToArray($scope.interestsSearchOpt);
+    for (var i = 0; i < $scope.searchedInterests.length; i++) {
+      $scope.filteredVolunteers = $scope.filteredVolunteers.filter(function(x) {
+        for (var ii = 0; ii < x.interests.length; ii++) {
+          if ($scope.searchedInterests[i] === x.interests[ii] ) return true;
+        }
+        return false;
+      });// end filter
+    }
+
+    //filter skills search
+    $scope.searchedSkills = onlyTrueToArray($scope.skillsSearchOpt);
+    for (var i = 0; i < $scope.searchedSkills.length; i++) {
+      $scope.filteredVolunteers = $scope.filteredVolunteers.filter(function(x) {
+        for (var ii = 0; ii < x.skills.length; ii++) {
+          if ($scope.searchedSkills[i] === x.skills[ii] ) return true;
+        }
+        return false;
+      });// end filter
+    }
+
+
+    //   case 'skills':
+    //     console.log('filter by skill??', $scope.volunteers);
+    //     $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
+    //       var re = new RegExp($scope.searchFor, "i" );
+    //       var searchField = '';
+    //       for (var i = 0; i < x.skills.length; i++) {
+    //         searchField += ' ' + x.skills[i]
+    //       }
+    //       return ( searchField.match(re) ? true : false );
+    //     });// end filter
+    //     break;
+    //
+    //   case 'interests':
+    //     console.log('filter by interests??');
+    //     $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
+    //       var re = new RegExp($scope.searchFor, "i" );
+    //       var searchField = '';
+    //       for (var i = 0; i < x.interests.length; i++) {
+    //         searchField += ' ' + x.interests[i];
+    //       }
+    //       return ( searchField.match(re) ? true : false );
+    //     });// end filter
+    //     break;
+    //
+    //   default:
+    //   console.log('didnt filter');
+    //   $scope.filteredVolunteers = $scope.volunteers;
+    // }// end switch
+
+  //----------below controls the message
+    $scope.searchedInquiry = $scope.nameSearch;
     $scope.showSearchResults = true;
-    switch ($scope.searchBy) {
-      case 'names':
-        $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
-          var re = new RegExp(  $scope.searchFor, "i"  );
-          var searchField = x.name.first_name + ' ' + x.name.last_name;
-          return ( searchField.match(re) ? true : false );
-        });// end filter
 
-        break;
-
-      case 'skills':
-        console.log('filter by skill??', $scope.volunteers);
-        $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
-          var re = new RegExp($scope.searchFor, "i" );
-          var searchField = '';
-          for (var i = 0; i < x.skills.length; i++) {
-            searchField += ' ' + x.skills[i]
-          }
-          return ( searchField.match(re) ? true : false );
-        });// end filter
-        break;
-
-      case 'interests':
-        console.log('filter by interests??');
-        $scope.filteredVolunteers = $scope.volunteers.filter(function(x) {
-          var re = new RegExp($scope.searchFor, "i" );
-          var searchField = '';
-          for (var i = 0; i < x.interests.length; i++) {
-            searchField += ' ' + x.interests[i];
-          }
-          return ( searchField.match(re) ? true : false );
-        });// end filter
-        break;
-
-      default:
-      console.log('didnt filter');
-      $scope.filteredVolunteers = $scope.volunteers;
-    }// end switch
   };// end filterThroughVolunteers()
 
   $scope.showExtraInfo = function(name , id){
@@ -179,7 +211,9 @@ function($scope, $http, SweetFactory) {
   $scope.cancelSearchResults = function(){
       $scope.showSearchResults = false;
       $scope.filteredVolunteers = $scope.volunteers;
-      $scope.searchFor = '';
+      $scope.skillsSearchOpt = {};
+      $scope.interestsSearchOpt = {};
+      $scope.nameSearch = '';
       $scope.selectedindex = null;
       $scope.selectedCheckbox = {};
   }; //end cancelSearchResults()

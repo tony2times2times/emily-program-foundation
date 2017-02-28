@@ -120,7 +120,7 @@
                 <option value="interests">Search by Interests</option>
               </select> -->
               <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
-              <input ng-model="searchFor" class="form-control" type="text" >
+              <input ng-model="nameSearch" class="form-control" type="text" >
               <span class="input-group-btn">
                 <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search by Name</button>
               </span>
@@ -178,12 +178,12 @@
           <td>
             <div ng-show="showSearchResults" >
               <p>
-                <b><span style="font-size:1.3em;" > Found {{filteredVolunteers.length}} Results</span> | Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
+                <b><span style="font-size:1.3em;" > Found {{filteredVolunteers.length}} Results</span> | <span ng-if="searchedInquiry" >Searched Names for "{{searchedInquiry}}"</span> </b>
                 <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
               </p>
             </div>
           </td>
-          <td style="color: #efefe0;">//</td>
+          <td style="color: #efefe0;"></td>
         </tr>
     </div>
 
