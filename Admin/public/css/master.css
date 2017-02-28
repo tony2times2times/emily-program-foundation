@@ -424,6 +424,8 @@ table.allVollunteer_table {
 #allVolunteer-selectAll-button:hover {
   color: #337ab7;
   border: 3px solid #337ab7;
+  background-color: #ebf6ff;
+
 }
 
 .orderByHeader:hover{

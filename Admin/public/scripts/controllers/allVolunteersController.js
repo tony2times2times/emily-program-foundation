@@ -276,6 +276,7 @@ function($scope, $http, SweetFactory) {
     }).then(function(response){
       // console.log(response.data);
       $scope.filteredVolunteers = $scope.volunteers = response.data;
+      $scope.sortBy = 'nameDownSort';
       // $scope.filterThroughVolunteers();
     }); // end http
   }// getAllVolunteers()
