@@ -189,7 +189,7 @@ router.post('/', function(req, res) {
 router.get('/', function(req, res) {
   console.log('hit the volunteer get');
   //find all
-  Volunteer.find({}, function(err, allVolunteers){
+  Volunteer.find({}).sort({ 'name.last_name' : 1 }).exec( function(err, allVolunteers){
     if (err){
       console.log(err);
       res.sendStatus(500);

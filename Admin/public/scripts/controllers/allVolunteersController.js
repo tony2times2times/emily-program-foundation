@@ -12,6 +12,7 @@ function($scope, $http, SweetFactory) {
     $scope.searchBy = 'names';
     $scope.showSearchResults = false;
     $scope.selectedCheckbox = {};
+    $scope.sortBy = 'nameDownSort';
 
 
     $scope.getFormFields();
@@ -26,6 +27,49 @@ function($scope, $http, SweetFactory) {
   //   console.log('searchVal = ', searchVal);
   //
 
+  $scope.sortVolunteers = function(sortIn){
+    console.log('sorting volunteers | by', sortIn);
+    var v = 1;
+    switch (sortIn) {
+      case 'name':
+        console.log('hello from name');
+
+        if ($scope.sortBy === "nameDownSort") v = -1;
+        // puts volunteers in alphabetical order
+        $scope.volunteers.sort(function(a, b){
+          if(a.name.last_name < b.name.last_name) return -v;
+          if(a.name.last_name > b.name.last_name) return v;
+          return 0;
+        });
+
+        $scope.sortBy = "nameDownSort";
+        if (v === -1) $scope.sortBy = "nameUpSort";
+
+        break;
+      case 'interest':
+        console.log('hello from interest');
+
+        if ($scope.sortBy === "interestDownSort") v = -1;
+        // puts volunteers in alphabetical order
+
+        $scope.volunteers.sort(function(a, b){
+          // console.log('sorting this: ', a.interests[0]);
+          if(a.interests[0] < b.interests[0]) return -v;
+          if(a.interests[0] > b.interests[0]) return v;
+          return 0;
+        });
+
+        $scope.sortBy = "interestDownSort";
+        if (v === -1) $scope.sortBy = "interestUpSort";
+
+
+        break;
+      default:
+        console.log('hello from something else');
+    }
+    $scope.filterThroughVolunteers();
+
+  };// end sortVolunteers
 
   $scope.filterThroughVolunteers = function(){
     if (!($scope.searchFor))return $scope.filteredVolunteers = $scope.volunteers;
@@ -233,10 +277,9 @@ function($scope, $http, SweetFactory) {
       method: 'GET',
       url: '/volunteer'
     }).then(function(response){
-      console.log(response.data);
-
-      $scope.volunteers = response.data;
-      $scope.filterThroughVolunteers();
+      // console.log(response.data);
+      $scope.filteredVolunteers = $scope.volunteers = response.data;
+      // $scope.filterThroughVolunteers();
     }); // end http
   }// getAllVolunteers()
 

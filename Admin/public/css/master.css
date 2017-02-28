@@ -388,15 +388,11 @@ table.allVollunteer_table {
   font-size: 16px;
 }
 
-.allVollunteer_thead {
+.allVollunteer_thead th{
+  vertical-align: middle;
+  padding-left: 2rem;
   background-color: #dd561e;
   color: white;
-}
-
-.allVollunteer_thead th{
-  text-align: left;
-  vertical-align: middle;
-  padding-left: 13px;
 }
 
 .allVollunteer_thead th:first-of-type {
@@ -405,18 +401,16 @@ table.allVollunteer_table {
 }
 
 .allVolunteer_tableEntry td {
-  /*not sure that this is the right approach */
-  max-width: 6rem;
   height: 2em;
+}
+
+.allVolunteer_tableEntry td:first-child {
+  width: 5rem;
+  text-align: center;
 }
 
 .allVolunteer_tableEntry label {
   margin-bottom: 0;
-}
-
-.allVolunteer_table_checkbox {
-  max-width: 1rem;
-  text-align: center;
 }
 
 #allVolunteer-selectAll-button {
@@ -425,7 +419,6 @@ table.allVollunteer_table {
   background-color: white;
   border: 3px solid #dd561e;
   vertical-align: middle;
-
 }
 
 #allVolunteer-selectAll-button:hover {
@@ -433,12 +426,19 @@ table.allVollunteer_table {
   border: 3px solid #337ab7;
 }
 
+.orderByHeader:hover{
+  padding: 1px 5px 3px 6px;
+  margin: 0 -5px 0 -6px;
+  border-radius: 4px;
+  background-color: #ff9135;
+}
+
 .allVolunteer_tableEntry_moreInfo {
   text-align: left;
   background-color: white;
   font-size: 1em;
   line-height: 1.3em;
-  border-left: 20px solid #efefe0;
+  border-left: 40px solid #efefe0;
   border-right: 20px solid #efefe0;
 }
 
@@ -447,9 +447,9 @@ table.allVollunteer_table {
   padding: 0 12px;
 }
 
-.allVolunteer_fourth_td {
+/*.allVolunteer_fourth_td {
   width: 13rem;
-}
+}*/
 
 .table_entries {
   /*border-top: 2px solid #ddd;*/
@@ -473,7 +473,6 @@ table.allVollunteer_table {
 .allVolunteer_tableEntry_selected {
   background-color: #ddd !important;
 }
-
 
 #expand-all {
   float: right;

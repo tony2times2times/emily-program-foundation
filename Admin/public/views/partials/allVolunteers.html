@@ -158,8 +158,20 @@
       <th>
         <button id='allVolunteer-selectAll-button' ng-click="checkAll();" type="button" name="button">Select All</button>
       </th>
-      <th>Name</th>
-      <th>Interest</th>
+      <th>
+        <span class="orderByHeader" ng-click="sortVolunteers('name')">
+          Name
+          <span ng-if="sortBy === 'nameDownSort' " class="glyphicon glyphicon-chevron-down" ></span>
+          <span ng-if="sortBy === 'nameUpSort' " class="glyphicon glyphicon-chevron-up"></span>
+        </span>
+      </th>
+      <th>
+        <span class="orderByHeader"  ng-click="sortVolunteers('interest')">
+          Interest
+          <span ng-if="sortBy === 'interestDownSort' " class="glyphicon glyphicon-chevron-down" ></span>
+          <span ng-if="sortBy === 'interestUpSort' " class="glyphicon glyphicon-chevron-up"></span>
+        </span>
+      </th>
       <th class="allVolunteer_fourth_td" >Phone #</th>
       <th>Email</th>
     </thead>
