@@ -381,6 +381,21 @@ text-align: center;
 
 
 /*ALL VOLUNTEERS*/
+.searchOpt_tr {
+  width: 125%;
+  display: block;
+  padding-left: 3rem;
+}
+
+.searchOpt {
+  margin-right: 2rem;
+}
+
+.searchOpt:nth-of-type(6n+6)::before {
+  content: "\A";
+   white-space: pre;
+}
+
 table.allVollunteer_table {
   width: 90%;
   margin: 0 auto;

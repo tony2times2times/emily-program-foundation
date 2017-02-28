@@ -113,16 +113,16 @@
       <table style="width: 95%; margin: 0 auto;">
         <tr>
           <td>
-            <div class="input-group col-xs-9">
-              <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
+            <div class="input-group col-xs-7">
+              <!-- <select ng-model="searchBy" class="form-control allVolunteers-selector"  >
                 <option value="names">Search by Names</option>
                 <option value="skills">Search by Skills</option>
                 <option value="interests">Search by Interests</option>
-              </select>
+              </select> -->
               <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
               <input ng-model="searchFor" class="form-control" type="text" >
               <span class="input-group-btn">
-                <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search Volunteers</button>
+                <button class="btn btn-primary .btn-block" type="button" name="button" ng-click="filterThroughVolunteers();">Search by Name</button>
               </span>
             </div>
           </td>
@@ -130,12 +130,47 @@
             <button class="btn btn-default" ng-click="hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
           </td>
         </tr>
+
+        <tr ng-if="expandSearchOpt">
+          <td><h4>Search Interests:</h4></td>
+          <td></td>
+        </tr>
+        <tr ng-if="expandSearchOpt" class="searchOpt_tr">
+          <td colspan="2">
+            <span class="searchOpt" ng-repeat="interest in allInterests">
+              <input ng-model="interestsSearchOpt[interest.interest]" type="checkbox">
+              <label>{{interest.interest}}</label>
+            </span>
+          </td>
+        </tr>
+        <tr ng-if="expandSearchOpt">
+          <td><h4>Search Skills:</h4></td>
+          <td></td>
+        </tr>
+        <tr ng-if="expandSearchOpt" class="searchOpt_tr">
+          <td colspan="2">
+            <span class="searchOpt" ng-repeat="skill in allSkills">
+              <input ng-model="skillsSearchOpt[skill.skill]" type="checkbox">
+              <label>{{skill.skill}}</label>
+            </span>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <button ng-hide="expandSearchOpt" ng-click="expandSearchOpt = true;" class="btn btn-link" type="button" name="button">Search by Interests/Skills</button>
+            <button ng-show="expandSearchOpt" ng-click="expandSearchOpt = false;" class="btn btn-link" type="button" name="button">Hide Interests/Skills Search Options</button>
+          </td>
+          <td></td>
+        </tr>
+
         <tr>
           <td>
             <button ng-click="mailAllChecked()" class="btn btn-default" type="button" name="button">Email Selected</button>
           </td>
           <td style="text-align: right;" >
-            <h5 for="checkbox">expand all?</h5>
+            <h5 for="checkbox">Expand All?</h5>
             <toggle style="quick" type="checkbox" ng-model="expandAll" ng-change="selectedindex = null;" on="Yes" off="No" onstyle="btn-success" offstyle="btn-danger">
           </td>
         </tr>
@@ -143,7 +178,7 @@
           <td>
             <div ng-show="showSearchResults" >
               <p>
-                <b> Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
+                <b><span style="font-size:1.3em;" > Found {{filteredVolunteers.length}} Results</span> | Searched {{searchedInquiryBy}} for "{{searchedInquiry}}" </b>
                 <button class="btn btn-xs btn-danger" type="button" name="button" ng-click="cancelSearchResults();" >X</button>
               </p>
             </div>

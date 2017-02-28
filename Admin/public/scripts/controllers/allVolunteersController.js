@@ -13,6 +13,7 @@ function($scope, $http, SweetFactory) {
     $scope.showSearchResults = false;
     $scope.selectedCheckbox = {};
     $scope.sortBy = 'nameDownSort';
+    $scope.expandSearchOpt = false;
 
 
     $scope.getFormFields();
