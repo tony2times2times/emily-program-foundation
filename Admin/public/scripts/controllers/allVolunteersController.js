@@ -50,10 +50,9 @@ function($scope, $http, SweetFactory) {
         console.log('hello from interest');
 
         if ($scope.sortBy === "interestDownSort") v = -1;
-        // puts volunteers in alphabetical order
+        var x = 0;
 
         $scope.volunteers.sort(function(a, b){
-          // console.log('sorting this: ', a.interests[0]);
           if(a.interests[0] < b.interests[0]) return -v;
           if(a.interests[0] > b.interests[0]) return v;
           return 0;
@@ -62,13 +61,11 @@ function($scope, $http, SweetFactory) {
         $scope.sortBy = "interestDownSort";
         if (v === -1) $scope.sortBy = "interestUpSort";
 
-
         break;
       default:
         console.log('hello from something else');
-    }
+    } // end switch
     $scope.filterThroughVolunteers();
-
   };// end sortVolunteers
 
   $scope.filterThroughVolunteers = function(){
