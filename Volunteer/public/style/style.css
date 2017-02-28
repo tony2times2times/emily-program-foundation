@@ -6,14 +6,36 @@
   .waiver-container iframe{
     display: none;
   }
+
+  .waiver-container object{
+    display: none;
+  }
 }
 /*Medium devices (desktops, 992px and up)*/
-@media only screen and (min-width: 992px) {
+@media only screen and (max-width: 845px) {
+  .waiver-container {
+    display: none;
+  }
+  .waiver-container iframe{
+    display: none;
+  }
+
+  .waiver-container object{
+    display: none;
+  }
 }
 /*Large devices (large desktops, 1200px and up)*/
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+  .pdfLink{
+    display:none;
+  }
+}
 /*Xtra Large devices (Xlarge desktops, 1500px and up)*/
-@media only screen and (min-width: 1500px) {}
+@media only screen and (min-width: 1500px) {
+  .pdfLink{
+    display:none;
+  }
+}
 
 body {
   font-family: sans-serif;
@@ -31,6 +53,10 @@ form input{
 h5{
   font-weight: bold;
 }
+/*
+.pdfLink{
+  display:none;
+}*/
 
 .waiver-container {
   position: relative;
