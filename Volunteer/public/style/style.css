@@ -1,3 +1,47 @@
+/*Small devices (phones, tablets)*/
+@media only screen and (max-width: 845px) {
+  .waiver-container {
+    display: none;
+  }
+  .waiver-container iframe{
+    display: none;
+  }
+
+  .waiver-container object{
+    display: none;
+  }
+
+  textarea{
+    border: solid 1px black;
+  }
+  .background{
+    background-color: white;
+    text-align: left;
+    font-family: sans-serif;
+    /*margin: 50px 150px 50px 150px;*/
+    margin: 50px auto 50px auto;
+    padding:30px;
+    border-radius: 20px;
+    border: 2px solid #999999;
+  }
+}
+/*Large devices (desktops)*/
+@media only screen and (min-width: 846px) {
+  .pdfLink{
+    display:none;
+  }
+  .background{
+    background-color: white;
+    text-align: left;
+    font-family: sans-serif;
+    margin: 50px 150px 50px 150px;
+    /*margin: 50px auto 50px auto;*/
+    padding:30px;
+    border-radius: 20px;
+    border: 2px solid #999999;
+  }
+}
+
 body {
   font-family: sans-serif;
   background-image: url("FoundationCircles_Setof3.jpg");
@@ -15,6 +59,30 @@ h5{
   font-weight: bold;
 }
 
+.waiver-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 56.25%;;
+  height: 0;
+  margin-bottom: 20px;
+}
+
+.waiver-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.waiver-container object{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .wrong{
   border-color: red;
 }
@@ -29,17 +97,7 @@ h5{
 .container {
   background-color: rgba(0, 0, 0, .2);
   width: 100%;
-  height: 1250px;
-}
-
-.background{
-  background-color: white;
-  text-align: left;
-  font-family: sans-serif;
-  margin: 50px 150px 50px 150px;
-  padding:30px;
-  border-radius: 20px;
-  border: 2px solid #999999;
+  /*height: 1250px;*/
 }
 
 .socialLinks{
@@ -63,7 +121,16 @@ h5{
 
 .skillItems{
   font-weight: normal;
+  /*display: block;
+  float: left;
+  width: 15%;*/
 }
+
+/*.checkboxSkill{
+  display: block;
+  float: left;
+  width: 15%;
+}*/
 
 .interestItems{
   font-weight: normal;
@@ -105,22 +172,6 @@ h5{
 
 .prog {
   text-align: center;
-}
-
-.waiver-container {
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 75%;
-  height: 0;
-  margin-bottom: 20px;
-}
-
-.waiver-container iframe{
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .thanksText{
@@ -175,9 +226,9 @@ h5{
   border-radius: 5px;
   border: 2px solid #999999;
   padding: 25px;
-  top: 300px;
-  left: 30%;
-  right: 30%;
+  top: 100px;
+  left: 15%;
+  right: 15%;
 }
 
 #exit{
@@ -192,9 +243,9 @@ h5{
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
-  top: 300px;
-  left: 30%;
-  right: 30%;
+  top: 100px;
+  left: 15%;
+  right: 15%;
 }
 
 #logo {
