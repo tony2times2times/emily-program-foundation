@@ -90,7 +90,7 @@
 
         <br><br>
         <button ng-hide="hideAddVolunteer" class="btn btn-primary" type="button" name="button" ng-click="submitNewVolunteer();">Submit</button>
-        <button ng-hide="hideEditVolunteer" class="btn btn-primary" type="button" name="button" ng-click="submitNewVolunteer();">Submit</button>
+        <button ng-hide="hideEditVolunteer" class="btn btn-primary" type="button" name="button" ng-click="updateVolunteer( addEditVolunteer );">Save</button>
 
         <button class="btn btn-link" type="button" name="button" ng-click="hideAddVolunteer = true; hideEditVolunteer = true;">Cancel</button>
 
@@ -100,7 +100,7 @@
         <h3>Contributing</h3>
         <h4>Interests</h4>
         <div ng-hide="hideAddVolunteer" ng-repeat="interest in allInterests">
-          <input ng-model="interestsIn[interest.interest]" type="checkbox">
+          <input ng-model="interestsIn[interest]" type="checkbox">
           <label>{{interest}}</label>
         </div>
         <div  ng-hide="hideEditVolunteer" >
@@ -110,9 +110,10 @@
             </button>
             {{interest}}
           </p>
-          <div >
-            <select ng-model='selected.interest' class="form-control"
-              ng-options="interest as interest for interest in addEditVolunteer.availibleInterests">
+          <div class="input-group" >
+            <select ng-model='selected.interest' class="form-control">
+              <option ng-repeat="interestOpt in addEditVolunteer.availibleInterests" >{{interestOpt}}</option>
+              <!-- ng-options="interest as interest for interest in addEditVolunteer.availibleInterests"> -->
             </select>
             <span class="input-group-btn" >
               <button class="btn btn-success" type="button" ng-click='addInterest(selected.interest)'>Add Interest</button>
@@ -122,7 +123,7 @@
 
         <h4>Skills</h4>
         <div ng-hide="hideAddVolunteer"  ng-repeat="skill in allSkills">
-          <input ng-model="skillsIn[skill.skill]" type="checkbox">
+          <input ng-model="skillsIn[skill]" type="checkbox">
           <label>{{skill}}</label>
         </div>
         <div  ng-hide="hideEditVolunteer" >
@@ -132,9 +133,10 @@
             </button>
             {{skill}}
           </p>
-          <div >
-            <select ng-model='selected.skill' class="form-control"
-              ng-options="skill as skill for skill in addEditVolunteer.availibleSkills">
+          <div class="input-group" >
+            <select ng-model='selected.skill' class="form-control">
+              <option ng-repeat="skillsOpt in addEditVolunteer.availibleSkills" >{{skillsOpt}}</option>
+              <!-- ng-options="skill as skill for skill in addEditVolunteer.availibleSkills"> -->
             </select>
             <span class="input-group-btn" >
               <button class="btn btn-success" type="button" ng-click='addSkill(selected.skill)'>Add Skill</button>
@@ -162,7 +164,7 @@
             </div>
           </td>
           <td style="text-align: right;">
-            <button class="btn btn-default" ng-click="hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
+            <button class="btn btn-default" ng-click="addEditVolunteer = {}; hideEditVolunteer = true; hideAddVolunteer = false;" ng-show="hideAddVolunteer" type="button" name="button">Add Volunteer</button>
           </td>
         </tr>
 
@@ -173,8 +175,8 @@
         <tr ng-if="expandSearchOpt" class="searchOpt_tr">
           <td colspan="2">
             <span class="searchOpt" ng-repeat="interest in allInterests">
-              <input ng-click="filterThroughVolunteers();" ng-model="interestsSearchOpt[interest.interest]" type="checkbox">
-              <label>{{interest.interest}}</label>
+              <input ng-click="filterThroughVolunteers();" ng-model="interestsSearchOpt[interest]" type="checkbox">
+              <label>{{interest}}</label>
             </span>
           </td>
         </tr>
@@ -185,8 +187,8 @@
         <tr ng-if="expandSearchOpt" class="searchOpt_tr">
           <td colspan="2">
             <span class="searchOpt" ng-repeat="skill in allSkills">
-              <input ng-click="filterThroughVolunteers();" ng-model="skillsSearchOpt[skill.skill]" type="checkbox">
-              <label>{{skill.skill}}</label>
+              <input ng-click="filterThroughVolunteers();" ng-model="skillsSearchOpt[skill]" type="checkbox">
+              <label>{{skill}}</label>
             </span>
           </td>
         </tr>

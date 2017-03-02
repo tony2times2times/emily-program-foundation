@@ -187,11 +187,11 @@ function($scope, $http, $timeout, SweetFactory) {
         if ($scope.skills[i].skill === $scope.viewedPerson.skills[j]) {
           //if the applicant already has the skill continue to the next skill
           continue skill;
-        }
-      }
+        } // end if
+      } // end nested for
       //if the skill was not found then add it to the availibleSkills
       $scope.viewedPerson.availibleSkills.push($scope.skills[i].skill);
-    }
+    } // end for 
     interest:
     for (i = 0; i < $scope.interests.length; i++) {
       //check each interest a applicant has
@@ -321,11 +321,11 @@ function($scope, $http, $timeout, SweetFactory) {
     }, function errorCallback(error) {
       console.log('error', error);
     });
-    swal(
-  'Edit Saved',
-  '',
-  'success'
-);
+      swal(
+        'Edit Saved',
+        '',
+        'success'
+      );
   };
 
   //reverts changes made while editing

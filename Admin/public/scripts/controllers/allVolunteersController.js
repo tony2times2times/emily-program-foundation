@@ -84,7 +84,6 @@ function($scope, $http, SweetFactory) {
 
     //filter interests search
     $scope.searchedInterests = onlyTrueToArray($scope.interestsSearchOpt);
-    console.log("interests:", $scope.searchedInterests);
     for (var i = 0; i < $scope.searchedInterests.length; i++) {
       $scope.filteredVolunteers = $scope.filteredVolunteers.filter(function(x) {
         for (var ii = 0; ii < x.interests.length; ii++) {
@@ -96,7 +95,6 @@ function($scope, $http, SweetFactory) {
 
     //filter skills search
     $scope.searchedSkills = onlyTrueToArray($scope.skillsSearchOpt);
-    console.log("Skills:", $scope.searchedSkills);
     for (var i = 0; i < $scope.searchedSkills.length; i++) {
       $scope.filteredVolunteers = $scope.filteredVolunteers.filter(function(x) {
         for (var ii = 0; ii < x.skills.length; ii++) {
@@ -180,24 +178,34 @@ function($scope, $http, SweetFactory) {
   };// end showExtraInfo()
 
   $scope.editVolunteer = function( volunteer ){
+    $scope.hideAddVolunteer = true;
     $scope.hideEditVolunteer = false;
     $scope.addEditVolunteer = volunteer;
 
-    $scope.addEditVolunteer.availibleInterests = $scope.allInterests;
-    $scope.addEditVolunteer.availibleSkills = $scope.allSkills;
-    // for interests: remove all of the Volunteer's currently assigned interests from availibleInterests
-    for (var i = 0; i < $scope.addEditVolunteer.availibleInterests.length; i++) {
+    $scope.addEditVolunteer.availibleInterests = [];
+    $scope.addEditVolunteer.availibleSkills = [];
+    console.log('skills:', $scope.addEditVolunteer.availibleSkills);
+
+
+    // for interests: remove all interests from allInterests that are not already interests to availibleInterests
+    interests:
+    for (var i = 0; i < $scope.allInterests.length; i++) {
       for (var ii = 0; ii < $scope.addEditVolunteer.interests.length; ii++) {
-        if($scope.addEditVolunteer.interests[ii] === $scope.addEditVolunteer.availibleInterests[i])
-          $scope.addEditVolunteer.availibleInterests.splice(i,1);
+        if($scope.addEditVolunteer.interests[ii] === $scope.allInterests[i]){
+          continue interests;
+        } // end if
       } // end nested for
+      $scope.addEditVolunteer.availibleInterests.push( $scope.allInterests[i] );
     } // end for
-    // for skills: remove all of the Volunteer's currently assigned skills from availableSkills
-    for (var i = 0; i < $scope.addEditVolunteer.availibleSkills.length; i++) {
+    // for skills: adding all skills from allSkills that are not already skills to availableSkills
+    skills:
+    for (var i = 0; i < $scope.allSkills.length; i++) {
       for (var ii = 0; ii < $scope.addEditVolunteer.skills.length; ii++) {
-        if($scope.addEditVolunteer.skills[ii] === $scope.addEditVolunteer.availibleSkills[i])
-          $scope.addEditVolunteer.availibleSkills.splice(i,1);
+        if($scope.addEditVolunteer.skills[ii] === $scope.allSkills[i]){
+          continue skills;
+        } // end if
       }// end nested for
+     $scope.addEditVolunteer.availibleSkills.push( $scope.allSkills[i] );
     }// end for
   };//end editVolunteer()
 
@@ -254,6 +262,25 @@ function($scope, $http, SweetFactory) {
 
   $scope.updateVolunteer = function( volunteer ){
     console.log('updating Volunteer | volunteer = ', volunteer );
+
+    $http({
+      method: 'PUT',
+      url: '/volunteer/' + volunteer._id,
+      data: volunteer
+    }).then(function successCallback(response) {
+      console.log(response);
+
+      $scope.hideEditVolunteer = true;
+      swal(
+        'Edit Saved',
+        '',
+        'success'
+      );
+      $scope.getAllVolunteers();
+
+    }, function errorCallback(error) {
+      console.log('error', error);
+    });
   }// end updateVolunteer()
 
   $scope.deleteVolunteer = function( volunteer ){
@@ -344,8 +371,9 @@ function($scope, $http, SweetFactory) {
     }).then(function(response){
       // console.log(response.data);
       $scope.filteredVolunteers = $scope.volunteers = response.data;
+      $scope.selectedindex = null;
       $scope.sortBy = 'nameDownSort';
-      // $scope.filterThroughVolunteers();
+      $scope.filterThroughVolunteers();
     }); // end http
   }// getAllVolunteers()
 
@@ -393,31 +421,14 @@ function($scope, $http, SweetFactory) {
     console.log('submitting new volunteer');
     $scope.hideAddVolunteer = true;
 
-    var sendData = {
+    $scope.addEditVolunteer.interests = onlyTrueToArray( $scope.interestsIn );
+    $scope.addEditVolunteer.skills = onlyTrueToArray( $scope.skillsIn );
 
-      street: $scope.streetIn,
-      city: $scope.cityIn,
-      state: $scope.stateIn,
-      zip: $scope.zipIn,
-      email: $scope.emailIn,
-      phoneNum: $scope.phoneNumIn,
-      dateBegan: $scope.dateBeganIn,
-      dateOfBirth: $scope.dateOfBirthIn,
-      emergancyName: $scope.emergencyNameIn,
-      emergancyPhone: $scope.emergencyPhoneIn,
-      employment: $scope.employmentIn,
-      interests: onlyTrueToArray( $scope.interestsIn ),
-      firstName: $scope.firstNameIn,
-      lastName: $scope.lastNameIn,
-      notes: $scope.notesIn,
-      skills: onlyTrueToArray( $scope.skillsIn )
-    };// end sendData
-
-    console.log('Data to Send = ', sendData);
+    console.log('Data to Send = ', $scope.addEditVolunteer);
     $http({
       method: 'POST',
       url: '/volunteer',
-      data: sendData
+      data: $scope.addEditVolunteer
     }).then(function(response){
       console.log(response);
       $scope.getAllVolunteers();
