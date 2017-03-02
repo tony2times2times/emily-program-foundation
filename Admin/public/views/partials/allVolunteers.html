@@ -8,14 +8,14 @@
 
       <div class="col-xs-7">
         <h3>Name</h3>
-        <input ng-model="firstNameIn" type="text" value="" placeholder="First Name">
-        <input ng-model="lastNameIn" type="text" value="" placeholder="Last Name">
+        <input ng-model="addEditVolunteer.name.first_name" type="text" value="" placeholder="First Name">
+        <input ng-model="addEditVolunteer.name.last_name" type="text" value="" placeholder="Last Name">
 
         <h3>Address</h3>
-        <input ng-model="streetIn" style="width:70%" type="text" value="" placeholder="Street">
+        <input ng-model="addEditVolunteer.contactInfo.address.street" style="width:70%" type="text" value="" placeholder="Street">
         <br>
-        <input ng-model="cityIn" type="text" value="" placeholder="City">
-        <select ng-model="stateIn" name="state" size="1">
+        <input ng-model="addEditVolunteer.contactInfo.address.city" type="text" value="" placeholder="City">
+        <select ng-model="addEditVolunteer.contactInfo.address.state" name="state" size="1">
           <option value="AK">AK</option>
           <option value="AL">AL</option>
           <option value="AR">AR</option>
@@ -68,25 +68,25 @@
           <option value="WV">WV</option>
           <option value="WY">WY</option>
         </select>
-        <input ng-model="zipIn" type="numbers" value="" placeholder="Zip">
+        <input ng-model="addEditVolunteer.contactInfo.address.zip" type="numbers" value="" placeholder="Zip">
 
         <h3>Contact Info</h3>
-        <input ng-model="emailIn" type="text" value="" placeholder="Email">
-        <input ng-model="phoneNumIn" type="tel" value="" placeholder="Phone Number">
+        <input ng-model="addEditVolunteer.contactInfo.email" type="text" value="" placeholder="Email">
+        <input ng-model="addEditVolunteer.contactInfo.phoneNum" type="tel" value="" placeholder="Phone Number">
 
         <h3>About</h3>
-        <input ng-model="dateOfBirthIn" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
-        <input ng-model="employmentIn" type="numbers" value="" placeholder="Employment">
+        <input ng-model="addEditVolunteer.dateOfBirth" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
+        <input ng-model="addEditVolunteer.employment" type="numbers" value="" placeholder="Employment">
 
         <h3>Volunteer Info</h3>
-        <input ng-model="dateBeganIn" type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
+        <input ng-model="addEditVolunteer.dateBegan" type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
 
         <h3>Emergency Contact</h3>
-        <input ng-model="emergencyNameIn" type="text" value="" placeholder="Name">
-        <input ng-model="emergencyPhoneIn" type="number" value="" placeholder="Phone Number">
+        <input ng-model="addEditVolunteer.emergencyContact.name" type="text" value="" placeholder="Name">
+        <input ng-model="addEditVolunteer.emergencyContact.phone" type="number" value="" placeholder="Phone Number">
 
         <h4>Notes</h4>
-        <textarea ng-model="notesIn" rows="4" style="width:90%;" placeholder="added info about the volunteer..."></textarea>
+        <textarea ng-model="addEditVolunteer.notes" rows="4" style="width:90%;" placeholder="added info about the volunteer..."></textarea>
 
         <br><br>
         <button ng-hide="hideAddVolunteer" class="btn btn-primary" type="button" name="button" ng-click="submitNewVolunteer();">Submit</button>
@@ -101,10 +101,10 @@
         <h4>Interests</h4>
         <div ng-hide="hideAddVolunteer" ng-repeat="interest in allInterests">
           <input ng-model="interestsIn[interest.interest]" type="checkbox">
-          <label>{{interest.interest}}</label>
+          <label>{{interest}}</label>
         </div>
         <div  ng-hide="hideEditVolunteer" >
-          <p ng-repeat="interest in editInterests">
+          <p ng-repeat="interest in addEditVolunteer.interests">
             <button ng-click="removeInterest($index)" class="btn btn-sm btn-danger">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </button>
@@ -112,7 +112,7 @@
           </p>
           <div >
             <select ng-model='selected.interest' class="form-control"
-              ng-options="interest as interest for interest in availibleInterests">
+              ng-options="interest as interest for interest in addEditVolunteer.availibleInterests">
             </select>
             <span class="input-group-btn" >
               <button class="btn btn-success" type="button" ng-click='addInterest(selected.interest)'>Add Interest</button>
@@ -123,10 +123,10 @@
         <h4>Skills</h4>
         <div ng-hide="hideAddVolunteer"  ng-repeat="skill in allSkills">
           <input ng-model="skillsIn[skill.skill]" type="checkbox">
-          <label>{{skill.skill}}</label>
+          <label>{{skill}}</label>
         </div>
         <div  ng-hide="hideEditVolunteer" >
-          <p ng-repeat="skill in editSkills">
+          <p ng-repeat="skill in addEditVolunteer.skills">
             <button ng-click="removeSkill($index)" class="btn btn-sm btn-danger">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </button>
@@ -134,7 +134,7 @@
           </p>
           <div >
             <select ng-model='selected.skill' class="form-control"
-              ng-options="skill as skill for skill in availibleSkills">
+              ng-options="skill as skill for skill in addEditVolunteer.availibleSkills">
             </select>
             <span class="input-group-btn" >
               <button class="btn btn-success" type="button" ng-click='addSkill(selected.skill)'>Add Skill</button>
