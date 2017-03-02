@@ -4,6 +4,7 @@ function($scope, $http, SweetFactory) {
 
   $scope.init = function(){
     $scope.hideAddVolunteer = true;
+    $scope.hideEditVolunteer = true;
     $scope.skillsIn = {};
     $scope.interestsIn = {};
     $scope.skillsSearchOpt = {};
@@ -177,6 +178,34 @@ function($scope, $http, SweetFactory) {
       swal.queue(steps);
     }); // end http
   };// end showExtraInfo()
+
+  $scope.editVolunteer = function( volunteer ){
+    $scope.hideEditVolunteer = false;
+
+    $scope.streetIn = volunteer.contactInfo.address.street;
+    $scope.cityIn = volunteer.contactInfo.address.city;
+    $scope.stateIn = volunteer.contactInfo.address.state;
+    $scope.zipIn = volunteer.contactInfo.address.zip;
+    $scope.emailIn = volunteer.contactInfo.email;
+    $scope.phoneNumIn = volunteer.contactInfo.phoneNum;
+    $scope.dateBeganIn = volunteer.dateBegan;
+    $scope.dateOfBirthIn = volunteer.dateOfBirth;
+    $scope.emergencyNameIn = volunteer.emergencyContact.name;
+    $scope.emergencyPhoneIn = volunteer.emergencyContact.phone;
+    $scope.employmentIn = volunteer.employment;
+    $scope.firstNameIn = volunteer.name.first_name;
+    $scope.lastNameIn = volunteer.name.last_name;
+    $scope.notesIn = volunteer.notes;
+
+    $scope.editInterests = volunteer.interests;
+    $scope.editSkills = volunteer.skills;
+
+    $scope.availibleSkills = ['dog'];
+    $scope.availibleInterests = ['mice','cat'];
+
+
+
+  };//end editVolunteer()
 
   $scope.updateVolunteer = function( volunteer ){
     console.log('updating Volunteer | volunteer = ', volunteer );
