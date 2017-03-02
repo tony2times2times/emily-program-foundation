@@ -40,6 +40,9 @@
     border-radius: 20px;
     border: 2px solid #999999;
   }
+  textarea {
+    border: solid 1px black;
+  }
 }
 
 body {

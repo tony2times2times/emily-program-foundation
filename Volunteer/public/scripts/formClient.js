@@ -131,6 +131,19 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   //dynamically generated interest list and sending to factory
   $scope.interestsIn = formFactory.interestsIn;
   $scope.interests = formFactory.allIntersts;
+  //validating checkboxes
+  $scope.validateChecks = function(event){
+    var x = document.getElementById("checkedSkill").checked;
+    console.log('is checked? ->', x);
+    if(x === true){
+      console.log('true');
+      skillsNext();
+    } else {
+      swal('Please sign the terms and conditions by checking the box. Thank you!');
+      console.log('false');
+      window.location = '#!/interestSkills';
+    }
+  };
   //previous button
   $scope.skillsPrev = function(){
     window.location ='#!/volInfo';
