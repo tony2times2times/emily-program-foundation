@@ -124,21 +124,36 @@ myForm.controller('ReqsController',['$scope', '$http','$location', '$window', fu
   $scope.specialEvents = "The Foundation often hosts events in the community (both education events and fundraising events).  Volunteers play pivotal roles in helping make these events happen.  Volunteers typically work on one event at a time.  Some of the roles volunteers could play are as follows:<ul><li>Sharing your recovery story at Recovery Night</li><li>Setting up/cleaning up at community events</li><li>Tabling at community events</li><li>Launching community awareness campaigns</li><li>Help with fundraising events, which could include the following:</li><ul><li>Soliciting donations (auction items, sponsors, food for meetings, etc.)</li><li>Promotion of the event</li><li>Coordinating the program</li><li>Day of set-up/clean-up tasks</li></ul>";
 }]);//end ReqsController
 
-myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+myForm.controller('SkillsController', ['$scope', '$http', '$location', 'formFactory', function($scope, $http, $location, formFactory){
   //dynamically generated skills list and sending to factory
   $scope.skillsIn = formFactory.skillsIn;
   $scope.skills = formFactory.allSkills;
   //dynamically generated interest list and sending to factory
   $scope.interestsIn = formFactory.interestsIn;
   $scope.interests = formFactory.allIntersts;
+  //validating skill checkboxes
+  validateSkills = function(){
+    if( !formFactory.onlyTrueToArray(formFactory.skillsIn).length ){
+      swal('Please check at least one skill. Thank you!');
+    } else{
+      validateInterests();
+    }
+  };
+  //validating interest checkboxes
+  validateInterests = function(){
+    if(!formFactory.onlyTrueToArray(formFactory.interestsIn).length){
+      swal('Please check at least one interest area. Thank you!');
+    }else{
+      window.location='#!/references';
+    }
+  };
   //previous button
   $scope.skillsPrev = function(){
     window.location ='#!/volInfo';
   };
   //next button
   $scope.skillsNext = function(){
-    console.log('InterestsIn', $scope.interestsIn);
-    window.location ='#!/references';
+    validateSkills();
   };
 }]); //end SkillsController
 
