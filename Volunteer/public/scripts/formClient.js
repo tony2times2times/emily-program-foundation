@@ -246,6 +246,13 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
     }).then(function(response){
       console.log(response);
     });//end http
+    // Send notification emails to applicant and Emily:
+    var confirmObject = {
+      firstName: formFactory.firstName,
+      lastName: formFactory.lastName,
+      email: formFactory.email,
+    };
+    $http.post('/confirmEmail', confirmObject);
     window.location ='#!/thankYou';
   }//end submitApp()
 }]);//end waiverController

@@ -41,7 +41,7 @@ router.post('/', function(req, res){
         }
       };
       for (var i = 0; i < recipientArray.length; i++) {
-        var emailBody = '<p>' + recipientArray[i].name.first_name + '</p>' + template.body;
+        var emailBody = '<p>' + recipientArray[i].name.first_name + ',</p>' + template.body;
         var mailOptions = {
           from: configs.gmail.username,
           to: recipientArray[i].contactInfo.email,
