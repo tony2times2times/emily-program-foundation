@@ -131,16 +131,21 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', 'formFact
   //dynamically generated interest list and sending to factory
   $scope.interestsIn = formFactory.interestsIn;
   $scope.interests = formFactory.allIntersts;
-  //validating checkboxes
+  //validating skill checkboxes
   validateSkills = function(){
-    console.log('the thing', formFactory.onlyTrueToArray(formFactory.skillsIn));
     if( !formFactory.onlyTrueToArray(formFactory.skillsIn).length ){
       swal('Please check at least one skill. Thank you!');
     } else{
-      console.log('here in the else');
-      window.location ='#!/references';
+      validateInterests();
     }
-    console.log('skillsIn--->', formFactory.skillsIn);
+  };
+  //validating interest checkboxes
+  validateInterests = function(){
+    if(!formFactory.onlyTrueToArray(formFactory.interestsIn).length){
+      swal('Please check at least one interest area. Thank you!');
+    }else{
+      window.location='#!/references';
+    }
   };
   //previous button
   $scope.skillsPrev = function(){
@@ -149,7 +154,6 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', 'formFact
   //next button
   $scope.skillsNext = function(){
     validateSkills();
-    // window.location ='#!/references';
   };
 }]); //end SkillsController
 
