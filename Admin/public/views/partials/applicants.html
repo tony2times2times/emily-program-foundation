@@ -7,11 +7,11 @@
 
     <div class="info-buttons">
       <div class="btn-group"   >
-        <button class="btn btn-default" ng-click="changeView('info')">Info</button>
-        <button class="btn btn-default" ng-click="changeView('skills')">Skills</button>
-        <button class="btn btn-default" ng-click="changeView('essays')">Essays</button>
-        <button class="btn btn-default" ng-click="changeView('references')">References</button>
-        <button class="btn btn-default" ng-click="changeView('notes')">Notes</button>
+        <button class="btn btn-default" ng-click="activeView = 'info';" ng-class="{info_view_nav_selected: activeView === 'info'}" >Info</button>
+        <button class="btn btn-default" ng-click="activeView = 'skills';" ng-class="{info_view_nav_selected: activeView === 'skills'}">Skills</button>
+        <button class="btn btn-default" ng-click="activeView = 'essays';" ng-class="{info_view_nav_selected: activeView === 'essays'}">Essays</button>
+        <button class="btn btn-default" ng-click="activeView = 'references';" ng-class="{info_view_nav_selected: activeView === 'references'}">References</button>
+        <button class="btn btn-default" ng-click="activeView = 'notes';" ng-class="{info_view_nav_selected: activeView === 'notes'}">Notes</button>
       </div>
     </div>
 
@@ -66,21 +66,25 @@
         </table>
       </div>
 
-      <table class="" ng-if="activeView === 'essays'">
+      <table id="applicans-essays" ng-if="activeView === 'essays'">
         <tr>
-          <th>Essay One:</th>
+          <th>Supporting Material:</th>
+          <td>{{viewedPerson.additionalInfo}}</td>
+        </tr>
+        <tr>
+          <th>{{viewedPerson.essayOne.essayQuestion}}</th>
           <td>{{viewedPerson.essayOne.response}}</td>
         </tr>
         <tr>
-          <th>Essay Two:</th>
+          <th>{{viewedPerson.essayTwo.essayQuestion}}</th>
           <td>{{viewedPerson.essayTwo.response}}</td>
         </tr>
         <tr>
-          <th>Essay Three:</th>
+          <th>{{viewedPerson.essayThree.essayQuestion}}</th>
           <td>{{viewedPerson.essayThree.response}}</td>
         </tr>
         <tr>
-          <th>Essay Four:</th>
+          <th>{{viewedPerson.essayFour.essayQuestion}}</th>
           <td>{{viewedPerson.essayFour.response}}</td>
         </tr>
       </table>
@@ -240,20 +244,24 @@
 
     <table class="edit-table" ng-if="activeView === 'essays'">
       <tr>
-        <th>Essay One:</th>
-        <td><input ng-model='viewedPerson.essayOne.response'/></td>
+        <th class="info-save-notes">Supporting Material:</th>
+        <td><textarea rows="4" style="width:100%;" ng-model="viewedPerson.additionalInfo" ></textarea></td>
       </tr>
       <tr>
-        <th>Essay Two:</th>
-        <td><input ng-model='viewedPerson.essayTwo.response'/></td>
+        <th class="info-save-notes">{{viewedPerson.essayOne.essayQuestion}}</th>
+        <td><textarea rows="4" style="width:100%;" ng-model="viewedPerson.essayOne.response" ></textarea></td>
       </tr>
       <tr>
-        <th>Essay Three:</th>
-        <td><input ng-model='viewedPerson.essayThree.response'/></td>
+        <th class="info-save-notes">{{viewedPerson.essayTwo.essayQuestion}}</th>
+        <td><textarea rows="4" style="width:100%;" ng-model="viewedPerson.essayTwo.response" ></textarea></td>
       </tr>
       <tr>
-        <th>Essay Four:</th>
-        <td><input ng-model='viewedPerson.essayFour.response'/></td>
+        <th class="info-save-notes">{{viewedPerson.essayThree.essayQuestion}}</th>
+        <td><textarea rows="4" style="width:100%;" ng-model="viewedPerson.essayThree.response" ></textarea></td>
+      </tr>
+      <tr>
+        <th class="info-save-notes">{{viewedPerson.essayFour.essayQuestion}}</th>
+        <td><textarea rows="4" style="width:100%;" ng-model="viewedPerson.essayFour.response" ></textarea></td>
       </tr>
     </table>
 

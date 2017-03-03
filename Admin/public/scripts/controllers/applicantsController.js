@@ -191,7 +191,7 @@ function($scope, $http, $timeout, SweetFactory) {
       } // end nested for
       //if the skill was not found then add it to the availibleSkills
       $scope.viewedPerson.availibleSkills.push($scope.skills[i].skill);
-    } // end for 
+    } // end for
     interest:
     for (i = 0; i < $scope.interests.length; i++) {
       //check each interest a applicant has
@@ -208,7 +208,6 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //Changes info view
   $scope.changeView = function (attribute) {
-    console.log('changing view to: ' + attribute);
     $scope.activeView = attribute;
   };
 
@@ -333,11 +332,6 @@ function($scope, $http, $timeout, SweetFactory) {
     $scope.viewedPerson.edit = false;
     //reset active data from backup person
     $scope.viewedPerson = angular.copy($scope.savePerson) ;
-    swal(
-  'Edit Canceled',
-  '',
-  'error'
-);
   };
 
   //add skill to active applicant user based on the selected skill

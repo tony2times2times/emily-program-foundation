@@ -322,9 +322,17 @@ text-align: center;
   vertical-align: text-top;
 }
 
+.info_view_nav_selected {
+  background-color: #eee;
+}
+
 .info-save-notes  {
   vertical-align: top !important;
   text-align: right !important;
+}
+
+#applicans-essays tr {
+  border-bottom: 1px solid #ccc;
 }
 
 .edit-table th{
@@ -378,7 +386,6 @@ text-align: center;
   border: 2px;
   display: inline-block;
 }
-
 
 /*ALL VOLUNTEERS*/
 .searchOpt_tr {
@@ -440,7 +447,6 @@ table.allVollunteer_table {
   color: #337ab7;
   border: 3px solid #337ab7;
   background-color: #ebf6ff;
-
 }
 
 .orderByHeader:hover{

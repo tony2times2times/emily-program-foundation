@@ -7,7 +7,7 @@
     <label for="skills">I have the following skills (check all that apply):</label>
     <div ng-repeat="item in skills" >
       <input class="checkboxSkill" ng-model="skillsIn[item.skill]" type="checkbox">
-      <label class="skillItems">{{ item.skill | removeUnderscores }}</label>
+      <label class="skillItems">{{ item.skill }}</label>
     </div>
   </div>
   <br></br>
@@ -16,7 +16,7 @@
     opportunities you are able to commit to while volunteering with us (check all that apply):</label>
     <div ng-repeat="item in interests">
       <input ng-model="interestsIn[item.interest]" type="checkbox">
-      <label class="interestItems">{{item.interest | removeUnderscores}}</label>
+      <label class="interestItems">{{ item.interest }}</label>
     </div>
   </div>
   <button type="button" class="nextButt" ng-click="skillsNext()">Next ></button>
