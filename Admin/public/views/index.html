@@ -33,9 +33,8 @@
 </head>
 <body ng-app="emilyApp">
 
-  <!-- <header>
+  <header>
     <h2>Friends of Emily Volunteer Manager</h2>
-    <div id="nav-logo"></div>
     <nav>
       <ul class="" ng-init="tab = 1">
         <li ng-class="{nav_active: tab === 1}"><a href="#!/allVolunteers" ng-click="tab = 1">All Volunteers</a></li>
@@ -44,9 +43,10 @@
         <li ng-class="{nav_active: tab === 4}"><a href="#!/adminView" ng-click="tab = 4">Admin Tools</a></li>
       </ul>
     </nav>
-    <a id="nav-logout-button" href="#" ng-click="logout()"><span>Logout</span></a>
-  </header> -->
-  <div class="container" ng-controller="NavController">
+  </header>
+  <a id="nav-logout-button" href="#" ng-click="logout()"><span>Logout</span></a>
+
+  <!-- <div class="container" ng-controller="NavController">
     <div class="masthead">
       <table style="width: 100%;">
         <tr>
@@ -67,7 +67,7 @@
         </ul>
       </nav>
     </div>
-  </div>
+  </div> -->
   <main ng-view></main>
 </body>
 </html>

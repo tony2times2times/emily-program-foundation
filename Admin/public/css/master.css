@@ -78,29 +78,21 @@ body {
   }
 }
 
-/*header {
-  background-color: #dfdfce;
+header {
+  /*background-color: #dfdfce;*/
+  background-color: #f8f8f3;
   margin: 0;
-  min-height: 9rem;
-}
-
-#nav-logo {
-  position: absolute;
-  background-image: url("Logo-Transparent.png");
+  background-image: url("banner_logo.png");
   background-position: -590px -150px;
   background-repeat: no-repeat;
-  top: 0;
-  height: 8.9rem;
-  width: 400px;
-  z-index: 1;
-  opacity: .5;
+  z-index: -1;
 }
+
 
 header h2 {
   position: relative;
   top: 2rem;
   margin: 0 2rem;
-  z-index: 2;
   text-shadow: -5px 5px 20px #dfdfce;
   margin-bottom: .5rem;
 }
@@ -114,11 +106,10 @@ nav {
 nav ul {
   list-style: none;
   display: inline-flex;
-  z-index: 3;
 }
 
 nav a{
-  color: #337ab7 !important;
+  color: #337ab7;
   font-size: 1.5rem;
   margin-left: 2rem;
   padding-left: 2rem;
@@ -130,7 +121,7 @@ nav a{
   float: right;
   margin: 7px 10px;
   color: #888;
-}*/
+}
 
 .title-left {
   width: 80%;
