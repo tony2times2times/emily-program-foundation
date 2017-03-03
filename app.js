@@ -12,6 +12,7 @@ var auth = require('./server/routes/auth.js');
 var adminview = require('./server/routes/private/adminview');
 var applicantRouter = require('./server/routes/private/applicant.js');
 var emailTemplateRouter = require('./server/routes/private/emailTemplate.js');
+var confirmEmailRouter = require('./server/routes/confirmEmail.js');
 var sendEmailRouter = require('./server/routes/private/sendEmail.js');
 var volunteerRouter = require('./server/routes/private/volunteer.js');
 var isLoggedIn = require('./server/utils/auth');
@@ -64,6 +65,7 @@ app.use(passport.session());
 /** ---------- ROUTES ---------- **/
 app.use('/auth', auth);
 app.use('/', form);
+app.use('/confirmEmail', confirmEmailRouter);
 app.use('/private', isLoggedIn, private);
 app.use('/private/adminview', isLoggedIn, adminview);
 app.use('/applicant', isLoggedIn, applicantRouter);
