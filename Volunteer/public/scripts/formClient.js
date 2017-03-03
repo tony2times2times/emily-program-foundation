@@ -124,7 +124,7 @@ myForm.controller('ReqsController',['$scope', '$http','$location', '$window', fu
   $scope.specialEvents = "The Foundation often hosts events in the community (both education events and fundraising events).  Volunteers play pivotal roles in helping make these events happen.  Volunteers typically work on one event at a time.  Some of the roles volunteers could play are as follows:<ul><li>Sharing your recovery story at Recovery Night</li><li>Setting up/cleaning up at community events</li><li>Tabling at community events</li><li>Launching community awareness campaigns</li><li>Help with fundraising events, which could include the following:</li><ul><li>Soliciting donations (auction items, sponsors, food for meetings, etc.)</li><li>Promotion of the event</li><li>Coordinating the program</li><li>Day of set-up/clean-up tasks</li></ul>";
 }]);//end ReqsController
 
-myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window', 'formFactory', function($scope, $http, $location, $window, formFactory){
+myForm.controller('SkillsController', ['$scope', '$http', '$location', 'formFactory', function($scope, $http, $location, formFactory){
   //dynamically generated skills list and sending to factory
   $scope.skillsIn = formFactory.skillsIn;
   $scope.skills = formFactory.allSkills;
@@ -132,17 +132,15 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   $scope.interestsIn = formFactory.interestsIn;
   $scope.interests = formFactory.allIntersts;
   //validating checkboxes
-  $scope.validateChecks = function(event){
-    var x = document.getElementById("checkedSkill").checked;
-    console.log('is checked? ->', x);
-    if(x === true){
-      console.log('true');
-      skillsNext();
-    } else {
-      swal('Please sign the terms and conditions by checking the box. Thank you!');
-      console.log('false');
-      window.location = '#!/interestSkills';
+  validateSkills = function(){
+    console.log('the thing', formFactory.onlyTrueToArray(formFactory.skillsIn));
+    if( !formFactory.onlyTrueToArray(formFactory.skillsIn).length ){
+      swal('Please check at least one skill. Thank you!');
+    } else{
+      console.log('here in the else');
+      window.location ='#!/references';
     }
+    console.log('skillsIn--->', formFactory.skillsIn);
   };
   //previous button
   $scope.skillsPrev = function(){
@@ -150,8 +148,8 @@ myForm.controller('SkillsController', ['$scope', '$http', '$location', '$window'
   };
   //next button
   $scope.skillsNext = function(){
-    console.log('InterestsIn', $scope.interestsIn);
-    window.location ='#!/references';
+    validateSkills();
+    // window.location ='#!/references';
   };
 }]); //end SkillsController
 

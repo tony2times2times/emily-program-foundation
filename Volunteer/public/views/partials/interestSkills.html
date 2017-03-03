@@ -6,7 +6,7 @@
   <div id="skillsSection">
     <label for="skills">I have the following skills (check all that apply):</label>
     <div ng-repeat="item in skills" >
-      <input class="checkboxSkill" ng-model="skillsIn[item.skill]" type="checkbox" id="checkedSkill">
+      <input class="checkboxSkill" ng-model="skillsIn[item.skill]" type="checkbox" required>
       <label class="skillItems">{{ item.skill | removeUnderscores }}</label>
     </div>
   </div>
