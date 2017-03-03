@@ -41,7 +41,8 @@ router.post('/', function(req, res){
         }
       };
       for (var i = 0; i < recipientArray.length; i++) {
-        var emailBody = '<p>' + recipientArray[i].name.first_name + ',</p>' + template.body;
+        var unsubscribeNote = '<p style="font-size: small;">Would you like to stop receiving emails about volunteer opportunities at the Emily Program Foundation? <a href="mailto:' + configs.gmail.username + '?subject=Please%20unsubscribe%20me&body=I%20would%20like%20to%20stop%20receiving%20notifications%20of%20volunteer%20opportunities.%20Please%20remove%20me%20from%20the%20list%20of%20Emily%20Program%20Foundation%20volunteers.">Click here to email your request to unsubscribe.</a></p>';
+        var emailBody = '<p>' + recipientArray[i].name.first_name + ',</p>' + template.body + unsubscribeNote;
         var mailOptions = {
           from: configs.gmail.username,
           to: recipientArray[i].contactInfo.email,
