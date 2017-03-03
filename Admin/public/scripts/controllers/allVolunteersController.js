@@ -33,7 +33,6 @@ function($scope, $http, SweetFactory) {
     var v = 1;
     switch (sortIn) {
       case 'name':
-        console.log('hello from name');
 
         if ($scope.sortBy === "nameDownSort") v = -1;
         // puts volunteers in alphabetical order
@@ -42,13 +41,11 @@ function($scope, $http, SweetFactory) {
           if(a.name.last_name > b.name.last_name) return v;
           return 0;
         });
-
         $scope.sortBy = "nameDownSort";
         if (v === -1) $scope.sortBy = "nameUpSort";
 
         break;
       case 'interest':
-        console.log('hello from interest');
 
         if ($scope.sortBy === "interestDownSort") v = -1;
         var x = 0;
@@ -64,7 +61,7 @@ function($scope, $http, SweetFactory) {
 
         break;
       default:
-        console.log('hello from something else');
+        console.log('did not sort');
     } // end switch
 
     $scope.filterThroughVolunteers();
@@ -150,7 +147,7 @@ function($scope, $http, SweetFactory) {
 
       swal.setDefaults({
         confirmButtonText: 'Next &rarr;',
-        showCancelButton: true,
+        showCancelButton: false,
         progressSteps: ['1', '2', '3', '4']
       });
 
@@ -173,7 +170,9 @@ function($scope, $http, SweetFactory) {
         }
       ];
 
-      swal.queue(steps);
+      swal.queue(steps).then(function () {
+        swal.resetDefaults();
+      }); // end sweetAlert
     }); // end http
   };// end showExtraInfo()
 
@@ -184,8 +183,6 @@ function($scope, $http, SweetFactory) {
 
     $scope.addEditVolunteer.availibleInterests = [];
     $scope.addEditVolunteer.availibleSkills = [];
-    console.log('skills:', $scope.addEditVolunteer.availibleSkills);
-
 
     // for interests: remove all interests from allInterests that are not already interests to availibleInterests
     interests:
