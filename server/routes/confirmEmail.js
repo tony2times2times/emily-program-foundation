@@ -42,3 +42,5 @@ router.post('/', function(req, res){
   transport.sendMail(mailOptions, errorCallback);
   res.sendStatus(200);
 });
+
+module.exports = router;
