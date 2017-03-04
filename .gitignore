@@ -22,6 +22,7 @@
 *.zip
 node_modules/
 secretSquirrel/
+.env
 
 # Logs and databases #
 ######################

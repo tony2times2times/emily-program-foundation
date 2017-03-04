@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var EmailTemplate = require('../../models/emailTemplate');
-var configs = require('../../../../secretSquirrel/secret');
+var configs = require('../../auth/authConfig');
 var nodemailer = require('nodemailer');
 
 var transport = nodemailer.createTransport({
