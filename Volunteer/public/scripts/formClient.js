@@ -88,7 +88,6 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
     form.noValidate = true;
 
     var checkNumberEntries = function(){
-      console.log('in check');
       if (!$scope.ff.refOnePhone) return false;
       if (!$scope.ff.refTwoPhone) return false;
       if (!$scope.ff.emergencyPhone) return false;
@@ -162,7 +161,7 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
       form.noValidate = true;
 
     var checkNumberEntries = function(){
-      console.log('in check');
+      console.log('in check', $scope.ff.phoneNum);
       if (!$scope.ff.phoneNum) return false;
       if (!$scope.ff.zip) return false;
       if (!$scope.ff.dateOfBirth) return false;

@@ -43,6 +43,14 @@
           <th>Date of Birth:</th>
           <td>{{viewedPerson.dateOfBirth | dateFormate }}</td>
         </tr>
+        <tr>
+          <th>Emergency Contact:</th>
+          <td>{{ viewedPerson.emergencyContact.name }}</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>{{ viewedPerson.emergencyContact.phone | phoneNumFormate }}</td>
+        </tr>
       </table>
 
       <div class="" ng-if="activeView === 'skills'">
@@ -177,6 +185,13 @@
           <tr>
             <th>Date of Birth:</th>
             <td><input ng-model='viewedPerson.dateOfBirth'/></td>
+          </tr>
+          <tr>
+            <th>Emergency Contact:</th>
+            <td>
+              <input ng-model='viewedPerson.emergencyContact.name'/>
+              <input ng-model='viewedPerson.emergencyContact.phone'/>
+            </td>
           </tr>
         </table>
 

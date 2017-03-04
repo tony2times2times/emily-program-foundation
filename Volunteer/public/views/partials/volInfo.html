@@ -13,7 +13,7 @@
           </li>
           <li>
             <label for="dob">Date of Birth</label>
-              <input type="number" ng-minlength="8" ng-maxlength="8" ng-class="{wrong: firstLook === false && vInfo.dob.$invalid}" ng-model="ff.dateOfBirth" id= "dob" placeholder="mm/dd/yyyy" name="dob" required>
+              <input type="number" ng-minlength="8" ng-maxlength="8" ng-class="{wrong: firstLook === false && vInfo.dob.$invalid}" ng-model="ff.dateOfBirth" id= "dob" placeholder="ex. mmddyyyy" name="dob" required>
           </li>
           <li>
             <label for="address">Address</label>
@@ -83,7 +83,7 @@
           </li>
           <li>
             <label for="phone">Phone Number</label>
-              <input type="number" ng-minlength="10" ng-maxlength="10" ng-class="{wrong: firstLook === false && vInfo.phone.$invalid}" ng-model="ff.phoneNum" name="phone" required>
+              <input type="number" ng-minlength="10" ng-maxlength="13" ng-class="{wrong: firstLook === false && vInfo.phone.$invalid}" ng-model="ff.phoneNum" name="phone" placeholder="ex. 6125551234" required>
           </li>
           <li>
             <label for="employment">Place of Employment</label>
