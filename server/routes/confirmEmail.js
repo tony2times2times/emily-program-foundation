@@ -21,6 +21,7 @@ router.post('/', function(req, res){
       console.log(error);
     }
   };
+  if (!configs.emailSig) configs.emailSig = '<p>Emily Monson, LSW <br>Outreach and Program Manager <br>The Emily Program Foundation | 1295 Bandana Blvd W, Ste 210 | St. Paul, MN 55108 <br>emily.monson@emilyprogramfoundation.org | (651)-379-6122 ext. 1605 | <br>emilyprogramfoundation.org</p>'
   var applicantEmailBody = '<p>' + req.body.firstName + ',</p>';
   applicantEmailBody += '<p>Thanks for submitting your application to volunteer with The Emily Program Foundation!  Once we review your completed application, we will follow up with you about next steps.</p>';
   applicantEmailBody += '<p>Let us know if you have any questions, by e-mail or phone, at the contact info below.</p>';
