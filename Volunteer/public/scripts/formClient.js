@@ -85,15 +85,24 @@ myForm.controller('ReferencesController', ['$scope', '$http', '$location', '$win
   // begin validation for inputs and alert user if input is skipped
     $scope.firstLook = true;
     var form = document.getElementById('formRef');
-      form.noValidate = true;
-      form.addEventListener('submit', function(event){
-        if(!event.target.checkValidity()){
-          swal('Please fill out all fields!');
-          $scope.firstLook = false;
-        } else {
-          window.location = '#!/essayQues';
-        }
-      }, false); //end validation sequence
+    form.noValidate = true;
+
+    var checkNumberEntries = function(){
+      console.log('in check');
+      if (!$scope.ff.refOnePhone) return false;
+      if (!$scope.ff.refTwoPhone) return false;
+      if (!$scope.ff.emergencyPhone) return false;
+      return true;
+    };
+
+    form.addEventListener('submit', function(event){
+      if(!event.target.checkValidity() || !checkNumberEntries() ){
+        swal('Please fill out all fields correctly');
+        $scope.firstLook = false;
+      } else {
+        window.location = '#!/essayQues';
+      }
+    }, false); //end validation sequence
   //previous button
   $scope.refPrev = function(){
     window.location ='#!/interestSkills';
@@ -151,16 +160,27 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
     $scope.firstLook = true;
     var form = document.getElementById('formID');
       form.noValidate = true;
+
+    var checkNumberEntries = function(){
+      console.log('in check');
+      if (!$scope.ff.phoneNum) return false;
+      if (!$scope.ff.zip) return false;
+      if (!$scope.ff.dateOfBirth) return false;
+      return true;
+    };
+
       form.addEventListener('submit', function(event){
-        if(!event.target.checkValidity()){
-          swal('Please fill out all fields!');
+        console.log('phone #:', $scope.ff.phoneNum);
+        if( !event.target.checkValidity() || !checkNumberEntries() ){
+          swal('Please fill out all fields correctly');
           $scope.firstLook = false;
-          // window.location ='#!/volInfo';
         } else {
           window.location = '#!/interestSkills';
         }
 
       }, false); //end validation sequence
+
+
   //next button function
   $scope.infoPrev = function(){
     window.location = '#!/volReqs';
@@ -194,6 +214,11 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
   //submit button
   function submitApp(){
     console.log('Submiting Form');
+
+    var date = formFactory.dateOfBirth.toString();
+    if(date.length == 7) date = '0' + date;
+    date = date.slice(4) + '-' + date.slice(0,2) + '-' + date.slice(2,4);
+
     var sendData = {
       additionalInfo: formFactory.additionalInfo,
       street: formFactory.street,
@@ -202,7 +227,7 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
       zip: formFactory.zip,
       email: formFactory.email,
       phoneNum: formFactory.phoneNum,
-      dateOfBirth: formFactory.dateOfBirth,
+      dateOfBirth: date,
       emergancyName: formFactory.emergencyName,
       emergancyPhone: formFactory.emergencyPhone,
       employment: formFactory.employment,
@@ -256,16 +281,3 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
     window.location ='#!/thankYou';
   }//end submitApp()
 }]);//end waiverController
-
-//filter out the underscores from the interests and skills section
-myForm.filter('removeUnderscores', function(){
-   return function(input){
-     if (!input)return;
-    for (var i = 0; i < input.length; i++) {
-        if (input[i] == '_') {
-          input = input.substr(0,i) + ' ' + input.substr(i+1);
-        }// end if
-      } // end for
-    return input;
-    };
-  });
