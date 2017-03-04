@@ -13,7 +13,7 @@
           </li>
           <li>
             <label for="dob">Date of Birth</label>
-              <input type="text" ng-class="{wrong: firstLook === false && vInfo.dob.$invalid}" ng-model="ff.dateOfBirth" id= "dob" placeholder="mm/dd/yyyy" name="dob" required>
+              <input type="number" ng-minlength="8" ng-maxlength="8" ng-class="{wrong: firstLook === false && vInfo.dob.$invalid}" ng-model="ff.dateOfBirth" id= "dob" placeholder="ex. mmddyyyy" name="dob" required>
           </li>
           <li>
             <label for="address">Address</label>
@@ -75,15 +75,15 @@
               <option value="WY">WY</option>
             </select>
         <!--<label for="zip">Zip Code:</label> -->
-              <input type="number" ng-class="{wrong: firstLook === false && vInfo.zip.$invalid}" ng-model="ff.zip" id="zip" placeholder="Zip Code" name="zip" required>
+              <input type="number" ng-minlength="5" ng-maxlength="5" ng-class="{wrong: firstLook === false && vInfo.zip.$invalid}" ng-model="ff.zip" id="zip" placeholder="Zip Code" name="zip" required>
           </li>
           <li>
             <label for="email">Email</label>
-              <input type="text" ng-class="{wrong: firstLook === false && vInfo.email.$invalid}" ng-model="ff.email" id="email" name="email" required>
+              <input type="email" ng-class="{wrong: firstLook === false && vInfo.email.$invalid}" ng-model="ff.email" id="email" name="email" required>
           </li>
           <li>
             <label for="phone">Phone Number</label>
-              <input type="text" ng-class="{wrong: firstLook === false && vInfo.phone.$invalid}" ng-model="ff.phoneNum" name="phone" required>
+              <input type="number" ng-minlength="10" ng-maxlength="13" ng-class="{wrong: firstLook === false && vInfo.phone.$invalid}" ng-model="ff.phoneNum" name="phone" placeholder="ex. 6125551234" required>
           </li>
           <li>
             <label for="employment">Place of Employment</label>

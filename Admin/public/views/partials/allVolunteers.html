@@ -72,18 +72,18 @@
 
         <h3>Contact Info</h3>
         <input ng-model="addEditVolunteer.contactInfo.email" type="text" value="" placeholder="Email">
-        <input ng-model="addEditVolunteer.contactInfo.phoneNum" type="tel" value="" placeholder="Phone Number">
+        <input ng-model="addEditVolunteer.contactInfo.phoneNum" type="number" value="" placeholder="Phone No. ex. 6125551234" style="width: 14em">
 
         <h3>About</h3>
-        <input ng-model="addEditVolunteer.dateOfBirth" type="numbers" value="" placeholder="Date of Birth (mm/dd/yyyy)">
+        <input ng-model="addEditVolunteer.dateOfBirth" type="numbers" value="" placeholder="Date of Birth ex. mmddyyyy" style="width: 13.5em">
         <input ng-model="addEditVolunteer.employment" type="numbers" value="" placeholder="Employment">
 
         <h3>Volunteer Info</h3>
-        <input ng-model="addEditVolunteer.dateBegan" type="numbers" value="" placeholder="Begin Date (mm/dd/yyyy)">
+        <input ng-model="addEditVolunteer.dateBegan" type="numbers" value="" placeholder="Begin Date ex. mmddyyyy" style="width: 13em">
 
         <h3>Emergency Contact</h3>
-        <input ng-model="addEditVolunteer.emergencyContact.name" type="text" value="" placeholder="Name">
-        <input ng-model="addEditVolunteer.emergencyContact.phone" type="number" value="" placeholder="Phone Number">
+        <input ng-model="addEditVolunteer.emergencyContact.name" type="text" value="" placeholder="Full Name">
+        <input ng-model="addEditVolunteer.emergencyContact.phone" type="number" value="" placeholder="Phone No. ex. 6125551234" style="width: 14em">
 
         <h4>Notes</h4>
         <textarea ng-model="addEditVolunteer.notes" rows="4" style="width:90%;" placeholder="added info about the volunteer..."></textarea>

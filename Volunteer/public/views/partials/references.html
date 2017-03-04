@@ -13,29 +13,29 @@
           <div class="row">
             <div class="col-sm-12">
           <label for="refName">Name:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.refNameOne.$invalid}" name="refNameOne" ng-model="ff.refOneName" type="text" id="refName" required>
+            <input ng-class="{wrong: firstLook === false && refForm.refNameOne.$invalid}" name="refNameOne" ng-model="ff.refOneName" type="text" id="refName" placeholder="Full Name" required>
           <label for="refPhone">Phone Number:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.refPhoneOne.$invalid}" name="refPhoneOne" ng-model="ff.refOnePhone" type="text" id="refPhone" required>
+            <input ng-class="{wrong: firstLook === false && refForm.refPhoneOne.$invalid}" name="refPhoneOne" ng-model="ff.refOnePhone" type="number" ng-minlength="10" ng-maxlength="10" id="refPhone" placeholder="ex. 6125551234" required>
           <label for="refEmail">Email:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.refEmailOne.$invalid}" name="refEmailOne" ng-model="ff.refOneEmail" type="text" id="refEmail" required>
+            <input ng-class="{wrong: firstLook === false && refForm.refEmailOne.$invalid}" name="refEmailOne" ng-model="ff.refOneEmail" type="email" id="refEmail" required>
           </div>
         </div>
               <br>
             </br>
         <p>Reference #2</p>
           <label for="refName2">Name:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.refNameTwo.$invalid}" name="refNameTwo" ng-model="ff.refTwoName" type="text" id="refName2" required>
+            <input ng-class="{wrong: firstLook === false && refForm.refNameTwo.$invalid}" name="refNameTwo" ng-model="ff.refTwoName" type="text" id="refName2" placeholder="Full Name" required>
           <label for="refPhone2">Phone Number:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.refPhoneTwo.$invalid}" name="refPhoneTwo" ng-model="ff.refTwoPhone" type="text" id="refPhone2" required>
+            <input ng-class="{wrong: firstLook === false && refForm.refPhoneTwo.$invalid}" name="refPhoneTwo" ng-model="ff.refTwoPhone" type="number" ng-minlength="10" ng-maxlength="10" id="refPhone2" placeholder="ex. 6125551234" required>
           <label for="refEmail2">Email:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.refEmailTwo.$invalid}" name="refEmailTwo" ng-model = "ff.refTwoEmail" type="text" id="refEmail2" required>
+            <input ng-class="{wrong: firstLook === false && refForm.refEmailTwo.$invalid}" name="refEmailTwo" ng-model = "ff.refTwoEmail" type="email" id="refEmail2" required>
               <br>
             </br>
         <label id="emerHeader">Emergency Contact (person to notify in case of an emergency):</label>
           <label for="emerName">Name:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.emerName.$invalid}" name="emerName" ng-model="ff.emergencyName" type="text" id="emerName" required>
+            <input ng-class="{wrong: firstLook === false && refForm.emerName.$invalid}" name="emerName" ng-model="ff.emergencyName" type="text" id="emerName" placeholder="Full Name" required>
           <label for="emerPhone">Phone Number:</label>
-            <input ng-class="{wrong: firstLook === false && refForm.emerPhone.$invalid}" name="emerPhone" ng-model="ff.emergencyPhone" type="text" id="emerPhone" required>
+            <input ng-class="{wrong: firstLook === false && refForm.emerPhone.$invalid}" name="emerPhone" ng-model="ff.emergencyPhone" type="number" ng-minlength="10" ng-maxlength="10" placeholder="ex. 6125551234"id="emerPhone" required>
             <button type="submit" class="nextButt">Next ></button>
           </form>
           <p class="prog">Page 3 of 5</p>
