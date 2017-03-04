@@ -51,7 +51,7 @@ router.get('/google/callback', passport.authenticate('google',
  * @return JSON object with status (true or false) and, if true, user's name
  */
 router.get('/', function (req, res) {
-res.sendFile(path.join(__dirname, '../../Admin/public/views/login.html'));
+  res.sendFile(path.join(__dirname, '../../Admin/public/views/login.html'));
 });
 /**
  * GET /auth/logout
@@ -60,7 +60,10 @@ res.sendFile(path.join(__dirname, '../../Admin/public/views/login.html'));
  *
  * @return 200 - OK
  */
+
+
 router.get('/logout', function (req, res) {
+  console.log('*****logging out*****');
   req.logout();
   res.redirect('/auth');
 });

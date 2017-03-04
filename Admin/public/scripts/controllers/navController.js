@@ -32,10 +32,10 @@ function($scope, $http, $window, VolunteerFactory, AuthFactory) {
         $scope.username = '';
         $window.location.href = '/auth'; // forces a page reload which will update our NavController
       },
-
       function (response) { // error
         $scope.message.text = 'Unable to logout';
         $scope.message.type = 'error';
-      });
-  };
+      }); // end then
+  }; // end logout()
+
 }]);
