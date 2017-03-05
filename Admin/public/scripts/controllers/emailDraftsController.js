@@ -24,7 +24,7 @@ function($scope, $http, SweetFactory, textAngularManager) {
     var deleteHTTP = '/private/emailTemplate/' + id;
     swal({
       title: "Are you sure?",
-      text: "Your will not be able to recover this imaginary file!",
+      text: "You will not be able to recover this file!",
       type: "warning",
       showCancelButton: true,
       confirmButtonClass: "btn-danger",
@@ -32,7 +32,7 @@ function($scope, $http, SweetFactory, textAngularManager) {
       closeOnConfirm: false
     }).then(function(){
       $http.delete(deleteHTTP).then(getEmailTemplates);
-      swal("Deleted!", "Your imaginary file has been deleted.", "success");
+      swal("Deleted!", "Your file has been deleted.", "success");
     });
   };
 

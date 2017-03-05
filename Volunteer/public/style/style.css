@@ -93,15 +93,8 @@ h5{
   border-color: red;
 }
 
-/*.container{
-    background-image: url("FoundationCircles_Setof3.jpg");
-    background-repeat: repeat;
-    background-size: 25%;
-    width: auto;
-}*/
 
 .container {
-  background-color: rgba(0, 0, 0, .2);
   width: 100%;
   /*height: 1250px;*/
 }
@@ -127,16 +120,7 @@ h5{
 
 .skillItems{
   font-weight: normal;
-  /*display: block;
-  float: left;
-  width: 15%;*/
 }
-
-/*.checkboxSkill{
-  display: block;
-  float: left;
-  width: 15%;
-}*/
 
 .interestItems{
   font-weight: normal;
@@ -173,7 +157,6 @@ h5{
 
 .return{
   float:right;
-  /*margin-left: 100px;*/
 }
 
 .prog {
@@ -299,10 +282,6 @@ h5{
   /*margin-bottom: 50px;*/
 }
 
-/*#essayOne{
-  display: block;
-  margin-bottom: 5px;
-}*/
 
 #waiverHeader{
   text-align: center;
