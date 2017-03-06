@@ -1,6 +1,6 @@
 var init = function () {
   var User = require('../models/user');
-  var config = require('../../../secretSquirrel/secret');
+  var config = require('../auth/authConfig');
   var UserService = require('../services/user');
   var userCreateCallback = function(err, user) {
   };

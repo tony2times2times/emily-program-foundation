@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('./server/auth/passport');
-var configs = require('../secretSquirrel/secret');
+var configs = require('./server/auth/authConfig');
 //routes folder
 var private = require('./server/routes/private/index');
 var form = require('./server/routes/form.js');
