@@ -166,7 +166,7 @@ function($scope, $http, $timeout, SweetFactory) {
     //create a active person backup
     $scope.savePerson = angular.copy($scope.hatchery[listIndex][personIndex]);
     // console.log('the active person is: ' + $scope.person.name.first_name,
-    $scope.person.name.last_name);
+    // $scope.person.name.last_name);
   };
 
 
