@@ -3,7 +3,7 @@ emilyApp.factory('SweetFactory', function($http){
 
   Sweet.emailStrip = function(recipientArray){
     // First, perform deep clone of array.
-    console.log(recipientArray);
+    // console.log(recipientArray);
     var outputArray = JSON.parse(JSON.stringify(recipientArray));
     var firstLevelPropertiesToDelete = ['additionalInfo', 'appStatus', 'dateBegan', 'dateOfBirth', 'emailedWhat', 'emergencyContact', 'employment', 'essayOne', 'essayTwo', 'essayThree', 'essayFour', 'interests', 'notes', 'numMissedOrientaion', 'referenceOne', 'referenceTwo', 'skills'];
     for (i = 0; i < outputArray.length; i++) {
@@ -89,7 +89,7 @@ emilyApp.factory('SweetFactory', function($http){
                 templateID: emailTemplateArray[index]._id,
                 recipientArray: recipientArray
               };
-              console.log(objectToSend);
+              // console.log(objectToSend);
               $http.post('/private/sendEmail', objectToSend).then(function(){
                 resolve();
               });

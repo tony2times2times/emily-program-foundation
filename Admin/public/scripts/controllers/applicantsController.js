@@ -26,7 +26,7 @@ function($scope, $http, $timeout, SweetFactory) {
       method: 'GET',
       url: '/applicant',
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
       //put each applicant in thier appropriate buck
       for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].appStatus === 'applied') {
@@ -36,7 +36,7 @@ function($scope, $http, $timeout, SweetFactory) {
         }else if (response.data[i].appStatus === 'scheduled') {
           $scope.scheduled.push(response.data[i]);
         }else {
-          console.log('unrecognized status for: ' + response.data[i].appStatus);
+          // console.log('unrecognized status for: ' + response.data[i].appStatus);
         }
       }
     }, function errorCallback(error) {
@@ -51,12 +51,12 @@ function($scope, $http, $timeout, SweetFactory) {
       url: '/formFields',
       data: {status: $scope.person.appStatus}
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
       //assign the skills and interests to global variables
       $scope.interests = response.data.interests;
       $scope.skills = response.data.skills;
     }, function errorCallback(error) {
-      console.log('error', error);
+      // console.log('error', error);
     });
   };
 
@@ -91,17 +91,17 @@ function($scope, $http, $timeout, SweetFactory) {
       }
     }
     else {
-      console.log(index + " is not a recognized index please check the incubator function");
+      // console.log(index + " is not a recognized index please check the incubator function");
     }}
-    console.log('ther active persons status is now: ' + $scope.person.appStatus);
+    // console.log('ther active persons status is now: ' + $scope.person.appStatus);
     $http({
       method: 'PATCH',
       url: '/applicant/status/' + $scope.person._id,
       data: {status: $scope.person.appStatus}
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
     }, function errorCallback(error) {
-      console.log('error', error);
+      // console.log('error', error);
     });
   };
 
@@ -127,7 +127,7 @@ function($scope, $http, $timeout, SweetFactory) {
 
   //DOES NOT EMAIL - keeps track of how many orientations a person has been scheduled for
   $scope.addOrientation = function (applicant){
-    console.log('addint orientation for ' + $scope.person.last_name);
+    // console.log('addint orientation for ' + $scope.person.last_name);
     //update all references localy
     $scope.person.numMissedOrientaion++;
     $scope.savePerson.numMissedOrientaion++;
@@ -138,7 +138,7 @@ function($scope, $http, $timeout, SweetFactory) {
       for (var j = 0; j < $scope.hatchery[i].length; j++) {
         //when a matching id is found
         if ($scope.hatchery[i][j]._id===$scope.person._id){
-          console.log('person found adding orientation!');
+          // console.log('person found adding orientation!');
           //add an orientation to that person
           $scope.hatchery[i][j].numMissedOrientaion++;
           //exit the bucket for loop
@@ -152,9 +152,9 @@ function($scope, $http, $timeout, SweetFactory) {
       url: '/applicant/missed/' + $scope.person._id,
       data: $scope.person
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
     }, function errorCallback(error) {
-      console.log('error', error);
+      // console.log('error', error);
     });
   };
 
@@ -165,7 +165,7 @@ function($scope, $http, $timeout, SweetFactory) {
 
     //create a active person backup
     $scope.savePerson = angular.copy($scope.hatchery[listIndex][personIndex]);
-    console.log('the active person is: ' + $scope.person.name.first_name,
+    // console.log('the active person is: ' + $scope.person.name.first_name,
     $scope.person.name.last_name);
   };
 
@@ -276,9 +276,9 @@ function($scope, $http, $timeout, SweetFactory) {
       url: '/volunteer',
       data: volunteer
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
     }, function errorCallback(error) {
-      console.log('error', error);
+      // console.log('error', error);
     });
   };
 
@@ -316,9 +316,9 @@ function($scope, $http, $timeout, SweetFactory) {
       url: '/applicant/' + $scope.id,
       data: $scope.viewedPerson
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
     }, function errorCallback(error) {
-      console.log('error', error);
+      // console.log('error', error);
     });
       swal(
         'Edit Saved',
@@ -480,7 +480,7 @@ function($scope, $http, $timeout, SweetFactory) {
   $scope.removeAllData = function(applicant){
     $scope.person = {};
     $scope.viewedPerson = {};
-    console.log('removing applicant: ' + applicant.last_name);
+    // console.log('removing applicant: ' + applicant.last_name);
     //remove applicant localy
     bucket:
     //search every bucket
@@ -498,9 +498,9 @@ function($scope, $http, $timeout, SweetFactory) {
       method: 'DELETE',
       url: '/applicant/' + applicant._id
     }).then(function successCallback(response) {
-      console.log(response);
+      // console.log(response);
     }, function errorCallback(error) {
-      console.log('error', error);
+      // console.log('error', error);
     });
   };
 
@@ -508,6 +508,6 @@ function($scope, $http, $timeout, SweetFactory) {
   $scope.loadApplicants();
 
   setTimeout(function(){
-    console.log($scope.skills);
+    // console.log($scope.skills);
   }, 500);
 }]);

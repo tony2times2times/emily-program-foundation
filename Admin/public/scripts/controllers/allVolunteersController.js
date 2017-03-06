@@ -1,6 +1,5 @@
 emilyApp.controller('AllVolunteersController', ["$scope", "$http", "SweetFactory",
 function($scope, $http, SweetFactory) {
-  console.log("AllVolunteersController loaded.");
 
   $scope.init = function(){
     $scope.hideAddVolunteer = true;
@@ -29,7 +28,6 @@ function($scope, $http, SweetFactory) {
   //
 
   $scope.sortVolunteers = function(sortIn){
-    console.log('sorting volunteers | by', sortIn);
     var v = 1;
     switch (sortIn) {
       case 'name':
@@ -61,7 +59,6 @@ function($scope, $http, SweetFactory) {
 
         break;
       default:
-        console.log('did not sort');
     } // end switch
 
     $scope.filterThroughVolunteers();
@@ -114,13 +111,11 @@ function($scope, $http, SweetFactory) {
   }; //end cancelSearchResults()
 
   $scope.showExtraInfo = function(name , id){
-    console.log('Showing Extra Info | ID: ', id);
 
     $http({
       method: 'GET',
       url: '/volunteer/extraInfo/' + id
     }).then(function(response){
-      console.log(response.data);
       var info = response.data;
 
       var htmlReferences = '<p><strong>Reference One</strong></p>' +
@@ -258,14 +253,13 @@ function($scope, $http, SweetFactory) {
   };
 
   $scope.updateVolunteer = function( volunteer ){
-    console.log('updating Volunteer | volunteer = ', volunteer );
 
     $http({
       method: 'PUT',
       url: '/volunteer/' + volunteer._id,
       data: volunteer
     }).then(function successCallback(response) {
-      console.log(response);
+
 
       $scope.hideEditVolunteer = true;
       swal(
@@ -276,7 +270,7 @@ function($scope, $http, SweetFactory) {
       $scope.getAllVolunteers();
 
     }, function errorCallback(error) {
-      console.log('error', error);
+
     });
   }// end updateVolunteer()
 
@@ -322,7 +316,7 @@ function($scope, $http, SweetFactory) {
       method: 'DELETE',
       url: '/volunteer/' + volunteer._id
     }).then(function(response) {
-      console.log(response);
+
       $scope.cancelSearchResults();
       $scope.getAllVolunteers();
       $scope.expandAll = false;
@@ -330,9 +324,9 @@ function($scope, $http, SweetFactory) {
   };// end removeAllData()
 
   $scope.switchExpandView = function(){
-    console.log('expanding | expandAll = ', $scope.expandAll);
+
     $scope.expandAll = !($scope.expandAll);
-    console.log('again afterwards | expandAll = ', $scope.expandAll);
+
   }; // end switchExpandView()
 
   $scope.checkAll = function(){
@@ -360,7 +354,7 @@ function($scope, $http, SweetFactory) {
   };//end clickedVolunteer()
 
   $scope.getAllVolunteers = function(){
-    console.log('Getting all of the volunteers');
+
 
     $http({
       method: 'GET',
@@ -385,7 +379,7 @@ function($scope, $http, SweetFactory) {
   };
 
   $scope.getFormFields = function(){
-    console.log("Getting feilds for form");
+    // console.log("Getting feilds for form");
 
     $http({
       method: 'GET',
@@ -415,19 +409,19 @@ function($scope, $http, SweetFactory) {
   }; // end onlyTrueToArray()
 
   $scope.submitNewVolunteer = function(){
-    console.log('submitting new volunteer');
+    // console.log('submitting new volunteer');
     $scope.hideAddVolunteer = true;
 
     $scope.addEditVolunteer.interests = onlyTrueToArray( $scope.interestsIn );
     $scope.addEditVolunteer.skills = onlyTrueToArray( $scope.skillsIn );
 
-    console.log('Data to Send = ', $scope.addEditVolunteer);
+    // console.log('Data to Send = ', $scope.addEditVolunteer);
     $http({
       method: 'POST',
       url: '/volunteer',
       data: $scope.addEditVolunteer
     }).then(function(response){
-      console.log(response);
+      // console.log(response);
       $scope.getAllVolunteers();
     });//end http
   };// end submitNewVolunteer()

@@ -1,6 +1,5 @@
 emilyApp.controller('AdminViewController', ["$scope", "$http", "VolunteerFactory",
 function($scope, $http, VolunteerFactory) {
-  console.log("AdminViewController loaded.");
 
   $scope.questionToEdit = false;
 
@@ -71,7 +70,6 @@ function($scope, $http, VolunteerFactory) {
   $scope.saveQuestion = function(index, text){
     var putHTTP = '/private/adminview/changeessayq/' + index;
     var sendObject = {questionText: text};
-    console.log("PUT call:", putHTTP, sendObject);
     $http.put(putHTTP, sendObject).then(getEssayQs);
     $scope.questionToEdit = false;
     getEssayQs();

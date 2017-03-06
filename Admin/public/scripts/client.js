@@ -1,5 +1,3 @@
-console.log("JS");
-
 var emilyApp = angular.module('emilyApp', ["textAngular", "ngRoute", "ngDragDrop", "ui.toggle"]);
 
 // emilyApp.config(function($provide){

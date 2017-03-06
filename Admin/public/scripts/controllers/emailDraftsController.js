@@ -1,6 +1,6 @@
 emilyApp.controller('EmailDraftsController', ["$scope", "$http", 'SweetFactory', 'textAngularManager',
 function($scope, $http, SweetFactory, textAngularManager) {
-  console.log("emailDraftsController loaded.");
+  // console.log("emailDraftsController loaded.");
 
   // Initialize template editor control values:
   $scope.modifyTemplateID = false;
@@ -8,7 +8,7 @@ function($scope, $http, SweetFactory, textAngularManager) {
 
   var getEmailTemplates = function(){
     $http.get('/private/emailTemplate').then(function(response){
-      console.log('response from mongo', response.data);
+      // console.log('response from mongo', response.data);
       $scope.emailTemplateArray = response.data;
     });
   };

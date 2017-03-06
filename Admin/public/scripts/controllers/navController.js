@@ -1,6 +1,6 @@
 emilyApp.controller('NavController', ["$scope", "$http", "$window", "VolunteerFactory", "AuthFactory",
 function($scope, $http, $window, VolunteerFactory, AuthFactory) {
-  console.log("NavController loaded.");
+  // console.log("NavController loaded.");
   $scope.displayLogout = false; // should we display the logout option on the DOM?
   $scope.message = {
     text: false,

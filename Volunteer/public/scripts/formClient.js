@@ -1,5 +1,3 @@
-console.log('js sourced');
-
 var myForm = angular.module('myForm',['ngRoute']);
 
 myForm.config(['$routeProvider', function($routeProvider){
@@ -62,16 +60,13 @@ myForm.controller('EssayController', ['$scope', '$http', '$window', '$location',
 }]); //end EssayController
 
 myForm.controller('FormController', ['$scope', '$http', 'formFactory', function($scope, $http, formFactory){
-  console.log('ng sourced');
 
   $scope.getFormFields = function(){
-    console.log("Getting feilds for form");
 
     $http({
       method: 'GET',
       url: '/formFields'
     }).then(function(response){
-      console.log('response', response);
 
       formFactory.allSkills = response.data.skills;
       formFactory.allIntersts = response.data.interests;
@@ -176,7 +171,6 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
       form.noValidate = true;
 
     var checkNumberEntries = function(){
-      console.log('in check', $scope.ff.phoneNum);
       if (!$scope.ff.phoneNum) return false;
       if (!$scope.ff.zip) return false;
       if (!$scope.ff.dateOfBirth) return false;
@@ -184,7 +178,6 @@ myForm.controller('VolInfoController', ['$scope', '$http', '$location', '$window
     };
 
       form.addEventListener('submit', function(event){
-        console.log('phone #:', $scope.ff.phoneNum);
         if( !event.target.checkValidity() || !checkNumberEntries() ){
           swal('Please fill out all fields correctly');
           $scope.firstLook = false;
@@ -211,13 +204,10 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
   //validating the checkbox
   $scope.validateCheck = function(event){
     var x = document.getElementById("signed").checked;
-    console.log('is checked? ->', x);
     if(x === true){
-      console.log('true');
       submitApp();
     } else {
       swal('Please sign the terms and conditions by checking the box. Thank you!');
-      console.log('false');
       window.location = '#!/waiver';
     }
   };
@@ -227,8 +217,6 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
   };
   //submit button
   function submitApp(){
-    console.log('Submiting Form');
-
     var date = formFactory.dateOfBirth.toString();
     if(date.length == 7) date = '0' + date;
     date = date.slice(4) + '-' + date.slice(0,2) + '-' + date.slice(2,4);
@@ -277,13 +265,11 @@ myForm.controller('WaiverController', ['$scope', '$http', '$location', 'formFact
       skills: formFactory.onlyTrueToArray( formFactory.skillsIn )
     };// end sendData
     //start POST request to DB
-    console.log('Data to Send = ', sendData);
     $http({
       method: 'POST',
       url: '/',
       data: sendData
     }).then(function(response){
-      console.log(response);
     });//end http
     // Send notification emails to applicant and Emily:
     var confirmObject = {
